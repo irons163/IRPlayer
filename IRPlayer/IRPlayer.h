@@ -6,14 +6,9 @@
 //  Copyright © 2019 Phil. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-//! Project version number for IRPlayer.
 FOUNDATION_EXPORT double IRPlayerVersionNumber;
 
-//! Project version string for IRPlayer.
 FOUNDATION_EXPORT const unsigned char IRPlayerVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <IRPlayer/PublicHeader.h>
-
-
