@@ -35,7 +35,6 @@
 #include "libavformat/version.h"
 
 #define AVIO_SEEKABLE_NORMAL 0x0001 /**< Seeking works like for a local file */
-#define AVIO_SEEKABLE_SLOW   0x0100 /**< Seeking works but is slow (for example http) */
 
 /**
  * Callback for checking whether to abort blocking functions.

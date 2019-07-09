@@ -134,8 +134,6 @@ typedef BOOL(^IRMovieDecoderInterruptCallback)();
 
 - (BOOL) setupVideoFrameFormat: (IRFrameFormat) format;
 
-- (NSArray *) decodeFrames: (CGFloat) minDuration;
-
 -(void) readFrames;
 
 - (NSArray *) decodeFramesNew: (CGFloat) minDuration;

@@ -530,6 +530,7 @@ enum AVCodecID {
     AV_CODEC_ID_VPLAYER    = MKBETAG('V','P','l','r'),
     AV_CODEC_ID_PJS        = MKBETAG('P','h','J','S'),
     AV_CODEC_ID_ASS        = MKBETAG('A','S','S',' '),  ///< ASS as defined in Matroska
+    AV_CODEC_ID_HDMV_TEXT_SUBTITLE = MKBETAG('B','D','T','X'),
 
     /* other specific kind of codecs (generally used for attachments) */
     AV_CODEC_ID_FIRST_UNKNOWN = 0x18000,           ///< A dummy ID pointing at the start of various fake codecs.
@@ -2947,9 +2948,7 @@ typedef struct AVCodecContext {
     int dct_algo;
 #define FF_DCT_AUTO    0
 #define FF_DCT_FASTINT 1
-#if FF_API_UNUSED_MEMBERS
 #define FF_DCT_INT     2
-#endif /* FF_API_UNUSED_MEMBERS */
 #define FF_DCT_MMX     3
 #define FF_DCT_ALTIVEC 5
 #define FF_DCT_FAAN    6
@@ -3495,9 +3494,7 @@ typedef struct AVCodec {
     const int *supported_samplerates;       ///< array of supported audio samplerates, or NULL if unknown, array is terminated by 0
     const enum AVSampleFormat *sample_fmts; ///< array of supported sample formats, or NULL if unknown, array is terminated by -1
     const uint64_t *channel_layouts;         ///< array of support channel layouts, or NULL if unknown. array is terminated by 0
-#if FF_API_LOWRES
     uint8_t max_lowres;                     ///< maximum value for lowres supported by the decoder, no direct access, use av_codec_get_max_lowres()
-#endif
     const AVClass *priv_class;              ///< AVClass for the private context
     const AVProfile *profiles;              ///< array of recognized profiles, or NULL if unknown, array is terminated by {FF_PROFILE_UNKNOWN}
 
@@ -3715,6 +3712,9 @@ typedef struct AVHWAccel {
  * Hardware acceleration should be used for decoding even if the codec level
  * used is unknown or higher than the maximum supported level reported by the
  * hardware driver.
+ *
+ * It's generally a good idea to pass this flag unless you have a specific
+ * reason not to, as hardware tends to under-report supported levels.
  */
 #define AV_HWACCEL_FLAG_IGNORE_LEVEL (1 << 0)
 

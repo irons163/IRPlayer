@@ -7,10 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "IRFFFrame.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface IRFFFramePool : NSObject
+
++ (instancetype)videoPool;
++ (instancetype)audioPool;
++ (instancetype)poolWithCapacity:(NSUInteger)number frameClassName:(Class)frameClassName;
+
+- (NSUInteger)count;
+- (NSUInteger)unuseCount;
+- (NSUInteger)usedCount;
+
+- (__kindof IRFFFrame *)getUnuseFrame;
+
+- (void)flush;
 
 @end
 

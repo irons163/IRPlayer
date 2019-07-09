@@ -9,5 +9,12 @@
 #ifndef IRPlayerMacro_h
 #define IRPlayerMacro_h
 
+#import "IRScope.h"
+// log level
+#ifdef DEBUG
+#define IRPlayerLog(...) NSLog(__VA_ARGS__)
+#else
+#define IRPlayerLog(...)
+#endif
 
 #endif /* IRPlayerMacro_h */

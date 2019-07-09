@@ -7,10 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "IRFFMetadata.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSUInteger, IRFFTrackType) {
+    IRFFTrackTypeVideo,
+    IRFFTrackTypeAudio,
+    IRFFTrackTypeSubtitle,
+};
+
 @interface IRFFTrack : NSObject
+
+@property (nonatomic, assign) int index;
+@property (nonatomic, assign) IRFFTrackType type;
+@property (nonatomic, strong) IRFFMetadata * metadata;
 
 @end
 

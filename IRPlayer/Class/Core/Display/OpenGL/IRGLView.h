@@ -15,6 +15,7 @@
 @class IRVideoFrame;
 @class IRMovieDecoder;
 @class VideoDecoder;
+@class IRAVPlayer;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -57,6 +58,7 @@ typedef NS_ENUM(NSInteger, IRRenderMode){
 @property (weak) id<IRGLViewDelegate> delegate;
 @property BOOL doubleTapEnable;
 @property BOOL swipeEnable;
+@property (nonatomic, weak) IRAVPlayer *avplayer;
 @end
 
 NS_ASSUME_NONNULL_END

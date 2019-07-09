@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface IRPlayerTrack : NSObject
 
+@property (nonatomic, assign) int index;
+@property (nonatomic, copy) NSString * name;
+
 @end
 
 NS_ASSUME_NONNULL_END
