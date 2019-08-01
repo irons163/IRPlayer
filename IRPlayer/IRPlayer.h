@@ -13,7 +13,7 @@ FOUNDATION_EXPORT double IRPlayerVersionNumber;
 FOUNDATION_EXPORT const unsigned char IRPlayerVersionString[];
 
 // IRPlayer
-#import <IRPlayer/IRPlayer.h>
+#import <IRPlayer/IRPlayerImp.h>
 #import <IRPlayer/IRPlayerTrack.h>
 #import <IRPlayer/IRPlayerAction.h>
 #import <IRPlayer/IRPlayerDecoder.h>

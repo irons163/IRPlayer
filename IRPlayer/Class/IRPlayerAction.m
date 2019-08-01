@@ -31,7 +31,7 @@ NSString * const IRPlayerPlayableTotalKey = @"total";       // playable
 
 #pragma mark - IRPlayer Action Category
 
-@implementation IRPlayer (IRPlayerAction)
+@implementation IRPlayerImp (IRPlayerAction)
 
 - (void)registerPlayerNotificationTarget:(id)target
                              stateAction:(nullable SEL)stateAction

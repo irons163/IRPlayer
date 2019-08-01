@@ -7,7 +7,7 @@
 //
 
 #import "IRAVPlayer.h"
-#import "IRPlayer+DisplayView.h"
+#import "IRPlayerImp+DisplayView.h"
 #import "IRPlayerMacro.h"
 #import "IRPlayerNotification.h"
 #import <AVFoundation/AVFoundation.h>
@@ -17,7 +17,7 @@ static NSString * const AVMediaSelectionOptionTrackIDKey = @"MediaSelectionOptio
 
 @interface IRAVPlayer ()
 
-@property (nonatomic, weak) IRPlayer * abstractPlayer;
+@property (nonatomic, weak) IRPlayerImp * abstractPlayer;
 
 @property (nonatomic, assign) IRPlayerState state;
 @property (nonatomic, assign) NSTimeInterval playableTime;
@@ -50,12 +50,12 @@ static NSString * const AVMediaSelectionOptionTrackIDKey = @"MediaSelectionOptio
 
 @implementation IRAVPlayer
 
-+ (instancetype)playerWithAbstractPlayer:(IRPlayer *)abstractPlayer
++ (instancetype)playerWithAbstractPlayer:(IRPlayerImp *)abstractPlayer
 {
     return [[self alloc] initWithAbstractPlayer:abstractPlayer];
 }
 
-- (instancetype)initWithAbstractPlayer:(IRPlayer *)abstractPlayer
+- (instancetype)initWithAbstractPlayer:(IRPlayerImp *)abstractPlayer
 {
     if (self = [super init]) {
         self.abstractPlayer = abstractPlayer;
@@ -389,6 +389,7 @@ static NSString * const AVMediaSelectionOptionTrackIDKey = @"MediaSelectionOptio
         {
             [self reloadPlayableTime];
             NSTimeInterval interval = self.playableTime - self.progress;
+            NSTimeInterval residue = self.duration - self.progress;
             if (interval > self.abstractPlayer.playableBufferInterval) {
                 [self playIfNeed];
             } else if (interval < 0.3 && residue > 1.5) {

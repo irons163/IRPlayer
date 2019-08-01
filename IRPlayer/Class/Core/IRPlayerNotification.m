@@ -10,7 +10,7 @@
 
 @implementation IRPlayerNotification
 
-+ (void)postPlayer:(IRPlayer *)player error:(IRError *)error
++ (void)postPlayer:(IRPlayerImp *)player error:(IRError *)error
 {
     if (!player || !error) return;
     NSDictionary * userInfo = @{
@@ -20,7 +20,7 @@
     [self postNotificationName:IRPlayerErrorNotificationName object:player userInfo:userInfo];
 }
 
-+ (void)postPlayer:(IRPlayer *)player statePrevious:(IRPlayerState)previous current:(IRPlayerState)current
++ (void)postPlayer:(IRPlayerImp *)player statePrevious:(IRPlayerState)previous current:(IRPlayerState)current
 {
     if (!player) return;
     NSDictionary * userInfo = @{
@@ -30,7 +30,7 @@
     [self postNotificationName:IRPlayerStateChangeNotificationName object:player userInfo:userInfo];
 }
 
-+ (void)postPlayer:(IRPlayer *)player progressPercent:(NSNumber *)percent current:(NSNumber *)current total:(NSNumber *)total
++ (void)postPlayer:(IRPlayerImp *)player progressPercent:(NSNumber *)percent current:(NSNumber *)current total:(NSNumber *)total
 {
     if (!player) return;
     if (![percent isKindOfClass:[NSNumber class]]) percent = @(0);
@@ -44,7 +44,7 @@
     [self postNotificationName:IRPlayerProgressChangeNotificationName object:player userInfo:userInfo];
 }
 
-+ (void)postPlayer:(IRPlayer *)player playablePercent:(NSNumber *)percent current:(NSNumber *)current total:(NSNumber *)total
++ (void)postPlayer:(IRPlayerImp *)player playablePercent:(NSNumber *)percent current:(NSNumber *)current total:(NSNumber *)total
 {
     if (!player) return;
     if (![percent isKindOfClass:[NSNumber class]]) percent = @(0);

@@ -6,7 +6,7 @@
 //  Copyright © 2019 Phil. All rights reserved.
 //
 
-#import "IRPlayer.h"
+#import "IRPlayerImp.h"
 #import <AVFoundation/AVFoundation.h>
 
 @interface IRAVPlayer : NSObject
@@ -14,9 +14,9 @@
 + (instancetype)new NS_UNAVAILABLE;
 + (instancetype)init NS_UNAVAILABLE;
 
-+ (instancetype)playerWithAbstractPlayer:(IRPlayer *)abstractPlayer;
++ (instancetype)playerWithAbstractPlayer:(IRPlayerImp *)abstractPlayer;
 
-@property (nonatomic, weak, readonly) IRPlayer * abstractPlayer;
+@property (nonatomic, weak, readonly) IRPlayerImp * abstractPlayer;
 @property (nonatomic, strong, readonly) AVPlayer * avPlayer;
 
 @property (nonatomic, assign, readonly) IRPlayerState state;

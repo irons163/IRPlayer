@@ -6,7 +6,7 @@
 //  Copyright © 2019 Phil. All rights reserved.
 //
 
-#import "IRPlayer.h"
+#import "IRPlayerImp.h"
 
 @class IRState;
 @class IRProgress;
@@ -45,7 +45,7 @@ IRPLAYER_EXTERN NSString * const IRPlayerPlayableTotalKey;      // playable
 
 #pragma mark - IRPlayer Action Category
 
-@interface IRPlayer (IRPlayerAction)
+@interface IRPlayerImp (IRPlayerAction)
 
 - (void)registerPlayerNotificationTarget:(id)target
                              stateAction:(nullable SEL)stateAction

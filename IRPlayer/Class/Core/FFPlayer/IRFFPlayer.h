@@ -16,9 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)new NS_UNAVAILABLE;
 + (instancetype)init NS_UNAVAILABLE;
 
-+ (instancetype)playerWithAbstractPlayer:(IRPlayer *)abstractPlayer;
++ (instancetype)playerWithAbstractPlayer:(IRPlayerImp *)abstractPlayer;
 
-@property (nonatomic, weak, readonly) IRPlayer * abstractPlayer;
+@property (nonatomic, weak, readonly) IRPlayerImp * abstractPlayer;
 
 @property (nonatomic, assign, readonly) IRPlayerState state;
 @property (nonatomic, assign, readonly) CGSize presentationSize;
