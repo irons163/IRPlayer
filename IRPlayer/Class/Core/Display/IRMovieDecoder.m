@@ -82,12 +82,12 @@ static NSString * errorMessage (IRMovieError errorCode)
 
 static BOOL audioCodecIsSupported(AVCodecContext *audio)
 {
-    if (audio->sample_fmt == AV_SAMPLE_FMT_S16) {
-        
-        id<IRAudioManager> audioManager = [IRAudioManager audioManager];
-        return  (int)audioManager.samplingRate == audio->sample_rate &&
-        audioManager.numOutputChannels == audio->channels;
-    }
+//    if (audio->sample_fmt == AV_SAMPLE_FMT_S16) {
+//
+//        id<IRAudioManager> audioManager = [IRAudioManager audioManager];
+//        return  (int)audioManager.samplingRate == audio->sample_rate &&
+//        audioManager.numOutputChannels == audio->channels;
+//    }
     return NO;
 }
 
@@ -1027,17 +1027,17 @@ static int interrupt_callback(void *ctx);
     return errCode;
 }
 
-AVHWAccel *ff_find_hwaccel(enum AVCodecID codec_id, enum PixelFormat pix_fmt)
-{
-    AVHWAccel *hwaccel=NULL;
-    
-    while((hwaccel= av_hwaccel_next(hwaccel))){
-        if (   hwaccel->id      == codec_id
-            && hwaccel->pix_fmt == pix_fmt)
-            return hwaccel;
-    }
-    return NULL;
-}
+//AVHWAccel *ff_find_hwaccel(enum AVCodecID codec_id, enum PixelFormat pix_fmt)
+//{
+//    AVHWAccel *hwaccel=NULL;
+//
+//    while((hwaccel= av_hwaccel_next(hwaccel))){
+//        if (   hwaccel->id      == codec_id
+//            && hwaccel->pix_fmt == pix_fmt)
+//            return hwaccel;
+//    }
+//    return NULL;
+//}
 
 - (IRMovieError) openVideoStream: (NSInteger) videoStream
 {
@@ -1157,27 +1157,27 @@ AVHWAccel *ff_find_hwaccel(enum AVCodecID codec_id, enum PixelFormat pix_fmt)
     
     if (!audioCodecIsSupported(codecCtx)) {
         
-        id<IRAudioManager> audioManager = [IRAudioManager audioManager];
-        swrContext = swr_alloc_set_opts(NULL,
-                                        av_get_default_channel_layout(audioManager.numOutputChannels),
-                                        AV_SAMPLE_FMT_S16,
-                                        audioManager.samplingRate,
-                                        av_get_default_channel_layout(codecCtx->channels),
-                                        codecCtx->sample_fmt,
-                                        codecCtx->sample_rate,
-                                        0,
-                                        NULL);
-        
-        if (!swrContext ||
-            swr_init(swrContext)) {
-            
-            if (swrContext)
-                swr_free(&swrContext);
-            pthread_mutex_lock(&video_frame_mutex);
-            avcodec_close(codecCtx);
-            pthread_mutex_unlock(&video_frame_mutex);
-            return IRMovieErroReSampler;
-        }
+//        id<IRAudioManager> audioManager = [IRAudioManager audioManager];
+//        swrContext = swr_alloc_set_opts(NULL,
+//                                        av_get_default_channel_layout(audioManager.numOutputChannels),
+//                                        AV_SAMPLE_FMT_S16,
+//                                        audioManager.samplingRate,
+//                                        av_get_default_channel_layout(codecCtx->channels),
+//                                        codecCtx->sample_fmt,
+//                                        codecCtx->sample_rate,
+//                                        0,
+//                                        NULL);
+//
+//        if (!swrContext ||
+//            swr_init(swrContext)) {
+//
+//            if (swrContext)
+//                swr_free(&swrContext);
+//            pthread_mutex_lock(&video_frame_mutex);
+//            avcodec_close(codecCtx);
+//            pthread_mutex_unlock(&video_frame_mutex);
+//            return IRMovieErroReSampler;
+//        }
     }
     
     _audioFrame = av_frame_alloc();
@@ -1434,7 +1434,7 @@ int interruptCallBack(void *ctx){
     [self closeScaler];
     
     _pictureValid = avpicture_alloc(&_picture,
-                                    PIX_FMT_RGB24,
+                                    AV_PIX_FMT_RGB24,
                                     _videoCodecCtx->width,
                                     _videoCodecCtx->height) == 0;
     
@@ -1447,7 +1447,7 @@ int interruptCallBack(void *ctx){
                                        _videoCodecCtx->pix_fmt,
                                        _videoCodecCtx->width,
                                        _videoCodecCtx->height,
-                                       PIX_FMT_RGB24,
+                                       AV_PIX_FMT_RGB24,
                                        SWS_FAST_BILINEAR,
                                        NULL, NULL, NULL);
     
@@ -1551,36 +1551,36 @@ end:
     if (!_audioFrame->data[0])
         return nil;
     
-    id<IRAudioManager> audioManager = [IRAudioManager audioManager];
-    
-    const NSUInteger numChannels = audioManager.numOutputChannels;
+//    id<IRAudioManager> audioManager = [IRAudioManager audioManager];
+//
+//    const NSUInteger numChannels = audioManager.numOutputChannels;
     NSInteger numFrames;
     
     void * audioData;
     
     if (_swrContext) {
         
-        const NSUInteger ratio = MAX(1, audioManager.samplingRate / _audioCodecCtx->sample_rate) *
-        MAX(1, audioManager.numOutputChannels / _audioCodecCtx->channels) * 2;
-        
-        const int bufSize = av_samples_get_buffer_size(NULL,
-                                                       audioManager.numOutputChannels,
-                                                       _audioFrame->nb_samples * ratio,
-                                                       AV_SAMPLE_FMT_S16,
-                                                       1);
-        
-        if (!_swrBuffer || _swrBufferSize < bufSize) {
-            _swrBufferSize = bufSize;
-            _swrBuffer = realloc(_swrBuffer, _swrBufferSize);
-        }
-        
-        Byte *outbuf[2] = { _swrBuffer, 0 };
-        
-        numFrames = swr_convert(_swrContext,
-                                outbuf,
-                                _audioFrame->nb_samples * ratio,
-                                (const uint8_t **)_audioFrame->data,
-                                _audioFrame->nb_samples);
+//        const NSUInteger ratio = MAX(1, audioManager.samplingRate / _audioCodecCtx->sample_rate) *
+//        MAX(1, audioManager.numOutputChannels / _audioCodecCtx->channels) * 2;
+//
+//        const int bufSize = av_samples_get_buffer_size(NULL,
+//                                                       audioManager.numOutputChannels,
+//                                                       _audioFrame->nb_samples * ratio,
+//                                                       AV_SAMPLE_FMT_S16,
+//                                                       1);
+//
+//        if (!_swrBuffer || _swrBufferSize < bufSize) {
+//            _swrBufferSize = bufSize;
+//            _swrBuffer = realloc(_swrBuffer, _swrBufferSize);
+//        }
+//
+//        Byte *outbuf[2] = { _swrBuffer, 0 };
+//
+//        numFrames = swr_convert(_swrContext,
+//                                outbuf,
+//                                _audioFrame->nb_samples * ratio,
+//                                (const uint8_t **)_audioFrame->data,
+//                                _audioFrame->nb_samples);
         
         if (numFrames < 0) {
             NSLog(@"fail resample audio");
@@ -1604,24 +1604,24 @@ end:
         numFrames = _audioFrame->nb_samples;
     }
     
-    const NSUInteger numElements = numFrames * numChannels;
-    NSMutableData *data = [NSMutableData dataWithLength:numElements * sizeof(float)];
-    
-    float scale = 1.0 / (float)INT16_MAX ;
-    vDSP_vflt16((SInt16 *)audioData, 1, data.mutableBytes, 1, numElements);
-    vDSP_vsmul(data.mutableBytes, 1, &scale, data.mutableBytes, 1, numElements);
-    
+//    const NSUInteger numElements = numFrames * numChannels;
+//    NSMutableData *data = [NSMutableData dataWithLength:numElements * sizeof(float)];
+//
+//    float scale = 1.0 / (float)INT16_MAX ;
+//    vDSP_vflt16((SInt16 *)audioData, 1, data.mutableBytes, 1, numElements);
+//    vDSP_vsmul(data.mutableBytes, 1, &scale, data.mutableBytes, 1, numElements);
+//
     IRAudioFrame *frame = [[IRAudioFrame alloc] init];
-    frame.position = av_frame_get_best_effort_timestamp(_audioFrame) * _audioTimeBase;
-    frame.duration = av_frame_get_pkt_duration(_audioFrame) * _audioTimeBase;
-    frame.samples = data;
-    
-    if (frame.duration == 0) {
-        // sometimes ffmpeg can't determine the duration of audio frame
-        // especially of wma/wmv format
-        // so in this case must compute duration
-        frame.duration = frame.samples.length / (sizeof(float) * numChannels * audioManager.samplingRate);
-    }
+//    frame.position = av_frame_get_best_effort_timestamp(_audioFrame) * _audioTimeBase;
+//    frame.duration = av_frame_get_pkt_duration(_audioFrame) * _audioTimeBase;
+//    frame.samples = data;
+//
+//    if (frame.duration == 0) {
+//        // sometimes ffmpeg can't determine the duration of audio frame
+//        // especially of wma/wmv format
+//        // so in this case must compute duration
+//        frame.duration = frame.samples.length / (sizeof(float) * numChannels * audioManager.samplingRate);
+//    }
     
 #if 0
     LoggerAudio(2, @"AFD: %.4f %.4f | %.4f ",
@@ -1919,15 +1919,15 @@ static void stream_seek(int64_t pos, int64_t rel, int seek_by_bytes)
                 
                 if (gotframe) {
                     
-                    if (!_disableDeinterlacing &&
-                        _videoFrame->interlaced_frame) {
-                        
-                        avpicture_deinterlace((AVPicture*)_videoFrame,
-                                              (AVPicture*)_videoFrame,
-                                              _videoCodecCtx->pix_fmt,
-                                              _videoCodecCtx->width,
-                                              _videoCodecCtx->height);
-                    }
+//                    if (!_disableDeinterlacing &&
+//                        _videoFrame->interlaced_frame) {
+//
+//                        avpicture_deinterlace((AVPicture*)_videoFrame,
+//                                              (AVPicture*)_videoFrame,
+//                                              _videoCodecCtx->pix_fmt,
+//                                              _videoCodecCtx->width,
+//                                              _videoCodecCtx->height);
+//                    }
                     
                     IRVideoFrame *frame = [self handleVideoFrame];
                     if (frame) {

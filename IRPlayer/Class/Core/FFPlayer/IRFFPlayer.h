@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "IRPlayer.h"
+#import "IRPlayerImp.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -127,43 +127,43 @@ static int ffmpeg_interrupt_callback(void *ctx)
 
 - (void)openTracks
 {
-//    NSMutableArray <IRFFTrack *> * videoTracks = [NSMutableArray array];
-//    NSMutableArray <IRFFTrack *> * audioTracks = [NSMutableArray array];
-//
-//    for (int i = 0; i < _format_context->nb_streams; i++)
-//    {
-//        AVStream * stream = _format_context->streams[i];
-//        switch (stream->codecpar->codec_type)
-//        {
-//            case AVMEDIA_TYPE_VIDEO:
-//            {
-//                IRFFTrack * track = [[IRFFTrack alloc] init];
-//                track.type = IRFFTrackTypeVideo;
-//                track.index = i;
-//                [videoTracks addObject:track];
-//            }
-//                break;
-//            case AVMEDIA_TYPE_AUDIO:
-//            {
-//                IRFFTrack * track = [[IRFFTrack alloc] init];
-//                track.type = IRFFTrackTypeAudio;
-//                track.index = i;
-//                [audioTracks addObject:track];
-//            }
-//                break;
-//            default:
-//                break;
-//        }
-//    }
-//
-//    if (videoTracks.count > 0)
-//    {
-//        self.videoTracks = videoTracks;
-//    }
-//    if (audioTracks.count > 0)
-//    {
-//        self.audioTracks = audioTracks;
-//    }
+    NSMutableArray <IRFFTrack *> * videoTracks = [NSMutableArray array];
+    NSMutableArray <IRFFTrack *> * audioTracks = [NSMutableArray array];
+
+    for (int i = 0; i < _format_context->nb_streams; i++)
+    {
+        AVStream * stream = _format_context->streams[i];
+        switch (stream->codecpar->codec_type)
+        {
+            case AVMEDIA_TYPE_VIDEO:
+            {
+                IRFFTrack * track = [[IRFFTrack alloc] init];
+                track.type = IRFFTrackTypeVideo;
+                track.index = i;
+                [videoTracks addObject:track];
+            }
+                break;
+            case AVMEDIA_TYPE_AUDIO:
+            {
+                IRFFTrack * track = [[IRFFTrack alloc] init];
+                track.type = IRFFTrackTypeAudio;
+                track.index = i;
+                [audioTracks addObject:track];
+            }
+                break;
+            default:
+                break;
+        }
+    }
+
+    if (videoTracks.count > 0)
+    {
+        self.videoTracks = videoTracks;
+    }
+    if (audioTracks.count > 0)
+    {
+        self.audioTracks = audioTracks;
+    }
 }
 
 - (NSError *)openVideoTrack
@@ -237,45 +237,45 @@ static int ffmpeg_interrupt_callback(void *ctx)
     int result = 0;
     NSError * error = nil;
     
-//    AVStream * stream = _format_context->streams[trackIndex];
-//    AVCodecContext * codec_context = avcodec_alloc_context3(NULL);
-//    if (!codec_context)
-//    {
-//        error = [NSError errorWithDomain:[NSString stringWithFormat:@"%@ codec context create error", domain]
-//                                    code:IRFFDecoderErrorCodeCodecContextCreate
-//                                userInfo:nil];
-//        return error;
-//    }
-//    
-//    result = avcodec_parameters_to_context(codec_context, stream->codecpar);
-//    error = IRFFCheckErrorCode(result, IRFFDecoderErrorCodeCodecContextSetParam);
-//    if (error)
-//    {
-//        avcodec_free_context(&codec_context);
-//        return error;
-//    }
-//    av_codec_set_pkt_timebase(codec_context, stream->time_base);
-//    
-//    AVCodec * codec = avcodec_find_decoder(codec_context->codec_id);
-//    if (!codec)
-//    {
-//        avcodec_free_context(&codec_context);
-//        error = [NSError errorWithDomain:[NSString stringWithFormat:@"%@ codec not found decoder", domain]
-//                                    code:IRFFDecoderErrorCodeCodecFindDecoder
-//                                userInfo:nil];
-//        return error;
-//    }
-//    codec_context->codec_id = codec->id;
-//    
-//    result = avcodec_open2(codec_context, codec, NULL);
-//    error = IRFFCheckErrorCode(result, IRFFDecoderErrorCodeCodecOpen2);
-//    if (error)
-//    {
-//        avcodec_free_context(&codec_context);
-//        return error;
-//    }
-//    
-//    * codecContext = codec_context;
+    AVStream * stream = _format_context->streams[trackIndex];
+    AVCodecContext * codec_context = avcodec_alloc_context3(NULL);
+    if (!codec_context)
+    {
+        error = [NSError errorWithDomain:[NSString stringWithFormat:@"%@ codec context create error", domain]
+                                    code:IRFFDecoderErrorCodeCodecContextCreate
+                                userInfo:nil];
+        return error;
+    }
+    
+    result = avcodec_parameters_to_context(codec_context, stream->codecpar);
+    error = IRFFCheckErrorCode(result, IRFFDecoderErrorCodeCodecContextSetParam);
+    if (error)
+    {
+        avcodec_free_context(&codec_context);
+        return error;
+    }
+    av_codec_set_pkt_timebase(codec_context, stream->time_base);
+    
+    AVCodec * codec = avcodec_find_decoder(codec_context->codec_id);
+    if (!codec)
+    {
+        avcodec_free_context(&codec_context);
+        error = [NSError errorWithDomain:[NSString stringWithFormat:@"%@ codec not found decoder", domain]
+                                    code:IRFFDecoderErrorCodeCodecFindDecoder
+                                userInfo:nil];
+        return error;
+    }
+    codec_context->codec_id = codec->id;
+    
+    result = avcodec_open2(codec_context, codec, NULL);
+    error = IRFFCheckErrorCode(result, IRFFDecoderErrorCodeCodecOpen2);
+    if (error)
+    {
+        avcodec_free_context(&codec_context);
+        return error;
+    }
+    
+    * codecContext = codec_context;
     return error;
 }
 

@@ -403,13 +403,13 @@
             }
         }
     } routeChange:^(id handlerTarget, IRAudioManager *audioManager, IRAudioManagerRouteChangeReason reason) {
-        IRStrongSelf
+        @strongify(self)
         if (reason == IRAudioManagerRouteChangeReasonOldDeviceUnavailable) {
-            switch (strongSelf.state) {
+            switch (self.state) {
                 case IRPlayerStatePlaying:
                 case IRPlayerStateBuffering:
                 {
-                    [strongSelf pause];
+                    [self pause];
                 }
                     break;
                 default:

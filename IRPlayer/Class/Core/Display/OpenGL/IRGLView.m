@@ -118,6 +118,20 @@
     return self;
 }
 
+- (id)initWithFrame:(CGRect)frame
+         withPlayer:(IRPlayerImp *)abstractPlayer
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self initDefaultValue];
+//        [self initGLWithIRMovieDecoder:decoder];
+        irPixelFormat = YUV_IRPixelFormat;
+        [self initGLWithPixelFormat:irPixelFormat];
+    }
+    
+    return self;
+}
+
 -(void)initDefaultValue{
     self.swipeEnable = YES;
     
@@ -969,6 +983,26 @@ typedef NS_ENUM(NSInteger, IRScrollDirectionType){
     [verticalLine closePath];
     
     return verticalLine;
+}
+
+
+
+
+- (void)cleanEmptyBuffer
+{
+//    [self cleanTexture];
+//    
+//    if ([NSThread isMainThread]) {
+//        [self displayAndClear:YES];
+//    } else {
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self displayAndClear:YES];
+//        });
+//    }
+}
+
+- (void)decoder:(IRFFDecoder *)decoder renderVideoFrame:(IRFFVideoFrame *)videoFrame {
+    [self render:videoFrame];
 }
 
 @end

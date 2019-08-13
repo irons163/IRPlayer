@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "IRGLSupportPixelFormat.h"
+#import "IRPlayerImp.h"
+#import "IRFFDecoder.h"
 
 @class IRGLRenderMode;
 @class IRGLViewSimulateDeviceShiftController;
@@ -18,6 +20,14 @@
 @class IRAVPlayer;
 
 NS_ASSUME_NONNULL_BEGIN
+
+typedef NS_ENUM(NSUInteger, IRDisplayRendererType) {
+    IRDisplayRendererTypeEmpty,
+    IRDisplayRendererTypeAVPlayerLayer,
+    IRDisplayRendererTypeAVPlayerPixelBufferVR,
+    IRDisplayRendererTypeFFmpegPexelBuffer,
+    IRDisplayRendererTypeFFmpegPexelBufferVR,
+};
 
 typedef NS_ENUM(NSInteger, IRRenderMode){
     Normal_2D, //default
@@ -37,10 +47,12 @@ typedef NS_ENUM(NSInteger, IRRenderMode){
 - (void)glViewDidEndZooming:(IRGLView *)glView atScale:(CGFloat)scale;
 @end
 
-@interface IRGLView : UIView
+@interface IRGLView : UIView<IRFFDecoderVideoOutput>
 
 - (id)initWithFrame:(CGRect)frame
             decoder: (IRMovieDecoder *) decoder;
+- (id)initWithFrame:(CGRect)frame
+            withPlayer:(IRPlayerImp *)abstractPlayer;
 - (void)render: (IRVideoFrame *) frame;
 - (void)setDecoder: (VideoDecoder *) decoder;
 - (void)setPixelFormat: (IRPixelFormat) pixelFormat;
@@ -59,6 +71,13 @@ typedef NS_ENUM(NSInteger, IRRenderMode){
 @property BOOL doubleTapEnable;
 @property BOOL swipeEnable;
 @property (nonatomic, weak) IRAVPlayer *avplayer;
+
+
+@property (nonatomic, assign) IRDisplayRendererType rendererType;
+//@property (nonatomic, strong) SGFingerRotation * fingerRotation;
+
+//- (void)reloadGravityMode;
+- (void)cleanEmptyBuffer;
 @end
 
 NS_ASSUME_NONNULL_END

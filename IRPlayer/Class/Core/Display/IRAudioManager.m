@@ -7,521 +7,594 @@
 //
 
 #import "IRAudioManager.h"
-#import "TargetConditionals.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 #import <Accelerate/Accelerate.h>
+#import "IRPlayerMacro.h"
 
-#define LoggerAudio(level, ...)    NSLog(__VA_ARGS__)
+#if IRPLATFORM_TARGET_OS_MAC
+#import "IRMacAudioSession.h"
+#endif
 
-#define MAX_FRAME_SIZE 4096
-#define MAX_CHAN       2
+static int const max_frame_size = 4096;
+static int const max_chan = 2;
 
-#define MAX_SAMPLE_DUMPED 5
+typedef struct
+{
+    AUNode node;
+    AudioUnit audioUnit;
+}
+IRAudioNodeContext;
 
-static BOOL checkError(OSStatus error, const char *operation);
-static void sessionPropertyListener(void *inClientData, AudioSessionPropertyID inID, UInt32 inDataSize, const void *inData);
-static void sessionInterruptionListener(void *inClientData, UInt32 inInterruption);
-static OSStatus renderCallback (void *inRefCon, AudioUnitRenderActionFlags    *ioActionFlags, const AudioTimeStamp * inTimeStamp, UInt32 inOutputBusNumber, UInt32 inNumberFrames, AudioBufferList* ioData);
+typedef struct
+{
+    AUGraph graph;
+    IRAudioNodeContext converterNodeContext;
+    IRAudioNodeContext mixerNodeContext;
+    IRAudioNodeContext outputNodeContext;
+    AudioStreamBasicDescription commonFormat;
+}
+IRAudioOutputContext;
 
+@interface IRAudioManager ()
 
-@interface IRAudioManagerImpl : IRAudioManager<IRAudioManager> {
-    
-    BOOL                        _initialized;
-    BOOL                        _activated;
-    float                       *_outData;
-    AudioUnit                   _audioUnit;
-    AudioStreamBasicDescription _outputFormat;
+{
+    float * _outData;
 }
 
-@property (readonly) UInt32             numOutputChannels;
-@property (readonly) Float64            samplingRate;
-@property (readonly) UInt32             numBytesPerSample;
-@property (readwrite) Float32           outputVolume;
-@property (readonly) BOOL               playing;
-@property (readonly, strong) NSString   *audioRoute;
+@property (nonatomic, assign) IRAudioOutputContext * outputContext;
 
-@property (readwrite, copy) IRAudioManagerOutputBlock outputBlock;
-@property (readwrite) BOOL playAfterSessionEndInterruption;
+@property (nonatomic, weak) id handlerTarget;
+@property (nonatomic, copy) IRAudioManagerInterruptionHandler interruptionHandler;
+@property (nonatomic, copy) IRAudioManagerRouteChangeHandler routeChangeHandler;
 
-- (BOOL) activateAudioSession;
-- (void) deactivateAudioSession;
-- (BOOL) play;
-- (void) pause;
+@property (nonatomic, assign) BOOL registered;
 
-- (BOOL) checkAudioRoute;
-- (BOOL) setupAudio;
-- (BOOL) checkSessionProperties;
-- (BOOL) renderFrames: (UInt32) numFrames
-               ioData: (AudioBufferList *) ioData;
+#if IRPLATFORM_TARGET_OS_MAC
+@property (nonatomic, strong) IRMacAudioSession * audioSession;
+#elif IRPLATFORM_TARGET_OS_IPHONE_OR_TV
+@property (nonatomic, strong) AVAudioSession * audioSession;
+#endif
+
+@property (nonatomic, strong) NSError * error;
+@property (nonatomic, strong) NSError * warning;
 
 @end
 
 @implementation IRAudioManager
 
-+ (id<IRAudioManager>) audioManager
++ (instancetype)manager
 {
-    static IRAudioManagerImpl *audioManager = nil;
+    static IRAudioManager * manager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        audioManager = [[IRAudioManagerImpl alloc] init];
+        manager = [[self alloc] init];
     });
-    return audioManager;
+    return manager;
 }
 
-@end
-
-@implementation IRAudioManagerImpl
-
-- (id)init
+- (instancetype)init
 {
-    self = [super init];
-    if (self) {
+    if (self = [super init])
+    {
+        self->_outData = (float *)calloc(max_frame_size * max_chan, sizeof(float));
         
-        _outData = (float *)calloc(MAX_FRAME_SIZE*MAX_CHAN, sizeof(float));
-        _outputVolume = 0.5;
+#if IRPLATFORM_TARGET_OS_MAC
+        self.audioSession = [IRMacAudioSession sharedInstance];
+#elif IRPLATFORM_TARGET_OS_IPHONE_OR_TV
+        self.audioSession = [AVAudioSession sharedInstance];
+        [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(audioSessionInterruptionHandler:) name:AVAudioSessionInterruptionNotification object:nil];
+        [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(audioSessionRouteChangeHandler:) name:AVAudioSessionRouteChangeNotification object:nil];
+#endif
     }
     return self;
 }
 
-- (void)dealloc
+- (void)setHandlerTarget:(id)handlerTarget
+            interruption:(IRAudioManagerInterruptionHandler)interruptionHandler
+             routeChange:(IRAudioManagerRouteChangeHandler)routeChangeHandler
 {
-    if (_outData) {
+    self.handlerTarget = handlerTarget;
+    self.interruptionHandler = interruptionHandler;
+    self.routeChangeHandler = routeChangeHandler;
+}
+
+- (void)removeHandlerTarget:(id)handlerTarget
+{
+    if (self.handlerTarget == handlerTarget || !self.handlerTarget) {
+        self.handlerTarget = nil;
+        self.interruptionHandler = nil;
+        self.routeChangeHandler = nil;
+    }
+}
+
+#if IRPLATFORM_TARGET_OS_MAC
+
+
+
+#elif IRPLATFORM_TARGET_OS_IPHONE_OR_TV
+
+- (void)audioSessionInterruptionHandler:(NSNotification *)notification
+{
+    if (self.handlerTarget && self.interruptionHandler) {
+        AVAudioSessionInterruptionType avType = [[notification.userInfo objectForKey:AVAudioSessionInterruptionTypeKey] unsignedIntegerValue];
+        IRAudioManagerInterruptionType type = IRAudioManagerInterruptionTypeBegin;
+        if (avType == AVAudioSessionInterruptionTypeEnded) {
+            type = IRAudioManagerInterruptionTypeEnded;
+        }
+        IRAudioManagerInterruptionOption option = IRAudioManagerInterruptionOptionNone;
+        id avOption = [notification.userInfo objectForKey:AVAudioSessionInterruptionOptionKey];
+        if (avOption) {
+            AVAudioSessionInterruptionOptions temp = [avOption unsignedIntegerValue];
+            if (temp == AVAudioSessionInterruptionOptionShouldResume) {
+                option = IRAudioManagerInterruptionOptionShouldResume;
+            }
+        }
+        self.interruptionHandler(self.handlerTarget, self, type, option);
+    }
+}
+
+- (void)audioSessionRouteChangeHandler:(NSNotification *)notification
+{
+    if (self.handlerTarget && self.routeChangeHandler) {
+        AVAudioSessionRouteChangeReason avReason = [[notification.userInfo objectForKey:AVAudioSessionRouteChangeReasonKey] unsignedIntegerValue];
+        switch (avReason) {
+            case AVAudioSessionRouteChangeReasonOldDeviceUnavailable:
+            {
+                self.routeChangeHandler(self.handlerTarget, self, IRAudioManagerRouteChangeReasonOldDeviceUnavailable);
+            }
+                break;
+            default:
+                break;
+        }
         
-        free(_outData);
-        _outData = NULL;
     }
 }
 
-#pragma mark - private
-
-// Debug: dump the current frame data. Limited to 20 samples.
-
-#define dumpAudioSamples(prefix, dataBuffer, samplePrintFormat, sampleCount, channelCount) \
-{ \
-NSMutableString *dump = [NSMutableString stringWithFormat:prefix]; \
-for (int i = 0; i < MIN(MAX_SAMPLE_DUMPED, sampleCount); i++) \
-{ \
-for (int j = 0; j < channelCount; j++) \
-{ \
-[dump appendFormat:samplePrintFormat, dataBuffer[j + i * channelCount]]; \
-} \
-[dump appendFormat:@"\n"]; \
-} \
-LoggerAudio(3, @"%@", dump); \
-}
-
-#define dumpAudioSamplesNonInterleaved(prefix, dataBuffer, samplePrintFormat, sampleCount, channelCount) \
-{ \
-NSMutableString *dump = [NSMutableString stringWithFormat:prefix]; \
-for (int i = 0; i < MIN(MAX_SAMPLE_DUMPED, sampleCount); i++) \
-{ \
-for (int j = 0; j < channelCount; j++) \
-{ \
-[dump appendFormat:samplePrintFormat, dataBuffer[j][i]]; \
-} \
-[dump appendFormat:@"\n"]; \
-} \
-LoggerAudio(3, @"%@", dump); \
-}
-
-- (BOOL) checkAudioRoute
-{
-    // Check what the audio route is.
-    UInt32 propertySize = sizeof(CFStringRef);
-    CFStringRef route;
-    if (checkError(AudioSessionGetProperty(kAudioSessionProperty_AudioRoute,
-                                           &propertySize,
-                                           &route),
-                   "Couldn't check the audio route"))
-        return NO;
-    
-    _audioRoute = CFBridgingRelease(route);
-    LoggerAudio(1, @"AudioRoute: %@", _audioRoute);
-    return YES;
-}
-
-- (BOOL) setupAudio
-{
-    // --- Audio Session Setup ---
-    
-    UInt32 sessionCategory = kAudioSessionCategory_MediaPlayback;
-    //UInt32 sessionCategory = kAudioSessionCategory_PlayAndRecord;
-    if (checkError(AudioSessionSetProperty(kAudioSessionProperty_AudioCategory,
-                                           sizeof(sessionCategory),
-                                           &sessionCategory),
-                   "Couldn't set audio category"))
-        return NO;
-    
-    
-    if (checkError(AudioSessionAddPropertyListener(kAudioSessionProperty_AudioRouteChange,
-                                                   sessionPropertyListener,
-                                                   (__bridge void *)(self)),
-                   "Couldn't add audio session property listener"))
-    {
-        // just warning
-    }
-    
-    if (checkError(AudioSessionAddPropertyListener(kAudioSessionProperty_CurrentHardwareOutputVolume,
-                                                   sessionPropertyListener,
-                                                   (__bridge void *)(self)),
-                   "Couldn't add audio session property listener"))
-    {
-        // just warning
-    }
-    
-    // Set the buffer size, this will affect the number of samples that get rendered every time the audio callback is fired
-    // A small number will get you lower latency audio, but will make your processor work harder
-    
-#if !TARGET_IPHONE_SIMULATOR
-    Float32 preferredBufferSize = 0.0232;
-    if (checkError(AudioSessionSetProperty(kAudioSessionProperty_PreferredHardwareIOBufferDuration,
-                                           sizeof(preferredBufferSize),
-                                           &preferredBufferSize),
-                   "Couldn't set the preferred buffer duration")) {
-        
-        // just warning
-    }
 #endif
+
+- (BOOL)registerAudioSession
+{
+    if (!self.registered) {
+        if ([self setupAudioUnit]) {
+            self.registered = YES;
+        }
+    }
+    return self.registered;
+}
+
+- (void)unregisterAudioSession
+{
+    if (self.registered) {
+        OSStatus result = AUGraphUninitialize(self.outputContext->graph);
+        self.warning = checkError(result, @"graph uninitialize error");
+        if (self.warning) {
+            [self delegateWarningCallback];
+        }
+        result = AUGraphClose(self.outputContext->graph);
+        self.warning = checkError(result, @"graph close error");
+        if (self.warning) {
+            [self delegateWarningCallback];
+        }
+        result = DisposeAUGraph(self.outputContext->graph);
+        self.warning = checkError(result, @"graph dispose error");
+        if (self.warning) {
+            [self delegateWarningCallback];
+        }
+        if (self.outputContext) {
+            free(self.outputContext);
+            self.outputContext = NULL;
+        }
+        self.registered = NO;
+    }
+}
+
+- (BOOL)setupAudioUnit
+{
+    OSStatus result;
+    UInt32 audioStreamBasicDescriptionSize = sizeof(AudioStreamBasicDescription);;
     
-    if (checkError(AudioSessionSetActive(YES),
-                   "Couldn't activate the audio session"))
+    self.outputContext = (IRAudioOutputContext *)malloc(sizeof(IRAudioOutputContext));
+    memset(self.outputContext, 0, sizeof(IRAudioOutputContext));
+    
+    result = NewAUGraph(&self.outputContext->graph);
+    self.error = checkError(result, @"create  graph error");
+    if (self.error) {
+        [self delegateErrorCallback];
         return NO;
-    
-    [self checkSessionProperties];
-    
-    // ----- Audio Unit Setup -----
-    
-    // Describe the output unit.
-    
-    AudioComponentDescription description = {0};
-    description.componentType = kAudioUnitType_Output;
-    description.componentSubType = kAudioUnitSubType_RemoteIO;
-    description.componentManufacturer = kAudioUnitManufacturer_Apple;
-    
-    // Get component
-    AudioComponent component = AudioComponentFindNext(NULL, &description);
-    if (checkError(AudioComponentInstanceNew(component, &_audioUnit),
-                   "Couldn't create the output audio unit"))
-        return NO;
-    
-    UInt32 size;
-    
-    // Check the output stream format
-    size = sizeof(AudioStreamBasicDescription);
-    if (checkError(AudioUnitGetProperty(_audioUnit,
-                                        kAudioUnitProperty_StreamFormat,
-                                        kAudioUnitScope_Input,
-                                        0,
-                                        &_outputFormat,
-                                        &size),
-                   "Couldn't get the hardware output stream format"))
-        return NO;
-    
-    
-    _outputFormat.mSampleRate = _samplingRate;
-    if (checkError(AudioUnitSetProperty(_audioUnit,
-                                        kAudioUnitProperty_StreamFormat,
-                                        kAudioUnitScope_Input,
-                                        0,
-                                        &_outputFormat,
-                                        size),
-                   "Couldn't set the hardware output stream format")) {
-        
-        // just warning
     }
     
-    _numBytesPerSample = _outputFormat.mBitsPerChannel / 8;
-    _numOutputChannels = _outputFormat.mChannelsPerFrame;
-    
-    LoggerAudio(2, @"Current output bytes per sample: %ld", _numBytesPerSample);
-    LoggerAudio(2, @"Current output num channels: %ld", _numOutputChannels);
-    
-    // Slap a render callback on the unit
-    AURenderCallbackStruct callbackStruct;
-    callbackStruct.inputProc = renderCallback;
-    callbackStruct.inputProcRefCon = (__bridge void *)(self);
-    
-    if (checkError(AudioUnitSetProperty(_audioUnit,
-                                        kAudioUnitProperty_SetRenderCallback,
-                                        kAudioUnitScope_Input,
-                                        0,
-                                        &callbackStruct,
-                                        sizeof(callbackStruct)),
-                   "Couldn't set the render callback on the audio unit"))
+    AudioComponentDescription converterDescription;
+    converterDescription.componentType = kAudioUnitType_FormatConverter;
+    converterDescription.componentSubType = kAudioUnitSubType_AUConverter;
+    converterDescription.componentManufacturer = kAudioUnitManufacturer_Apple;
+    result = AUGraphAddNode(self.outputContext->graph, &converterDescription, &self.outputContext->converterNodeContext.node);
+    self.error = checkError(result, @"graph add converter node error");
+    if (self.error) {
+        [self delegateErrorCallback];
         return NO;
+    }
     
-    if (checkError(AudioUnitInitialize(_audioUnit),
-                   "Couldn't initialize the audio unit"))
+    AudioComponentDescription mixerDescription;
+    mixerDescription.componentType = kAudioUnitType_Mixer;
+#if IRPLATFORM_TARGET_OS_MAC
+    mixerDescription.componentSubType = kAudioUnitSubType_StereoMixer;
+#elif IRPLATFORM_TARGET_OS_IPHONE_OR_TV
+    mixerDescription.componentSubType = kAudioUnitSubType_MultiChannelMixer;
+#endif
+    mixerDescription.componentManufacturer = kAudioUnitManufacturer_Apple;
+    result = AUGraphAddNode(self.outputContext->graph, &mixerDescription, &self.outputContext->mixerNodeContext.node);
+    self.error = checkError(result, @"graph add mixer node error");
+    if (self.error) {
+        [self delegateErrorCallback];
         return NO;
+    }
+    
+    AudioComponentDescription outputDescription;
+    outputDescription.componentType = kAudioUnitType_Output;
+#if IRPLATFORM_TARGET_OS_MAC
+    outputDescription.componentSubType = kAudioUnitSubType_DefaultOutput;
+#elif IRPLATFORM_TARGET_OS_IPHONE_OR_TV
+    outputDescription.componentSubType = kAudioUnitSubType_RemoteIO;
+#endif
+    outputDescription.componentManufacturer = kAudioUnitManufacturer_Apple;
+    result = AUGraphAddNode(self.outputContext->graph, &outputDescription, &self.outputContext->outputNodeContext.node);
+    self.error = checkError(result, @"graph add output node error");
+    if (self.error) {
+        [self delegateErrorCallback];
+        return NO;
+    }
+    
+    result = AUGraphOpen(self.outputContext->graph);
+    self.error = checkError(result, @"open graph error");
+    if (self.error) {
+        [self delegateErrorCallback];
+        return NO;
+    }
+    
+    result = AUGraphConnectNodeInput(self.outputContext->graph,
+                                     self.outputContext->converterNodeContext.node,
+                                     0,
+                                     self.outputContext->mixerNodeContext.node,
+                                     0);
+    self.error = checkError(result, @"graph connect converter and mixer error");
+    if (self.error) {
+        [self delegateErrorCallback];
+        return NO;
+    }
+    
+    result = AUGraphConnectNodeInput(self.outputContext->graph,
+                                     self.outputContext->mixerNodeContext.node,
+                                     0,
+                                     self.outputContext->outputNodeContext.node,
+                                     0);
+    self.error = checkError(result, @"graph connect converter and mixer error");
+    if (self.error) {
+        [self delegateErrorCallback];
+        return NO;
+    }
+    
+    result = AUGraphNodeInfo(self.outputContext->graph,
+                             self.outputContext->converterNodeContext.node,
+                             &converterDescription,
+                             &self.outputContext->converterNodeContext.audioUnit);
+    self.error = checkError(result, @"graph get converter audio unit error");
+    if (self.error) {
+        [self delegateErrorCallback];
+        return NO;
+    }
+    
+    result = AUGraphNodeInfo(self.outputContext->graph,
+                             self.outputContext->mixerNodeContext.node,
+                             &mixerDescription,
+                             &self.outputContext->mixerNodeContext.audioUnit);
+    self.error = checkError(result, @"graph get minxer audio unit error");
+    if (self.error) {
+        [self delegateErrorCallback];
+        return NO;
+    }
+    
+    result = AUGraphNodeInfo(self.outputContext->graph,
+                             self.outputContext->outputNodeContext.node,
+                             &outputDescription,
+                             &self.outputContext->outputNodeContext.audioUnit);
+    self.error = checkError(result, @"graph get output audio unit error");
+    if (self.error) {
+        [self delegateErrorCallback];
+        return NO;
+    }
+    
+    AURenderCallbackStruct converterCallback;
+    converterCallback.inputProc = renderCallback;
+    converterCallback.inputProcRefCon = (__bridge void *)(self);
+    result = AUGraphSetNodeInputCallback(self.outputContext->graph,
+                                         self.outputContext->converterNodeContext.node,
+                                         0,
+                                         &converterCallback);
+    self.error = checkError(result, @"graph add converter input callback error");
+    if (self.error) {
+        [self delegateErrorCallback];
+        return NO;
+    }
+    
+    result = AudioUnitGetProperty(self.outputContext->outputNodeContext.audioUnit,
+                                  kAudioUnitProperty_StreamFormat,
+                                  kAudioUnitScope_Input, 0,
+                                  &self.outputContext->commonFormat,
+                                  &audioStreamBasicDescriptionSize);
+    self.warning = checkError(result, @"get hardware output stream format error");
+    if (self.warning) {
+        [self delegateWarningCallback];
+    } else {
+        if (self.audioSession.sampleRate != self.outputContext->commonFormat.mSampleRate) {
+            self.outputContext->commonFormat.mSampleRate = self.audioSession.sampleRate;
+            result = AudioUnitSetProperty(self.outputContext->outputNodeContext.audioUnit,
+                                          kAudioUnitProperty_StreamFormat,
+                                          kAudioUnitScope_Input,
+                                          0,
+                                          &self.outputContext->commonFormat,
+                                          audioStreamBasicDescriptionSize);
+            self.warning = checkError(result, @"set hardware output stream format error");
+            if (self.warning) {
+                [self delegateWarningCallback];
+            }
+        }
+    }
+    
+    result = AudioUnitSetProperty(self.outputContext->converterNodeContext.audioUnit,
+                                  kAudioUnitProperty_StreamFormat,
+                                  kAudioUnitScope_Input,
+                                  0,
+                                  &self.outputContext->commonFormat,
+                                  audioStreamBasicDescriptionSize);
+    self.error = checkError(result, @"graph set converter input format error");
+    if (self.error) {
+        [self delegateErrorCallback];
+        return NO;
+    }
+    
+    result = AudioUnitSetProperty(self.outputContext->converterNodeContext.audioUnit,
+                                  kAudioUnitProperty_StreamFormat,
+                                  kAudioUnitScope_Output,
+                                  0,
+                                  &self.outputContext->commonFormat,
+                                  audioStreamBasicDescriptionSize);
+    self.error = checkError(result, @"graph set converter output format error");
+    if (self.error) {
+        [self delegateErrorCallback];
+        return NO;
+    }
+    
+    result = AudioUnitSetProperty(self.outputContext->mixerNodeContext.audioUnit,
+                                  kAudioUnitProperty_StreamFormat,
+                                  kAudioUnitScope_Input,
+                                  0,
+                                  &self.outputContext->commonFormat,
+                                  audioStreamBasicDescriptionSize);
+    self.error = checkError(result, @"graph set converter input format error");
+    if (self.error) {
+        [self delegateErrorCallback];
+        return NO;
+    }
+    
+    result = AudioUnitSetProperty(self.outputContext->mixerNodeContext.audioUnit,
+                                  kAudioUnitProperty_StreamFormat,
+                                  kAudioUnitScope_Output,
+                                  0,
+                                  &self.outputContext->commonFormat,
+                                  audioStreamBasicDescriptionSize);
+    self.error = checkError(result, @"graph set converter output format error");
+    if (self.error) {
+        [self delegateErrorCallback];
+        return NO;
+    }
+    
+    result = AudioUnitSetProperty(self.outputContext->mixerNodeContext.audioUnit,
+                                  kAudioUnitProperty_MaximumFramesPerSlice,
+                                  kAudioUnitScope_Global,
+                                  0,
+                                  &max_frame_size,
+                                  sizeof(max_frame_size));
+    self.warning = checkError(result, @"graph set mixer max frames per slice size error");
+    if (self.warning) {
+        [self delegateWarningCallback];
+    }
+    
+    result = AUGraphInitialize(self.outputContext->graph);
+    self.error = checkError(result, @"graph initialize error");
+    if (self.error) {
+        [self delegateErrorCallback];
+        return NO;
+    }
     
     return YES;
 }
 
-- (BOOL) checkSessionProperties
+- (OSStatus)renderFrames:(UInt32)numberOfFrames ioData:(AudioBufferList *)ioData
 {
-    [self checkAudioRoute];
-    
-    // Check the number of output channels.
-    UInt32 newNumChannels;
-    UInt32 size = sizeof(newNumChannels);
-    if (checkError(AudioSessionGetProperty(kAudioSessionProperty_CurrentHardwareOutputNumberChannels,
-                                           &size,
-                                           &newNumChannels),
-                   "Checking number of output channels"))
-        return NO;
-    
-    LoggerAudio(2, @"We've got %lu output channels", newNumChannels);
-    
-    // Get the hardware sampling rate. This is settable, but here we're only reading.
-    size = sizeof(_samplingRate);
-    if (checkError(AudioSessionGetProperty(kAudioSessionProperty_CurrentHardwareSampleRate,
-                                           &size,
-                                           &_samplingRate),
-                   "Checking hardware sampling rate"))
-        
-        return NO;
-    
-    LoggerAudio(2, @"Current sampling rate: %f", _samplingRate);
-    
-    size = sizeof(_outputVolume);
-    if (checkError(AudioSessionGetProperty(kAudioSessionProperty_CurrentHardwareOutputVolume,
-                                           &size,
-                                           &_outputVolume),
-                   "Checking current hardware output volume"))
-        return NO;
-    
-    LoggerAudio(1, @"Current output volume: %f", _outputVolume);
-    
-    return YES;
-}
-
-- (BOOL) renderFrames: (UInt32) numFrames
-               ioData: (AudioBufferList *) ioData
-{
-    for (int iBuffer=0; iBuffer < ioData->mNumberBuffers; ++iBuffer) {
+    for (int iBuffer = 0; iBuffer < ioData->mNumberBuffers; iBuffer++) {
         memset(ioData->mBuffers[iBuffer].mData, 0, ioData->mBuffers[iBuffer].mDataByteSize);
     }
     
-    if (_playing && _outputBlock ) {
+    if (self.playing && self.delegate)
+    {
+        [self.delegate audioManager:self outputData:self->_outData numberOfFrames:numberOfFrames numberOfChannels:self.numberOfChannels];
         
-        // Collect data to render from the callbacks
-        _outputBlock(_outData, numFrames, _numOutputChannels);
-        
-        // Put the rendered data into the output buffer
-        if (_numBytesPerSample == 4) // then we've already got floats
-        {
+        UInt32 numBytesPerSample = self.outputContext->commonFormat.mBitsPerChannel / 8;
+        if (numBytesPerSample == 4) {
             float zero = 0.0;
-            
-            for (int iBuffer=0; iBuffer < ioData->mNumberBuffers; ++iBuffer) {
-                
+            for (int iBuffer = 0; iBuffer < ioData->mNumberBuffers; iBuffer++) {
                 int thisNumChannels = ioData->mBuffers[iBuffer].mNumberChannels;
-                
-                for (int iChannel = 0; iChannel < thisNumChannels; ++iChannel) {
-                    vDSP_vsadd(_outData+iChannel, _numOutputChannels, &zero, (float *)ioData->mBuffers[iBuffer].mData, thisNumChannels, numFrames);
+                for (int iChannel = 0; iChannel < thisNumChannels; iChannel++) {
+                    vDSP_vsadd(self->_outData + iChannel,
+                               self.numberOfChannels,
+                               &zero,
+                               (float *)ioData->mBuffers[iBuffer].mData,
+                               thisNumChannels,
+                               numberOfFrames);
                 }
             }
         }
-        else if (_numBytesPerSample == 2) // then we need to convert SInt16 -> Float (and also scale)
+        else if (numBytesPerSample == 2)
         {
-            //            dumpAudioSamples(@"Audio frames decoded by FFmpeg:\n",
-            //                             _outData, @"% 12.4f ", numFrames, _numOutputChannels);
-            
             float scale = (float)INT16_MAX;
-            vDSP_vsmul(_outData, 1, &scale, _outData, 1, numFrames*_numOutputChannels);
+            vDSP_vsmul(self->_outData, 1, &scale, self->_outData, 1, numberOfFrames * self.numberOfChannels);
             
-#ifdef DUMP_AUDIO_DATA
-            LoggerAudio(2, @"Buffer %u - Output Channels %u - Samples %u",
-                        (uint)ioData->mNumberBuffers, (uint)ioData->mBuffers[0].mNumberChannels, (uint)numFrames);
-#endif
-            
-            for (int iBuffer=0; iBuffer < ioData->mNumberBuffers; ++iBuffer) {
-                
+            for (int iBuffer = 0; iBuffer < ioData->mNumberBuffers; iBuffer++) {
                 int thisNumChannels = ioData->mBuffers[iBuffer].mNumberChannels;
-                
-                for (int iChannel = 0; iChannel < thisNumChannels; ++iChannel) {
-                    vDSP_vfix16(_outData+iChannel, _numOutputChannels, (SInt16 *)ioData->mBuffers[iBuffer].mData+iChannel, thisNumChannels, numFrames);
+                for (int iChannel = 0; iChannel < thisNumChannels; iChannel++) {
+                    vDSP_vfix16(self->_outData + iChannel,
+                                self.numberOfChannels,
+                                (SInt16 *)ioData->mBuffers[iBuffer].mData + iChannel,
+                                thisNumChannels,
+                                numberOfFrames);
                 }
-#ifdef DUMP_AUDIO_DATA
-                dumpAudioSamples(@"Audio frames decoded by FFmpeg and reformatted:\n",
-                                 ((SInt16 *)ioData->mBuffers[iBuffer].mData),
-                                 @"% 8d ", numFrames, thisNumChannels);
-#endif
             }
-            
         }
     }
     
     return noErr;
 }
 
-#pragma mark - public
-
-- (BOOL) activateAudioSession
+- (void)playWithDelegate:(id<IRAudioManagerDelegate>)delegate
 {
-    if (!_activated) {
-        
-        if (!_initialized) {
-            
-            if (checkError(AudioSessionInitialize(NULL,
-                                                  kCFRunLoopDefaultMode,
-                                                  sessionInterruptionListener,
-                                                  (__bridge void *)(self)),
-                           "Couldn't initialize audio session"))
-                return NO;
-            
-            _initialized = YES;
-        }
-        
-        if ([self checkAudioRoute] &&
-            [self setupAudio]) {
-            
-            _activated = YES;
-        }
-    }
-    
-    return _activated;
+    self->_delegate = delegate;
+    [self play];
 }
 
-- (void) deactivateAudioSession
+- (void)play
 {
-    if (_activated) {
-        
-        [self pause];
-        
-        checkError(AudioUnitUninitialize(_audioUnit),
-                   "Couldn't uninitialize the audio unit");
-        
-        /*
-         fails with error (-10851) ?
-         
-         checkError(AudioUnitSetProperty(_audioUnit,
-         kAudioUnitProperty_SetRenderCallback,
-         kAudioUnitScope_Input,
-         0,
-         NULL,
-         0),
-         "Couldn't clear the render callback on the audio unit");
-         */
-        
-        checkError(AudioComponentInstanceDispose(_audioUnit),
-                   "Couldn't dispose the output audio unit");
-        
-        checkError(AudioSessionSetActive(NO),
-                   "Couldn't deactivate the audio session");
-        
-        checkError(AudioSessionRemovePropertyListenerWithUserData(kAudioSessionProperty_AudioRouteChange,
-                                                                  sessionPropertyListener,
-                                                                  (__bridge void *)(self)),
-                   "Couldn't remove audio session property listener");
-        
-        checkError(AudioSessionRemovePropertyListenerWithUserData(kAudioSessionProperty_CurrentHardwareOutputVolume,
-                                                                  sessionPropertyListener,
-                                                                  (__bridge void *)(self)),
-                   "Couldn't remove audio session property listener");
-        
-        _activated = NO;
+    if (!self->_playing) {
+        if ([self registerAudioSession]) {
+            OSStatus result = AUGraphStart(self.outputContext->graph);
+            self.error = checkError(result, @"graph start error");
+            if (self.error) {
+                [self delegateErrorCallback];
+            } else {
+                self->_playing = YES;
+            }
+        }
     }
 }
 
-- (void) pause
+- (void)pause
 {
-    if (_playing) {
-        
-        _playing = checkError(AudioOutputUnitStop(_audioUnit),
-                              "Couldn't stop the output unit");
+    if (self->_playing) {
+        OSStatus result = AUGraphStop(self.outputContext->graph);
+        self.error = checkError(result, @"graph stop error");
+        if (self.error) {
+            [self delegateErrorCallback];
+        }
+        self->_playing = NO;
     }
 }
 
-- (BOOL) play
+- (float)volume
 {
-    if (!_playing) {
-        
-        if ([self activateAudioSession]) {
-            
-            _playing = !checkError(AudioOutputUnitStart(_audioUnit),
-                                   "Couldn't start the output unit");
+    if (self.registered) {
+        AudioUnitParameterID param;
+#if IRPLATFORM_TARGET_OS_MAC
+        param = kStereoMixerParam_Volume;
+#elif IRPLATFORM_TARGET_OS_IPHONE_OR_TV
+        param = kMultiChannelMixerParam_Volume;
+#endif
+        AudioUnitParameterValue volume;
+        OSStatus result = AudioUnitGetParameter(self.outputContext->mixerNodeContext.audioUnit,
+                                                param,
+                                                kAudioUnitScope_Input,
+                                                0,
+                                                &volume);
+        self.warning = checkError(result, @"graph get mixer volum error");
+        if (self.warning) {
+            [self delegateWarningCallback];
+        } else {
+            return volume;
         }
     }
-    
-    return _playing;
+    return 1.f;
+}
+
+- (void)setVolume:(float)volume
+{
+    if (self.registered) {
+        AudioUnitParameterID param;
+#if IRPLATFORM_TARGET_OS_MAC
+        param = kStereoMixerParam_Volume;
+#elif IRPLATFORM_TARGET_OS_IPHONE_OR_TV
+        param = kMultiChannelMixerParam_Volume;
+#endif
+        OSStatus result = AudioUnitSetParameter(self.outputContext->mixerNodeContext.audioUnit,
+                                                param,
+                                                kAudioUnitScope_Input,
+                                                0,
+                                                volume,
+                                                0);
+        self.warning = checkError(result, @"graph set mixer volum error");
+        if (self.warning) {
+            [self delegateWarningCallback];
+        }
+    }
+}
+
+- (Float64)samplingRate
+{
+    Float64 number = self.outputContext->commonFormat.mSampleRate;
+    if (number > 0) {
+        return number;
+    }
+    return (Float64)self.audioSession.sampleRate;
+}
+
+- (UInt32)numberOfChannels
+{
+    UInt32 number = self.outputContext->commonFormat.mChannelsPerFrame;
+    if (number > 0) {
+        return number;
+    }
+    return (UInt32)self.audioSession.outputNumberOfChannels;
+}
+
+- (void)delegateErrorCallback
+{
+    if (self.error) {
+        IRPlayerLog(@"IRAudioManager did error : %@", self.error);
+    }
+}
+
+- (void)delegateWarningCallback
+{
+    if (self.warning) {
+        IRPlayerLog(@"IRAudioManager did warning : %@", self.warning);
+    }
+}
+
+- (void)dealloc
+{
+    [self unregisterAudioSession];
+    if (self->_outData) {
+        free(self->_outData);
+        self->_outData = NULL;
+    }
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+static NSError * checkError(OSStatus result, NSString * domain)
+{
+    if (result == noErr) return nil;
+    NSError * error = [NSError errorWithDomain:domain code:result userInfo:nil];
+    return error;
+}
+
+static OSStatus renderCallback(void * inRefCon,
+                               AudioUnitRenderActionFlags * ioActionFlags,
+                               const AudioTimeStamp * inTimeStamp,
+                               UInt32 inOutputBusNumber,
+                               UInt32 inNumberFrames,
+                               AudioBufferList * ioData)
+{
+    IRAudioManager * manager = (__bridge IRAudioManager *)inRefCon;
+    return [manager renderFrames:inNumberFrames ioData:ioData];
 }
 
 @end
-
-#pragma mark - callbacks
-
-static void sessionPropertyListener(void *                  inClientData,
-                                    AudioSessionPropertyID  inID,
-                                    UInt32                  inDataSize,
-                                    const void *            inData)
-{
-    IRAudioManagerImpl *sm = (__bridge IRAudioManagerImpl *)inClientData;
-    
-    if (inID == kAudioSessionProperty_AudioRouteChange) {
-        
-        if ([sm checkAudioRoute]) {
-            [sm checkSessionProperties];
-        }
-        
-    } else if (inID == kAudioSessionProperty_CurrentHardwareOutputVolume) {
-        
-        if (inData && inDataSize == 4) {
-            
-            sm.outputVolume = *(float *)inData;
-        }
-    }
-}
-
-static void sessionInterruptionListener(void *inClientData, UInt32 inInterruption)
-{
-    IRAudioManagerImpl *sm = (__bridge IRAudioManagerImpl *)inClientData;
-    
-    if (inInterruption == kAudioSessionBeginInterruption) {
-        
-        LoggerAudio(2, @"Begin interuption");
-        sm.playAfterSessionEndInterruption = sm.playing;
-        [sm pause];
-        
-    } else if (inInterruption == kAudioSessionEndInterruption) {
-        
-        LoggerAudio(2, @"End interuption");
-        if (sm.playAfterSessionEndInterruption) {
-            sm.playAfterSessionEndInterruption = NO;
-            [sm play];
-        }
-    }
-}
-
-static OSStatus renderCallback (void                        *inRefCon,
-                                AudioUnitRenderActionFlags    * ioActionFlags,
-                                const AudioTimeStamp         * inTimeStamp,
-                                UInt32                        inOutputBusNumber,
-                                UInt32                        inNumberFrames,
-                                AudioBufferList                * ioData)
-{
-    IRAudioManagerImpl *sm = (__bridge IRAudioManagerImpl *)inRefCon;
-    return [sm renderFrames:inNumberFrames ioData:ioData];
-}
-
-static BOOL checkError(OSStatus error, const char *operation)
-{
-    if (error == noErr)
-        return NO;
-    
-    char str[20] = {0};
-    // see if it appears to be a 4-char-code
-    *(UInt32 *)(str + 1) = CFSwapInt32HostToBig(error);
-    if (isprint(str[1]) && isprint(str[2]) && isprint(str[3]) && isprint(str[4])) {
-        str[0] = str[5] = '\'';
-        str[6] = '\0';
-    } else
-        // no, format it as an integer
-        sprintf(str, "%d", (int)error);
-    
-    NSLog(@"Error: %s (%s)\n", operation, str);
-    
-    //exit(1);
-    
-    return YES;
-}
 

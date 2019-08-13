@@ -161,90 +161,90 @@ static NSTimeInterval max_video_frame_sleep_full_and_pause_time_interval = 0.5;
 
 - (void)decodeFrameThread
 {
-//    self.decoding = YES;
-//    BOOL finished = NO;
-//    while (!finished) {
-//        if (self.canceled || self.error) {
-//            IRFFThreadLog(@"decode video thread quit");
-//            break;
-//        }
-//        if (self.paused) {
-//            [NSThread sleepForTimeInterval:0.01];
-//            continue;
-//        }
-//        if (self.endOfFile && self.packetEmpty) {
-//            IRFFThreadLog(@"decode video finished");
-//            break;
-//        }
-//        if (self.frameDuration >= self.maxDecodeDuration) {
-//            NSTimeInterval interval = 0;
-//            if (self.paused) {
-//                interval = max_video_frame_sleep_full_and_pause_time_interval;
-//            } else {
-//                interval = max_video_frame_sleep_full_time_interval;
-//            }
-//            IRFFSleepLog(@"decode video thread sleep : %f", interval);
-//            [NSThread sleepForTimeInterval:interval];
-//            continue;
-//        }
-//
-//        AVPacket packet = [self.packetQueue getPacket];
-//        if (self.endOfFile) {
-//            [self.delegate videoDecoderNeedUpdateBufferedDuration:self];
-//        }
-//        if (packet.data == flush_packet.data) {
-//            IRFFDecodeLog(@"video codec flush");
-//            avcodec_flush_buffers(_codec_context);
-//#if IRPLATFORM_TARGET_OS_MAC_OR_IPHONE
-//            [self.videoToolBox flush];
-//#endif
-//            continue;
-//        }
-//        if (packet.stream_index < 0 || packet.data == NULL) continue;
-//
-//        IRFFVideoFrame * videoFrame = nil;
-//#if IRPLATFORM_TARGET_OS_MAC_OR_IPHONE
-//        BOOL vtbEnable = NO;
-//        if (self.videoToolBoxEnable && _codec_context->codec_id == AV_CODEC_ID_H264) {
-//            vtbEnable = [self.videoToolBox trySetupVTSession];
-//        }
-//        if (vtbEnable) {
-//            BOOL result = [self.videoToolBox sendPacket:packet];
-//            if (result) {
-//                videoFrame = [self videoFrameFromVideoToolBox:packet];
-//            }
-//        } else {
-//#endif
-//            int result = avcodec_send_packet(_codec_context, &packet);
-//            if (result < 0 && result != AVERROR(EAGAIN) && result != AVERROR_EOF) {
-//                self.error = IRFFCheckError(result);
-//                [self delegateErrorCallback];
-//                goto end;
-//            }
-//            while (result >= 0) {
-//                result = avcodec_receive_frame(_codec_context, _temp_frame);
-//                if (result < 0) {
-//                    if (result == AVERROR(EAGAIN) || result == AVERROR_EOF) {
-//                        break;
-//                    } else {
-//                        self.error = IRFFCheckError(result);
-//                        goto end;
-//                    }
-//                }
-//                videoFrame = [self videoFrameFromTempFrame];
-//            }
-//#if IRPLATFORM_TARGET_OS_MAC_OR_IPHONE
-//        }
-//#endif
-//        if (videoFrame) {
-//            [self.frameQueue putSortFrame:videoFrame];
-//        }
-//
-//    end:
-//        av_packet_unref(&packet);
-//    }
-//    self.decoding = NO;
-//    [self.delegate videoDecoderNeedCheckBufferingStatus:self];
+    self.decoding = YES;
+    BOOL finished = NO;
+    while (!finished) {
+        if (self.canceled || self.error) {
+            IRFFThreadLog(@"decode video thread quit");
+            break;
+        }
+        if (self.paused) {
+            [NSThread sleepForTimeInterval:0.01];
+            continue;
+        }
+        if (self.endOfFile && self.packetEmpty) {
+            IRFFThreadLog(@"decode video finished");
+            break;
+        }
+        if (self.frameDuration >= self.maxDecodeDuration) {
+            NSTimeInterval interval = 0;
+            if (self.paused) {
+                interval = max_video_frame_sleep_full_and_pause_time_interval;
+            } else {
+                interval = max_video_frame_sleep_full_time_interval;
+            }
+            IRFFSleepLog(@"decode video thread sleep : %f", interval);
+            [NSThread sleepForTimeInterval:interval];
+            continue;
+        }
+
+        AVPacket packet = [self.packetQueue getPacket];
+        if (self.endOfFile) {
+            [self.delegate videoDecoderNeedUpdateBufferedDuration:self];
+        }
+        if (packet.data == flush_packet.data) {
+            IRFFDecodeLog(@"video codec flush");
+            avcodec_flush_buffers(_codec_context);
+#if IRPLATFORM_TARGET_OS_MAC_OR_IPHONE
+            [self.videoToolBox flush];
+#endif
+            continue;
+        }
+        if (packet.stream_index < 0 || packet.data == NULL) continue;
+
+        IRFFVideoFrame * videoFrame = nil;
+#if IRPLATFORM_TARGET_OS_MAC_OR_IPHONE
+        BOOL vtbEnable = NO;
+        if (self.videoToolBoxEnable && _codec_context->codec_id == AV_CODEC_ID_H264) {
+            vtbEnable = [self.videoToolBox trySetupVTSession];
+        }
+        if (vtbEnable) {
+            BOOL result = [self.videoToolBox sendPacket:packet];
+            if (result) {
+                videoFrame = [self videoFrameFromVideoToolBox:packet];
+            }
+        } else {
+#endif
+            int result = avcodec_send_packet(_codec_context, &packet);
+            if (result < 0 && result != AVERROR(EAGAIN) && result != AVERROR_EOF) {
+                self.error = IRFFCheckError(result);
+                [self delegateErrorCallback];
+                goto end;
+            }
+            while (result >= 0) {
+                result = avcodec_receive_frame(_codec_context, _temp_frame);
+                if (result < 0) {
+                    if (result == AVERROR(EAGAIN) || result == AVERROR_EOF) {
+                        break;
+                    } else {
+                        self.error = IRFFCheckError(result);
+                        goto end;
+                    }
+                }
+                videoFrame = [self videoFrameFromTempFrame];
+            }
+#if IRPLATFORM_TARGET_OS_MAC_OR_IPHONE
+        }
+#endif
+        if (videoFrame) {
+            [self.frameQueue putSortFrame:videoFrame];
+        }
+
+    end:
+        av_packet_unref(&packet);
+    }
+    self.decoding = NO;
+    [self.delegate videoDecoderNeedCheckBufferingStatus:self];
 }
 
 - (IRFFAVYUVVideoFrame *)videoFrameFromTempFrame

@@ -114,30 +114,30 @@
 
 - (int)putPacket:(AVPacket)packet
 {
-//    if (packet.data == NULL) return 0;
-//    
-//    int result = avcodec_send_packet(_codec_context, &packet);
-//    if (result < 0 && result != AVERROR(EAGAIN) && result != AVERROR_EOF) {
-//        return -1;
-//    }
-//    
-//    while (result >= 0) {
-//        result = avcodec_receive_frame(_codec_context, _temp_frame);
-//        if (result < 0) {
-//            if (result != AVERROR(EAGAIN) && result != AVERROR_EOF) {
-//                return -1;
-//            }
-//            break;
-//        }
-//        @autoreleasepool
-//        {
-//            IRFFAudioFrame * frame = [self decode];
-//            if (frame) {
-//                [self.frameQueue putFrame:frame];
-//            }
-//        }
-//    }
-//    av_packet_unref(&packet);
+    if (packet.data == NULL) return 0;
+    
+    int result = avcodec_send_packet(_codec_context, &packet);
+    if (result < 0 && result != AVERROR(EAGAIN) && result != AVERROR_EOF) {
+        return -1;
+    }
+    
+    while (result >= 0) {
+        result = avcodec_receive_frame(_codec_context, _temp_frame);
+        if (result < 0) {
+            if (result != AVERROR(EAGAIN) && result != AVERROR_EOF) {
+                return -1;
+            }
+            break;
+        }
+        @autoreleasepool
+        {
+            IRFFAudioFrame * frame = [self decode];
+            if (frame) {
+                [self.frameQueue putFrame:frame];
+            }
+        }
+    }
+    av_packet_unref(&packet);
     return 0;
 }
 
