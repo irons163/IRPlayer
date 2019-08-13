@@ -46,7 +46,7 @@
     return NO;
 }
 
--(void)setRenderFrame:(IRVideoFrame*)frame{
+-(void)setRenderFrame:(IRFFVideoFrame*)frame{
     [super setRenderFrame:frame];
     
     if(frame.width != fish2Persp.textureWidth || frame.height != fish2Persp.textureHeight)

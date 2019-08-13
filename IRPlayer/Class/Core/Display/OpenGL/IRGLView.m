@@ -25,6 +25,7 @@
 #import "IRSimulateDeviceShiftController.h"
 #import "IRGLRenderMode.h"
 #import "IRGLProgram2DFactory.h"
+#import "IRGLRenderModeFactory.h"
 #import <pthread.h>
 #include <sys/time.h>
 
@@ -97,11 +98,25 @@
     return [CAEAGLLayer class];
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.frame = CGRectMake(0, 0, 1, 1);
+        [self initDefaultValue];
+        irPixelFormat = YUV_IRPixelFormat;
+        [self initGLWithPixelFormat:irPixelFormat];
+    }
+    return self;
+}
+
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
     self = [super initWithCoder:coder];
     if (self) {
         [self initDefaultValue];
+        irPixelFormat = YUV_IRPixelFormat;
+        [self initGLWithPixelFormat:irPixelFormat];
     }
     return self;
 }
@@ -641,7 +656,7 @@
     [self render:nil];
 }
 
-- (void)render: (IRVideoFrame *) frame
+- (void)render: (IRFFVideoFrame *) frame
 {
     if(!queue || !_currentProgram)
         return;
@@ -680,6 +695,10 @@
 
 -(void)initModes{
     NSMutableArray* array = [NSMutableArray array];
+    if(_modes.count == 0) {
+        _modes = [IRGLRenderModeFactory createNormalModesWithParameter:nil];
+    }
+    
     for(IRGLRenderMode* m in _modes){
         [m buildIRGLProgramWithPixelFormat:irPixelFormat withViewprotRange:viewprotRange withParameter:m.parameter];
         if([m getProgram])

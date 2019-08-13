@@ -70,8 +70,8 @@
 {
     pixelFormat = frame->format;
     
-    self->_width = width;
-    self->_height = height;
+    self.width = width;
+    self.height = height;
     
     int linesize_y = frame->linesize[IRYUVChannelLuma];
     int linesize_u = frame->linesize[IRYUVChannelChromaB];
@@ -140,10 +140,22 @@
                        1);
 }
 
+- (UInt8 *)luma {
+    return channel_pixels[IRYUVChannelLuma];
+}
+
+- (UInt8 *)chromaB {
+    return channel_pixels[IRYUVChannelChromaB];
+}
+
+- (UInt8 *)chromaR {
+    return channel_pixels[IRYUVChannelChromaR];
+}
+
 - (void)flush
 {
-    self->_width = 0;
-    self->_height = 0;
+    self.width = 0;
+    self.height = 0;
     channel_lenghts[IRYUVChannelLuma] = 0;
     channel_lenghts[IRYUVChannelChromaB] = 0;
     channel_lenghts[IRYUVChannelChromaR] = 0;

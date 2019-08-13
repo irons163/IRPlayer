@@ -48,7 +48,7 @@
     }
 }
 
--(void) setRenderFrame:(IRVideoFrame*)frame{
+-(void) setRenderFrame:(IRFFVideoFrame*)frame{
     for(IRGLProgram2D *program in _programs){
         [program setRenderFrame:frame];
     }

@@ -56,7 +56,7 @@ typedef BOOL (^IRGLProgram2DResetScaleBlock)(IRGLProgram2D *program);
 -(void) setViewprotRange:(CGRect)viewprotRange resetTransform:(BOOL)resetTransform;
 -(void) setDefaultScale:(float)scale;
 -(CGPoint) getCurrentScale;
--(void) setRenderFrame:(IRVideoFrame*)frame;
+-(void) setRenderFrame:(IRFFVideoFrame*)frame;
 -(void) setModelviewProj:(GLKMatrix4) modelviewProj;
 -(BOOL) prepareRender;
 -(void) clearBuffer;

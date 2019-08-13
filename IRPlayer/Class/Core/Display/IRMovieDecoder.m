@@ -284,30 +284,30 @@ static int interrupt_callback(void *ctx);
 
 ////////////////////////////////////////////////////////////////////////////////
 
-@interface IRFrame()
-@property (readwrite, nonatomic) CGFloat position;
-@property (readwrite, nonatomic) CGFloat duration;
-@end
+//@interface IRFFFrame()
+//@property (readwrite, nonatomic) CGFloat position;
+//@property (readwrite, nonatomic) CGFloat duration;
+//@end
+//
+//@implementation IRFFFrame
+//@end
 
-@implementation IRFrame
-@end
+//@interface IRFFAudioFrame()
+//@property (readwrite, nonatomic, strong) NSData *samples;
+//@end
+//
+//@implementation IRFFAudioFrame
+//- (IRFFFrameType) type { return IRFFFrameTypeAudio; }
+//@end
 
-@interface IRAudioFrame()
-@property (readwrite, nonatomic, strong) NSData *samples;
-@end
-
-@implementation IRAudioFrame
-- (IRFrameType) type { return IRFrameTypeAudio; }
-@end
-
-@interface IRVideoFrame()
+//@interface IRFFVideoFrame()
 //@property (nonatomic) NSUInteger width;
 //@property (nonatomic) NSUInteger height;
-@end
+//@end
 
-@implementation IRVideoFrame
-- (IRFrameType) type { return IRFrameTypeVideo; }
-@end
+//@implementation IRFFVideoFrame
+//- (IRFFFrameType) type { return IRFFFrameTypeVideo; }
+//@end
 
 @interface IRVideoFrameRGB ()
 @property (readwrite, nonatomic) NSUInteger linesize;
@@ -349,15 +349,15 @@ static int interrupt_callback(void *ctx);
 }
 @end
 
-@interface IRVideoFrameYUV()
+@interface IRFFAVYUVVideoFrame()
 //@property (nonatomic, strong) NSData *luma;
 //@property (nonatomic, strong) NSData *chromaB;
 //@property (nonatomic, strong) NSData *chromaR;
 @end
 
-@implementation IRVideoFrameYUV
-- (IRFrameFormat) format { return IRFrameFormatYUV; }
-@end
+//@implementation IRFFAVYUVVideoFrame
+//- (IRFrameFormat) format { return IRFrameFormatYUV; }
+//@end
 
 @interface IRVideoFrameNV12()
 @end
@@ -366,43 +366,43 @@ static int interrupt_callback(void *ctx);
 - (IRFrameFormat) format { return IRFrameFormatNV12; }
 @end
 
-@interface IRArtworkFrame()
-@property (readwrite, nonatomic, strong) NSData *picture;
-@end
+//@interface IRFFArtworkFrame()
+//@property (readwrite, nonatomic, strong) NSData *picture;
+//@end
+//
+//@implementation IRFFArtworkFrame
+//- (IRFFFrameType) type { return IRFFFrameTypeArtwork; }
+//- (UIImage *) asImage
+//{
+//    UIImage *image = nil;
+//
+//    CGDataProviderRef provider = CGDataProviderCreateWithCFData((__bridge CFDataRef)(_picture));
+//    if (provider) {
+//
+//        CGImageRef imageRef = CGImageCreateWithJPEGDataProvider(provider,
+//                                                                NULL,
+//                                                                YES,
+//                                                                kCGRenderingIntentDefault);
+//        if (imageRef) {
+//
+//            image = [UIImage imageWithCGImage:imageRef];
+//            CGImageRelease(imageRef);
+//        }
+//        CGDataProviderRelease(provider);
+//    }
+//
+//    return image;
+//
+//}
+//@end
 
-@implementation IRArtworkFrame
-- (IRFrameType) type { return IRFrameTypeArtwork; }
-- (UIImage *) asImage
-{
-    UIImage *image = nil;
-    
-    CGDataProviderRef provider = CGDataProviderCreateWithCFData((__bridge CFDataRef)(_picture));
-    if (provider) {
-        
-        CGImageRef imageRef = CGImageCreateWithJPEGDataProvider(provider,
-                                                                NULL,
-                                                                YES,
-                                                                kCGRenderingIntentDefault);
-        if (imageRef) {
-            
-            image = [UIImage imageWithCGImage:imageRef];
-            CGImageRelease(imageRef);
-        }
-        CGDataProviderRelease(provider);
-    }
-    
-    return image;
-    
-}
-@end
-
-@interface IRSubtitleFrame()
-@property (readwrite, nonatomic, strong) NSString *text;
-@end
-
-@implementation IRSubtitleFrame
-- (IRFrameType) type { return IRFrameTypeSubtitle; }
-@end
+//@interface IRFFSubtileFrame()
+//@property (readwrite, nonatomic, strong) NSString *text;
+//@end
+//
+//@implementation IRFFSubtileFrame
+//- (IRFFFrameType) type { return IRFFFrameTypeSubtitle; }
+//@end
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -1454,9 +1454,9 @@ int interruptCallBack(void *ctx){
     return _swsContext != NULL;
 }
 
-- (IRVideoFrame *) handleVideoFrame
+- (IRFFVideoFrame *) handleVideoFrame
 {
-    IRVideoFrame *frame = NULL;
+    IRFFVideoFrame *frame = NULL;
     
     pthread_mutex_lock(&video_frame_mutex);
     
@@ -1466,22 +1466,22 @@ int interruptCallBack(void *ctx){
     
     if (_videoFrameFormat == IRFrameFormatYUV) {
         
-        IRVideoFrameYUV * yuvFrame = [[IRVideoFrameYUV alloc] init];
+        IRFFAVYUVVideoFrame * yuvFrame = [[IRFFAVYUVVideoFrame alloc] init];
         
-        yuvFrame.luma = copyFrameData(_videoFrame->data[0],
-                                      _videoFrame->linesize[0],
-                                      _videoCodecCtx->width,
-                                      _videoCodecCtx->height);
-        
-        yuvFrame.chromaB = copyFrameData(_videoFrame->data[1],
-                                         _videoFrame->linesize[1],
-                                         _videoCodecCtx->width / 2,
-                                         _videoCodecCtx->height / 2);
-        
-        yuvFrame.chromaR = copyFrameData(_videoFrame->data[2],
-                                         _videoFrame->linesize[2],
-                                         _videoCodecCtx->width / 2,
-                                         _videoCodecCtx->height / 2);
+//        yuvFrame.luma = copyFrameData(_videoFrame->data[0],
+//                                      _videoFrame->linesize[0],
+//                                      _videoCodecCtx->width,
+//                                      _videoCodecCtx->height);
+//
+//        yuvFrame.chromaB = copyFrameData(_videoFrame->data[1],
+//                                         _videoFrame->linesize[1],
+//                                         _videoCodecCtx->width / 2,
+//                                         _videoCodecCtx->height / 2);
+//
+//        yuvFrame.chromaR = copyFrameData(_videoFrame->data[2],
+//                                         _videoFrame->linesize[2],
+//                                         _videoCodecCtx->width / 2,
+//                                         _videoCodecCtx->height / 2);
         
         frame = yuvFrame;
         
@@ -1546,7 +1546,7 @@ end:
     return frame;
 }
 
-- (IRAudioFrame *) handleAudioFrame
+- (IRFFAudioFrame *) handleAudioFrame
 {
     if (!_audioFrame->data[0])
         return nil;
@@ -1611,7 +1611,7 @@ end:
 //    vDSP_vflt16((SInt16 *)audioData, 1, data.mutableBytes, 1, numElements);
 //    vDSP_vsmul(data.mutableBytes, 1, &scale, data.mutableBytes, 1, numElements);
 //
-    IRAudioFrame *frame = [[IRAudioFrame alloc] init];
+    IRFFAudioFrame *frame = [[IRFFAudioFrame alloc] init];
 //    frame.position = av_frame_get_best_effort_timestamp(_audioFrame) * _audioTimeBase;
 //    frame.duration = av_frame_get_pkt_duration(_audioFrame) * _audioTimeBase;
 //    frame.samples = data;
@@ -1633,7 +1633,7 @@ end:
     return frame;
 }
 
-- (IRSubtitleFrame *) handleSubtitle: (AVSubtitle *)pSubtitle
+- (IRFFSubtileFrame *) handleSubtitle: (AVSubtitle *)pSubtitle
 {
     NSMutableString *ms = [NSMutableString string];
     
@@ -1666,8 +1666,8 @@ end:
     if (!ms.length)
         return nil;
     
-    IRSubtitleFrame *frame = [[IRSubtitleFrame alloc] init];
-    frame.text = [ms copy];
+    IRFFSubtileFrame *frame = [[IRFFSubtileFrame alloc] init];
+//    frame.text = [ms copy];
     frame.position = pSubtitle->pts / AV_TIME_BASE + pSubtitle->start_display_time;
     frame.duration = (CGFloat)(pSubtitle->end_display_time - pSubtitle->start_display_time) / 1000.f;
     
@@ -1929,7 +1929,7 @@ static void stream_seek(int64_t pos, int64_t rel, int seek_by_bytes)
 //                                              _videoCodecCtx->height);
 //                    }
                     
-                    IRVideoFrame *frame = [self handleVideoFrame];
+                    IRFFVideoFrame *frame = [self handleVideoFrame];
                     if (frame) {
                         [result addObject:frame];
                         
@@ -1968,7 +1968,7 @@ static void stream_seek(int64_t pos, int64_t rel, int seek_by_bytes)
                 
                 if (gotframe) {
                     
-                    IRAudioFrame * frame = [self handleAudioFrame];
+                    IRFFAudioFrame * frame = [self handleAudioFrame];
                     if (frame) {
                         
                         [result addObject:frame];
@@ -1995,7 +1995,7 @@ static void stream_seek(int64_t pos, int64_t rel, int seek_by_bytes)
             
             if (packet.size) {
                 
-                IRArtworkFrame *frame = [[IRArtworkFrame alloc] init];
+                IRFFArtworkFrame *frame = [[IRFFArtworkFrame alloc] init];
                 frame.picture = [NSData dataWithBytes:packet.data length:packet.size];
                 [result addObject:frame];
             }
@@ -2022,7 +2022,7 @@ static void stream_seek(int64_t pos, int64_t rel, int seek_by_bytes)
                 
                 if (gotsubtitle) {
                     
-                    IRSubtitleFrame *frame = [self handleSubtitle: &subtitle];
+                    IRFFSubtileFrame *frame = [self handleSubtitle: &subtitle];
                     if (frame) {
                         [result addObject:frame];
                     }

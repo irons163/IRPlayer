@@ -47,13 +47,13 @@ enum
     _uniformParams[UNIFORM_COLOR_CONVERSION_MATRIX] = glGetUniformLocation(program, "colorConversionMatrix");
 }
 
-- (void) setVideoFrame: (IRVideoFrame *) frame
+- (void) setVideoFrame: (IRFFVideoFrame *) frame
 {
-    IRVideoFrameYUV *yuvFrame = (IRVideoFrameYUV *)frame;
+    IRFFAVYUVVideoFrame *yuvFrame = (IRFFAVYUVVideoFrame *)frame;
     
-    assert(yuvFrame.luma.length == yuvFrame.width * yuvFrame.height);
-    assert(yuvFrame.chromaB.length == (yuvFrame.width * yuvFrame.height) / 4);
-    assert(yuvFrame.chromaR.length == (yuvFrame.width * yuvFrame.height) / 4);
+//    assert(yuvFrame.luma.length == yuvFrame.width * yuvFrame.height);
+//    assert(yuvFrame.chromaB.length == (yuvFrame.width * yuvFrame.height) / 4);
+//    assert(yuvFrame.chromaR.length == (yuvFrame.width * yuvFrame.height) / 4);
     
     const NSUInteger frameWidth = frame.width;
     const NSUInteger frameHeight = frame.height;
@@ -67,7 +67,8 @@ enum
     if (0 == _textures[0])
         glGenTextures(3, _textures);
     
-    const UInt8 *pixels[3] = { yuvFrame.luma.bytes, yuvFrame.chromaB.bytes, yuvFrame.chromaR.bytes };
+//    const UInt8 *pixels[3] = { yuvFrame.luma.bytes, yuvFrame.chromaB.bytes, yuvFrame.chromaR.bytes };
+    const UInt8 *pixels[3] = { yuvFrame.luma, yuvFrame.chromaB, yuvFrame.chromaR };
     const NSUInteger widths[3]  = { frameWidth, frameWidth / 2, frameWidth / 2 };
     const NSUInteger heights[3] = { frameHeight, frameHeight / 2, frameHeight / 2 };
     

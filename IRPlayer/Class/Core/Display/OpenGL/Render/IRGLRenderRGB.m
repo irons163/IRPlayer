@@ -24,7 +24,7 @@
     _uniformSampler = glGetUniformLocation(program, "s_texture");
 }
 
-- (void) setVideoFrame: (IRVideoFrame *) frame
+- (void) setVideoFrame: (IRFFVideoFrame *) frame
 {
     IRVideoFrameRGB *rgbFrame = (IRVideoFrameRGB *)frame;
     

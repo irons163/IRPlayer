@@ -10,6 +10,11 @@
 #import <UIKit/UIKit.h>
 #import <CoreGraphics/CoreGraphics.h>
 #include "avformat.h"
+#include "IRFFFrame.h"
+#include "IRFFVideoFrame.h"
+#include "IRFFAudioFrame.h"
+
+//@class IRFFFrame;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -32,61 +37,52 @@ typedef enum {
 
 typedef enum {
     
-    IRFrameTypeAudio,
-    IRFrameTypeVideo,
-    IRFrameTypeArtwork,
-    IRFrameTypeSubtitle,
-    
-} IRFrameType;
-
-typedef enum {
-    
     IRFrameFormatRGB,
     IRFrameFormatYUV,
     IRFrameFormatNV12,
     
 } IRFrameFormat;
 
-@interface IRFrame : NSObject
-@property (readonly, nonatomic) IRFrameType type;
-@property (readonly, nonatomic) CGFloat position;
-@property (readonly, nonatomic) CGFloat duration;
-@end
+//@interface IRFFFrame : NSObject
+//@property (readonly, nonatomic) IRFFFrameType type;
+//@property (readonly, nonatomic) CGFloat position;
+//@property (readonly, nonatomic) CGFloat duration;
+//@end
 
-@interface IRAudioFrame : IRFrame
-@property (readonly, nonatomic, strong) NSData *samples;
-@end
+//@interface IRFFAudioFrame : IRFFFrame
+//@property (readonly, nonatomic, strong) NSData *samples;
+//@end
 
-@interface IRVideoFrame : IRFrame
-@property (nonatomic) IRFrameFormat format;
-@property (nonatomic) NSUInteger width;
-@property (nonatomic) NSUInteger height;
-@end
+//@interface IRFFVideoFrame : IRFFFrame
+//@property (nonatomic) IRFrameFormat format;
+//@property (nonatomic) NSUInteger width;
+//@property (nonatomic) NSUInteger height;
+//@end
 
-@interface IRVideoFrameRGB : IRVideoFrame
+@interface IRVideoFrameRGB : IRFFVideoFrame
 @property (readonly, nonatomic) NSUInteger linesize;
 @property (readonly, nonatomic, strong) NSData *rgb;
 - (UIImage *) asImage;
 @end
 
-@interface IRVideoFrameYUV : IRVideoFrame
-@property (nonatomic, strong) NSData *luma;
-@property (nonatomic, strong) NSData *chromaB;
-@property (nonatomic, strong) NSData *chromaR;
-@end
+//@interface IRFFAVYUVVideoFrame : IRFFVideoFrame
+//@property (nonatomic, strong) NSData *luma;
+//@property (nonatomic, strong) NSData *chromaB;
+//@property (nonatomic, strong) NSData *chromaR;
+//@end
 
-@interface IRVideoFrameNV12 : IRVideoFrame
+@interface IRVideoFrameNV12 : IRFFVideoFrame
 @property ( nonatomic) CVPixelBufferRef imageBuffer;
 @end
 
-@interface IRArtworkFrame : IRFrame
-@property (readonly, nonatomic, strong) NSData *picture;
-- (UIImage *) asImage;
-@end
+//@interface IRFFArtworkFrame : IRFFFrame
+//@property (readonly, nonatomic, strong) NSData *picture;
+//- (UIImage *) asImage;
+//@end
 
-@interface IRSubtitleFrame : IRFrame
-@property (readonly, nonatomic, strong) NSString *text;
-@end
+//@interface IRFFSubtileFrame : IRFFFrame
+//@property (readonly, nonatomic, strong) NSString *text;
+//@end
 
 @protocol IRMovieDecoderDelegate <NSObject>
 @optional

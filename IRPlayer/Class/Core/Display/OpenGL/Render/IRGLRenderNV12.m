@@ -56,7 +56,7 @@
     _uniformParams[UNIFORM_CHROMA_THRESHOLD] = glGetUniformLocation(program, "chromaThreshold");
 }
 
-- (void) setVideoFrame: (IRVideoFrame *) frame
+- (void) setVideoFrame: (IRFFVideoFrame *) frame
 {
     IRVideoFrameNV12 *yuvFrame = (IRVideoFrameNV12 *)frame;
     

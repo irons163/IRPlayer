@@ -23,6 +23,9 @@ typedef NS_ENUM(int, IRYUVChannel) {
 
 @interface IRFFVideoFrame : IRFFFrame
 
+@property (nonatomic, assign) int width;
+@property (nonatomic, assign) int height;
+
 @end
 
 
@@ -34,8 +37,9 @@ typedef NS_ENUM(int, IRYUVChannel) {
     UInt8 * channel_pixels[IRYUVChannelCount];
 }
 
-@property (nonatomic, assign, readonly) int width;
-@property (nonatomic, assign, readonly) int height;
+@property (nonatomic) UInt8 *luma;
+@property (nonatomic) UInt8 *chromaB;
+@property (nonatomic) UInt8 *chromaR;
 
 + (instancetype)videoFrame;
 - (void)setFrameData:(AVFrame *)frame width:(int)width height:(int)height;

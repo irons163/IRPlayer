@@ -207,7 +207,7 @@ exit:
     return result;
 }
 
--(void)setRenderFrame:(IRVideoFrame*)frame{
+-(void)setRenderFrame:(IRFFVideoFrame*)frame{
     [_renderer setVideoFrame:frame];
     
     if(frame.width != shaderParams2D.textureWidth || frame.height != shaderParams2D.textureHeight){

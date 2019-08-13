@@ -14,7 +14,7 @@
 @class IRGLRenderMode;
 @class IRGLViewSimulateDeviceShiftController;
 @class IRGLView;
-@class IRVideoFrame;
+@class IRFFVideoFrame;
 @class IRMovieDecoder;
 @class VideoDecoder;
 @class IRAVPlayer;
@@ -53,7 +53,7 @@ typedef NS_ENUM(NSInteger, IRRenderMode){
             decoder: (IRMovieDecoder *) decoder;
 - (id)initWithFrame:(CGRect)frame
             withPlayer:(IRPlayerImp *)abstractPlayer;
-- (void)render: (IRVideoFrame *) frame;
+- (void)render: (IRFFVideoFrame *) frame;
 - (void)setDecoder: (VideoDecoder *) decoder;
 - (void)setPixelFormat: (IRPixelFormat) pixelFormat;
 - (void)updateViewPort:(float)scale;

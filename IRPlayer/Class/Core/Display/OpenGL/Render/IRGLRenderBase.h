@@ -31,7 +31,7 @@ static const GLfloat kColorConversion709[] = {
 @protocol IRGLRender
 - (BOOL) isValid;
 - (void) resolveUniforms: (GLuint) program;
-- (void) setVideoFrame: (IRVideoFrame *) frame;
+- (void) setVideoFrame: (IRFFVideoFrame *) frame;
 - (void) setModelviewProj:(GLKMatrix4) modelviewProj;
 - (BOOL) prepareRender;
 - (void) releaseRender;

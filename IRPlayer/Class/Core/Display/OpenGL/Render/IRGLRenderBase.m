@@ -20,7 +20,7 @@
     _uniformMatrix = glGetUniformLocation(program, "modelViewProjectionMatrix");
 }
 
-- (void) setVideoFrame: (IRVideoFrame *) frame
+- (void) setVideoFrame: (IRFFVideoFrame *) frame
 {
     
 }
