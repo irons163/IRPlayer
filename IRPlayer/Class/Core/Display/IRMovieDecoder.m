@@ -359,12 +359,12 @@ static int interrupt_callback(void *ctx);
 //- (IRFrameFormat) format { return IRFrameFormatYUV; }
 //@end
 
-@interface IRVideoFrameNV12()
-@end
-
-@implementation IRVideoFrameNV12
-- (IRFrameFormat) format { return IRFrameFormatNV12; }
-@end
+//@interface IRFFCVYUVVideoFrame()
+//@end
+//
+//@implementation IRFFCVYUVVideoFrame
+//- (IRFrameFormat) format { return IRFrameFormatNV12; }
+//@end
 
 //@interface IRFFArtworkFrame()
 //@property (readwrite, nonatomic, strong) NSData *picture;

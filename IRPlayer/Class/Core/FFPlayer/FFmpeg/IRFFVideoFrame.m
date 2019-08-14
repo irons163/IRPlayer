@@ -224,6 +224,16 @@
     return self;
 }
 
+- (int)width {
+    const GLsizei frameWidth = (GLsizei)CVPixelBufferGetWidth(self->_pixelBuffer);
+    return frameWidth;
+}
+
+- (int)height {
+    const GLsizei frameHeight = (GLsizei)CVPixelBufferGetHeight(self->_pixelBuffer);
+    return frameHeight;
+}
+
 - (void)dealloc
 {
     if (self->_pixelBuffer) {

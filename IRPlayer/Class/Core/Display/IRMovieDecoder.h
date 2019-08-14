@@ -71,9 +71,9 @@ typedef enum {
 //@property (nonatomic, strong) NSData *chromaR;
 //@end
 
-@interface IRVideoFrameNV12 : IRFFVideoFrame
-@property ( nonatomic) CVPixelBufferRef imageBuffer;
-@end
+//@interface IRFFCVYUVVideoFrame : IRFFVideoFrame
+//@property ( nonatomic) CVPixelBufferRef imageBuffer;
+//@end
 
 //@interface IRFFArtworkFrame : IRFFFrame
 //@property (readonly, nonatomic, strong) NSData *picture;

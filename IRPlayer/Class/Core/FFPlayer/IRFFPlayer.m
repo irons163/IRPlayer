@@ -230,6 +230,9 @@
             self.abstractPlayer.displayView.rendererType = IRDisplayRendererTypeFFmpegPexelBufferVR;
             break;
     }
+    
+    if(self.decoder.hardwareDecoderEnable)
+        [self.abstractPlayer.displayView setPixelFormat:NV12_IRPixelFormat];
 }
 
 #pragma mark - IRFFDecoderDelegate

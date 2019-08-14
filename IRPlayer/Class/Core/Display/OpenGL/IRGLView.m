@@ -358,6 +358,8 @@
 - (void) setPixelFormat: (IRPixelFormat) pixelFormat
 {
     irPixelFormat = pixelFormat;
+    
+    [self initGLWithPixelFormat:irPixelFormat];
 }
 
 //Not consider Multi program status yet.
@@ -720,7 +722,7 @@
             }
         }
     });
-    
+    self.contentMode = UIViewContentModeScaleAspectFit;
     [self setContentMode:self.contentMode];
     
     [self chooseRenderMode:[_modes firstObject] withImmediatelyRenderOnce:NO];

@@ -58,9 +58,9 @@
 
 - (void) setVideoFrame: (IRFFVideoFrame *) frame
 {
-    IRVideoFrameNV12 *yuvFrame = (IRVideoFrameNV12 *)frame;
+    IRFFCVYUVVideoFrame *yuvFrame = (IRFFCVYUVVideoFrame *)frame;
     
-    assert(yuvFrame.imageBuffer != NULL);
+    assert(yuvFrame.pixelBuffer != NULL);
     
     const NSUInteger frameWidth = frame.width;
     const NSUInteger frameHeight = frame.height;
@@ -69,7 +69,7 @@
     
     [self cleanUpTextures];
     
-    CFTypeRef colorAttachments = CVBufferGetAttachment(yuvFrame.imageBuffer, kCVImageBufferYCbCrMatrixKey, NULL);
+    CFTypeRef colorAttachments = CVBufferGetAttachment(yuvFrame.pixelBuffer, kCVImageBufferYCbCrMatrixKey, NULL);
     
     if (colorAttachments == kCVImageBufferYCbCrMatrix_ITU_R_601_4) {
         _preferredConversion = kColorConversion601;
@@ -83,7 +83,7 @@
     if([EAGLContext currentContext] && [EAGLContext currentContext].API == kEAGLRenderingAPIOpenGLES2){
         err = CVOpenGLESTextureCacheCreateTextureFromImage(kCFAllocatorDefault,
                                                            _videoTextureCache,
-                                                           yuvFrame.imageBuffer,
+                                                           yuvFrame.pixelBuffer,
                                                            NULL,
                                                            GL_TEXTURE_2D,
                                                            GL_RED_EXT,
@@ -96,7 +96,7 @@
     }else{
         err = CVOpenGLESTextureCacheCreateTextureFromImage(kCFAllocatorDefault,
                                                            _videoTextureCache,
-                                                           yuvFrame.imageBuffer,
+                                                           yuvFrame.pixelBuffer,
                                                            NULL,
                                                            GL_TEXTURE_2D,
                                                            GL_LUMINANCE,
@@ -124,7 +124,7 @@
     if([EAGLContext currentContext] && [EAGLContext currentContext].API == kEAGLRenderingAPIOpenGLES2){
         err = CVOpenGLESTextureCacheCreateTextureFromImage(kCFAllocatorDefault,
                                                            _videoTextureCache,
-                                                           yuvFrame.imageBuffer,
+                                                           yuvFrame.pixelBuffer,
                                                            NULL,
                                                            GL_TEXTURE_2D,
                                                            GL_RG_EXT,
@@ -137,7 +137,7 @@
     }else{
         err = CVOpenGLESTextureCacheCreateTextureFromImage(kCFAllocatorDefault,
                                                            _videoTextureCache,
-                                                           yuvFrame.imageBuffer,
+                                                           yuvFrame.pixelBuffer,
                                                            NULL,
                                                            GL_TEXTURE_2D,
                                                            GL_RG8,
