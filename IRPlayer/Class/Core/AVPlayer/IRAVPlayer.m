@@ -506,7 +506,7 @@ static NSString * const AVMediaSelectionOptionTrackIDKey = @"MediaSelectionOptio
             [IRPlayerNotification postPlayer:self.abstractPlayer progressPercent:@(current/duration) current:@(current) total:@(duration)];
         }
     }];
-    [self.abstractPlayer.displayView reloadIRAVPlayer];
+//    [self.abstractPlayer.displayView reloadIRAVPlayer];
     [self reloadVolume];
 }
 
@@ -521,7 +521,7 @@ static NSString * const AVMediaSelectionOptionTrackIDKey = @"MediaSelectionOptio
         self.playBackTimeObserver = nil;
     }
     self.avPlayer = nil;
-    [self.abstractPlayer.displayView reloadIRAVPlayer];
+//    [self.abstractPlayer.displayView reloadIRAVPlayer];
 }
 
 - (void)setupAVPlayerItemAutoLoadedAsset:(BOOL)autoLoadedAsset

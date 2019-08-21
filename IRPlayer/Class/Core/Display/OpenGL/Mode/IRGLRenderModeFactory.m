@@ -14,7 +14,7 @@
 
 @implementation IRGLRenderModeFactory
 
-+(NSArray<IRGLRenderMode*>*)createNormalModesWithParameter:(IRMediaParameter*)parameter{
++(NSArray<IRGLRenderMode*>*)createNormalModesWithParameter:(nullable IRMediaParameter*)parameter{
     NSArray<IRGLRenderMode*>* modes = @[[[IRGLRenderMode2D alloc] init]];
     
     for(IRGLRenderMode* mode in modes){
@@ -24,7 +24,7 @@
     return modes;
 }
 
-+(NSArray<IRGLRenderMode*>*)createFisheyeModesWithParameter:(IRMediaParameter*)parameter{
++(NSArray<IRGLRenderMode*>*)createFisheyeModesWithParameter:(nullable IRMediaParameter*)parameter{
     IRGLRenderMode* normal = [[IRGLRenderMode2D alloc] init];
     IRGLRenderMode* fisheye2Pano = [[IRGLRenderMode2DFisheye2Pano alloc] init];
     IRGLRenderMode* fisheye = [[IRGLRenderMode3DFisheye alloc] init];

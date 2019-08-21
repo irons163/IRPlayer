@@ -50,15 +50,15 @@ typedef NS_ENUM(NSInteger, IRRenderMode){
 @interface IRGLView : UIView<IRFFDecoderVideoOutput>
 
 - (id)initWithFrame:(CGRect)frame
-            decoder: (IRMovieDecoder *) decoder;
+            decoder:(IRMovieDecoder *) decoder;
 - (id)initWithFrame:(CGRect)frame
             withPlayer:(IRPlayerImp *)abstractPlayer;
-- (void)render: (IRFFVideoFrame *) frame;
-- (void)setDecoder: (VideoDecoder *) decoder;
+- (void)render:(nullable IRFFVideoFrame *) frame;
+- (void)setDecoder:(VideoDecoder *) decoder;
 - (void)updateViewPort:(float)scale;
 - (void)updateScopeByFx:(float)fx fy:(float)fy dsx:(float)dsx dsy:(float) dsy;
 - (void)scrollByDx:(float)dx dy:(float)dy;
-- (void)shiftDegreeX:(float)degreeX degreeY:(float)degreeY;
+//- (void)shiftDegreeX:(float)degreeX degreeY:(float)degreeY;
 - (void)setRenderModes:(NSArray<IRGLRenderMode*>*) modes;
 - (NSArray*)getRenderModes;
 - (IRGLRenderMode*)getCurrentRenderMode;
@@ -78,7 +78,7 @@ typedef NS_ENUM(NSInteger, IRRenderMode){
 
 - (void)reloadGravityMode;
 - (void)cleanEmptyBuffer;
-- (void)reloadIRAVPlayer;
+//- (void)reloadIRAVPlayer;
 @end
 
 NS_ASSUME_NONNULL_END

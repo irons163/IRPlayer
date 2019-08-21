@@ -49,11 +49,10 @@
 
 @end
 
-@interface IRGLView()<IRGLProgramDelegate, UIGestureRecognizerDelegate>
+@interface IRGLView()<UIGestureRecognizerDelegate>
 
 @property (nonatomic) IRPlayerImp * abstractPlayer;
-@property (nonatomic, strong) AVPlayerLayer * avplayerLayer;
-@property (nonatomic, assign) BOOL avplayerLayerToken;
+
 @end
 
 @implementation IRGLView {
@@ -82,13 +81,11 @@
     CGRect viewprotRange;
 }
 
-+ (Class) layerClass
-{
++ (Class)layerClass {
     return [CAEAGLLayer class];
 }
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.frame = CGRectMake(0, 0, 1, 1);
@@ -99,8 +96,7 @@
     return self;
 }
 
-- (instancetype)initWithCoder:(NSCoder *)coder
-{
+- (instancetype)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     if (self) {
         [self initDefaultValue];
@@ -110,9 +106,8 @@
     return self;
 }
 
-- (id) initWithFrame:(CGRect)frame
-             decoder: (IRMovieDecoder *) decoder
-{
+- (id)initWithFrame:(CGRect)frame
+             decoder:(IRMovieDecoder *)decoder {
     self = [super initWithFrame:frame];
     if (self) {
         [self initDefaultValue];
@@ -123,8 +118,7 @@
 }
 
 - (id)initWithFrame:(CGRect)frame
-         withPlayer:(IRPlayerImp *)abstractPlayer
-{
+         withPlayer:(IRPlayerImp *)abstractPlayer {
     self = [super initWithFrame:frame];
     if (self) {
         self.abstractPlayer = abstractPlayer;
@@ -137,11 +131,11 @@
     return self;
 }
 
--(void)initDefaultValue{
+- (void)initDefaultValue {
     _modes = [NSArray array];
 }
 
--(void)initGLWithIRMovieDecoder: (IRMovieDecoder *) decoder{
+- (void)initGLWithIRMovieDecoder:(IRMovieDecoder *)decoder {
     if ([decoder setupVideoFrameFormat:IRFrameFormatYUV]) {
         irPixelFormat = YUV_IRPixelFormat;
     } else {
@@ -151,7 +145,7 @@
     [self initGLWithPixelFormat:irPixelFormat];
 }
 
--(void)initGLWithPixelFormat:(IRPixelFormat)irPixelFormat{
+- (void)initGLWithPixelFormat:(IRPixelFormat)irPixelFormat {
     [self initRenderQueue];
     
     [CATransaction flush];
@@ -170,25 +164,25 @@
                                         kEAGLColorFormatRGBA8, kEAGLDrawablePropertyColorFormat,
                                         nil];
         
-        _context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES3];
-        if(!_context)
-            _context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+        self->_context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES3];
+        if(!self->_context)
+            self->_context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
         
-        if (!_context ||
-            ![EAGLContext setCurrentContext:_context]) {
+        if (!self->_context ||
+            ![EAGLContext setCurrentContext:self->_context]) {
             
             NSLog(@"failed to setup EAGLContext");
             return;
         }
         
-        glGenFramebuffers(1, &_framebuffer);
-        glGenRenderbuffers(1, &_renderbuffer);
-        glBindFramebuffer(GL_FRAMEBUFFER, _framebuffer);
-        glBindRenderbuffer(GL_RENDERBUFFER, _renderbuffer);
-        [_context renderbufferStorage:GL_RENDERBUFFER fromDrawable:(CAEAGLLayer*)self.layer];
-        glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &_backingWidth);
-        glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &_backingHeight);
-        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, _renderbuffer);
+        glGenFramebuffers(1, &self->_framebuffer);
+        glGenRenderbuffers(1, &self->_renderbuffer);
+        glBindFramebuffer(GL_FRAMEBUFFER, self->_framebuffer);
+        glBindRenderbuffer(GL_RENDERBUFFER, self->_renderbuffer);
+        [self->_context renderbufferStorage:GL_RENDERBUFFER fromDrawable:(CAEAGLLayer*)self.layer];
+        glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &self->_backingWidth);
+        glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &self->_backingHeight);
+        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, self->_renderbuffer);
         
         GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
         if (status != GL_FRAMEBUFFER_COMPLETE) {
@@ -204,17 +198,17 @@
         }
     });
     
-    viewprotRange = CGRectMake(0, 0, _backingWidth, _backingHeight);
+    viewprotRange = CGRectMake(0, 0, self->_backingWidth, self->_backingHeight);
     
     [self setupModes];
     
     NSLog(@"OK setup GL");
 }
 
--(void)closeGLView{
+- (void)closeGLView {
     if(queue){
         dispatch_sync(queue, ^{
-            [EAGLContext setCurrentContext:_context];
+            [EAGLContext setCurrentContext:self->_context];
             [self reset];
         });
     }
@@ -250,33 +244,31 @@
     _context = nil;
 }
 
--(void)initRenderQueue{
+- (void)initRenderQueue {
     if(!queue)
         queue = dispatch_queue_create("render.queue", DISPATCH_QUEUE_SERIAL);
 }
 
-- (void) setDecoder: (VideoDecoder *) decoder
-{
+- (void)setDecoder:(VideoDecoder *)decoder {
     irPixelFormat = NV12_IRPixelFormat;
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self initGLWithPixelFormat:irPixelFormat];
+        [self initGLWithPixelFormat:self->irPixelFormat];
     });
 }
 
-- (void) setPixelFormat: (IRPixelFormat) pixelFormat
-{
+- (void)setPixelFormat:(IRPixelFormat)pixelFormat {
     irPixelFormat = pixelFormat;
     
     [self initGLWithPixelFormat:irPixelFormat];
 }
 
 //Not consider Multi program status yet.
--(BOOL)isProgramZooming{
+- (BOOL)isProgramZooming {
     return _currentProgram && !CGPointEqualToPoint([_currentProgram getCurrentScale], CGPointMake(1.0,1.0));
 }
 
--(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
     if ((!self.doubleTapEnable || ![self isProgramZooming]) && gestureRecognizer == tapGr){
         return NO;
     }else if([gestureRecognizer isKindOfClass:[UISwipeGestureRecognizer class]] && [self isProgramZooming]){
@@ -285,7 +277,7 @@
     return YES;
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]  && [otherGestureRecognizer isKindOfClass:[UISwipeGestureRecognizer class]] && (self.swipeEnable && ![self isProgramZooming])) {
         return YES;
     } else {
@@ -293,18 +285,16 @@
     }
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     [self reset];
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
     [self updateViewPort:1.0];
 }
 
-- (void)updateViewPort:(float)viewportScale{
+- (void)updateViewPort:(float)viewportScale {
     if(!queue)
         return;
     
@@ -312,30 +302,29 @@
     
     dispatch_sync(queue, ^{
         
-        [EAGLContext setCurrentContext:_context];
+        [EAGLContext setCurrentContext:self->_context];
         CAEAGLLayer *eaglLayer = (CAEAGLLayer*) self.layer;
         eaglLayer.contentsScale = viewportScale * [[UIScreen mainScreen] scale];
-        glBindFramebuffer(GL_FRAMEBUFFER, _framebuffer);
-        glBindRenderbuffer(GL_RENDERBUFFER, _renderbuffer);
-        [_context renderbufferStorage:GL_RENDERBUFFER fromDrawable:(CAEAGLLayer*)self.layer];
-        glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &_backingWidth);
-        glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &_backingHeight);
-        NSLog(@"_backingWidth:%d",_backingWidth);
-        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, _renderbuffer);
+        glBindFramebuffer(GL_FRAMEBUFFER, self->_framebuffer);
+        glBindRenderbuffer(GL_RENDERBUFFER, self->_renderbuffer);
+        [self->_context renderbufferStorage:GL_RENDERBUFFER fromDrawable:(CAEAGLLayer*)self.layer];
+        glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &self->_backingWidth);
+        glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &self->_backingHeight);
+        NSLog(@"_backingWidth:%d",self->_backingWidth);
+        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, self->_renderbuffer);
     });
     
     [self resetAllViewport:_backingWidth :_backingHeight resetTransform:YES];
 }
 
-- (void)setContentMode:(UIViewContentMode)contentMode
-{
+- (void)setContentMode:(UIViewContentMode)contentMode {
     [super setContentMode:contentMode];
     
-    if(isGLRenderContentModeChangable)
-        [self changeGLRenderContentMode];
+//    if(isGLRenderContentModeChangable)
+//        [self changeGLRenderContentMode];
 }
 
-- (void)changeGLRenderContentMode{
+- (void)changeGLRenderContentMode {
     IRGLRenderContentMode irGLViewContentMode;
     
     switch (self.contentMode) {
@@ -357,9 +346,9 @@
     }
 }
 
--(void) resetAllViewport:(float)w :(float)h resetTransform:(BOOL)resetTransform{
+- (void)resetAllViewport:(float)w :(float)h resetTransform:(BOOL)resetTransform {
     if(self.delegate)
-        [self.delegate glViewWillBeginZooming:nil];
+        [self.delegate glViewWillBeginZooming:self];
     
     viewprotRange = CGRectMake(0, 0, w, h);
     
@@ -369,55 +358,51 @@
     [self render:nil];
     
     if(self.delegate)
-        [self.delegate glViewDidEndZooming:nil atScale:0];
+        [self.delegate glViewDidEndZooming:self atScale:0];
 }
 
--(void) updateScopeByFx:(float)fx fy:(float)fy dsx:(float)dsx dsy:(float) dsy
-{
+- (void)updateScopeByFx:(float)fx fy:(float)fy dsx:(float)dsx dsy:(float)dsy {
     if(self.delegate)
-        [self.delegate glViewWillBeginZooming:nil];
+        [self.delegate glViewWillBeginZooming:self];
     
     [_currentProgram didPinchByfx:fx fy:fy dsx:dsx dsy:dsy];
     [self render:nil];
     
     if(self.delegate)
-        [self.delegate glViewDidEndZooming:nil atScale:0];
+        [self.delegate glViewDidEndZooming:self atScale:0];
 }
 
--(void) scrollByDx:(float)dx dy:(float)dy
-{
+- (void) scrollByDx:(float)dx dy:(float)dy {
     [_currentProgram didPanBydx:dx dy:dy];
     [self render:nil];
 }
 
--(void) scrollByDegreeX:(float)degreex degreey:(float)degreey
-{
+- (void)scrollByDegreeX:(float)degreex degreey:(float)degreey {
     [_currentProgram didPanByDegreeX:degreex degreey:degreey];
     [self render:nil];
 }
 
-- (void)render: (IRFFVideoFrame *) frame
-{
+- (void)render:(nullable IRFFVideoFrame *)frame {
     if(!queue || !_currentProgram)
         return;
     
     dispatch_sync(queue, ^{
-        [EAGLContext setCurrentContext:_context];
-        glBindFramebuffer(GL_FRAMEBUFFER, _framebuffer);
+        [EAGLContext setCurrentContext:self->_context];
+        glBindFramebuffer(GL_FRAMEBUFFER, self->_framebuffer);
         
         if (frame) {
-            [_currentProgram setRenderFrame:frame];
+            [self->_currentProgram setRenderFrame:frame];
         }
         
-        [_currentProgram clearBuffer];
+        [self->_currentProgram clearBuffer];
         
         //        NSDate *methodStart = [NSDate date];
-        [_currentProgram render];
+        [self->_currentProgram render];
         
         //        glFinish();
         
-        glBindRenderbuffer(GL_RENDERBUFFER, _renderbuffer);
-        [_context presentRenderbuffer:GL_RENDERBUFFER];
+        glBindRenderbuffer(GL_RENDERBUFFER, self->_renderbuffer);
+        [self->_context presentRenderbuffer:GL_RENDERBUFFER];
         
         //        NSDate *methodFinish = [NSDate date];
         //        NSTimeInterval executionTime = [methodFinish timeIntervalSinceDate:methodStart];
@@ -427,7 +412,7 @@
     });
 }
 
-- (void)setRenderModes:(NSArray<IRGLRenderMode*>*) modes{
+- (void)setRenderModes:(NSArray<IRGLRenderMode*>*)modes {
     _modes = modes;
     
     [self initGLWithPixelFormat:irPixelFormat];
@@ -453,12 +438,9 @@
     
     dispatch_sync(queue, ^{
         
-        [EAGLContext setCurrentContext:_context];
+        [EAGLContext setCurrentContext:self->_context];
         
-        for(IRGLProgram2D *program in _programs){
-            //        program.tramsformController.delegate = self;
-//            program.delegate = self;
-            
+        for(IRGLProgram2D *program in self->_programs){
             if (![program loadShaders]) {
                 return;
             }
@@ -486,9 +468,9 @@
         return NO;
     
     dispatch_sync(queue, ^{
-        mode = renderMode;
-        _currentProgram = mode.program;
-        [mode.shiftController setProgram:_currentProgram];
+        self->mode = renderMode;
+        self->_currentProgram = self->mode.program;
+        [self->mode.shiftController setProgram:self->_currentProgram];
         
         if(immediatelyRenderOnce){
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -505,13 +487,13 @@
         return;
     
     dispatch_sync(queue, ^{
-        [EAGLContext setCurrentContext:_context];
-        glBindFramebuffer(GL_FRAMEBUFFER, _framebuffer);
+        [EAGLContext setCurrentContext:self->_context];
+        glBindFramebuffer(GL_FRAMEBUFFER, self->_framebuffer);
         
-        [_currentProgram clearBuffer];
+        [self->_currentProgram clearBuffer];
         
-        glBindRenderbuffer(GL_RENDERBUFFER, _renderbuffer);
-        [_context presentRenderbuffer:GL_RENDERBUFFER];
+        glBindRenderbuffer(GL_RENDERBUFFER, self->_renderbuffer);
+        [self->_context presentRenderbuffer:GL_RENDERBUFFER];
     });
 }
 
@@ -522,9 +504,9 @@
 
 -(void) saveSnapShot{
     dispatch_async(dispatch_get_main_queue(), ^{
-        if(willDoSnapshot){
+        if(self->willDoSnapshot){
             [self saveSnapshotAlbum:[self createImageFromFramebuffer]];
-            willDoSnapshot = NO;
+            self->willDoSnapshot = NO;
         }
     });
 }
@@ -611,13 +593,13 @@ typedef NS_ENUM(NSInteger, IRScrollDirectionType){
         case IRDisplayRendererTypeEmpty:
             break;
         case IRDisplayRendererTypeAVPlayerLayer:
-            if (!self.avplayerLayer) {
-                self.avplayerLayer = [AVPlayerLayer playerLayerWithPlayer:nil];
-                [self reloadIRAVPlayer];
-                self.avplayerLayerToken = NO;
-                [self.layer insertSublayer:self.avplayerLayer atIndex:0];
-                [self reloadGravityMode];
-            }
+//            if (!self.avplayerLayer) {
+//                self.avplayerLayer = [AVPlayerLayer playerLayerWithPlayer:nil];
+//                [self reloadIRAVPlayer];
+//                self.avplayerLayerToken = NO;
+//                [self.layer insertSublayer:self.avplayerLayer atIndex:0];
+//                [self reloadGravityMode];
+//            }
             break;
         case IRDisplayRendererTypeAVPlayerPixelBufferVR:
 //            if (!self.avplayerView) {
@@ -638,50 +620,39 @@ typedef NS_ENUM(NSInteger, IRScrollDirectionType){
 
 - (void)reloadGravityMode
 {
-    if (self.avplayerLayer) {
-        switch (self.abstractPlayer.viewGravityMode) {
-            case IRGravityModeResize:
-                self.avplayerLayer.videoGravity = AVLayerVideoGravityResize;
-                break;
-            case IRGravityModeResizeAspect:
-                self.avplayerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
-                break;
-            case IRGravityModeResizeAspectFill:
-                self.avplayerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-                break;
-        }
-    }
+//    if (self.avplayerLayer) {
+//        switch (self.abstractPlayer.viewGravityMode) {
+//            case IRGravityModeResize:
+//                self.avplayerLayer.videoGravity = AVLayerVideoGravityResize;
+//                break;
+//            case IRGravityModeResizeAspect:
+//                self.avplayerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
+//                break;
+//            case IRGravityModeResizeAspectFill:
+//                self.avplayerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+//                break;
+//        }
+//    }
+    if(isGLRenderContentModeChangable)
+        [self changeGLRenderContentMode];
 }
 
-- (void)updateDisplayViewLayout:(CGRect)frame
-{
-    if (self.avplayerLayer) {
-        self.avplayerLayer.frame = frame;
-        if (self.abstractPlayer.viewAnimationHidden || !self.avplayerLayerToken) {
-            [self.avplayerLayer removeAllAnimations];
-            self.avplayerLayerToken = YES;
-        }
-    }
-//    if (self.avplayerView) {
-//        [self.avplayerView reloadViewport];
-//    }
-//    if (self.ffplayerView) {
-//        [self.ffplayerView reloadViewport];
-//    }
+- (void)updateDisplayViewLayout:(CGRect)frame {
+    [self updateViewPort:1.0];
 }
 
-- (void)reloadIRAVPlayer
-{
-#if IRPLATFORM_TARGET_OS_MAC
-    self.avplayerLayer.player = self.sgavplayer.avPlayer;
-#elif IRPLATFORM_TARGET_OS_IPHONE_OR_TV
-    if (self.avplayer.avPlayer && [UIApplication sharedApplication].applicationState != UIApplicationStateBackground) {
-        self.avplayerLayer.player = self.avplayer.avPlayer;
-    } else {
-        self.avplayerLayer.player = nil;
-    }
-#endif
-}
+//- (void)reloadIRAVPlayer
+//{
+//#if IRPLATFORM_TARGET_OS_MAC
+//    self.avplayerLayer.player = self.sgavplayer.avPlayer;
+//#elif IRPLATFORM_TARGET_OS_IPHONE_OR_TV
+//    if (self.avplayer.avPlayer && [UIApplication sharedApplication].applicationState != UIApplicationStateBackground) {
+//        self.avplayerLayer.player = self.avplayer.avPlayer;
+//    } else {
+//        self.avplayerLayer.player = nil;
+//    }
+//#endif
+//}
 
 - (void)cleanView
 {
@@ -710,20 +681,6 @@ typedef NS_ENUM(NSInteger, IRScrollDirectionType){
 - (void)cleanViewCleanAVPlayerLayer:(BOOL)cleanAVPlayerLayer cleanAVPlayerView:(BOOL)cleanAVPlayerView cleanFFPlayerView:(BOOL)cleanFFPlayerView
 {
     [self cleanEmptyBuffer];
-    if (cleanAVPlayerLayer && self.avplayerLayer) {
-        [self.avplayerLayer removeFromSuperlayer];
-        self.avplayerLayer = nil;
-    }
-//    if (cleanAVPlayerView && self.avplayerView) {
-//        [self.avplayerView invalidate];
-//        [self.avplayerView removeFromSuperview];
-//        self.avplayerView = nil;
-//    }
-//    if (cleanFFPlayerView && self.ffplayerView) {
-//        [self.ffplayerView removeFromSuperview];
-//        self.ffplayerView = nil;
-//    }
-    self.avplayerLayerToken = NO;
 }
 
 
