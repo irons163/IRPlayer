@@ -34,6 +34,7 @@ static NSString * const AVMediaSelectionOptionTrackIDKey = @"MediaSelectionOptio
 @property (atomic, assign) BOOL autoNeedPlay;    // background use
 @property (atomic, assign) BOOL hasPixelBuffer;
 
+@property (nonatomic, strong) CADisplayLink * displayLink;
 
 #pragma mark - track info
 
@@ -60,6 +61,11 @@ static NSString * const AVMediaSelectionOptionTrackIDKey = @"MediaSelectionOptio
     if (self = [super init]) {
         self.abstractPlayer = abstractPlayer;
         self.abstractPlayer.displayView.avplayer = self;
+        [self.abstractPlayer.displayView setPixelFormat:NV12_IRPixelFormat];
+        
+        self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(displayLinkCallback:)];
+        [[self displayLink] addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+        self.displayLink.paused = NO;
     }
     return self;
 }
@@ -306,6 +312,25 @@ static NSString * const AVMediaSelectionOptionTrackIDKey = @"MediaSelectionOptio
     return pixelBuffer;
 }
 
+#pragma mark - CADisplayLink Callback
+
+- (void)displayLinkCallback:(CADisplayLink *)sender
+{
+    /*
+     The callback gets called once every Vsync.
+     Using the display link's timestamp and duration we can compute the next time the screen will be refreshed, and copy the pixel buffer for that time
+     This pixel buffer can then be processed and later rendered on screen.
+     */
+    CVPixelBufferRef pixelBuffer = [self pixelBufferAtCurrentTime];
+    if (pixelBuffer != NULL) {
+        IRFFCVYUVVideoFrame * videoFrame = [[IRFFCVYUVVideoFrame alloc] initWithAVPixelBuffer:pixelBuffer];
+        
+        videoFrame.position = -1;
+        videoFrame.duration = -1;
+        [self.abstractPlayer.displayView render:videoFrame];
+    }
+}
+
 #pragma mark - play state change
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
@@ -428,13 +453,13 @@ static NSString * const AVMediaSelectionOptionTrackIDKey = @"MediaSelectionOptio
         case IRVideoTypeNormal:
             [self setupAVPlayerItemAutoLoadedAsset:YES];
             [self setupAVPlayer];
-//            self.abstractPlayer.displayView.rendererType = IRDisplayRendererTypeAVPlayerLayer;
+            self.abstractPlayer.displayView.rendererType = IRDisplayRendererTypeAVPlayerLayer;
             break;
         case IRVideoTypeVR:
         {
             [self setupAVPlayerItemAutoLoadedAsset:NO];
             [self setupAVPlayer];
-//            self.abstractPlayer.displayView.rendererType = IRDisplayRendererTypeAVPlayerPixelBufferVR;
+            self.abstractPlayer.displayView.rendererType = IRDisplayRendererTypeAVPlayerPixelBufferVR;
             @weakify(self)
             [self.avAsset loadValuesAsynchronouslyForKeys:[self.class AVAssetloadKeys] completionHandler:^{
                 @strongify(self)
@@ -481,7 +506,7 @@ static NSString * const AVMediaSelectionOptionTrackIDKey = @"MediaSelectionOptio
             [IRPlayerNotification postPlayer:self.abstractPlayer progressPercent:@(current/duration) current:@(current) total:@(duration)];
         }
     }];
-//    [self.abstractPlayer.displayView reloadIRAVPlayer];
+    [self.abstractPlayer.displayView reloadIRAVPlayer];
     [self reloadVolume];
 }
 
@@ -496,7 +521,7 @@ static NSString * const AVMediaSelectionOptionTrackIDKey = @"MediaSelectionOptio
         self.playBackTimeObserver = nil;
     }
     self.avPlayer = nil;
-//    [self.abstractPlayer.displayView reloadIRAVPlayer];
+    [self.abstractPlayer.displayView reloadIRAVPlayer];
 }
 
 - (void)setupAVPlayerItemAutoLoadedAsset:(BOOL)autoLoadedAsset
@@ -570,7 +595,7 @@ static NSString * const AVMediaSelectionOptionTrackIDKey = @"MediaSelectionOptio
     self.seeking = NO;
     self.playableTime = 0;
     self.readyToPlayTime = 0;
-//    [self.abstractPlayer.displayView cleanEmptyBuffer];
+    [self.abstractPlayer.displayView cleanEmptyBuffer];
 }
 
 + (NSArray <NSString *> *)AVAssetloadKeys

@@ -231,8 +231,15 @@
             break;
     }
     
-    if(self.decoder.hardwareDecoderEnable)
-        [self.abstractPlayer.displayView setPixelFormat:NV12_IRPixelFormat];
+    if(self.decoder.hardwareDecoderEnable) {
+        if(self.abstractPlayer.displayView.pixelFormat != NV12_IRPixelFormat) {
+            [self.abstractPlayer.displayView setPixelFormat:NV12_IRPixelFormat];
+        }
+    } else {
+        if(self.abstractPlayer.displayView.pixelFormat != YUV_IRPixelFormat) {
+            [self.abstractPlayer.displayView setPixelFormat:YUV_IRPixelFormat];
+        }
+    }
 }
 
 #pragma mark - IRFFDecoderDelegate
@@ -344,13 +351,11 @@
 - (Float64)samplingRate
 {
     return self.audioManager.samplingRate;
-//    return 0;
 }
 
 - (UInt32)numberOfChannels
 {
     return self.audioManager.numberOfChannels;
-//    return 0;
 }
 
 - (void)audioManager:(IRAudioManager *)audioManager outputData:(float *)outputData numberOfFrames:(UInt32)numberOfFrames numberOfChannels:(UInt32)numberOfChannels

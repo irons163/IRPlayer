@@ -12,17 +12,19 @@
 #import "IRGLView.h"
 #import "IRAVPlayer.h"
 #import "IRFFPlayer.h"
+#import "IRGestureControl.h"
 
 #if IRPLATFORM_TARGET_OS_IPHONE_OR_TV
 #import "IRAudioManager.h"
 #endif
 
-@interface IRPlayerImp ()
+@interface IRPlayerImp ()<IRGLViewDelegate>
 
 @property (nonatomic, strong) IRGLView * displayView;
 @property (nonatomic, assign) IRDecoderType decoderType;
 @property (nonatomic, strong) IRAVPlayer * avPlayer;
 @property (nonatomic, strong) IRFFPlayer * ffPlayer;
+@property (nonatomic, strong) IRGestureControl *gestureControl;
 
 @property (nonatomic, assign) BOOL needAutoPlay;
 
@@ -190,7 +192,7 @@
 - (void)setViewGravityMode:(IRGravityMode)viewGravityMode
 {
     _viewGravityMode = viewGravityMode;
-//    [self.displayView reloadGravityMode];
+    [self.displayView reloadGravityMode];
 }
 
 - (IRPlayerState)state
@@ -293,6 +295,11 @@
     if (!_displayView) {
 //        _displayView = [IRGLView displayViewWithAbstractPlayer:self];
         _displayView = [[IRGLView alloc] init];
+        
+        _gestureControl = [IRGestureControl new];
+        [_gestureControl addGestureToView:_displayView];
+        _gestureControl.currentMode = [_displayView getCurrentRenderMode];
+        _gestureControl.delegate = self;
     }
     return _displayView;
 }
@@ -350,6 +357,14 @@
         [self.ffPlayer stop];
         self.ffPlayer = nil;
     }
+    if(_gestureControl) {
+        [_gestureControl removeGestureToView:_displayView];
+        self.gestureControl = nil;
+    }
+    if(_displayView) {
+        [_displayView closeGLView];
+    }
+    
     [self cleanPlayerView];
     
 #if IRPLATFORM_TARGET_OS_IPHONE_OR_TV
@@ -564,6 +579,34 @@
         case IRDecoderTypeError:
             break;
     }
+}
+
+#pragma mark - UIScrollViewDelegate
+
+-(void)glViewWillBeginZooming:(IRGLView *)glView{
+//    [self stopMotionDetection];
+}
+
+-(void)glViewDidEndZooming:(IRGLView *)glView atScale:(CGFloat)scale{
+//    [self resetUnit];
+}
+
+-(void)glViewWillBeginDragging:(IRGLView *)glView{
+//    [self stopMotionDetection];
+}
+
+-(void)glViewDidEndDragging:(IRGLView *)glView willDecelerate:(BOOL)decelerate{
+//    if ((!decelerate)) {
+//        [self resetUnit];
+//    }
+}
+
+-(void)glViewDidEndDecelerating:(IRGLView *)glView{
+    
+}
+
+-(void)glViewDidScrollToBounds:(IRGLView *)glView{
+    NSLog(@"scroll to bounds");
 }
 
 @end

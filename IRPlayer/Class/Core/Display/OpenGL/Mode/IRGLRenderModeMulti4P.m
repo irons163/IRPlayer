@@ -22,12 +22,12 @@
 
 -(void)setWideDegreeY:(float)wideDegreeY{
     [super setWideDegreeY:wideDegreeY];
-    self.shiftController.wideDegreeY = program.wideDegreeY;
+    self.shiftController.wideDegreeY = self.program.wideDegreeY;
 }
 
 -(void)setContentMode:(IRGLRenderContentMode)contentMode{
     [super setContentMode:contentMode];
-    program.contentMode = contentMode;
+    self.program.contentMode = contentMode;
 }
 
 -(void)update{

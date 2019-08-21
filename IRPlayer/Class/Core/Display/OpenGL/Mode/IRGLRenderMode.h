@@ -14,12 +14,19 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface IRGLRenderMode : NSObject{
+@protocol IRGLRenderModeDelegate
+
+@optional
+- (void)programDidCreate:(IRGLProgram2D *)program;
+@end
+
+@interface IRGLRenderMode : NSObject {
 @protected
-    IRGLProgram2D* program;
+    IRGLProgram2D* _program;
     IRGLProgram2DFactory* programFactory;
 }
 
+@property (weak) id<IRGLRenderModeDelegate> delegate;
 @property IRSimulateDeviceShiftController* shiftController;
 @property (nonatomic) float wideDegreeX;
 @property (nonatomic) float wideDegreeY;
@@ -27,6 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) IRGLRenderContentMode contentMode;
 @property (nonatomic) IRMediaParameter* parameter;
 @property (nonatomic) NSString* name;
+@property (readonly) IRGLProgram2D* program;
 
 -(void) setDefaultScale:(float)scale;
 -(void) setWideDegreeX:(float)wideDegreeX;

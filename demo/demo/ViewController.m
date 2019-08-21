@@ -40,7 +40,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     UITableViewCell * cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     cell.textLabel.text = [PlayerViewController displayNameForDemoType:indexPath.row];
     return cell;

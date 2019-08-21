@@ -55,7 +55,6 @@ typedef NS_ENUM(NSInteger, IRRenderMode){
             withPlayer:(IRPlayerImp *)abstractPlayer;
 - (void)render: (IRFFVideoFrame *) frame;
 - (void)setDecoder: (VideoDecoder *) decoder;
-- (void)setPixelFormat: (IRPixelFormat) pixelFormat;
 - (void)updateViewPort:(float)scale;
 - (void)updateScopeByFx:(float)fx fy:(float)fy dsx:(float)dsx dsy:(float) dsy;
 - (void)scrollByDx:(float)dx dy:(float)dy;
@@ -68,6 +67,7 @@ typedef NS_ENUM(NSInteger, IRRenderMode){
 - (void)doSnapShot;
 - (void)closeGLView;
 @property (weak) id<IRGLViewDelegate> delegate;
+@property (nonatomic) IRPixelFormat pixelFormat;
 @property BOOL doubleTapEnable;
 @property BOOL swipeEnable;
 @property (nonatomic, weak) IRAVPlayer *avplayer;
@@ -76,8 +76,9 @@ typedef NS_ENUM(NSInteger, IRRenderMode){
 @property (nonatomic, assign) IRDisplayRendererType rendererType;
 //@property (nonatomic, strong) SGFingerRotation * fingerRotation;
 
-//- (void)reloadGravityMode;
+- (void)reloadGravityMode;
 - (void)cleanEmptyBuffer;
+- (void)reloadIRAVPlayer;
 @end
 
 NS_ASSUME_NONNULL_END

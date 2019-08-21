@@ -28,32 +28,32 @@
 #import "IRGLRenderModeFactory.h"
 #import <pthread.h>
 #include <sys/time.h>
+#import "IRAVPlayer.h"
 
 @interface IRGLRenderMode(BuildIRGLProgram)
 
--(IRGLProgram2D*)getProgram;
 @end
 
 @implementation IRGLRenderMode(BuildIRGLProgram)
 
--(IRGLProgram2D*)getProgram{
-    return program;
-}
-
 -(void)buildIRGLProgramWithPixelFormat:(IRPixelFormat)pixelFormat withViewprotRange:(CGRect)viewprotRange withParameter:(IRMediaParameter*)parameter{
-    
-    program = [programFactory createIRGLProgramWithPixelFormat:pixelFormat withViewprotRange:viewprotRange withParameter:(IRMediaParameter*)parameter];
-    [self.shiftController setProgram:program];
+    _program = [programFactory createIRGLProgramWithPixelFormat:pixelFormat withViewprotRange:viewprotRange withParameter:(IRMediaParameter*)parameter];
+    [self.shiftController setProgram:self.program];
     [self setWideDegreeX:self.wideDegreeX];
     [self setWideDegreeY:self.wideDegreeY];
     [self setDefaultScale:self.defaultScale];
     [self setContentMode:self.contentMode];
+    
+    [self.delegate programDidCreate:_program];
 }
 
 @end
 
 @interface IRGLView()<IRGLProgramDelegate, UIGestureRecognizerDelegate>
 
+@property (nonatomic) IRPlayerImp * abstractPlayer;
+@property (nonatomic, strong) AVPlayerLayer * avplayerLayer;
+@property (nonatomic, assign) BOOL avplayerLayerToken;
 @end
 
 @implementation IRGLView {
@@ -80,17 +80,6 @@
     IRGLRenderMode* mode;
     NSArray<IRGLRenderMode*>* _modes;
     CGRect viewprotRange;
-    
-    //Smooth Scroll
-    CGPoint finalPoint;
-    CGPoint alreadyPoint;
-    CGFloat slideDuration;
-    CADisplayLink *timer;
-    NSTimeInterval startTimestamp;
-    NSTimeInterval lastTimestamp;
-    CAShapeLayer *horizontalLineLayer, *verticalLineLayer;
-    BOOL didHorizontalBoundsBonce, didVerticalBoundsBonce;
-    BOOL isPaned;
 }
 
 + (Class) layerClass
@@ -138,6 +127,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.abstractPlayer = abstractPlayer;
         [self initDefaultValue];
 //        [self initGLWithIRMovieDecoder:decoder];
         irPixelFormat = YUV_IRPixelFormat;
@@ -148,83 +138,7 @@
 }
 
 -(void)initDefaultValue{
-    self.swipeEnable = YES;
-    
-    UIPanGestureRecognizer* gr = [[UIPanGestureRecognizer alloc] initWithTarget:self
-                                                                         action:@selector(didPan:)];
-    gr.delegate = self;
-    [self addGestureRecognizer:gr];
-    
-    UIPinchGestureRecognizer *pinchGr = [[UIPinchGestureRecognizer alloc] initWithTarget:self
-                                                                                  action:@selector(didPinch:)];
-    [self addGestureRecognizer:pinchGr];
-    
-    UIRotationGestureRecognizer *rotateGr = [[UIRotationGestureRecognizer alloc] initWithTarget:self
-                                                                                         action:@selector(didRotate:)];
-    [self addGestureRecognizer:rotateGr];
-    
-    tapGr = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                    action:@selector(didDoubleTap:)];
-    [tapGr setNumberOfTapsRequired:2];
-    [self addGestureRecognizer:tapGr];
-    
-    tapGr.delegate = self;
-    
-    isTouchedInProgram = NO;
-    
-    self.doubleTapEnable = YES;
-    
     _modes = [NSArray array];
-    
-    [self createLine];
-    
-    timer = [CADisplayLink displayLinkWithTarget:self selector:@selector(tick:)];
-    [timer addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
-}
-
-- (void)tick:(CADisplayLink *)sender {
-    if (CGPointEqualToPoint(finalPoint, CGPointZero)) {
-        return;
-    }
-    
-    if(startTimestamp == 0) {
-        startTimestamp = sender.timestamp;
-    }
-    
-    CGFloat duration = MIN(slideDuration, sender.timestamp - startTimestamp);
-    //    CGFloat persentage = pow(duration / slideDuration, 1);
-    CGFloat persentage = duration / slideDuration;
-    persentage = -1 * persentage*(persentage-2); // quadratic easing out
-    /* //cubic easing out
-     persentage -= 1;
-     persentage = persentage*persentage*persentage + 1;
-     */
-    CGFloat moveX = finalPoint.x * persentage - alreadyPoint.x;
-    CGFloat moveY = finalPoint.y * persentage - alreadyPoint.y;
-    
-    alreadyPoint.x += moveX;
-    alreadyPoint.y += moveY;
-    
-    if(isPaned)
-        [self scrollByDx:moveX*[[UIScreen mainScreen] scale] dy:-1*moveY*[[UIScreen mainScreen] scale]];
-    else{
-        [mode.shiftController shiftDegreeX:moveX degreeY:-1*moveY];
-        [self render:nil];
-    }
-    
-    if(CGPointEqualToPoint(finalPoint, alreadyPoint)){
-        [self resetSmoothScroll];
-        if(self.delegate)
-            [self.delegate glViewDidEndDecelerating:self];
-    }
-}
-
--(void)resetSmoothScroll{
-    finalPoint = CGPointZero;
-    alreadyPoint = CGPointZero;
-    startTimestamp = 0;
-    didHorizontalBoundsBonce = NO;
-    didVerticalBoundsBonce = NO;
 }
 
 -(void)initGLWithIRMovieDecoder: (IRMovieDecoder *) decoder{
@@ -292,17 +206,12 @@
     
     viewprotRange = CGRectMake(0, 0, _backingWidth, _backingHeight);
     
-    [self initModes];
+    [self setupModes];
     
     NSLog(@"OK setup GL");
 }
 
 -(void)closeGLView{
-    if(timer){
-        [timer invalidate];
-        timer = nil;
-    }
-    
     if(queue){
         dispatch_sync(queue, ^{
             [EAGLContext setCurrentContext:_context];
@@ -384,158 +293,6 @@
     }
 }
 
-- (void)calculateSmoothScroll:(CGPoint)velocity {
-    CGFloat magnitude = sqrtf((velocity.x * velocity.x) + (velocity.y * velocity.y));
-    CGFloat slideMult = magnitude / 200;
-    NSLog(@"magnitude: %f, slideMult: %f", magnitude, slideMult);
-    
-    float slideFactor = 0.05 * slideMult; // Increase for more of a slide
-    finalPoint = CGPointMake(0 + (velocity.x * slideFactor),
-                             0 + (velocity.y * slideFactor));
-    slideDuration = slideFactor*2;
-}
-
-- (void)didPan:(UIPanGestureRecognizer*)gr
-{
-    NSLog(@"didPan, state %zd",gr.state);
-    
-    isPaned = YES;
-    [self resetSmoothScroll];
-    
-    if ((UIGestureRecognizerStateCancelled == gr.state ||
-         UIGestureRecognizerStateFailed == gr.state))
-    {
-        isTouchedInProgram = NO;
-        
-        if(self.delegate)
-            [self.delegate glViewDidEndDragging:self willDecelerate:NO];
-    }
-    else if(UIGestureRecognizerStateEnded == gr.state){
-        isTouchedInProgram = NO;
-        
-        CGPoint velocity = [gr velocityInView:self];
-        [self calculateSmoothScroll:velocity];
-        
-        if(self.delegate)
-            [self.delegate glViewDidEndDragging:self willDecelerate:CGPointEqualToPoint(velocity, CGPointZero)];
-    }
-    else if(UIGestureRecognizerStateBegan == gr.state){
-        CGPoint touchedPoint = [gr locationInView:self];
-        touchedPoint.x *= [UIScreen mainScreen].scale;
-        touchedPoint.y = self.frame.size.height - touchedPoint.y;
-        touchedPoint.y *= [UIScreen mainScreen].scale;
-        isTouchedInProgram = [_currentProgram touchedInProgram:touchedPoint];
-    }else{
-        if(!isTouchedInProgram)
-            return;
-        
-        if(self.delegate)
-            [self.delegate glViewWillBeginDragging:self];
-        
-        CGPoint screenOffset = [(UIPanGestureRecognizer*)gr translationInView:self];
-        
-        [self scrollByDx:screenOffset.x*[[UIScreen mainScreen] scale] dy:-1*screenOffset.y*[[UIScreen mainScreen] scale]];
-        
-        [(UIPanGestureRecognizer*)gr setTranslation:CGPointZero inView:self];
-    }
-}
-
-- (void)didPinch:(UIPinchGestureRecognizer*)sender{
-    NSLog(@"didPinch %f state %zd",sender.scale,sender.state);
-    
-    if ((UIGestureRecognizerStateCancelled == sender.state ||
-         UIGestureRecognizerStateEnded == sender.state ||
-         UIGestureRecognizerStateFailed == sender.state))
-    {
-        isTouchedInProgram = NO;
-    }else if(UIGestureRecognizerStateBegan == sender.state){
-        CGPoint touchedPoint = [sender locationInView:self];
-        touchedPoint.x *= [UIScreen mainScreen].scale;
-        touchedPoint.y = self.frame.size.height - touchedPoint.y;
-        touchedPoint.y *= [UIScreen mainScreen].scale;
-        isTouchedInProgram = [_currentProgram touchedInProgram:touchedPoint];
-    }else{
-        if(!isTouchedInProgram)
-            return;
-        if(sender.numberOfTouches < 2)
-            return;
-        
-        CGPoint p1 = [sender locationOfTouch:0 inView:self];
-        CGPoint p2 = [sender locationOfTouch:1 inView:self];
-        
-        [self updateScopeByFx:(p1.x + p2.x) / 2 fy:(p1.y + p2.y) / 2 dsx:sender.scale dsy:sender.scale];
-        
-        sender.scale = 1;
-    }
-}
-
-- (void)didRotate:(UIRotationGestureRecognizer*)gr
-{
-    NSLog(@"didRotate, state %zd",gr.state);
-    if ((UIGestureRecognizerStateCancelled == gr.state ||
-         UIGestureRecognizerStateEnded == gr.state ||
-         UIGestureRecognizerStateFailed == gr.state))
-    {
-        isTouchedInProgram = NO;
-    }
-    else if(UIGestureRecognizerStateBegan == gr.state){
-        CGPoint touchedPoint = [gr locationInView:self];
-        touchedPoint.x *= [UIScreen mainScreen].scale;
-        touchedPoint.y = self.frame.size.height - touchedPoint.y;
-        touchedPoint.y *= [UIScreen mainScreen].scale;
-        isTouchedInProgram = [_currentProgram touchedInProgram:touchedPoint];
-    }else{
-        if(!isTouchedInProgram)
-            return;
-        
-        if(self.delegate)
-            [self.delegate glViewWillBeginDragging:nil];
-        
-        NSLog(@"rotate:%f",gr.rotation);
-        
-        [self updateRotation:gr.rotation];
-        
-        gr.rotation = 0;
-        
-        if(self.delegate)
-            [self.delegate glViewDidEndDragging:nil willDecelerate:NO];
-        
-        //    if(self.delegate)
-        //        [self.delegate scrollViewDidEndDecelerating:nil];
-    }
-}
-
-- (void)didDoubleTap:(UITapGestureRecognizer*)gr
-{
-    NSLog(@"didDoubleTap, state %zd",gr.state);
-    
-    isTouchedInProgram = NO;
-    
-    CGPoint touchedPoint = [gr locationInView:self];
-    touchedPoint.x *= [UIScreen mainScreen].scale;
-    touchedPoint.y = self.frame.size.height - touchedPoint.y;
-    touchedPoint.y *= [UIScreen mainScreen].scale;
-    isTouchedInProgram = [_currentProgram touchedInProgram:touchedPoint];
-    
-    if(!isTouchedInProgram)
-        return;
-    
-    _currentProgram.doResetToDefaultScaleBlock = ^BOOL(IRGLProgram2D *program) {
-        if(CGPointEqualToPoint([program getCurrentScale], CGPointMake(1.0,1.0)))
-            return NO;
-        
-        [program setDefaultScale:1.0];
-        
-        return YES;
-    };
-    
-    [_currentProgram didDoubleTap];
-    
-    [mode update]; //It for multi_4P, not a good method, should modify future.
-    
-    [self render:nil];
-}
-
 - (void)dealloc
 {
     [self reset];
@@ -615,20 +372,6 @@
         [self.delegate glViewDidEndZooming:nil atScale:0];
 }
 
--(void)shiftDegreeX:(float)degreeX degreeY:(float)degreeY{
-    CGFloat unmoveYetX = finalPoint.x - alreadyPoint.x;
-    CGFloat unmoveYetY = finalPoint.y - alreadyPoint.y;
-    degreeX += unmoveYetX;
-    degreeY += -1*unmoveYetY;
-    
-    [self resetSmoothScroll];
-    isPaned = NO;
-    
-    finalPoint = CGPointMake(degreeX,
-                             -1*degreeY);
-    slideDuration = 0.5;
-}
-
 -(void) updateScopeByFx:(float)fx fy:(float)fy dsx:(float)dsx dsy:(float) dsy
 {
     if(self.delegate)
@@ -650,11 +393,6 @@
 -(void) scrollByDegreeX:(float)degreex degreey:(float)degreey
 {
     [_currentProgram didPanByDegreeX:degreex degreey:degreey];
-    [self render:nil];
-}
-
--(void) updateRotation:(float)rotateRadians{
-    [_currentProgram didRotate: -1 * rotateRadians];
     [self render:nil];
 }
 
@@ -695,7 +433,7 @@
     [self initGLWithPixelFormat:irPixelFormat];
 }
 
--(void)initModes{
+- (void)initModes {
     NSMutableArray* array = [NSMutableArray array];
     if(_modes.count == 0) {
         _modes = [IRGLRenderModeFactory createNormalModesWithParameter:nil];
@@ -703,11 +441,15 @@
     
     for(IRGLRenderMode* m in _modes){
         [m buildIRGLProgramWithPixelFormat:irPixelFormat withViewprotRange:viewprotRange withParameter:m.parameter];
-        if([m getProgram])
-            [array addObject:[m getProgram]];
+        if(m.program)
+            [array addObject:m.program];
     }
     
     _programs = [NSArray arrayWithArray:array];
+}
+
+- (void)setupModes {
+    [self initModes];
     
     dispatch_sync(queue, ^{
         
@@ -715,7 +457,7 @@
         
         for(IRGLProgram2D *program in _programs){
             //        program.tramsformController.delegate = self;
-            program.delegate = self;
+//            program.delegate = self;
             
             if (![program loadShaders]) {
                 return;
@@ -745,7 +487,7 @@
     
     dispatch_sync(queue, ^{
         mode = renderMode;
-        _currentProgram = [mode getProgram];
+        _currentProgram = mode.program;
         [mode.shiftController setProgram:_currentProgram];
         
         if(immediatelyRenderOnce){
@@ -837,178 +579,6 @@ typedef NS_ENUM(NSInteger, IRScrollDirectionType){
     Down
 };
 
--(void)didScrollToBounds:(IRGLTransformControllerScrollToBounds)bounds withProgram:(IRGLProgram2D *)program;{
-    CGFloat moveX = finalPoint.x - alreadyPoint.x;
-    CGFloat moveY = finalPoint.y - alreadyPoint.y;
-    
-    IRScrollDirectionType scrollDirectionType = None;
-    
-    
-    
-    switch (bounds) {
-        case IRGLTransformControllerScrollToHorizontalBounds:
-            moveY = 0;
-            break;
-        case IRGLTransformControllerScrollToVerticalBounds:
-            moveX = 0;
-            break;
-        case IRGLTransformControllerScrollToHorizontalandVerticalBounds:
-            
-            break;
-            
-        default:
-            moveX = 0;
-            moveY = 0;
-            break;
-    }
-    
-    if(moveX > 0)
-        scrollDirectionType = Right;
-    else if(moveX < 0)
-        scrollDirectionType = Left;
-    
-    if(!didHorizontalBoundsBonce && (scrollDirectionType == Left || scrollDirectionType == Right)){
-        [self removeAndAddAnimateWithScrollValue:moveX byScrollDirection:scrollDirectionType];
-        didHorizontalBoundsBonce = YES;
-    }
-    
-    if(moveY > 0)
-        scrollDirectionType = Down;
-    else if(moveY < 0)
-        scrollDirectionType = Up;
-    
-    if(!didVerticalBoundsBonce && (scrollDirectionType == Up || scrollDirectionType == Down)){
-        [self removeAndAddAnimateWithScrollValue:moveY byScrollDirection:scrollDirectionType];
-        didVerticalBoundsBonce = YES;
-    }
-    
-    if(self.delegate)
-        [self.delegate glViewDidScrollToBounds:self];
-}
-
-- (void) createLine {
-    horizontalLineLayer = [CAShapeLayer layer];
-    horizontalLineLayer.strokeColor = [[UIColor colorWithWhite:0.333f alpha:0.5f] CGColor];
-    horizontalLineLayer.lineWidth = 0.0;
-    horizontalLineLayer.fillColor = [[UIColor colorWithWhite:0.333f alpha:0.5f] CGColor];
-    [self.layer addSublayer:horizontalLineLayer];
-    
-    verticalLineLayer = [CAShapeLayer layer];
-    verticalLineLayer.strokeColor = [[UIColor colorWithWhite:0.333f alpha:0.5f] CGColor];
-    verticalLineLayer.lineWidth = 0.0;
-    verticalLineLayer.fillColor = [[UIColor colorWithWhite:0.333f alpha:0.5f] CGColor];
-    
-    [self.layer addSublayer:verticalLineLayer];
-}
-
--(void)removeAndAddAnimateWithScrollValue:(CGFloat)scrollValue byScrollDirection:(IRScrollDirectionType)type{
-    NSString* key = nil;
-    CAShapeLayer* lineLayer = nil;
-    UIBezierPath* startPath = nil;
-    UIBezierPath* endPath = nil;
-    
-    startPath = [self getLinePathWithAmount:scrollValue byScrollDirection:type];
-    endPath = [self getLinePathWithAmount:0.0 byScrollDirection:type];
-    
-    switch (type) {
-        case Left:{
-            key = @"bounce_right";
-            lineLayer = horizontalLineLayer;
-            break;
-        }
-        case Right:{
-            key = @"bounce_left";
-            lineLayer = horizontalLineLayer;
-            break;
-        }
-        case Up:{
-            key = @"bounce_bottom";
-            lineLayer = verticalLineLayer;
-            break;
-        }
-        case Down:{
-            key = @"bounce_top";
-            lineLayer = verticalLineLayer;
-            break;
-        }
-        default:
-            return;
-    }
-    
-    [lineLayer removeAnimationForKey:key];
-    lineLayer.path = [startPath CGPath];
-    
-    CABasicAnimation *morph = [CABasicAnimation animationWithKeyPath:@"path"];
-    morph.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    morph.fromValue = (id) lineLayer.path;
-    morph.toValue = (id) [endPath CGPath];
-    morph.duration = 0.2;
-    morph.removedOnCompletion = NO;
-    morph.fillMode = kCAFillModeForwards;
-    //    morph.delegate = self;
-    [lineLayer addAnimation:morph forKey:key];
-}
-
-- (UIBezierPath*) getLinePathWithAmount:(CGFloat)amount byScrollDirection:(IRScrollDirectionType)type{
-    CGPoint startPoint = CGPointZero;
-    CGPoint midControlPoint = CGPointZero;
-    CGPoint endPoint = CGPointZero;
-    CGFloat bounceWidth = MIN(self.bounds.size.width/10, self.bounds.size.height/10);
-    
-    switch (type) {
-        case Left:{
-            startPoint = CGPointMake(self.bounds.size.width , 0);
-            midControlPoint = CGPointMake(MAX(self.bounds.size.width + amount, self.bounds.size.width - bounceWidth), self.bounds.size.height/2);
-            endPoint = CGPointMake(self.bounds.size.width , self.bounds.size.height);
-            break;
-        }
-        case Right:{
-            
-            startPoint = CGPointZero;
-            midControlPoint = CGPointMake(MIN(amount, bounceWidth), self.bounds.size.height/2);
-            endPoint = CGPointMake(0, self.bounds.size.height);
-            break;
-        }
-        case Up:{
-            startPoint = CGPointMake(0 , self.bounds.size.height);
-            midControlPoint = CGPointMake(self.bounds.size.width/2, MAX(self.bounds.size.height + amount, self.bounds.size.height - bounceWidth));
-            endPoint = CGPointMake(self.bounds.size.width, self.bounds.size.height);
-            break;
-        }
-        case Down:{
-            startPoint = CGPointZero;
-            midControlPoint = CGPointMake(self.bounds.size.width/2, MIN(amount, bounceWidth));
-            endPoint = CGPointMake(self.bounds.size.width, 0);
-            break;
-        }
-        default:
-            return nil;
-    }
-    
-    UIBezierPath *verticalLine = [UIBezierPath bezierPath];
-    [verticalLine moveToPoint:startPoint];
-    [verticalLine addQuadCurveToPoint:endPoint controlPoint:midControlPoint];
-    [verticalLine closePath];
-    
-    return verticalLine;
-}
-
--(UIBezierPath*) getRightLinePathWithAmount:(CGFloat)amount{
-    UIBezierPath *verticalLine = [UIBezierPath bezierPath];
-    CGPoint topPoint = CGPointMake(self.bounds.size.width , 0);
-    CGPoint midControlPoint = CGPointMake(self.bounds.size.width - amount, self.bounds.size.height/2);
-    CGPoint bottomPoint = CGPointMake(self.bounds.size.width , self.bounds.size.height);
-    
-    [verticalLine moveToPoint:topPoint];
-    [verticalLine addQuadCurveToPoint:bottomPoint controlPoint:midControlPoint];
-    [verticalLine closePath];
-    
-    return verticalLine;
-}
-
-
-
-
 - (void)cleanEmptyBuffer
 {
 //    [self cleanTexture];
@@ -1025,5 +595,136 @@ typedef NS_ENUM(NSInteger, IRScrollDirectionType){
 - (void)decoder:(IRFFDecoder *)decoder renderVideoFrame:(IRFFVideoFrame *)videoFrame {
     [self render:videoFrame];
 }
+
+- (void)setRendererType:(IRDisplayRendererType)rendererType
+{
+    if (_rendererType != rendererType) {
+        _rendererType = rendererType;
+        [self reloadView];
+    }
+}
+
+- (void)reloadView
+{
+    [self cleanViewIgnore];
+    switch (self.rendererType) {
+        case IRDisplayRendererTypeEmpty:
+            break;
+        case IRDisplayRendererTypeAVPlayerLayer:
+            if (!self.avplayerLayer) {
+                self.avplayerLayer = [AVPlayerLayer playerLayerWithPlayer:nil];
+                [self reloadIRAVPlayer];
+                self.avplayerLayerToken = NO;
+                [self.layer insertSublayer:self.avplayerLayer atIndex:0];
+                [self reloadGravityMode];
+            }
+            break;
+        case IRDisplayRendererTypeAVPlayerPixelBufferVR:
+//            if (!self.avplayerView) {
+//                self.avplayerView = [IRGLAVView viewWithDisplayView:self];
+//                IRPLFViewInsertSubview(self, self.avplayerView, 0);
+//            }
+            break;
+        case IRDisplayRendererTypeFFmpegPexelBuffer:
+        case IRDisplayRendererTypeFFmpegPexelBufferVR:
+//            if (!self.ffplayerView) {
+//                self.ffplayerView = [IRGLFFView viewWithDisplayView:self];
+//                IRPLFViewInsertSubview(self, self.ffplayerView, 0);
+//            }
+            break;
+    }
+    [self updateDisplayViewLayout:self.bounds];
+}
+
+- (void)reloadGravityMode
+{
+    if (self.avplayerLayer) {
+        switch (self.abstractPlayer.viewGravityMode) {
+            case IRGravityModeResize:
+                self.avplayerLayer.videoGravity = AVLayerVideoGravityResize;
+                break;
+            case IRGravityModeResizeAspect:
+                self.avplayerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
+                break;
+            case IRGravityModeResizeAspectFill:
+                self.avplayerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+                break;
+        }
+    }
+}
+
+- (void)updateDisplayViewLayout:(CGRect)frame
+{
+    if (self.avplayerLayer) {
+        self.avplayerLayer.frame = frame;
+        if (self.abstractPlayer.viewAnimationHidden || !self.avplayerLayerToken) {
+            [self.avplayerLayer removeAllAnimations];
+            self.avplayerLayerToken = YES;
+        }
+    }
+//    if (self.avplayerView) {
+//        [self.avplayerView reloadViewport];
+//    }
+//    if (self.ffplayerView) {
+//        [self.ffplayerView reloadViewport];
+//    }
+}
+
+- (void)reloadIRAVPlayer
+{
+#if IRPLATFORM_TARGET_OS_MAC
+    self.avplayerLayer.player = self.sgavplayer.avPlayer;
+#elif IRPLATFORM_TARGET_OS_IPHONE_OR_TV
+    if (self.avplayer.avPlayer && [UIApplication sharedApplication].applicationState != UIApplicationStateBackground) {
+        self.avplayerLayer.player = self.avplayer.avPlayer;
+    } else {
+        self.avplayerLayer.player = nil;
+    }
+#endif
+}
+
+- (void)cleanView
+{
+    [self cleanViewCleanAVPlayerLayer:YES cleanAVPlayerView:YES cleanFFPlayerView:YES];
+}
+
+- (void)cleanViewIgnore
+{
+    switch (self.rendererType) {
+        case IRDisplayRendererTypeEmpty:
+            [self cleanView];
+            break;
+        case IRDisplayRendererTypeAVPlayerLayer:
+            [self cleanViewCleanAVPlayerLayer:NO cleanAVPlayerView:YES cleanFFPlayerView:YES];
+            break;
+        case IRDisplayRendererTypeAVPlayerPixelBufferVR:
+            [self cleanViewCleanAVPlayerLayer:YES cleanAVPlayerView:NO cleanFFPlayerView:YES];
+            break;
+        case IRDisplayRendererTypeFFmpegPexelBuffer:
+        case IRDisplayRendererTypeFFmpegPexelBufferVR:
+            [self cleanViewCleanAVPlayerLayer:YES cleanAVPlayerView:YES cleanFFPlayerView:NO];
+            break;
+    }
+}
+
+- (void)cleanViewCleanAVPlayerLayer:(BOOL)cleanAVPlayerLayer cleanAVPlayerView:(BOOL)cleanAVPlayerView cleanFFPlayerView:(BOOL)cleanFFPlayerView
+{
+    [self cleanEmptyBuffer];
+    if (cleanAVPlayerLayer && self.avplayerLayer) {
+        [self.avplayerLayer removeFromSuperlayer];
+        self.avplayerLayer = nil;
+    }
+//    if (cleanAVPlayerView && self.avplayerView) {
+//        [self.avplayerView invalidate];
+//        [self.avplayerView removeFromSuperview];
+//        self.avplayerView = nil;
+//    }
+//    if (cleanFFPlayerView && self.ffplayerView) {
+//        [self.ffplayerView removeFromSuperview];
+//        self.ffplayerView = nil;
+//    }
+    self.avplayerLayerToken = NO;
+}
+
 
 @end

@@ -11,6 +11,7 @@
 #import "IRGLProgram2DFactory.h"
 
 @implementation IRGLRenderMode
+@synthesize program = _program;
 
 -(instancetype)init{
     if(self = [super init]){

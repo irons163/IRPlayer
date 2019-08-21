@@ -17,7 +17,6 @@
 
 +(IRGLProgram2D*) createIRGLProgram2DWithPixelFormat:(IRPixelFormat)pixelFormat withViewprotRange:(CGRect)viewprotRange withParameter:(IRMediaParameter*)parameter{
     IRGLProgram2D* program = [[IRGLProgram2D alloc] initWithPixelFormat:pixelFormat withViewprotRange:viewprotRange withParameter:(IRMediaParameter*)parameter];
-    //    program.shouldUpdateToDefaultWhenOutputSizeChanged = NO;
     if(!program.tramsformController){
         program.tramsformController = [[IRGLTransformController2D alloc] initWithViewportWidth:viewprotRange.size.width viewportHeight:viewprotRange.size.height];
         program.tramsformController.delegate = program;
