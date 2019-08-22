@@ -11,6 +11,7 @@
 #import "IRGLRenderMode2DFisheye2Pano.h"
 #import "IRGLRenderMode3DFisheye.h"
 #import "IRGLRenderModeMulti4P.h"
+#import "IRGLRenderModeVR.h"
 
 @implementation IRGLRenderModeFactory
 
@@ -51,6 +52,12 @@
     fisheye4P.name = @"Fourlens";
     
     return modes;
+}
+
++ (IRGLRenderMode*)createVRModeWithParameter:(nullable IRMediaParameter*)parameter {
+    IRGLRenderMode *mode = [[IRGLRenderModeVR alloc] init];
+    mode.parameter = parameter;
+    return mode;
 }
 
 @end

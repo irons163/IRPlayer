@@ -7,7 +7,6 @@
 //
 
 #import "IRGLRenderMode2D.h"
-#import "IRGLRenderMode2D.h"
 #import "IRGLProgram2DFactory.h"
 
 @implementation IRGLRenderMode2D

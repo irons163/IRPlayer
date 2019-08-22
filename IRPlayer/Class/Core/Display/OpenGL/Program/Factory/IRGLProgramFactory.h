@@ -12,6 +12,7 @@
 #import "IRGLProgram2DFisheye2Persp.h"
 #import "IRGLProgram3DFisheye.h"
 #import "IRGLProgramMulti4P.h"
+#import "IRGLProgramVR.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 +(IRGLProgram3DFisheye*) createIRGLProgram3DFisheyeWithPixelFormat:(IRPixelFormat)pixelFormat withViewprotRange:(CGRect)viewprotRange withParameter:(IRMediaParameter*)parameter;
 +(IRGLProgramMulti4P*) createIRGLProgram2DFisheye2Persp4PWithPixelFormat:(IRPixelFormat)pixelFormat withViewprotRange:(CGRect)viewprotRange withParameter:(IRMediaParameter*)parameter;
 +(IRGLProgramMulti4P*) createIRGLProgram3DFisheye4PWithPixelFormat:(IRPixelFormat)pixelFormat withViewprotRange:(CGRect)viewprotRange withParameter:(IRMediaParameter*)parameter;
++(IRGLProgramVR*) createIRGLProgramVRWithPixelFormat:(IRPixelFormat)pixelFormat withViewprotRange:(CGRect)viewprotRange withParameter:(IRMediaParameter*)parameter;
 @end
 
 NS_ASSUME_NONNULL_END

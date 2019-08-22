@@ -13,6 +13,7 @@
 #import "IRAVPlayer.h"
 #import "IRFFPlayer.h"
 #import "IRGestureControl.h"
+#import "IRGLRenderModeFactory.h"
 
 #if IRPLATFORM_TARGET_OS_IPHONE_OR_TV
 #import "IRAudioManager.h"
@@ -152,6 +153,10 @@
     }
 }
 
+- (void)updateGraphicsViewFrame:(CGRect)frame {
+    [self.displayView updateFrameFromParent:frame];
+}
+
 - (void)setContentURL:(NSURL *)contentURL
 {
     _contentURL = [contentURL copy];
@@ -161,11 +166,24 @@
 {
     switch (videoType) {
         case IRVideoTypeNormal:
-        case IRVideoTypeVR:
             _videoType = videoType;
+            [self.displayView setRenderModes:[IRGLRenderModeFactory createNormalModesWithParameter:nil]];
+            _gestureControl.currentMode = [self.displayView getCurrentRenderMode];
             break;
+        case IRVideoTypeVR: {
+            _videoType = videoType;
+            IRGLRenderMode *mode = [IRGLRenderModeFactory createVRModeWithParameter:nil];
+            [mode setDefaultScale:1.5f];
+            [self.displayView setRenderModes:@[mode]];
+            self.displayView.aspect = 16.0 / 9.0;
+            [self setViewGravityMode:IRGravityModeResizeAspect];
+            _gestureControl.currentMode = [self.displayView getCurrentRenderMode];
+            break;
+        }
         default:
             _videoType = IRVideoTypeNormal;
+            [self.displayView setRenderModes:[IRGLRenderModeFactory createNormalModesWithParameter:nil]];
+            _gestureControl.currentMode = [self.displayView getCurrentRenderMode];
             break;
     }
 }

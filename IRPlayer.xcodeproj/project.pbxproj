@@ -141,6 +141,14 @@
 		8A51F81E22CF588300A7715B /* IRGLScope2D.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F81C22CF588300A7715B /* IRGLScope2D.m */; };
 		8A51F82122CF58A100A7715B /* IRGLScope3D.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F81F22CF58A100A7715B /* IRGLScope3D.h */; };
 		8A51F82222CF58A100A7715B /* IRGLScope3D.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F82022CF58A100A7715B /* IRGLScope3D.m */; };
+		8A563415230CE9EF00949B9A /* IRGLProgramVR.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A563413230CE9EF00949B9A /* IRGLProgramVR.h */; };
+		8A563416230CE9EF00949B9A /* IRGLProgramVR.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A563414230CE9EF00949B9A /* IRGLProgramVR.m */; };
+		8A563419230CF30700949B9A /* IRGLProjectionVR.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A563417230CF30700949B9A /* IRGLProjectionVR.h */; };
+		8A56341A230CF30700949B9A /* IRGLProjectionVR.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A563418230CF30700949B9A /* IRGLProjectionVR.m */; };
+		8A56341D230D142700949B9A /* IRGLRenderModeVR.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A56341B230D142700949B9A /* IRGLRenderModeVR.h */; };
+		8A56341E230D142700949B9A /* IRGLRenderModeVR.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A56341C230D142700949B9A /* IRGLRenderModeVR.m */; };
+		8A563421230D14AA00949B9A /* IRGLProgramVRFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A56341F230D14AA00949B9A /* IRGLProgramVRFactory.h */; };
+		8A563422230D14AA00949B9A /* IRGLProgramVRFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A563420230D14AA00949B9A /* IRGLProgramVRFactory.m */; };
 		8A8F02EB22D349B30029070A /* IRGLRenderMode2DFisheye2Pano.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A8F02EA22D349B20029070A /* IRGLRenderMode2DFisheye2Pano.h */; };
 		8AA3EAB42301376300331251 /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA352301376000331251 /* version.h */; };
 		8AA3EAB52301376300331251 /* buffersrc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA362301376000331251 /* buffersrc.h */; };
@@ -270,6 +278,8 @@
 		8ABB9029230A490D00A27FD7 /* IRGestureControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB9027230A490D00A27FD7 /* IRGestureControl.m */; };
 		8ABB9043230AA1C600A27FD7 /* IRBounceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB9041230AA1C600A27FD7 /* IRBounceController.m */; };
 		8ABB9045230AA7BF00A27FD7 /* IRBounceController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ABB9044230AA7BF00A27FD7 /* IRBounceController.h */; };
+		8AE405BF230E40120050DF09 /* IRGLTransformControllerVR.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AE405BD230E40120050DF09 /* IRGLTransformControllerVR.h */; };
+		8AE405C0230E40120050DF09 /* IRGLTransformControllerVR.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AE405BE230E40120050DF09 /* IRGLTransformControllerVR.m */; };
 		8AF902D722D43D42001914BA /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AF902D622D43D42001914BA /* libbz2.tbd */; };
 		8AF902D922D43D4B001914BA /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AF902D822D43D4B001914BA /* libz.tbd */; };
 		8AF902DB22D43D53001914BA /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AF902DA22D43D53001914BA /* libiconv.tbd */; };
@@ -424,6 +434,14 @@
 		8A51F81C22CF588300A7715B /* IRGLScope2D.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRGLScope2D.m; sourceTree = "<group>"; };
 		8A51F81F22CF58A100A7715B /* IRGLScope3D.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRGLScope3D.h; sourceTree = "<group>"; };
 		8A51F82022CF58A100A7715B /* IRGLScope3D.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRGLScope3D.m; sourceTree = "<group>"; };
+		8A563413230CE9EF00949B9A /* IRGLProgramVR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRGLProgramVR.h; sourceTree = "<group>"; };
+		8A563414230CE9EF00949B9A /* IRGLProgramVR.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRGLProgramVR.m; sourceTree = "<group>"; };
+		8A563417230CF30700949B9A /* IRGLProjectionVR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRGLProjectionVR.h; sourceTree = "<group>"; };
+		8A563418230CF30700949B9A /* IRGLProjectionVR.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRGLProjectionVR.m; sourceTree = "<group>"; };
+		8A56341B230D142700949B9A /* IRGLRenderModeVR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRGLRenderModeVR.h; sourceTree = "<group>"; };
+		8A56341C230D142700949B9A /* IRGLRenderModeVR.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRGLRenderModeVR.m; sourceTree = "<group>"; };
+		8A56341F230D14AA00949B9A /* IRGLProgramVRFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRGLProgramVRFactory.h; sourceTree = "<group>"; };
+		8A563420230D14AA00949B9A /* IRGLProgramVRFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRGLProgramVRFactory.m; sourceTree = "<group>"; };
 		8A8F02EA22D349B20029070A /* IRGLRenderMode2DFisheye2Pano.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGLRenderMode2DFisheye2Pano.h; sourceTree = "<group>"; };
 		8AA3EA352301376000331251 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 		8AA3EA362301376000331251 /* buffersrc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffersrc.h; sourceTree = "<group>"; };
@@ -553,6 +571,8 @@
 		8ABB9027230A490D00A27FD7 /* IRGestureControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRGestureControl.m; sourceTree = "<group>"; };
 		8ABB9041230AA1C600A27FD7 /* IRBounceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRBounceController.m; sourceTree = "<group>"; };
 		8ABB9044230AA7BF00A27FD7 /* IRBounceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRBounceController.h; sourceTree = "<group>"; };
+		8AE405BD230E40120050DF09 /* IRGLTransformControllerVR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRGLTransformControllerVR.h; sourceTree = "<group>"; };
+		8AE405BE230E40120050DF09 /* IRGLTransformControllerVR.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRGLTransformControllerVR.m; sourceTree = "<group>"; };
 		8AF902D622D43D42001914BA /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		8AF902D822D43D4B001914BA /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		8AF902DA22D43D53001914BA /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
@@ -813,6 +833,7 @@
 				8A51F7FB22CF4ECB00A7715B /* IRGLProgram2DFisheye2Persp.m */,
 				8A51F7FE22CF4EDE00A7715B /* IRGLProgram3DFisheye.h */,
 				8A51F7FF22CF4EDF00A7715B /* IRGLProgram3DFisheye.m */,
+				8A563412230CE5EB00949B9A /* VR */,
 				8A51F73E22CF417700A7715B /* Distortion */,
 				8A51F80222CF4F0E00A7715B /* Factory */,
 			);
@@ -843,6 +864,8 @@
 				8A51F7D522CF4CEC00A7715B /* IRGLTransformController2D.m */,
 				8A51F7D822CF4CFE00A7715B /* IRGLTransformController3DFisheye.h */,
 				8A51F7D922CF4CFF00A7715B /* IRGLTransformController3DFisheye.m */,
+				8AE405BD230E40120050DF09 /* IRGLTransformControllerVR.h */,
+				8AE405BE230E40120050DF09 /* IRGLTransformControllerVR.m */,
 			);
 			path = Transform;
 			sourceTree = "<group>";
@@ -855,6 +878,8 @@
 				8A51F7E222CF4DCA00A7715B /* IRGLProjectionOrthographic.m */,
 				8A51F7E522CF4DEC00A7715B /* IRGLProjectionEquirectangular.h */,
 				8A51F7E622CF4DEC00A7715B /* IRGLProjectionEquirectangular.m */,
+				8A563417230CF30700949B9A /* IRGLProjectionVR.h */,
+				8A563418230CF30700949B9A /* IRGLProjectionVR.m */,
 			);
 			path = Projection;
 			sourceTree = "<group>";
@@ -885,6 +910,8 @@
 				8A51F81422CF4FB400A7715B /* IRGLProgram3DFisheyeFactory.m */,
 				8A51F81722CF4FC700A7715B /* IRGLProgram3DFisheye4PFactory.h */,
 				8A51F81822CF4FC700A7715B /* IRGLProgram3DFisheye4PFactory.m */,
+				8A56341F230D14AA00949B9A /* IRGLProgramVRFactory.h */,
+				8A563420230D14AA00949B9A /* IRGLProgramVRFactory.m */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -941,6 +968,8 @@
 				8A51F76622CF478A00A7715B /* IRGLRenderMode3DFisheye.m */,
 				8A51F76922CF47A900A7715B /* IRGLRenderModeMulti4P.h */,
 				8A51F76A22CF47A900A7715B /* IRGLRenderModeMulti4P.m */,
+				8A56341B230D142700949B9A /* IRGLRenderModeVR.h */,
+				8A56341C230D142700949B9A /* IRGLRenderModeVR.m */,
 				8A51F76D22CF47D600A7715B /* IRGLRenderModeFactory.h */,
 				8A51F76E22CF47D600A7715B /* IRGLRenderModeFactory.m */,
 			);
@@ -956,6 +985,15 @@
 				8A51F77A22CF489800A7715B /* IRSimulateDeviceShiftController.m */,
 			);
 			path = DeviceShiftController;
+			sourceTree = "<group>";
+		};
+		8A563412230CE5EB00949B9A /* VR */ = {
+			isa = PBXGroup;
+			children = (
+				8A563413230CE9EF00949B9A /* IRGLProgramVR.h */,
+				8A563414230CE9EF00949B9A /* IRGLProgramVR.m */,
+			);
+			path = VR;
 			sourceTree = "<group>";
 		};
 		8AA3EA332301376000331251 /* include */ = {
@@ -1236,6 +1274,7 @@
 				8AA3EAC12301376300331251 /* version.h in Headers */,
 				8AA3EAE62301376300331251 /* common.h in Headers */,
 				8AA3EB242301376400331251 /* swresample.h in Headers */,
+				8A563421230D14AA00949B9A /* IRGLProgramVRFactory.h in Headers */,
 				8A51F79F22CF4AFE00A7715B /* IRGLFragmentFish2PerspShaderGLSL.h in Headers */,
 				8A51F66022CF3F4400A7715B /* IRFFTools.h in Headers */,
 				8AA3EAEE2301376300331251 /* aes.h in Headers */,
@@ -1277,10 +1316,12 @@
 				8A51F7FC22CF4ECB00A7715B /* IRGLProgram2DFisheye2Persp.h in Headers */,
 				8A51F76F22CF47D600A7715B /* IRGLRenderModeFactory.h in Headers */,
 				8A51F78B22CF4A4200A7715B /* IRGLFragmentRGBShaderGLSL.h in Headers */,
+				8A563415230CE9EF00949B9A /* IRGLProgramVR.h in Headers */,
 				8A51F7EC22CF4E5F00A7715B /* IRGLProgram2D.h in Headers */,
 				8AA3EABB2301376300331251 /* intfloat.h in Headers */,
 				8A51F7C122CF4C5E00A7715B /* IRGLRenderRGB.h in Headers */,
 				8AA3EB232301376400331251 /* version.h in Headers */,
+				8A56341D230D142700949B9A /* IRGLRenderModeVR.h in Headers */,
 				8A51F7F822CF4EB400A7715B /* IRGLProgram2DFisheye2Pano.h in Headers */,
 				8AA3EB1F2301376400331251 /* ac3_parser.h in Headers */,
 				8A51F81122CF4F8200A7715B /* IRGLProgram2DFisheye2PanoFactory.h in Headers */,
@@ -1300,6 +1341,7 @@
 				8AA3EAD22301376300331251 /* md5.h in Headers */,
 				8AA3EAFF2301376300331251 /* hdr_dynamic_metadata.h in Headers */,
 				8AA3EAC52301376300331251 /* pixdesc.h in Headers */,
+				8A563419230CF30700949B9A /* IRGLProjectionVR.h in Headers */,
 				8A51F61F22CF3CBA00A7715B /* IRAVPlayer.h in Headers */,
 				8AA3EB162301376400331251 /* vaapi.h in Headers */,
 				8AA3EACF2301376300331251 /* hwcontext_vdpau.h in Headers */,
@@ -1320,6 +1362,7 @@
 				8AA3EAF62301376300331251 /* channel_layout.h in Headers */,
 				8A51F74622CF455100A7715B /* IRMetadataDefine.h in Headers */,
 				8AA3EAC92301376300331251 /* motion_vector.h in Headers */,
+				8AE405BF230E40120050DF09 /* IRGLTransformControllerVR.h in Headers */,
 				8ABB9045230AA7BF00A27FD7 /* IRBounceController.h in Headers */,
 				8A51F64422CF3E6300A7715B /* IRFFTrack.h in Headers */,
 				8AA3EAB92301376300331251 /* time.h in Headers */,
@@ -1491,8 +1534,11 @@
 			files = (
 				8AF902F422D47662001914BA /* IRPLFView.m in Sources */,
 				8A51F65D22CF3F2300A7715B /* IRFFPacketQueue.m in Sources */,
+				8A563416230CE9EF00949B9A /* IRGLProgramVR.m in Sources */,
 				8A51F64522CF3E6300A7715B /* IRFFTrack.m in Sources */,
+				8A56341A230CF30700949B9A /* IRGLProjectionVR.m in Sources */,
 				8AF902FC22D4815E001914BA /* IRYUVTools.m in Sources */,
+				8AE405C0230E40120050DF09 /* IRGLTransformControllerVR.m in Sources */,
 				8A51F61022CF38E700A7715B /* IRPlayerAction.m in Sources */,
 				8A51F62422CF3CE300A7715B /* IRFFPlayer.m in Sources */,
 				8A51F7F522CF4E8B00A7715B /* IRGLProgramMulti4P.m in Sources */,
@@ -1520,7 +1566,9 @@
 				8A51F7F122CF4E7300A7715B /* IRGLProgramMulti.m in Sources */,
 				8A51F77022CF47D600A7715B /* IRGLRenderModeFactory.m in Sources */,
 				8A51F74322CF451900A7715B /* IRAudioManager.m in Sources */,
+				8A563422230D14AA00949B9A /* IRGLProgramVRFactory.m in Sources */,
 				8A51F64922CF3E7800A7715B /* IRFFFrame.m in Sources */,
+				8A56341E230D142700949B9A /* IRGLRenderModeVR.m in Sources */,
 				8A51F75322CF45C700A7715B /* IRMovieDecoder.m in Sources */,
 				8A51F7C222CF4C5E00A7715B /* IRGLRenderRGB.m in Sources */,
 				8A51F7ED22CF4E5F00A7715B /* IRGLProgram2D.m in Sources */,

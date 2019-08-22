@@ -71,14 +71,16 @@ typedef NS_ENUM(NSInteger, IRRenderMode){
 @property BOOL doubleTapEnable;
 @property BOOL swipeEnable;
 @property (nonatomic, weak) IRAVPlayer *avplayer;
-
-
+@property (nonatomic, assign) CGFloat aspect;
 @property (nonatomic, assign) IRDisplayRendererType rendererType;
 //@property (nonatomic, strong) SGFingerRotation * fingerRotation;
 
 - (void)reloadGravityMode;
 - (void)cleanEmptyBuffer;
 //- (void)reloadIRAVPlayer;
+- (void)reloadViewFrame;
+- (void)updateFrameFromParent:(CGRect)frame;
+
 @end
 
 NS_ASSUME_NONNULL_END

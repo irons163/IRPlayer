@@ -17,7 +17,7 @@
 const float CAMERA_RADIUS = 120.0f;
 const float DEFAULT_FOV = 60.0f;
 const float DRAG_FRICTION = 0.15f;
-const float INITIAL_PITCH_DEGREES = 90.f;
+const float INITIAL_PITCH_DEGREES = 0;
 
 -(IRGLScope3D*)getScope{
     return scope;
@@ -277,6 +277,10 @@ const float INITIAL_PITCH_DEGREES = 90.f;
 
 - (void)updateVertices
 {
+    while(scope.lat > 90)
+        scope.lat = scope.lat - 180;
+    while(scope.lat <= -90)
+        scope.lat = 180 + scope.lat;
     scope.lat = MAX(_scopeRange.minLat, MIN(_scopeRange.maxLat - fov / 2, scope.lat));
     while(scope.lng > 180)
         scope.lng = scope.lng - 360;

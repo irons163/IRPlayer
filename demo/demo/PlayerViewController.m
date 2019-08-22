@@ -75,7 +75,8 @@
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    self.player.view.frame = self.view.bounds;
+//    self.player.view.frame = self.view.bounds;
+    [self.player updateGraphicsViewFrame:self.view.bounds];
 }
 
 + (NSString *)displayNameForDemoType:(DemoType)demoType

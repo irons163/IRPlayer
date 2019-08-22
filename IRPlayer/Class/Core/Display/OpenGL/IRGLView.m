@@ -71,7 +71,7 @@
     NSArray *_programs;
     IRGLProgram2D *_currentProgram;
     
-    BOOL isGLRenderContentModeChangable;
+//    BOOL isGLRenderContentModeChangable;
     BOOL isTouchedInProgram;
     BOOL willDoSnapshot;
     UITapGestureRecognizer *tapGr;
@@ -88,7 +88,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.frame = CGRectMake(0, 0, 1, 1);
+        self.frame = CGRectMake(0, 0, 100, 100);
         [self initDefaultValue];
         irPixelFormat = YUV_IRPixelFormat;
         [self initGLWithPixelFormat:irPixelFormat];
@@ -327,13 +327,13 @@
 - (void)changeGLRenderContentMode {
     IRGLRenderContentMode irGLViewContentMode;
     
-    switch (self.contentMode) {
-        case UIViewContentModeScaleAspectFit:
+    switch (self.abstractPlayer.viewGravityMode) {
+        case IRGravityModeResizeAspect:
             irGLViewContentMode = IRGLRenderContentModeScaleAspectFit;
-        case UIViewContentModeScaleAspectFill:
+        case IRGravityModeResizeAspectFill:
             irGLViewContentMode = IRGLRenderContentModeScaleAspectFill;
             break;
-        case UIViewContentModeScaleToFill:
+        case IRGravityModeResize:
             irGLViewContentMode = IRGLRenderContentModeScaleToFill;
             break;
         default:
@@ -633,12 +633,52 @@ typedef NS_ENUM(NSInteger, IRScrollDirectionType){
 //                break;
 //        }
 //    }
-    if(isGLRenderContentModeChangable)
+//    if(isGLRenderContentModeChangable)
         [self changeGLRenderContentMode];
 }
 
+- (void)setAspect:(CGFloat)aspect
+{
+    if (_aspect != aspect) {
+        _aspect = aspect;
+        [self reloadViewFrame];
+    }
+}
+
 - (void)updateDisplayViewLayout:(CGRect)frame {
+    [self reloadViewFrame];
     [self updateViewPort:1.0];
+}
+
+- (void)reloadViewFrame
+{
+    CGRect superviewFrame = self.superview.bounds;
+    CGFloat superviewAspect = superviewFrame.size.width / superviewFrame.size.height;
+    
+    if (self.aspect <= 0) {
+        self.frame = superviewFrame;
+        return;
+    }
+    
+    if (superviewAspect < self.aspect) {
+        CGFloat height = superviewFrame.size.width / self.aspect;
+        self.frame = CGRectMake(0, (superviewFrame.size.height - height) / 2, superviewFrame.size.width, height);
+    } else if (superviewAspect > self.aspect) {
+        CGFloat width = superviewFrame.size.height * self.aspect;
+        self.frame = CGRectMake((superviewFrame.size.width - width) / 2, 0, width, superviewFrame.size.height);
+    } else {
+        self.frame = superviewFrame;
+    }
+}
+
+- (void)setFrame:(CGRect)frame {
+    [super setFrame:frame];
+//    [self reloadView];
+}
+
+- (void)updateFrameFromParent:(CGRect)frame {
+    self.frame = frame;
+    [self reloadView];
 }
 
 //- (void)reloadIRAVPlayer

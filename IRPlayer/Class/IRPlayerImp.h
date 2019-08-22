@@ -99,6 +99,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)pause;
 - (void)seekToTime:(NSTimeInterval)time;
 - (void)seekToTime:(NSTimeInterval)time completeHandler:(nullable void(^)(BOOL finished))completeHandler;
+- (void)updateGraphicsViewFrame:(CGRect)frame;
 
 @end
 

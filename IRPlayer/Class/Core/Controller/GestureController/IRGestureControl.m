@@ -21,7 +21,7 @@
 //    Down
 //};
 
-@interface IRGestureControl ()<IRGLRenderModeDelegate, UIGestureRecognizerDelegate>
+@interface IRGestureControl ()<IRGLRenderModeDelegate, IRGLProgramDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UITapGestureRecognizer *singleTap;
 @property (nonatomic, strong) UITapGestureRecognizer *doubleTap;
@@ -68,7 +68,7 @@
 //    [view removeGestureRecognizer:self.pinchGR];
 }
 
--(void)initDefaultValue{
+- (void)initDefaultValue {
     self.swipeEnable = YES;
     
     UIPanGestureRecognizer* gr = [[UIPanGestureRecognizer alloc] initWithTarget:self
@@ -139,7 +139,7 @@
     }
 }
 
--(void)resetSmoothScroll{
+- (void)resetSmoothScroll {
     finalPoint = CGPointZero;
     alreadyPoint = CGPointZero;
     startTimestamp = 0;
@@ -158,7 +158,7 @@
     slideDuration = slideFactor*2;
 }
 
--(void)shiftDegreeX:(float)degreeX degreeY:(float)degreeY{
+- (void)shiftDegreeX:(float)degreeX degreeY:(float)degreeY {
     CGFloat unmoveYetX = finalPoint.x - alreadyPoint.x;
     CGFloat unmoveYetY = finalPoint.y - alreadyPoint.y;
     degreeX += unmoveYetX;
@@ -172,7 +172,7 @@
     slideDuration = 0.5;
 }
 
--(void)didScrollToBounds:(IRGLTransformControllerScrollToBounds)bounds withProgram:(IRGLProgram2D *)program;{
+- (void)didScrollToBounds:(IRGLTransformControllerScrollToBounds)bounds withProgram:(IRGLProgram2D *)program {
     CGFloat moveX = finalPoint.x - alreadyPoint.x;
     CGFloat moveY = finalPoint.y - alreadyPoint.y;
     
@@ -230,8 +230,7 @@
 
 #pragma mark - Gesture Callback
 
-- (void)didPan:(UIPanGestureRecognizer*)gr
-{
+- (void)didPan:(UIPanGestureRecognizer*)gr {
     NSLog(@"didPan, state %zd",gr.state);
     
     isPaned = YES;
@@ -275,7 +274,7 @@
     }
 }
 
-- (void)didPinch:(UIPinchGestureRecognizer*)sender{
+- (void)didPinch:(UIPinchGestureRecognizer*)sender {
     NSLog(@"didPinch %f state %zd",sender.scale,sender.state);
     
     if ((UIGestureRecognizerStateCancelled == sender.state ||
@@ -304,8 +303,7 @@
     }
 }
 
-- (void)didRotate:(UIRotationGestureRecognizer*)gr
-{
+- (void)didRotate:(UIRotationGestureRecognizer*)gr {
     NSLog(@"didRotate, state %zd",gr.state);
     if ((UIGestureRecognizerStateCancelled == gr.state ||
          UIGestureRecognizerStateEnded == gr.state ||
@@ -340,13 +338,12 @@
     }
 }
 
--(void) updateRotation:(float)rotateRadians{
+- (void)updateRotation:(float)rotateRadians {
     [_currentMode.program didRotate: -1 * rotateRadians];
     [self.targetView render:nil];
 }
 
-- (void)didDoubleTap:(UITapGestureRecognizer*)gr
-{
+- (void)didDoubleTap:(UITapGestureRecognizer*)gr {
     NSLog(@"didDoubleTap, state %zd",gr.state);
     
     isTouchedInProgram = NO;
