@@ -60,6 +60,7 @@ typedef BOOL (^IRGLProgram2DResetScaleBlock)(IRGLProgram2D *program);
 -(void) setModelviewProj:(GLKMatrix4) modelviewProj;
 -(BOOL) prepareRender;
 -(void) clearBuffer;
+-(CGRect) calculateViewport;
 -(void) render;
 -(void) releaseProgram;
 -(CGSize) getOutputSize;

@@ -12,6 +12,7 @@
 #import "IRGLRenderMode3DFisheye.h"
 #import "IRGLRenderModeMulti4P.h"
 #import "IRGLRenderModeVR.h"
+#import "IRGLRenderModeDistortion.h"
 
 @implementation IRGLRenderModeFactory
 
@@ -56,6 +57,12 @@
 
 + (IRGLRenderMode*)createVRModeWithParameter:(nullable IRMediaParameter*)parameter {
     IRGLRenderMode *mode = [[IRGLRenderModeVR alloc] init];
+    mode.parameter = parameter;
+    return mode;
+}
+
++ (IRGLRenderMode*)createDistortionModeWithParameter:(nullable IRMediaParameter*)parameter {
+    IRGLRenderMode *mode = [[IRGLRenderModeDistortion alloc] init];
     mode.parameter = parameter;
     return mode;
 }

@@ -10,9 +10,11 @@
 #import "IRGLTransformController2D.h"
 #import "IRGLTransformController3DFisheye.h"
 #import "IRGLTransformControllerVR.h"
+#import "IRGLTransformControllerDistortion.h"
 #import "IRGLProjectionOrthographic.h"
 #import "IRGLProjectionEquirectangular.h"
 #import "IRGLProjectionVR.h"
+#import "IRGLProjectionDistortion.h"
 #import "IRFisheyeParameter.h"
 
 @implementation IRGLProgramFactory
@@ -169,7 +171,7 @@
 }
 
 +(IRGLProgramVR*) createIRGLProgramVRWithPixelFormat:(IRPixelFormat)pixelFormat withViewprotRange:(CGRect)viewprotRange withParameter:(IRMediaParameter*)parameter{
-    IRGLProgram2D* program = [[IRGLProgramVR alloc] initWithPixelFormat:pixelFormat withViewprotRange:viewprotRange withParameter:(IRMediaParameter*)parameter];
+    IRGLProgramVR* program = [[IRGLProgramVR alloc] initWithPixelFormat:pixelFormat withViewprotRange:viewprotRange withParameter:(IRMediaParameter*)parameter];
     if(!program.tramsformController){
         IRGLTransformControllerVR *transformController = [[IRGLTransformControllerVR alloc] initWithViewportWidth:viewprotRange.size.width viewportHeight:viewprotRange.size.height tileType:TILT_UP];
         transformController.rc = 1;
@@ -191,6 +193,37 @@
 //        IRGLScopeRange* scopeRange = [(IRGLTransformController3DFisheye*)program.tramsformController getScopeRange];
 //        newScopeRange = [[IRGLScopeRange alloc] initWithMinLat:scopeRange.minLat maxLat:scopeRange.maxLat minLng:scopeRange.minLng maxLng:scopeRange.maxLng defaultLat:-40 defaultLng:90];
 //        [program.tramsformController setScopeRange:newScopeRange];
+        IRGLScaleRange* oldScaleRange = program.tramsformController.scaleRange;
+        IRGLScaleRange* newScaleRange = [[IRGLScaleRange alloc] initWithMinScaleX:oldScaleRange.minScaleX minScaleY:oldScaleRange.minScaleY maxScaleX:oldScaleRange.maxScaleX * 1.5f maxScaleY:oldScaleRange.maxScaleY * 1.5f defaultScaleX:oldScaleRange.defaultScaleX defaultScaleY:oldScaleRange.defaultScaleY];
+        program.tramsformController.scaleRange = newScaleRange;
+    }
+    program.mapProjection = [[IRGLProjectionVR alloc] initWithTextureWidth:0 hidth:0];
+    return program;
+}
+
++(IRGLProgramDistortion*) createIRGLProgramDistortionWithPixelFormat:(IRPixelFormat)pixelFormat withViewprotRange:(CGRect)viewprotRange withParameter:(IRMediaParameter*)parameter{
+    IRGLProgramDistortion* program = [[IRGLProgramDistortion alloc] initWithPixelFormat:pixelFormat withViewprotRange:viewprotRange withParameter:(IRMediaParameter*)parameter];
+    if(!program.tramsformController){
+        IRGLTransformControllerDistortion *transformController = [[IRGLTransformControllerDistortion alloc] initWithViewportWidth:viewprotRange.size.width viewportHeight:viewprotRange.size.height tileType:TILT_UP];
+        transformController.rc = 1;
+        transformController.fov = 30;
+        [transformController updateVertices];
+        program.tramsformController = transformController;
+        program.tramsformController.delegate = program;
+        //        program.tramsformController = [[IRGLTransformController2D alloc] initWithViewportWidth:viewprotRange.size.width viewportHeight:viewprotRange.size.height];
+        //        program.tramsformController.delegate = program;
+        //        IRGLScopeRange* oldScopeRange = program.tramsformController.scopeRange;
+        //        float oldMaxLat = oldScopeRange.maxLat;
+        //        float newMaxLat = (oldMaxLat > 0) ? fp.latmax : fp.latmax - 90.0;
+        //        float newDefaultLat = oldScopeRange.defaultLat;
+        //        if(newDefaultLat > newMaxLat || newDefaultLat < oldScopeRange.minLat)
+        //            newDefaultLat = (newMaxLat + oldScopeRange.minLat) / 2;
+        //        IRGLScopeRange* newScopeRange = [[IRGLScopeRange alloc] initWithMinLat:oldScopeRange.minLat maxLat:oldScopeRange.maxLat minLng:oldScopeRange.minLng maxLng:oldScopeRange.maxLng defaultLat:oldScopeRange.defaultLat defaultLng:oldScopeRange.defaultLng];
+        //        program.tramsformController.scopeRange = newScopeRange;
+        
+        //        IRGLScopeRange* scopeRange = [(IRGLTransformController3DFisheye*)program.tramsformController getScopeRange];
+        //        newScopeRange = [[IRGLScopeRange alloc] initWithMinLat:scopeRange.minLat maxLat:scopeRange.maxLat minLng:scopeRange.minLng maxLng:scopeRange.maxLng defaultLat:-40 defaultLng:90];
+        //        [program.tramsformController setScopeRange:newScopeRange];
         IRGLScaleRange* oldScaleRange = program.tramsformController.scaleRange;
         IRGLScaleRange* newScaleRange = [[IRGLScaleRange alloc] initWithMinScaleX:oldScaleRange.minScaleX minScaleY:oldScaleRange.minScaleY maxScaleX:oldScaleRange.maxScaleX * 1.5f maxScaleY:oldScaleRange.maxScaleY * 1.5f defaultScaleX:oldScaleRange.defaultScaleX defaultScaleY:oldScaleRange.defaultScaleY];
         program.tramsformController.scaleRange = newScaleRange;

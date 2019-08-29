@@ -172,9 +172,15 @@
             break;
         case IRVideoTypeVR: {
             _videoType = videoType;
-            IRGLRenderMode *mode = [IRGLRenderModeFactory createVRModeWithParameter:nil];
-            [mode setDefaultScale:1.5f];
-            [self.displayView setRenderModes:@[mode]];
+            if (self.displayMode == IRDisplayModeNormal) {
+                IRGLRenderMode *mode = [IRGLRenderModeFactory createVRModeWithParameter:nil];
+                [mode setDefaultScale:1.5f];
+                [self.displayView setRenderModes:@[mode]];
+            } else if (self.displayMode == IRDisplayModeBox) {
+                IRGLRenderMode *mode = [IRGLRenderModeFactory createDistortionModeWithParameter:nil];
+                [mode setDefaultScale:1.5f];
+                [self.displayView setRenderModes:@[mode]];
+            }
             self.displayView.aspect = 16.0 / 9.0;
             [self setViewGravityMode:IRGravityModeResizeAspect];
             _gestureControl.currentMode = [self.displayView getCurrentRenderMode];

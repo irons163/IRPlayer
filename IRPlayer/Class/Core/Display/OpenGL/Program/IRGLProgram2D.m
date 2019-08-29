@@ -234,13 +234,18 @@ exit:
     glClear(GL_COLOR_BUFFER_BIT);
 }
 
--(void) render{
+- (CGRect)calculateViewport {
     float vw = [self.tramsformController getScope].W;
     float vh = [self.tramsformController getScope].H;
     float viewportX = [self.tramsformController getScope].scaleX < 1.0 ? -1*(vw - vw * [self.tramsformController getScope].scaleX) / 2  : 0;
     float viewportY = [self.tramsformController getScope].scaleY < 1.0 ? -1*(vh - vh * [self.tramsformController getScope].scaleY) / 2  : 0;
     
-    glViewport(_viewprotRange.origin.x + viewportX, _viewprotRange.origin.y + viewportY, _viewprotRange.size.width, _viewprotRange.size.height);
+    return CGRectMake(_viewprotRange.origin.x + viewportX, _viewprotRange.origin.y + viewportY, _viewprotRange.size.width, _viewprotRange.size.height);
+}
+
+- (void)render {
+    CGRect viewport = [self calculateViewport];
+    glViewport(viewport.origin.x, viewport.origin.y, viewport.size.width, viewport.size.height);
     
     [self setModelviewProj:[self.tramsformController getModelViewProjectionMatrix]];
     

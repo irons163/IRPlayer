@@ -242,7 +242,7 @@ const float INITIAL_PITCH_DEGREES = 0;
     scope.scaleX = scope.scaleY = 1.0f;
     scope.panDegree = scope.lat = scope.lng = 0.0f;
     scope.tiltType = defaultType;
-    fov = DEFAULT_FOV;
+//    fov = DEFAULT_FOV;
     _defaultTransformScaleX = scope.scaleX;
     _defaultTransformScaleY = scope.scaleY;
     

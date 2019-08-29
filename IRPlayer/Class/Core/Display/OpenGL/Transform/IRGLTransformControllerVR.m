@@ -19,7 +19,7 @@
 
 -(IRGLScopeRange*) getScopeRangeOf:(TiltType) type {
     switch(type){
-        case TILT_UP: return [[IRGLScopeRange alloc] initWithMinLat:-90 maxLat:90 minLng:-180 maxLng:180 defaultLat:0 defaultLng:0];
+        case TILT_UP: return [[IRGLScopeRange alloc] initWithMinLat:-190 maxLat:190 minLng:-180 maxLng:180 defaultLat:0 defaultLng:0];
         case TILT_TOWARD: return [[IRGLScopeRange alloc] initWithMinLat:-90 maxLat:90 minLng:-180 maxLng:180 defaultLat:0 defaultLng:0];
         case TILT_BACKWARD: return [[IRGLScopeRange alloc] initWithMinLat:-90 maxLat:90 minLng:-180 maxLng:180 defaultLat:0 defaultLng:0];
         default: ;
