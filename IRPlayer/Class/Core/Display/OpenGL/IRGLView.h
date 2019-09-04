@@ -58,7 +58,7 @@ typedef NS_ENUM(NSInteger, IRRenderMode){
 - (void)updateViewPort:(float)scale;
 - (void)updateScopeByFx:(float)fx fy:(float)fy dsx:(float)dsx dsy:(float) dsy;
 - (void)scrollByDx:(float)dx dy:(float)dy;
-//- (void)shiftDegreeX:(float)degreeX degreeY:(float)degreeY;
+- (void)shiftDegreeX:(float)degreeX degreeY:(float)degreeY;
 - (void)setRenderModes:(NSArray<IRGLRenderMode*>*) modes;
 - (NSArray*)getRenderModes;
 - (IRGLRenderMode*)getCurrentRenderMode;
