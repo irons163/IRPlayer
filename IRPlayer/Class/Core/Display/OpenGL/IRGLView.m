@@ -49,7 +49,7 @@
 
 @end
 
-@interface IRGLView()<UIGestureRecognizerDelegate>
+@interface IRGLView()
 
 @property (nonatomic) IRPlayerImp * abstractPlayer;
 
@@ -72,9 +72,8 @@
     IRGLProgram2D *_currentProgram;
     
 //    BOOL isGLRenderContentModeChangable;
-    BOOL isTouchedInProgram;
+//    BOOL isTouchedInProgram;
     BOOL willDoSnapshot;
-    UITapGestureRecognizer *tapGr;
     
     IRGLRenderMode* mode;
     NSArray<IRGLRenderMode*>* _modes;
@@ -263,27 +262,7 @@
     [self initGLWithPixelFormat:irPixelFormat];
 }
 
-//Not consider Multi program status yet.
-- (BOOL)isProgramZooming {
-    return _currentProgram && !CGPointEqualToPoint([_currentProgram getCurrentScale], CGPointMake(1.0,1.0));
-}
 
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-    if ((!self.doubleTapEnable || ![self isProgramZooming]) && gestureRecognizer == tapGr){
-        return NO;
-    }else if([gestureRecognizer isKindOfClass:[UISwipeGestureRecognizer class]] && [self isProgramZooming]){
-        return NO;
-    }
-    return YES;
-}
-
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]  && [otherGestureRecognizer isKindOfClass:[UISwipeGestureRecognizer class]] && (self.swipeEnable && ![self isProgramZooming])) {
-        return YES;
-    } else {
-        return NO;
-    }
-}
 
 - (void)dealloc {
     [self reset];
@@ -347,29 +326,17 @@
 }
 
 - (void)resetAllViewport:(float)w :(float)h resetTransform:(BOOL)resetTransform {
-    if(self.delegate)
-        [self.delegate glViewWillBeginZooming:self];
-    
     viewprotRange = CGRectMake(0, 0, w, h);
     
     for(IRGLProgram2D *program in _programs){
         [program setViewprotRange:CGRectMake(0, 0, w, h) resetTransform:NO];
     }
     [self render:nil];
-    
-    if(self.delegate)
-        [self.delegate glViewDidEndZooming:self atScale:0];
 }
 
 - (void)updateScopeByFx:(float)fx fy:(float)fy dsx:(float)dsx dsy:(float)dsy {
-    if(self.delegate)
-        [self.delegate glViewWillBeginZooming:self];
-    
     [_currentProgram didPinchByfx:fx fy:fy dsx:dsx dsy:dsy];
     [self render:nil];
-    
-    if(self.delegate)
-        [self.delegate glViewDidEndZooming:self atScale:0];
 }
 
 - (void) scrollByDx:(float)dx dy:(float)dy {

@@ -67,4 +67,10 @@
     return mode;
 }
 
++ (IRGLRenderMode*)createFisheyeModeWithParameter:(nullable IRMediaParameter*)parameter {
+    IRGLRenderMode *mode = [[IRGLRenderMode3DFisheye alloc] init];
+    mode.parameter = parameter;
+    return mode;
+}
+
 @end

@@ -11,6 +11,7 @@
 		8A8BC83022F27CFD0069707E /* IRPlayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A8BC82E22F26FD80069707E /* IRPlayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A8BC83622F2806E0069707E /* i-see-fire.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8A8BC83422F2806D0069707E /* i-see-fire.mp4 */; };
 		8A8BC83722F2806E0069707E /* google-help-vr.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8A8BC83522F2806E0069707E /* google-help-vr.mp4 */; };
+		8AA1CEF4231E04E20088157A /* fisheye-demo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8AA1CEF3231E04E20088157A /* fisheye-demo.mp4 */; };
 		8AF9031222D491F5001914BA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9031122D491F5001914BA /* AppDelegate.m */; };
 		8AF9031522D491F5001914BA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9031422D491F5001914BA /* ViewController.m */; };
 		8AF9031822D491F6001914BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AF9031622D491F6001914BA /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 		8A8BC82922F26FD70069707E /* IRPlayer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IRPlayer.xcodeproj; path = ../IRPlayer.xcodeproj; sourceTree = "<group>"; };
 		8A8BC83422F2806D0069707E /* i-see-fire.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "i-see-fire.mp4"; sourceTree = "<group>"; };
 		8A8BC83522F2806E0069707E /* google-help-vr.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "google-help-vr.mp4"; sourceTree = "<group>"; };
+		8AA1CEF3231E04E20088157A /* fisheye-demo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fisheye-demo.mp4"; sourceTree = "<group>"; };
 		8AF9030D22D491F5001914BA /* demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AF9031022D491F5001914BA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8AF9031122D491F5001914BA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			children = (
 				8A8BC83522F2806E0069707E /* google-help-vr.mp4 */,
 				8A8BC83422F2806D0069707E /* i-see-fire.mp4 */,
+				8AA1CEF3231E04E20088157A /* fisheye-demo.mp4 */,
 				8AF9031022D491F5001914BA /* AppDelegate.h */,
 				8AF9031122D491F5001914BA /* AppDelegate.m */,
 				8AF9031322D491F5001914BA /* ViewController.h */,
@@ -220,6 +223,7 @@
 				8AF9031A22D4920C001914BA /* Assets.xcassets in Resources */,
 				8AF9031822D491F6001914BA /* Main.storyboard in Resources */,
 				8A8BC83622F2806E0069707E /* i-see-fire.mp4 in Resources */,
+				8AA1CEF4231E04E20088157A /* fisheye-demo.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

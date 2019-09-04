@@ -7,6 +7,7 @@
 //
 
 #import "IRGLProjectionEquirectangular.h"
+#import "IRFisheyeParameter.h"
 
 const float SPHERE_RADIUS = 800.0f;
 
@@ -33,41 +34,46 @@ const float POLAR_LAT = 85.0f;
     float cy ;
 }
 
--(instancetype)initWithTextureWidth:(float)w hidth:(float)h centerX:(float)centerX centerY:(float)centerY radius:(float)radius {
+-(instancetype)initWithTextureWidth:(float)w height:(float)h centerX:(float)centerX centerY:(float)centerY radius:(float)radius {
     if(self = [super init]){
-        x0 = y0 = z0 = 0;
-        r0 = SPHERE_RADIUS;
-        slices = SPHERE_SLICES;
-        indicesPerVertex = SPHERE_INDICES_PER_VERTEX;
-        //        tw = 1440;
-        //        th = 1080;
-        //        cr = 510;
-        //        cx = 680;
-        //        cy = 524;
-        
-        tw = w;
-        th = h;
-        
-        if(radius == 0 ||
-           centerX == 0 ||
-           centerY == 0 ||
-           radius > w / 2 ||
-           radius > h / 2 ||
-           radius + centerX > w ||
-           radius + centerY > h){
-            NSLog(@"illegal params, set default ones...");
-            centerX = w / 2;
-            radius = h/ 2;
-            radius = w > h? h / 2 : h / 2;
-        }
-        
-        cr = radius;
-        cx = centerX;
-        cy = centerY;
-        
-        [self initBuffers:tw :th :cr :cx :cy];
+        [self setupWithTextureWidth:w height:h centerX:centerX centerY:centerY radius:radius];
     }
     return self;
+}
+
+- (void)setupWithTextureWidth:(float)w height:(float)h centerX:(float)centerX centerY:(float)centerY radius:(float)radius {
+    x0 = y0 = z0 = 0;
+    r0 = SPHERE_RADIUS;
+    slices = SPHERE_SLICES;
+    indicesPerVertex = SPHERE_INDICES_PER_VERTEX;
+    //        tw = 1440;
+    //        th = 1080;
+    //        cr = 510;
+    //        cx = 680;
+    //        cy = 524;
+    
+    tw = w;
+    th = h;
+    
+    if(radius == 0 ||
+       centerX == 0 ||
+       centerY == 0 ||
+       radius > w / 2 ||
+       radius > h / 2 ||
+       radius + centerX > w ||
+       radius + centerY > h){
+        NSLog(@"illegal params, set default ones...");
+        centerX = w / 2;
+        centerY = h / 2;
+        radius = h/ 2;
+        radius = w > h? h / 2 : h / 2;
+    }
+    
+    cr = radius;
+    cx = centerX;
+    cy = centerY;
+    
+    [self initBuffers:tw :th :cr :cx :cy];
 }
 
 -(void) initBuffers:(float) tw :(float) th :(float) cr :(float) cx :(float) cy {
@@ -176,6 +182,16 @@ const float POLAR_LAT = 85.0f;
         glDrawElements(GL_TRIANGLES,
                        mNumIndices[j], GL_UNSIGNED_SHORT,
                        mIndices[j]);
+    }
+}
+
+- (void)updateWithParameter:(IRMediaParameter *)parameter {
+    if([parameter isKindOfClass:[IRFisheyeParameter class]]) {
+        if(tw == parameter.width && th == parameter.height)
+            return;
+        
+        IRFisheyeParameter *p = (IRFisheyeParameter*)parameter;
+        [self setupWithTextureWidth:p.width height:p.height centerX:p.cx centerY:p.cy radius:p.rx];
     }
 }
 

@@ -69,6 +69,7 @@
         }
         
         [self setViewprotRange:viewprotRange];
+        _parameter = parameter;
         
         self.shouldUpdateToDefaultWhenOutputSizeChanged = YES;
     }

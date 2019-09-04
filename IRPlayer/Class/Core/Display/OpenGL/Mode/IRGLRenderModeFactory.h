@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSArray<IRGLRenderMode*>*)createFisheyeModesWithParameter:(nullable IRMediaParameter*)parameter;
 + (IRGLRenderMode*)createVRModeWithParameter:(nullable IRMediaParameter*)parameter;
 + (IRGLRenderMode*)createDistortionModeWithParameter:(nullable IRMediaParameter*)parameter;
++ (IRGLRenderMode*)createFisheyeModeWithParameter:(nullable IRMediaParameter*)parameter;
 
 @end
 

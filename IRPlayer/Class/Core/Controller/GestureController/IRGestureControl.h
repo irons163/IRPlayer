@@ -13,22 +13,20 @@
 
 //@class IRGLView;
 
-//@protocol IRGLViewDelegate
-//
-//@optional
-//- (void)glViewWillBeginDragging:(IRGLView *)glView;
-//- (void)glViewDidEndDragging:(IRGLView *)glView willDecelerate:(BOOL)decelerate;
-//- (void)glViewDidEndDecelerating:(IRGLView *)glView;
-//- (void)glViewDidScrollToBounds:(IRGLView *)glView;
-//- (void)glViewWillBeginZooming:(IRGLView *)glView;
-//- (void)glViewDidEndZooming:(IRGLView *)glView atScale:(CGFloat)scale;
-//@end
+@protocol IRGLViewDelegate
 
-
+@optional
+- (void)glViewWillBeginDragging:(IRGLView *)glView;
+- (void)glViewDidEndDragging:(IRGLView *)glView willDecelerate:(BOOL)decelerate;
+- (void)glViewDidEndDecelerating:(IRGLView *)glView;
+- (void)glViewDidScrollToBounds:(IRGLView *)glView;
+- (void)glViewWillBeginZooming:(IRGLView *)glView;
+- (void)glViewDidEndZooming:(IRGLView *)glView atScale:(CGFloat)scale;
+@end
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface IRGestureControl : NSObject
+@interface IRGLGestureController : NSObject
 
 @property (weak) id<IRGLViewDelegate> delegate;
 @property BOOL doubleTapEnable;

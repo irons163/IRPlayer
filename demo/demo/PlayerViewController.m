@@ -43,10 +43,12 @@
     
     static NSURL * normalVideo = nil;
     static NSURL * vrVideo = nil;
+    static NSURL * fisheyeVideo = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         normalVideo = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"i-see-fire" ofType:@"mp4"]];
         vrVideo = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"google-help-vr" ofType:@"mp4"]];
+        fisheyeVideo = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"fisheye-demo" ofType:@"mp4"]];
     });
     switch (self.demoType)
     {
@@ -69,6 +71,14 @@
             self.player.decoder = [IRPlayerDecoder FFmpegDecoder];
             [self.player replaceVideoWithURL:normalVideo];
             break;
+        case DemoType_FFmpeg_Fisheye_Hardware:
+            self.player.decoder = [IRPlayerDecoder FFmpegDecoder];
+            [self.player replaceVideoWithURL:fisheyeVideo videoType:IRVideoTypeFisheye];
+            break;
+        case DemoType_FFmpeg_Fisheye_Hardware_Modes_Selection:
+            self.player.decoder = [IRPlayerDecoder FFmpegDecoder];
+            [self.player replaceVideoWithURL:fisheyeVideo videoType:IRVideoTypeFisheye];
+            break;
     }
 }
 
@@ -88,7 +98,9 @@
                          @"google help,  AVPlayer,  VR",
                          @"google help,  AVPlayer,  VR,  Box",
                          @"i see fire,   FFmpeg",
-                         @"i see fire,   FFmpeg,  Hardware Acceleration"];
+                         @"i see fire,   FFmpeg, Hardware Acceleration",
+                         @"i see fire,   FFmpeg,  Fisheye, Hardware Acceleration",
+                         @"i see fire,   FFmpeg,  Fisheyes, Hardware Acceleration"];
     });
     if (demoType < displayNames.count) {
         return [displayNames objectAtIndex:demoType];

@@ -12,8 +12,9 @@
 #import "IRGLView.h"
 #import "IRAVPlayer.h"
 #import "IRFFPlayer.h"
-#import "IRGestureControl.h"
+#import "IRGLGestureController.h"
 #import "IRGLRenderModeFactory.h"
+#import "IRFisheyeParameter.h"
 
 #if IRPLATFORM_TARGET_OS_IPHONE_OR_TV
 #import "IRAudioManager.h"
@@ -25,7 +26,7 @@
 @property (nonatomic, assign) IRDecoderType decoderType;
 @property (nonatomic, strong) IRAVPlayer * avPlayer;
 @property (nonatomic, strong) IRFFPlayer * ffPlayer;
-@property (nonatomic, strong) IRGestureControl *gestureControl;
+@property (nonatomic, strong) IRGLGestureController *gestureControl;
 
 @property (nonatomic, assign) BOOL needAutoPlay;
 
@@ -186,6 +187,16 @@
             _gestureControl.currentMode = [self.displayView getCurrentRenderMode];
             break;
         }
+        case IRVideoTypeFisheye: {
+            _videoType = videoType;
+            IRGLRenderMode *mode = [IRGLRenderModeFactory createFisheyeModeWithParameter:[[IRFisheyeParameter alloc] initWithWidth:0 height:0 up:NO rx:0 ry:0 cx:0 cy:0 latmax:80]];
+            [mode setDefaultScale:1.5f];
+            [self.displayView setRenderModes:@[mode]];
+            self.displayView.aspect = 16.0 / 9.0;
+            [self setViewGravityMode:IRGravityModeResizeAspect];
+            _gestureControl.currentMode = [self.displayView getCurrentRenderMode];
+            break;
+        }
         default:
             _videoType = IRVideoTypeNormal;
             [self.displayView setRenderModes:[IRGLRenderModeFactory createNormalModesWithParameter:nil]];
@@ -320,7 +331,7 @@
 //        _displayView = [IRGLView displayViewWithAbstractPlayer:self];
         _displayView = [[IRGLView alloc] init];
         
-        _gestureControl = [IRGestureControl new];
+        _gestureControl = [IRGLGestureController new];
         [_gestureControl addGestureToView:_displayView];
         _gestureControl.currentMode = [_displayView getCurrentRenderMode];
         _gestureControl.delegate = self;

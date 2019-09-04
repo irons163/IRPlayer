@@ -36,16 +36,16 @@ typedef NS_ENUM(NSInteger, IRRenderMode){
     Fisheye_Persp_4P
 };
 
-@protocol IRGLViewDelegate
-
-@optional
-- (void)glViewWillBeginDragging:(IRGLView *)glView;
-- (void)glViewDidEndDragging:(IRGLView *)glView willDecelerate:(BOOL)decelerate;
-- (void)glViewDidEndDecelerating:(IRGLView *)glView;
-- (void)glViewDidScrollToBounds:(IRGLView *)glView;
-- (void)glViewWillBeginZooming:(IRGLView *)glView;
-- (void)glViewDidEndZooming:(IRGLView *)glView atScale:(CGFloat)scale;
-@end
+//@protocol IRGLViewDelegate
+//
+//@optional
+//- (void)glViewWillBeginDragging:(IRGLView *)glView;
+//- (void)glViewDidEndDragging:(IRGLView *)glView willDecelerate:(BOOL)decelerate;
+//- (void)glViewDidEndDecelerating:(IRGLView *)glView;
+//- (void)glViewDidScrollToBounds:(IRGLView *)glView;
+//- (void)glViewWillBeginZooming:(IRGLView *)glView;
+//- (void)glViewDidEndZooming:(IRGLView *)glView atScale:(CGFloat)scale;
+//@end
 
 @interface IRGLView : UIView<IRFFDecoderVideoOutput>
 
@@ -66,7 +66,7 @@ typedef NS_ENUM(NSInteger, IRRenderMode){
 - (void)clearCanvas;
 - (void)doSnapShot;
 - (void)closeGLView;
-@property (weak) id<IRGLViewDelegate> delegate;
+//@property (weak) id<IRGLViewDelegate> delegate;
 @property (nonatomic) IRPixelFormat pixelFormat;
 @property BOOL doubleTapEnable;
 @property BOOL swipeEnable;

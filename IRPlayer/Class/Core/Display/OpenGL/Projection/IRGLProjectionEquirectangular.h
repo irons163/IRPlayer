@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface IRGLProjectionEquirectangular : NSObject<IRGLProjection>
 
--(instancetype)initWithTextureWidth:(float)w hidth:(float)h centerX:(float)centerX centerY:(float)centerY radius:(float)radius;
+-(instancetype)initWithTextureWidth:(float)w height:(float)h centerX:(float)centerX centerY:(float)centerY radius:(float)radius;
 @end
 
 NS_ASSUME_NONNULL_END

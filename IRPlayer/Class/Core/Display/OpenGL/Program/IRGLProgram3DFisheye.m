@@ -14,12 +14,12 @@
 
 @implementation IRGLProgram3DFisheye
 
--(NSString*)vertexShader{
+- (NSString*)vertexShader {
     vertexShaderString = [IRGLVertex3DShaderGLSL getShardString];
     return vertexShaderString;
 }
 
--(NSString*)fragmentShader{
+- (NSString*)fragmentShader {
     switch (_pixelFormat) {
         case RGB_IRPixelFormat:
             fragmentShaderString = [IRGLFragmentRGBShaderGLSL getShardString];
@@ -34,8 +34,20 @@
     return fragmentShaderString;
 }
 
--(void)didUpdateOutputWH:(int)w :(int)h{
+- (void)didUpdateOutputWH:(int)w :(int)h {
+    if(!self.parameter.autoUpdate || (w == self.parameter.width && h == self.parameter.height))
+        return;
     
+    self.parameter.width = w;
+    self.parameter.height = h;
+    [self.mapProjection updateWithParameter:self.parameter];
+}
+
+- (BOOL)doScrollVerticalWithStatus:(IRGLTransformControllerScrollStatus)status withTramsformController:(IRGLTransformController *)tramsformController {
+    if(status & IRGLTransformControllerScrollToMaxY || status & IRGLTransformControllerScrollToMinY){
+        return NO;
+    }
+    return YES;
 }
 
 @end

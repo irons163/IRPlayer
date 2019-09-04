@@ -7,36 +7,36 @@
 //
 
 #import "IRGestureController.h"
+#import "IRGestureController+Private.h"
 
-@interface IRGestureController ()<UIGestureRecognizerDelegate>
+@interface IRGestureController ()
 
-@property (nonatomic, strong) UITapGestureRecognizer *singleTap;
-@property (nonatomic, strong) UITapGestureRecognizer *doubleTap;
+@property (nonatomic, strong) UITapGestureRecognizer *singleTapGR;
+@property (nonatomic, strong) UITapGestureRecognizer *doubleTapGR;
 @property (nonatomic, strong) UIPanGestureRecognizer *panGR;
 @property (nonatomic, strong) UIPinchGestureRecognizer *pinchGR;
 @property (nonatomic) IRPanDirection panDirection;
 @property (nonatomic) IRPanLocation panLocation;
 @property (nonatomic) IRPanMovingDirection panMovingDirection;
-@property (nonatomic, weak) UIView *targetView;
 
 @end
 
 @implementation IRGestureController
 
 - (void)addGestureToView:(UIView *)view {
-    self.targetView = view;
-    self.targetView.multipleTouchEnabled = YES;
-    [self.singleTap requireGestureRecognizerToFail:self.doubleTap];
-    [self.singleTap  requireGestureRecognizerToFail:self.panGR];
-    [self.targetView addGestureRecognizer:self.singleTap];
-    [self.targetView addGestureRecognizer:self.doubleTap];
+    _targetView = view;
+    _targetView.multipleTouchEnabled = YES;
+    [self.singleTapGR requireGestureRecognizerToFail:self.doubleTapGR];
+    [self.singleTapGR  requireGestureRecognizerToFail:self.panGR];
+    [self.targetView addGestureRecognizer:self.singleTapGR];
+    [self.targetView addGestureRecognizer:self.doubleTapGR];
     [self.targetView addGestureRecognizer:self.panGR];
     [self.targetView addGestureRecognizer:self.pinchGR];
 }
 
 - (void)removeGestureToView:(UIView *)view {
-    [view removeGestureRecognizer:self.singleTap];
-    [view removeGestureRecognizer:self.doubleTap];
+    [view removeGestureRecognizer:self.singleTapGR];
+    [view removeGestureRecognizer:self.doubleTapGR];
     [view removeGestureRecognizer:self.panGR];
     [view removeGestureRecognizer:self.pinchGR];
 }
@@ -57,8 +57,8 @@
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     IRGestureType type = IRGestureTypeUnknown;
-    if (gestureRecognizer == self.singleTap) type = IRGestureTypeSingleTap;
-    else if (gestureRecognizer == self.doubleTap) type = IRGestureTypeDoubleTap;
+    if (gestureRecognizer == self.singleTapGR) type = IRGestureTypeSingleTap;
+    else if (gestureRecognizer == self.doubleTapGR) type = IRGestureTypeDoubleTap;
     else if (gestureRecognizer == self.panGR) type = IRGestureTypePan;
     else if (gestureRecognizer == self.pinchGR) type = IRGestureTypePinch;
     CGPoint locationPoint = [touch locationInView:touch.view];
@@ -102,8 +102,8 @@
 
 // Whether to support multi-trigger, return YES, you can trigger a method with multiple gestures, return NO is mutually exclusive
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    if (otherGestureRecognizer != self.singleTap &&
-        otherGestureRecognizer != self.doubleTap &&
+    if (otherGestureRecognizer != self.singleTapGR &&
+        otherGestureRecognizer != self.doubleTapGR &&
         otherGestureRecognizer != self.panGR &&
         otherGestureRecognizer != self.pinchGR) return NO;
     
@@ -123,28 +123,28 @@
     return YES;
 }
 
-- (UITapGestureRecognizer *)singleTap {
-    if (!_singleTap){
-        _singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
-        _singleTap.delegate = self;
-        _singleTap.delaysTouchesBegan = YES;
-        _singleTap.delaysTouchesEnded = YES;
-        _singleTap.numberOfTouchesRequired = 1;
-        _singleTap.numberOfTapsRequired = 1;
+- (UITapGestureRecognizer *)singleTapGR {
+    if (!_singleTapGR){
+        _singleTapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+        _singleTapGR.delegate = self;
+        _singleTapGR.delaysTouchesBegan = YES;
+        _singleTapGR.delaysTouchesEnded = YES;
+        _singleTapGR.numberOfTouchesRequired = 1;
+        _singleTapGR.numberOfTapsRequired = 1;
     }
-    return _singleTap;
+    return _singleTapGR;
 }
 
-- (UITapGestureRecognizer *)doubleTap {
-    if (!_doubleTap) {
-        _doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
-        _doubleTap.delegate = self;
-        _doubleTap.delaysTouchesBegan = YES;
-        _singleTap.delaysTouchesEnded = YES;
-        _doubleTap.numberOfTouchesRequired = 1;
-        _doubleTap.numberOfTapsRequired = 2;
+- (UITapGestureRecognizer *)doubleTapGR {
+    if (!_doubleTapGR) {
+        _doubleTapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
+        _doubleTapGR.delegate = self;
+        _doubleTapGR.delaysTouchesBegan = YES;
+        _singleTapGR.delaysTouchesEnded = YES;
+        _doubleTapGR.numberOfTouchesRequired = 1;
+        _doubleTapGR.numberOfTapsRequired = 2;
     }
-    return _doubleTap;
+    return _doubleTapGR;
 }
 
 - (UIPanGestureRecognizer *)panGR {
@@ -228,7 +228,7 @@
         default:
             break;
     }
-    [pan setTranslation:CGPointZero inView:pan.view];
+//    [pan setTranslation:CGPointZero inView:pan.view];
 }
 
 - (void)handlePinch:(UIPinchGestureRecognizer *)pinch {

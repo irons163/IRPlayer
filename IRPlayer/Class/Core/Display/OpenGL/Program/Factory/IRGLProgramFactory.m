@@ -54,7 +54,9 @@
 }
 
 +(IRGLProgram3DFisheye*) createIRGLProgram3DFisheyeWithPixelFormat:(IRPixelFormat)pixelFormat withViewprotRange:(CGRect)viewprotRange withParameter:(IRMediaParameter*)parameter{
-    if(!parameter || ![parameter isKindOfClass:[IRFisheyeParameter class]]){
+    if(!parameter)  {
+        parameter = [[IRFisheyeParameter alloc] initWithWidth:0 height:0 up:NO rx:0 ry:0 cx:0 cy:0 latmax:0];
+    }else if(![parameter isKindOfClass:[IRFisheyeParameter class]]){
         NSLog(@"createIRGLProgram failed.");
         return nil;
     }
@@ -79,7 +81,7 @@
         newScopeRange = [[IRGLScopeRange alloc] initWithMinLat:scopeRange.minLat maxLat:scopeRange.maxLat minLng:scopeRange.minLng maxLng:scopeRange.maxLng defaultLat:-40 defaultLng:90];
         [program.tramsformController setScopeRange:newScopeRange];
     }
-    program.mapProjection = [[IRGLProjectionEquirectangular alloc] initWithTextureWidth:1440 hidth:1080 centerX:fp.cx centerY:fp.cy radius:fp.ry];
+    program.mapProjection = [[IRGLProjectionEquirectangular alloc] initWithTextureWidth:fp.width height:fp.height centerX:fp.cx centerY:fp.cy radius:fp.ry];
     return program;
 }
 
@@ -132,7 +134,7 @@
         program.tramsformController.delegate = program;
     }
     
-    id<IRGLProjection> mapProjection = [[IRGLProjectionEquirectangular alloc] initWithTextureWidth:1440 hidth:1080 centerX:fp.cx centerY:fp.cy radius:fp.ry];
+    id<IRGLProjection> mapProjection = [[IRGLProjectionEquirectangular alloc] initWithTextureWidth:1440 height:1080 centerX:fp.cx centerY:fp.cy radius:fp.ry];
     
     for(int i = 0; i < [programs_4p count]; i++){
         IRGLProgram3DFisheye* program = programs_4p[i];

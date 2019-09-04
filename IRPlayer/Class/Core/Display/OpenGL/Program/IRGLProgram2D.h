@@ -41,7 +41,8 @@ typedef BOOL (^IRGLProgram2DResetScaleBlock)(IRGLProgram2D *program);
     id<IRGLRender> _renderer;
 }
 
-@property (nonatomic) IRGLTransformController* tramsformController;
+@property (nullable, readonly) IRMediaParameter *parameter;
+@property (nonatomic) IRGLTransformController *tramsformController;
 @property (copy) IRGLProgram2DResetScaleBlock doResetToDefaultScaleBlock;
 @property id<IRGLProjection> mapProjection;
 @property (weak) id<IRGLProgramDelegate> delegate;

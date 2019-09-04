@@ -57,7 +57,9 @@ typedef NS_OPTIONS(NSUInteger, IRDisablePanMovingDirection) {
     IRDisablePanMovingDirectionAll          = (IRDisablePanMovingDirectionVertical | IRDisablePanMovingDirectionHorizontal)  /// Disable pan moving all direction.
 };
 
-@interface IRGestureController : NSObject
+@interface IRGestureController : NSObject<UIGestureRecognizerDelegate>
+
+@property (nonatomic, weak, readonly) UIView *targetView;
 
 /// Gesture condition callback.
 @property (nonatomic, copy, nullable) BOOL(^triggerCondition)(IRGestureController *control, IRGestureType type, UIGestureRecognizer *gesture, UITouch *touch);
@@ -81,10 +83,10 @@ typedef NS_OPTIONS(NSUInteger, IRDisablePanMovingDirection) {
 @property (nonatomic, copy, nullable) void(^pinched)(IRGestureController *control, float scale);
 
 /// The single tap gesture.
-@property (nonatomic, strong, readonly) UITapGestureRecognizer *singleTap;
+@property (nonatomic, strong, readonly) UITapGestureRecognizer *singleTapGR;
 
 /// The double tap gesture.
-@property (nonatomic, strong, readonly) UITapGestureRecognizer *doubleTap;
+@property (nonatomic, strong, readonly) UITapGestureRecognizer *doubleTapGR;
 
 /// The pan tap gesture.
 @property (nonatomic, strong, readonly) UIPanGestureRecognizer *panGR;

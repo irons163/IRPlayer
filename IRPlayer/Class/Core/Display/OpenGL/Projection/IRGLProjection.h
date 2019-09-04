@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "IRMediaParameter.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,6 +17,7 @@ enum {
 };
 
 @protocol IRGLProjection
+- (void) updateWithParameter:(IRMediaParameter *)parameter;
 - (void) updateVertex;
 - (void) draw;
 @end
