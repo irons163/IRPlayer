@@ -154,6 +154,7 @@
 		8A563421230D14AA00949B9A /* IRGLProgramVRFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A56341F230D14AA00949B9A /* IRGLProgramVRFactory.h */; };
 		8A563422230D14AA00949B9A /* IRGLProgramVRFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A563420230D14AA00949B9A /* IRGLProgramVRFactory.m */; };
 		8A8F02EB22D349B30029070A /* IRGLRenderMode2DFisheye2Pano.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A8F02EA22D349B20029070A /* IRGLRenderMode2DFisheye2Pano.h */; };
+		8AA0C4D5231F874C00D84A7C /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA0C4D4231F874A00D84A7C /* libavcodec.a */; };
 		8AA3EAB42301376300331251 /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA352301376000331251 /* version.h */; };
 		8AA3EAB52301376300331251 /* buffersrc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA362301376000331251 /* buffersrc.h */; };
 		8AA3EAB62301376300331251 /* buffersink.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA372301376000331251 /* buffersink.h */; };
@@ -461,6 +462,7 @@
 		8A56341F230D14AA00949B9A /* IRGLProgramVRFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRGLProgramVRFactory.h; sourceTree = "<group>"; };
 		8A563420230D14AA00949B9A /* IRGLProgramVRFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRGLProgramVRFactory.m; sourceTree = "<group>"; };
 		8A8F02EA22D349B20029070A /* IRGLRenderMode2DFisheye2Pano.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGLRenderMode2DFisheye2Pano.h; sourceTree = "<group>"; };
+		8AA0C4D4231F874A00D84A7C /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavcodec.a; sourceTree = "<group>"; };
 		8AA3EA352301376000331251 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 		8AA3EA362301376000331251 /* buffersrc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffersrc.h; sourceTree = "<group>"; };
 		8AA3EA372301376000331251 /* buffersink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffersink.h; sourceTree = "<group>"; };
@@ -631,6 +633,7 @@
 				8AF902D922D43D4B001914BA /* libz.tbd in Frameworks */,
 				8AA3EB2B2301376400331251 /* libswscale.a in Frameworks */,
 				8AA3EB252301376400331251 /* libavutil.a in Frameworks */,
+				8AA0C4D5231F874C00D84A7C /* libavcodec.a in Frameworks */,
 				8AF902D722D43D42001914BA /* libbz2.tbd in Frameworks */,
 				8AA3EB272301376400331251 /* libavcodec.a in Frameworks */,
 			);
@@ -1221,6 +1224,7 @@
 		8AA3EAAC2301376300331251 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				8AA0C4D4231F874A00D84A7C /* libavcodec.a */,
 				8AA3EAAD2301376300331251 /* libavutil.a */,
 				8AA3EAAE2301376300331251 /* libavfilter.a */,
 				8AA3EAAF2301376300331251 /* libavcodec.a */,
