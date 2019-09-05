@@ -15,6 +15,8 @@
 #import "IRGLGestureController.h"
 #import "IRGLRenderModeFactory.h"
 #import "IRFisheyeParameter.h"
+#import "IRSensor.h"
+#import "IRSmoothScrollController.h"
 
 #if IRPLATFORM_TARGET_OS_IPHONE_OR_TV
 #import "IRAudioManager.h"
@@ -27,6 +29,8 @@
 @property (nonatomic, strong) IRAVPlayer * avPlayer;
 @property (nonatomic, strong) IRFFPlayer * ffPlayer;
 @property (nonatomic, strong) IRGLGestureController *gestureControl;
+@property (nonatomic, strong) IRSensor *sensor;
+@property (nonatomic, strong) IRSmoothScrollController *scrollController;
 
 @property (nonatomic, assign) BOOL needAutoPlay;
 
@@ -181,6 +185,11 @@
                 IRGLRenderMode *mode = [IRGLRenderModeFactory createDistortionModeWithParameter:nil];
                 [mode setDefaultScale:1.5f];
                 [self.displayView setRenderModes:@[mode]];
+                [_gestureControl removeGestureToView:self.displayView];
+                _sensor = [[IRSensor alloc] init];
+                _sensor.targetView = self.displayView;
+                _sensor.smoothScroll = _gestureControl.smoothScroll;
+                [_sensor resetUnit];
             }
             self.displayView.aspect = 16.0 / 9.0;
             [self setViewGravityMode:IRGravityModeResizeAspect];
@@ -331,9 +340,14 @@
 //        _displayView = [IRGLView displayViewWithAbstractPlayer:self];
         _displayView = [[IRGLView alloc] init];
         
+        _scrollController = [[IRSmoothScrollController alloc] initWithTargetView:_displayView];
+        _scrollController.currentMode = [_displayView getCurrentRenderMode];
+        _scrollController.delegate = self;
+        
         _gestureControl = [IRGLGestureController new];
         [_gestureControl addGestureToView:_displayView];
         _gestureControl.currentMode = [_displayView getCurrentRenderMode];
+        _gestureControl.smoothScroll = _scrollController;
         _gestureControl.delegate = self;
     }
     return _displayView;
@@ -619,21 +633,21 @@
 #pragma mark - UIScrollViewDelegate
 
 -(void)glViewWillBeginZooming:(IRGLView *)glView{
-//    [self stopMotionDetection];
+    [_sensor stopMotionDetection];
 }
 
 -(void)glViewDidEndZooming:(IRGLView *)glView atScale:(CGFloat)scale{
-//    [self resetUnit];
+    [_sensor resetUnit];
 }
 
 -(void)glViewWillBeginDragging:(IRGLView *)glView{
-//    [self stopMotionDetection];
+    [_sensor stopMotionDetection];
 }
 
 -(void)glViewDidEndDragging:(IRGLView *)glView willDecelerate:(BOOL)decelerate{
-//    if ((!decelerate)) {
-//        [self resetUnit];
-//    }
+    if ((!decelerate)) {
+        [_sensor resetUnit];
+    }
 }
 
 -(void)glViewDidEndDecelerating:(IRGLView *)glView{

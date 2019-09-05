@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8A29283C231CD0DF00FE7B58 /* IRSmoothScroll.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A29283A231CD0DF00FE7B58 /* IRSmoothScroll.h */; };
-		8A29283D231CD0DF00FE7B58 /* IRSmoothScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A29283B231CD0DF00FE7B58 /* IRSmoothScroll.m */; };
+		8A29283C231CD0DF00FE7B58 /* IRSmoothScrollController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A29283A231CD0DF00FE7B58 /* IRSmoothScrollController.h */; };
+		8A29283D231CD0DF00FE7B58 /* IRSmoothScrollController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A29283B231CD0DF00FE7B58 /* IRSmoothScrollController.m */; };
 		8A292840231CF52B00FE7B58 /* IRGestureController+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A29283E231CF52B00FE7B58 /* IRGestureController+Private.h */; };
 		8A292841231CF52B00FE7B58 /* IRGestureController+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A29283F231CF52B00FE7B58 /* IRGestureController+Private.m */; };
 		8A51F5FD22CF337D00A7715B /* IRPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F5FB22CF337D00A7715B /* IRPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -311,8 +311,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8A29283A231CD0DF00FE7B58 /* IRSmoothScroll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRSmoothScroll.h; sourceTree = "<group>"; };
-		8A29283B231CD0DF00FE7B58 /* IRSmoothScroll.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRSmoothScroll.m; sourceTree = "<group>"; };
+		8A29283A231CD0DF00FE7B58 /* IRSmoothScrollController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRSmoothScrollController.h; sourceTree = "<group>"; };
+		8A29283B231CD0DF00FE7B58 /* IRSmoothScrollController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRSmoothScrollController.m; sourceTree = "<group>"; };
 		8A29283E231CF52B00FE7B58 /* IRGestureController+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IRGestureController+Private.h"; sourceTree = "<group>"; };
 		8A29283F231CF52B00FE7B58 /* IRGestureController+Private.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "IRGestureController+Private.m"; sourceTree = "<group>"; };
 		8A51F5F822CF337D00A7715B /* IRPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IRPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -642,6 +642,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A0A5D3F2320B6B300DFFA1F /* ScrollController */ = {
+			isa = PBXGroup;
+			children = (
+				8A29283A231CD0DF00FE7B58 /* IRSmoothScrollController.h */,
+				8A29283B231CD0DF00FE7B58 /* IRSmoothScrollController.m */,
+			);
+			path = ScrollController;
+			sourceTree = "<group>";
+		};
 		8A51F5EE22CF337D00A7715B = {
 			isa = PBXGroup;
 			children = (
@@ -1240,6 +1249,7 @@
 			isa = PBXGroup;
 			children = (
 				8ABB903F230AA17000A27FD7 /* Bounce */,
+				8A0A5D3F2320B6B300DFFA1F /* ScrollController */,
 				8ABB9021230A43EC00A27FD7 /* GestureController */,
 				8A51F82722CF59C300A7715B /* DeviceShiftController */,
 			);
@@ -1255,8 +1265,6 @@
 				8ABB9023230A444500A27FD7 /* IRGestureController.m */,
 				8ABB9026230A490D00A27FD7 /* IRGLGestureController.h */,
 				8ABB9027230A490D00A27FD7 /* IRGLGestureController.m */,
-				8A29283A231CD0DF00FE7B58 /* IRSmoothScroll.h */,
-				8A29283B231CD0DF00FE7B58 /* IRSmoothScroll.m */,
 			);
 			path = GestureController;
 			sourceTree = "<group>";
@@ -1428,7 +1436,7 @@
 				8AA3EAE42301376300331251 /* pixelutils.h in Headers */,
 				8AF902FF22D48863001914BA /* IRPlayerImp+DisplayView.h in Headers */,
 				8A51F7D222CF4CDC00A7715B /* IRGLTransformController.h in Headers */,
-				8A29283C231CD0DF00FE7B58 /* IRSmoothScroll.h in Headers */,
+				8A29283C231CD0DF00FE7B58 /* IRSmoothScrollController.h in Headers */,
 				8A51F63022CF3D7D00A7715B /* IRFFVideoToolBox.h in Headers */,
 				8A51F80022CF4EDF00A7715B /* IRGLProgram3DFisheye.h in Headers */,
 				8AA3EAFA2301376300331251 /* hwcontext_videotoolbox.h in Headers */,
@@ -1677,7 +1685,7 @@
 				8A51F76422CF46F400A7715B /* IRGLRenderMode2DFisheye2Pano.m in Sources */,
 				8A51F81222CF4F8200A7715B /* IRGLProgram2DFisheye2PanoFactory.m in Sources */,
 				8A51F81A22CF4FC700A7715B /* IRGLProgram3DFisheye4PFactory.m in Sources */,
-				8A29283D231CD0DF00FE7B58 /* IRSmoothScroll.m in Sources */,
+				8A29283D231CD0DF00FE7B58 /* IRSmoothScrollController.m in Sources */,
 				8A51F80622CF4F2900A7715B /* IRGLProgramFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

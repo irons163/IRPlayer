@@ -17,10 +17,6 @@
 @property (nonatomic, strong) CMMotionManager * manager;
 @property (nonatomic, assign) UIInterfaceOrientation orientation;
 
-#pragma mark - Wide Functions
-- (BOOL)resetUnit;
-- (void)stopMotionDetection;
-
 @end
 
 @implementation IRSensor
@@ -28,16 +24,17 @@
 - (instancetype)init {
     if (self = [super init]) {
         self.manager = [[CMMotionManager alloc] init];
+        [self updateDeviceOrientation:[UIApplication sharedApplication].statusBarOrientation];
     }
     return self;
 }
 
 - (void)updateDeviceOrientation:(UIInterfaceOrientation)orientation {
-    self.orientation = orientation;
+    _orientation = orientation;
 }
 
 #pragma mark - Wide Functions
--(BOOL)resetUnit{
+- (BOOL)resetUnit {
     [self stopMotionDetection];
     referenceAttitude = nil;
     
@@ -46,6 +43,14 @@
     NSOperationQueue *motionQueue = [[NSOperationQueue alloc] init];
     [self.manager startDeviceMotionUpdatesToQueue:motionQueue withHandler:^(CMDeviceMotion * _Nullable motion, NSError * _Nullable error)
      {
+//         dispatch_sync(dispatch_get_main_queue(), ^{
+//             if(self->_orientation != [UIApplication sharedApplication].statusBarOrientation) {
+//                 [self updateDeviceOrientation:[UIApplication sharedApplication].statusBarOrientation];
+//                 [self resetUnit];
+//                 return;
+//             }
+//         });
+         
          BOOL doScroll = YES;
          if (self->referenceAttitude == nil){
              NSLog(@"referenceAttitude nil");
@@ -59,9 +64,9 @@
          float roll = motion.attitude.roll * 180.f / M_PI;
          
          CMAttitude *currentAttitude = motion.attitude;
-         if(!referenceAttitude)
+         if(!self->referenceAttitude)
              return;
-         [currentAttitude multiplyByInverseOfAttitude:referenceAttitude];
+         [currentAttitude multiplyByInverseOfAttitude:self->referenceAttitude];
          CMQuaternion inQuat = currentAttitude.quaternion;
          
          float inversePitch = atan2(2*(inQuat.x*inQuat.w + inQuat.y*inQuat.z), 1 - 2*inQuat.x*inQuat.x - 2*inQuat.z*inQuat.z);
@@ -141,10 +146,14 @@
          //NSLog(@"degreeX:%f degreeY:%f", degreeX, degreeY);
          
          dispatch_async(dispatch_get_main_queue(), ^{
+             if(self->_orientation != [UIApplication sharedApplication].statusBarOrientation) {
+                 [self updateDeviceOrientation:[UIApplication sharedApplication].statusBarOrientation];
+                 return;
+             }
              if(doScroll){
                  NSLog(@"scrollBy dx:%f dy:%f", dx * [UIScreen mainScreen].scale, dy * [UIScreen mainScreen].scale);
-                 if(self.targetView)
-                     [self.targetView shiftDegreeX:dx degreeY:dy];
+                 if(self.smoothScroll)
+                     [self.smoothScroll shiftDegreeX:dx degreeY:dy];
              }
          });
      }];

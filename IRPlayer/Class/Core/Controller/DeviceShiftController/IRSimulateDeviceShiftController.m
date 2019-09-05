@@ -16,12 +16,18 @@
 -(instancetype)init{
     if(self = [super init]){
         self.enabled = YES;
+        self.wideDegreeX = 360;
+        self.wideDegreeY = 360;
     }
     return self;
 }
 
 -(void)setProgram:(IRGLProgram2D*)program{
     _program = program;
+    self.wideDegreeX = 20;
+    self.wideDegreeY = 20;
+    _program.wideDegreeX = 360;
+    _program.wideDegreeY = 360;
 }
 
 -(void)shiftDegreeX:(float)degreeX degreeY:(float)degreeY{

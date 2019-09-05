@@ -9,12 +9,22 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "IRGLView.h"
-#import "IRGLGestureController.h"
 #import "IRGLProgram2D.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface IRSmoothScroll : NSObject<IRGLProgramDelegate>
+@protocol IRGLViewDelegate
+
+@optional
+- (void)glViewWillBeginDragging:(IRGLView *)glView;
+- (void)glViewDidEndDragging:(IRGLView *)glView willDecelerate:(BOOL)decelerate;
+- (void)glViewDidEndDecelerating:(IRGLView *)glView;
+- (void)glViewDidScrollToBounds:(IRGLView *)glView;
+- (void)glViewWillBeginZooming:(IRGLView *)glView;
+- (void)glViewDidEndZooming:(IRGLView *)glView atScale:(CGFloat)scale;
+@end
+
+@interface IRSmoothScrollController : NSObject<IRGLProgramDelegate>
 
 @property (weak) id<IRGLViewDelegate> delegate;
 @property (nonatomic) IRGLRenderMode *currentMode;
@@ -25,6 +35,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)resetSmoothScroll;
 - (void)calculateSmoothScroll:(CGPoint)velocity;
+
+- (void)scrollByDx:(float)dx dy:(float)dy;
+- (void)shiftDegreeX:(float)degreeX degreeY:(float)degreeY;
 
 @end
 

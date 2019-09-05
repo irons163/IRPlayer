@@ -6,16 +6,16 @@
 //  Copyright © 2019 Phil. All rights reserved.
 //
 
-#import "IRSmoothScroll.h"
+#import "IRSmoothScrollController.h"
 #import "IRBounceController.h"
 #import "IRGLTransformController.h"
 #import "IRGLRenderMode.h"
 
-@interface IRSmoothScroll()
+@interface IRSmoothScrollController()
 
 @end
 
-@implementation IRSmoothScroll {
+@implementation IRSmoothScrollController {
     //Smooth Scroll
     CGPoint finalPoint;
     CGPoint alreadyPoint;
@@ -93,6 +93,10 @@
     finalPoint = CGPointMake(0 + (velocity.x * slideFactor),
                              0 + (velocity.y * slideFactor));
     slideDuration = slideFactor*2;
+}
+
+- (void)scrollByDx:(float)dx dy:(float)dy {
+    [self.targetView scrollByDx:dx dy:dy];
 }
 
 - (void)shiftDegreeX:(float)degreeX degreeY:(float)degreeY {
