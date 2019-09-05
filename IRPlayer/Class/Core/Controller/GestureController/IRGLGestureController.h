@@ -10,20 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "IRGestureController.h"
 #import "IRGLView.h"
-//#import "IRGLRe"
-
-//@class IRGLView;
-
-@protocol IRGLViewDelegate
-
-@optional
-- (void)glViewWillBeginDragging:(IRGLView *)glView;
-- (void)glViewDidEndDragging:(IRGLView *)glView willDecelerate:(BOOL)decelerate;
-- (void)glViewDidEndDecelerating:(IRGLView *)glView;
-- (void)glViewDidScrollToBounds:(IRGLView *)glView;
-- (void)glViewWillBeginZooming:(IRGLView *)glView;
-- (void)glViewDidEndZooming:(IRGLView *)glView atScale:(CGFloat)scale;
-@end
+#import "IRSmoothScrollController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -33,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property BOOL doubleTapEnable;
 @property BOOL swipeEnable;
 @property (nonatomic) IRGLRenderMode *currentMode;
+@property (nonatomic, weak) IRSmoothScrollController *smoothScroll;
 
 @property (nonatomic, weak, readonly) IRGLView *targetView;
 

@@ -8,11 +8,8 @@
 
 #import "IRGLGestureController.h"
 #import "IRGestureController+Private.h"
-
 #import "IRGLView.h"
 #import "IRGLRenderMode.h"
-
-#import "IRSmoothScroll.h"
 
 //typedef NS_ENUM(NSInteger, IRScrollDirectionType){
 //    None, //default
@@ -33,8 +30,6 @@
 //@property (nonatomic) IRPanLocation panLocation;
 //@property (nonatomic) IRPanMovingDirection panMovingDirection;
 //@property (nonatomic, weak) IRGLView *targetView;
-
-@property IRSmoothScroll *smoothScroll;
 
 @end
 
@@ -62,10 +57,6 @@
     
     isTouchedInProgram = NO;
     self.doubleTapEnable = YES;
-    
-    self.smoothScroll = [[IRSmoothScroll alloc] initWithTargetView:(IRGLView*)self.targetView];
-    self.smoothScroll.currentMode = self.currentMode;
-    self.smoothScroll.delegate = self.delegate;
 }
 
 - (void)setCurrentMode:(IRGLRenderMode *)currentMode {
@@ -118,7 +109,7 @@
         
         CGPoint screenOffset = [(UIPanGestureRecognizer*)gr translationInView:self.targetView];
         
-        [(IRGLView*)self.targetView scrollByDx:screenOffset.x*[[UIScreen mainScreen] scale] dy:-1*screenOffset.y*[[UIScreen mainScreen] scale]];
+        [self.smoothScroll scrollByDx:screenOffset.x*[[UIScreen mainScreen] scale] dy:-1*screenOffset.y*[[UIScreen mainScreen] scale]];
         
         [(UIPanGestureRecognizer*)gr setTranslation:CGPointZero inView:self.targetView];
     }
