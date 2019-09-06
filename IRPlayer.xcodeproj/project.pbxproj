@@ -155,7 +155,6 @@
 		8A563422230D14AA00949B9A /* IRGLProgramVRFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A563420230D14AA00949B9A /* IRGLProgramVRFactory.m */; };
 		8A8F02EB22D349B30029070A /* IRGLRenderMode2DFisheye2Pano.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A8F02EA22D349B20029070A /* IRGLRenderMode2DFisheye2Pano.h */; };
 		8AA0C4D5231F874C00D84A7C /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA0C4D4231F874A00D84A7C /* libavcodec.a */; };
-		8AA3EAB42301376300331251 /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA352301376000331251 /* version.h */; };
 		8AA3EAB52301376300331251 /* buffersrc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA362301376000331251 /* buffersrc.h */; };
 		8AA3EAB62301376300331251 /* buffersink.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA372301376000331251 /* buffersink.h */; };
 		8AA3EAB72301376300331251 /* avfilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA382301376000331251 /* avfilter.h */; };
@@ -168,7 +167,6 @@
 		8AA3EABE2301376300331251 /* blowfish.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA402301376100331251 /* blowfish.h */; };
 		8AA3EABF2301376300331251 /* hwcontext_mediacodec.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA412301376100331251 /* hwcontext_mediacodec.h */; };
 		8AA3EAC02301376300331251 /* replaygain.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA422301376100331251 /* replaygain.h */; };
-		8AA3EAC12301376300331251 /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA432301376100331251 /* version.h */; };
 		8AA3EAC22301376300331251 /* murmur3.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA442301376100331251 /* murmur3.h */; };
 		8AA3EAC32301376300331251 /* stereo3d.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA452301376100331251 /* stereo3d.h */; };
 		8AA3EAC42301376300331251 /* samplefmt.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA462301376100331251 /* samplefmt.h */; };
@@ -241,16 +239,12 @@
 		8AA3EB072301376300331251 /* mathematics.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA892301376200331251 /* mathematics.h */; };
 		8AA3EB082301376400331251 /* intreadwrite.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA8A2301376200331251 /* intreadwrite.h */; };
 		8AA3EB092301376400331251 /* avstring.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA8B2301376200331251 /* avstring.h */; };
-		8AA3EB0A2301376400331251 /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA8D2301376200331251 /* version.h */; };
 		8AA3EB0B2301376400331251 /* avdevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA8E2301376200331251 /* avdevice.h */; };
-		8AA3EB0C2301376400331251 /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA902301376200331251 /* version.h */; };
 		8AA3EB0D2301376400331251 /* avio.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA912301376200331251 /* avio.h */; };
 		8AA3EB0E2301376400331251 /* avformat.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA922301376200331251 /* avformat.h */; };
-		8AA3EB0F2301376400331251 /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA942301376200331251 /* version.h */; };
 		8AA3EB102301376400331251 /* swscale.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA952301376200331251 /* swscale.h */; };
 		8AA3EB112301376400331251 /* adts_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA972301376200331251 /* adts_parser.h */; };
 		8AA3EB122301376400331251 /* avcodec.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA982301376200331251 /* avcodec.h */; };
-		8AA3EB132301376400331251 /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA992301376200331251 /* version.h */; };
 		8AA3EB142301376400331251 /* vdpau.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA9A2301376200331251 /* vdpau.h */; };
 		8AA3EB152301376400331251 /* qsv.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA9B2301376200331251 /* qsv.h */; };
 		8AA3EB162301376400331251 /* vaapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA9C2301376200331251 /* vaapi.h */; };
@@ -266,7 +260,6 @@
 		8AA3EB202301376400331251 /* vorbis_parser.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EAA62301376200331251 /* vorbis_parser.h */; };
 		8AA3EB212301376400331251 /* dxva2.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EAA72301376200331251 /* dxva2.h */; };
 		8AA3EB222301376400331251 /* dv_profile.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EAA82301376200331251 /* dv_profile.h */; };
-		8AA3EB232301376400331251 /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EAAA2301376200331251 /* version.h */; };
 		8AA3EB242301376400331251 /* swresample.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EAAB2301376200331251 /* swresample.h */; };
 		8AA3EB252301376400331251 /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA3EAAD2301376300331251 /* libavutil.a */; };
 		8AA3EB262301376400331251 /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA3EAAE2301376300331251 /* libavfilter.a */; };
@@ -1322,7 +1315,6 @@
 				8AA3EAB82301376300331251 /* hwcontext.h in Headers */,
 				8AA3EAD62301376300331251 /* ffversion.h in Headers */,
 				8AF902F722D477E5001914BA /* IRPLFImage.h in Headers */,
-				8AA3EB0C2301376400331251 /* version.h in Headers */,
 				8AA3EADB2301376300331251 /* adler32.h in Headers */,
 				8AF902F322D47662001914BA /* IRPLFView.h in Headers */,
 				8AA3EAD92301376300331251 /* threadmessage.h in Headers */,
@@ -1333,7 +1325,6 @@
 				8A51F7B422CF4BDF00A7715B /* IRGLFish2PanoShaderParams.h in Headers */,
 				8AA3EB092301376400331251 /* avstring.h in Headers */,
 				8AA3EADF2301376300331251 /* sha512.h in Headers */,
-				8AA3EAC12301376300331251 /* version.h in Headers */,
 				8AA3EAE62301376300331251 /* common.h in Headers */,
 				8AA3EB242301376400331251 /* swresample.h in Headers */,
 				8A563421230D14AA00949B9A /* IRGLProgramVRFactory.h in Headers */,
@@ -1382,7 +1373,6 @@
 				8A51F7EC22CF4E5F00A7715B /* IRGLProgram2D.h in Headers */,
 				8AA3EABB2301376300331251 /* intfloat.h in Headers */,
 				8A51F7C122CF4C5E00A7715B /* IRGLRenderRGB.h in Headers */,
-				8AA3EB232301376400331251 /* version.h in Headers */,
 				8A56341D230D142700949B9A /* IRGLRenderModeVR.h in Headers */,
 				8A51F7F822CF4EB400A7715B /* IRGLProgram2DFisheye2Pano.h in Headers */,
 				8AA3EB1F2301376400331251 /* ac3_parser.h in Headers */,
@@ -1391,7 +1381,6 @@
 				8A51F7DA22CF4CFF00A7715B /* IRGLTransformController3DFisheye.h in Headers */,
 				8AA3EAF22301376300331251 /* tea.h in Headers */,
 				8AA3EAC22301376300331251 /* murmur3.h in Headers */,
-				8AA3EB0A2301376400331251 /* version.h in Headers */,
 				8AA3EABD2301376300331251 /* fifo.h in Headers */,
 				8AA3EAED2301376300331251 /* log.h in Headers */,
 				8AA3EAD72301376300331251 /* audio_fifo.h in Headers */,
@@ -1464,7 +1453,6 @@
 				8A51F78722CF49A400A7715B /* IRGLVertex3DShaderGLSL.h in Headers */,
 				8AA3EB142301376400331251 /* vdpau.h in Headers */,
 				8AA3EAC62301376300331251 /* base64.h in Headers */,
-				8AA3EB132301376400331251 /* version.h in Headers */,
 				8A51F62822CF3D3D00A7715B /* IRFFDecoder.h in Headers */,
 				8A51F75B22CF46B700A7715B /* IRGLRenderMode.h in Headers */,
 				8ACBD5AE230FD4E400BC35B4 /* IRGLProgramDistortionFactory.h in Headers */,
@@ -1486,7 +1474,6 @@
 				8AA3EAC32301376300331251 /* stereo3d.h in Headers */,
 				8A51F82122CF58A100A7715B /* IRGLScope3D.h in Headers */,
 				8AA3EB212301376400331251 /* dxva2.h in Headers */,
-				8AA3EB0F2301376400331251 /* version.h in Headers */,
 				8AA3EAE02301376300331251 /* hwcontext_dxva2.h in Headers */,
 				8A51F78322CF496D00A7715B /* IRGLVertexShaderGLSL.h in Headers */,
 				8A51F75222CF45C700A7715B /* IRMovieDecoder.h in Headers */,
@@ -1503,7 +1490,6 @@
 				8A51F7DF22CF4D9D00A7715B /* IRGLProjection.h in Headers */,
 				8AA3EAE92301376300331251 /* dict.h in Headers */,
 				8A51F80522CF4F2900A7715B /* IRGLProgramFactory.h in Headers */,
-				8AA3EAB42301376300331251 /* version.h in Headers */,
 				8AA3EAEF2301376300331251 /* macros.h in Headers */,
 				8AA3EB012301376300331251 /* pixfmt.h in Headers */,
 				8A51F7F422CF4E8B00A7715B /* IRGLProgramMulti4P.h in Headers */,
@@ -1524,7 +1510,6 @@
 				8A51F5F422CF337D00A7715B /* Sources */,
 				8A51F5F522CF337D00A7715B /* Frameworks */,
 				8A51F5F622CF337D00A7715B /* Resources */,
-				8AF9033822D49CA9001914BA /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1575,26 +1560,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		8AF9033822D49CA9001914BA /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ \"${ACTION}\" = \"build\" ]\nthen\nINSTALL_DIR=${SRCROOT}/Products/${PROJECT_NAME}.framework\n\nDEVICE_DIR=${BUILD_ROOT}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework\n\nSIMULATOR_DIR=${BUILD_ROOT}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework\n\n\nif [ -d \"${INSTALL_DIR}\" ]\nthen\nrm -rf \"${INSTALL_DIR}\"\nfi\n\nmkdir -p \"${INSTALL_DIR}\"\n\ncp -R \"${DEVICE_DIR}/\" \"${INSTALL_DIR}/\"\n#ditto \"${DEVICE_DIR}/Headers\" \"${INSTALL_DIR}/Headers\"\n\nlipo -create \"${DEVICE_DIR}/${PROJECT_NAME}\" \"${SIMULATOR_DIR}/${PROJECT_NAME}\" -output \"${INSTALL_DIR}/${PROJECT_NAME}\"\n\n#open \"${DEVICE_DIR}\"\nopen \"${SRCROOT}/Products\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8A51F5F422CF337D00A7715B /* Sources */ = {
