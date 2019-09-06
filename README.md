@@ -6,9 +6,9 @@
 - IRPlayer is a powerful video player framework for iOS.
 
 - Use IRPlayer to play video.
-    - See ![demo]()
+    - See Demo.
 - Use IRPlayer to play IP Camera stream.
-    - See ![IRIPCamera]()
+    - See [IRIPCamera](https://github.com/irons163/IRIPCamera)
 
 ## Features
 
@@ -20,6 +20,7 @@
     - Support Fisheye to Panorama mode.
     - Support Fisheye to Perspective mode.
 - Support multi windows.
+- Support multi modes selection.
 
 ## Install
 ### Cocoapods
@@ -35,17 +36,17 @@
 ```obj-c
 
 self.player = [IRPlayerImp player];
-[self.player registerPlayerNotificationTarget:self
-                                      stateAction:@selector(stateAction:)
-                                   progressAction:@selector(progressAction:)
-                                   playableAction:@selector(playableAction:)
-                                      errorAction:@selector(errorAction:)];
 [self.mainView insertSubview:self.player.view atIndex:0];
 
 NSURL * normalVideo = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"i-see-fire" ofType:@"mp4"]];
 NSURL * vrVideo = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"google-help-vr" ofType:@"mp4"]];
 NSURL * fisheyeVideo = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"fisheye-demo" ofType:@"mp4"]];
 
+```
+
+### Set mode and video source.
+
+``` obj-c
 switch (self.demoType)
 {
     case DemoType_AVPlayer_Normal:
