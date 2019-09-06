@@ -3,10 +3,12 @@
 
 # IRPlayer
 
-- IRPlayer is a powerful video player framework for iOS.
+### IRPlayer is a powerful video player framework for iOS.
+
+##### This project has some basic codes from [SGPlayer](https://github.com/libobjc/SGPlayer).
 
 - Use IRPlayer to play video.
-    - See Demo.
+    - See demo.
 - Use IRPlayer to play IP Camera stream.
     - See [IRIPCamera](https://github.com/irons163/IRIPCamera)
 
@@ -44,7 +46,7 @@ NSURL * fisheyeVideo = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForReso
 
 ```
 
-### Set mode and video source.
+#### Set mode and video source.
 
 ``` obj-c
 switch (self.demoType)
