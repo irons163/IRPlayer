@@ -1,0 +1,6 @@
+framework module IRPlayer {
+  umbrella header "IRPlayer-umbrella.h"
+
+  export *
+  module * { export * }
+}

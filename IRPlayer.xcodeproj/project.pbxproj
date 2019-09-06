@@ -11,14 +11,9 @@
 		8A29283D231CD0DF00FE7B58 /* IRSmoothScrollController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A29283B231CD0DF00FE7B58 /* IRSmoothScrollController.m */; };
 		8A292840231CF52B00FE7B58 /* IRGestureController+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A29283E231CF52B00FE7B58 /* IRGestureController+Private.h */; };
 		8A292841231CF52B00FE7B58 /* IRGestureController+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A29283F231CF52B00FE7B58 /* IRGestureController+Private.m */; };
-		8A51F5FD22CF337D00A7715B /* IRPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F5FB22CF337D00A7715B /* IRPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8A51F60722CF384600A7715B /* IRPlayerImp.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F60522CF384600A7715B /* IRPlayerImp.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A51F60822CF384600A7715B /* IRPlayerImp.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F60622CF384600A7715B /* IRPlayerImp.m */; };
-		8A51F60B22CF38AD00A7715B /* IRPlayerTrack.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F60922CF38AD00A7715B /* IRPlayerTrack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A51F60C22CF38AD00A7715B /* IRPlayerTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F60A22CF38AD00A7715B /* IRPlayerTrack.m */; };
-		8A51F60F22CF38E700A7715B /* IRPlayerAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F60D22CF38E700A7715B /* IRPlayerAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A51F61022CF38E700A7715B /* IRPlayerAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F60E22CF38E700A7715B /* IRPlayerAction.m */; };
-		8A51F61322CF390000A7715B /* IRPlayerDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F61122CF390000A7715B /* IRPlayerDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A51F61422CF390000A7715B /* IRPlayerDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F61222CF390000A7715B /* IRPlayerDecoder.m */; };
 		8A51F61F22CF3CBA00A7715B /* IRAVPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F61D22CF3CBA00A7715B /* IRAVPlayer.h */; };
 		8A51F62022CF3CBA00A7715B /* IRAVPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F61E22CF3CBA00A7715B /* IRAVPlayer.m */; };
@@ -175,7 +170,7 @@
 		8AA3EAC72301376300331251 /* rational.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA492301376100331251 /* rational.h */; };
 		8AA3EAC82301376300331251 /* sha.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA4A2301376100331251 /* sha.h */; };
 		8AA3EAC92301376300331251 /* motion_vector.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA4B2301376100331251 /* motion_vector.h */; };
-		8AA3EACA2301376300331251 /* avconfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA4C2301376100331251 /* avconfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8AA3EACA2301376300331251 /* avconfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA4C2301376100331251 /* avconfig.h */; };
 		8AA3EACB2301376300331251 /* lfg.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA4D2301376100331251 /* lfg.h */; };
 		8AA3EACC2301376300331251 /* avutil.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA4E2301376100331251 /* avutil.h */; };
 		8AA3EACD2301376300331251 /* xtea.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA4F2301376100331251 /* xtea.h */; };
@@ -202,7 +197,6 @@
 		8AA3EAE22301376300331251 /* buffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA642301376100331251 /* buffer.h */; };
 		8AA3EAE32301376300331251 /* camellia.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA652301376100331251 /* camellia.h */; };
 		8AA3EAE42301376300331251 /* pixelutils.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA662301376100331251 /* pixelutils.h */; };
-		8AA3EAE52301376300331251 /* hwcontext_drm.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA672301376100331251 /* hwcontext_drm.h */; };
 		8AA3EAE62301376300331251 /* common.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA682301376100331251 /* common.h */; };
 		8AA3EAE72301376300331251 /* hmac.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA692301376100331251 /* hmac.h */; };
 		8AA3EAE82301376300331251 /* eval.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA6A2301376100331251 /* eval.h */; };
@@ -293,9 +287,7 @@
 		8AF902DB22D43D53001914BA /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AF902DA22D43D53001914BA /* libiconv.tbd */; };
 		8AF902EB22D44F86001914BA /* IRPlayerNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AF902E922D44F86001914BA /* IRPlayerNotification.h */; };
 		8AF902EC22D44F86001914BA /* IRPlayerNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF902EA22D44F86001914BA /* IRPlayerNotification.m */; };
-		8AF902F322D47662001914BA /* IRPLFView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AF902F122D47662001914BA /* IRPLFView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8AF902F422D47662001914BA /* IRPLFView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF902F222D47662001914BA /* IRPLFView.m */; };
-		8AF902F722D477E5001914BA /* IRPLFImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AF902F522D477E5001914BA /* IRPLFImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8AF902F822D477E5001914BA /* IRPLFImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF902F622D477E5001914BA /* IRPLFImage.m */; };
 		8AF902FB22D4815E001914BA /* IRYUVTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AF902F922D4815E001914BA /* IRYUVTools.h */; };
 		8AF902FC22D4815E001914BA /* IRYUVTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF902FA22D4815E001914BA /* IRYUVTools.m */; };
@@ -1299,25 +1291,18 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AA3EACA2301376300331251 /* avconfig.h in Headers */,
 				8AA3EB0E2301376400331251 /* avformat.h in Headers */,
-				8A51F60722CF384600A7715B /* IRPlayerImp.h in Headers */,
-				8A51F61322CF390000A7715B /* IRPlayerDecoder.h in Headers */,
 				8AA3EAD52301376300331251 /* spherical.h in Headers */,
-				8AA3EAE52301376300331251 /* hwcontext_drm.h in Headers */,
 				8AA3EB072301376300331251 /* mathematics.h in Headers */,
-				8A51F60F22CF38E700A7715B /* IRPlayerAction.h in Headers */,
+				8AA3EACA2301376300331251 /* avconfig.h in Headers */,
 				8AA3EAE72301376300331251 /* hmac.h in Headers */,
 				8AA3EAEA2301376300331251 /* random_seed.h in Headers */,
-				8A51F60B22CF38AD00A7715B /* IRPlayerTrack.h in Headers */,
 				8AA3EB192301376400331251 /* mediacodec.h in Headers */,
 				8AA3EB1E2301376400331251 /* avdct.h in Headers */,
 				8A51F77722CF486700A7715B /* IRGLDefine.h in Headers */,
 				8AA3EAB82301376300331251 /* hwcontext.h in Headers */,
 				8AA3EAD62301376300331251 /* ffversion.h in Headers */,
-				8AF902F722D477E5001914BA /* IRPLFImage.h in Headers */,
 				8AA3EADB2301376300331251 /* adler32.h in Headers */,
-				8AF902F322D47662001914BA /* IRPLFView.h in Headers */,
 				8AA3EAD92301376300331251 /* threadmessage.h in Headers */,
 				8A51F63422CF3DDE00A7715B /* IRFFVideoDecoder.h in Headers */,
 				8AA3EACE2301376300331251 /* crc.h in Headers */,
@@ -1435,7 +1420,6 @@
 				8AE405CF230E92560050DF09 /* IRGLTransformControllerDistortion.h in Headers */,
 				8A51F65822CF3F0400A7715B /* IRFFFrameQueue.h in Headers */,
 				8AA3EAF42301376300331251 /* lzo.h in Headers */,
-				8A51F5FD22CF337D00A7715B /* IRPlayer.h in Headers */,
 				8AF902EB22D44F86001914BA /* IRPlayerNotification.h in Headers */,
 				8AA3EACB2301376300331251 /* lfg.h in Headers */,
 				8AA3EAB62301376300331251 /* buffersink.h in Headers */,

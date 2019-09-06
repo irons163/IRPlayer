@@ -1,0 +1,1620 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0D76AD57FA9A0946C1AE1873C60CB43A /* IRMediaParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 7905FF70C73A77656882FA8B9EECCAEC /* IRMediaParameter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0E5FE7D4B15D1469264FDB10BC271CD4 /* IRGLFragmentNV12ShaderGLSL.h in Headers */ = {isa = PBXBuildFile; fileRef = E2B462B228A47C1A53BF376E30DE8DF8 /* IRGLFragmentNV12ShaderGLSL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		104AA0DFA07E7D770BA2BD150F144B9A /* IRFFTrack.h in Headers */ = {isa = PBXBuildFile; fileRef = 91C23E95BF967D761359D6ECB6FD4090 /* IRFFTrack.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		10A7D0E1A628923C8B4505F6E410D3A1 /* IRGLGestureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E0B7B928F4EE7DE7109FCCB873CC465 /* IRGLGestureController.m */; };
+		10B439E2879B2CE9E928ED08FB66EA08 /* IRFFFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F774814D88ECBC91CEF381D411E372A /* IRFFFrame.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		134D9EE437283DC2945BB01D25E51563 /* IRGLFragmentFish2PerspShaderGLSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 93E17A7DC966C4BCC2EEFDE67B2EA22C /* IRGLFragmentFish2PerspShaderGLSL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		13AD554E9DCFC5E9AF142D6F02638E51 /* IRGLRenderMode3DFisheye.m in Sources */ = {isa = PBXBuildFile; fileRef = E2AB05F8C999EB74F697BDFA7F9B810A /* IRGLRenderMode3DFisheye.m */; };
+		140C08B7AA2287AC21201002870AB985 /* IRGLFragmentRGBShaderGLSL.m in Sources */ = {isa = PBXBuildFile; fileRef = D487EEE2F759BEB6D9A4C5D2584C8040 /* IRGLFragmentRGBShaderGLSL.m */; };
+		14EF6C0E4C7CA786811B121653D8E4E6 /* IRGLRenderModeFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FFF9FF96A5175EE5C18FF5DA32B059 /* IRGLRenderModeFactory.m */; };
+		1516679EBE8C602513A774C1A0202553 /* IRGLScope2D.h in Headers */ = {isa = PBXBuildFile; fileRef = EF717B9CED7F2998322E0B0D50D50B05 /* IRGLScope2D.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		157F84A68336A64BCD965739A3BCB2D2 /* IRFFFormatContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 351C4C6BA3189C5507D8DD4D3EF11B1E /* IRFFFormatContext.m */; };
+		163AED86C74C3384C2E81BC7809D6165 /* IRGLTransformController3DFisheye.h in Headers */ = {isa = PBXBuildFile; fileRef = 46FEDB0E1CA7B9D7FA0C31E607D0917F /* IRGLTransformController3DFisheye.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1683D9D4D9F171F1677D148D162EC698 /* IRAudioManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 52787F76649C6C3680A006B5FA822D5B /* IRAudioManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1A8F9D0D00DCFD1980DD6237659596F7 /* IRGLVertex3DShaderGLSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 6601F5A8E7AE26E8EC8E470CD55B7615 /* IRGLVertex3DShaderGLSL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1B7D9D6FC1EAE65AAC224E3AACFABCA3 /* IRFisheyeParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 530F769112CF2F0CFF5817572BCAFF10 /* IRFisheyeParameter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1C7D507861A8142C42E7D863E1FEC85D /* IRBounceController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0CA39B64DCDC3566C5EE76CBC34934D3 /* IRBounceController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1F40B0A4B5D5EA6D513ADF3548CE3123 /* IRGLFragmentFish2PerspShaderGLSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D8C770830BF61C57FD47679FB624D01 /* IRGLFragmentFish2PerspShaderGLSL.m */; };
+		23EB1D43A33F23B1FEF5E1D5FCAA9B05 /* IRFFVideoFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DF0E20AEA0D3546F6FFD27654F7DEBE /* IRFFVideoFrame.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		24CB889B2E1E72018CCB5F8A2D74907C /* IRGLMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 05A47ABFE462401FA2E37080C6E80783 /* IRGLMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25D637C4D32F72DDDFF407AED97122A7 /* IRGLScope2D.m in Sources */ = {isa = PBXBuildFile; fileRef = C38B58B3C55847D970A321D866EA2271 /* IRGLScope2D.m */; };
+		26A82975FB945ED0A6C5CF760DCE16C4 /* IRGLProgramVR.m in Sources */ = {isa = PBXBuildFile; fileRef = B10635FDE1EC84636FBC4879E665D3F0 /* IRGLProgramVR.m */; };
+		27CFAF4314C4E2D55227EED8717D8DCB /* IRFFPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AAA7F9574B1042A1B31E1D7DECCE29D /* IRFFPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		29CBF882353B75D979130599E3B33938 /* IRFFVideoDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = A975B42DB8C11D3523C45E26C24823DC /* IRFFVideoDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2DFD6FA3FDE48650A5AC41A1858A6171 /* IRGLRenderYUV.m in Sources */ = {isa = PBXBuildFile; fileRef = C0BFF568A8FAE18C967AEC0CEF6E665F /* IRGLRenderYUV.m */; };
+		2E0DF2BABFAA462D48C6523AD1FCF13B /* IRPLFImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 85656AAE46D0E791E7E876BE8E3076CD /* IRPLFImage.m */; };
+		2F983A0460B92BBC1E87E52850721831 /* IRGLRenderMode2DFisheye2Pano.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC1AC6D6DB9603D6C5EE163868A57CB /* IRGLRenderMode2DFisheye2Pano.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		310219475DB4BE43C56F87AACE933E82 /* IRYUVTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 744C1C2EF9191A3A5DAC8FC526382978 /* IRYUVTools.m */; };
+		3120D12F7148C7BF3CE14605B2263153 /* IRGLFragmentRGBShaderGLSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DD23B60854EC68D0964326B678EF1BB /* IRGLFragmentRGBShaderGLSL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		32BCF67D007FF6C89093D729C01C8D82 /* IRFFTools.h in Headers */ = {isa = PBXBuildFile; fileRef = AF973DB55E181E50268299D7CF4B2766 /* IRFFTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		32FFE84ED8F87BD03CE7D0F32AF4295A /* IRGLFragmentNV12ShaderGLSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 920E4C62221D0E651651C6FB4E6E93E9 /* IRGLFragmentNV12ShaderGLSL.m */; };
+		336154A904B12C92318F163E59E1AF0F /* IRPlayerNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 775D10655A1E8F67BC8874C235AD4A4D /* IRPlayerNotification.m */; };
+		349890DE316CD14716BF3BA5DB67E136 /* IRGLTransformController2D.h in Headers */ = {isa = PBXBuildFile; fileRef = 36FEAA878FDA5A5918781B9C11339124 /* IRGLTransformController2D.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		373E505D4418B7A637C0C7119495FA44 /* IRGLProgramDistortionFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 52A3CB53D4204591BB50F2287B3CF2EF /* IRGLProgramDistortionFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3878CB477221A097AD36839DB05B6013 /* IRFFDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB74F2A42BFF6F6B38E5136417E8583 /* IRFFDecoder.m */; };
+		39B3C1353DC0572C83E8208A256E0E6A /* IRFFDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 772192330B5F7EE68A4D1E8F52F0AC60 /* IRFFDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C714E8114EEF6CE4F1431610A7F234B /* IRSimulateDeviceShiftController.h in Headers */ = {isa = PBXBuildFile; fileRef = F181159B008168EEC84DA7F1DE90306A /* IRSimulateDeviceShiftController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3D9DA8882B63ED5807A2253EC98513D0 /* IRMetamacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E9216CFE7CE1B9B39324E3D144EC710 /* IRMetamacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3E0F33E6FB50BC89D56AB355774C200E /* IRBounceController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4869414EDCDE13777FAD8BBE6C34D7E /* IRBounceController.m */; };
+		3E56294202F75233D220C414FB8A4312 /* IRGLScope3D.h in Headers */ = {isa = PBXBuildFile; fileRef = E82E02B6FE05650293CAE3EBFEDA5B34 /* IRGLScope3D.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		41BD9E39B173B40843EE1BA3DB753C9F /* IRFFAudioDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCE145EC5DD9EDFE58FA196C7D7907E /* IRFFAudioDecoder.m */; };
+		42C5002CE8D873E17E885F147CD30320 /* IRGLRenderYUV.h in Headers */ = {isa = PBXBuildFile; fileRef = BB739F963A6EE7B64C40241661573553 /* IRGLRenderYUV.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		42E639DB8482E640328F733C6440731A /* IRFFFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D01798F94BF2C80C0D480318B6C770 /* IRFFFrame.m */; };
+		43781303638C3307541CF7CDBFB5D5CE /* IRGLProgramMulti.m in Sources */ = {isa = PBXBuildFile; fileRef = F7455C391A793816DE75FADF7B9C5F04 /* IRGLProgramMulti.m */; };
+		43CED3CB8378AC542D060B6D25E988DC /* IRMetadataDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 59D11CB9A859ECB79D4A5D535A633511 /* IRMetadataDefine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		43F05773822121DF8EE87F6A8C00D3D2 /* IRFFFrameQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 08F5B6FC69E0783B2534374314601555 /* IRFFFrameQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4460CFBF63991E510DA93DE705F3D9E3 /* IRGLProjectionOrthographic.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F0F3645A30E37AB676EEA3FAED6BEE6 /* IRGLProjectionOrthographic.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		451A386F1A0472126BC547B8ACEB2F25 /* IRGLRenderMode3DFisheye.h in Headers */ = {isa = PBXBuildFile; fileRef = 5753E58EC8F6AD60E2BBB1FC09F89D63 /* IRGLRenderMode3DFisheye.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		466562EEF90813556AA8CE444523FBAF /* IRGLRenderModeVR.h in Headers */ = {isa = PBXBuildFile; fileRef = C8A40BE1AD7222FAED45F848E412FCE4 /* IRGLRenderModeVR.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		472CF16227BE28CDA7842A6B53F38121 /* IRFFFormatContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B2067E4806A046A3C08CDCA8C26EF78 /* IRFFFormatContext.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4902CA969ED6047147E4A12A87CFDD36 /* IRPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 350A03B93D36E72D3C6A6BF40BD21C85 /* IRPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		499058FAAE1CED8625A82B920BE95C6B /* IRGLRenderMode2D.h in Headers */ = {isa = PBXBuildFile; fileRef = D6C13F64E85FB430417D5A5C5ECAE133 /* IRGLRenderMode2D.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4A1C8A760FC3174E94D0654189D2FBD7 /* IRGLRenderModeDistortion.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E296DE7491FF1F89BCB654879F227C1 /* IRGLRenderModeDistortion.m */; };
+		4B45C7860503CA49B9934BC1DCD9854A /* IRGLFish2PanoShaderParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 451D2F7BD7D918E19F2935A57CA931B9 /* IRGLFish2PanoShaderParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4D2641FFEBE418A4B450B3F9C4D86BA9 /* IRDeviceShiftController.h in Headers */ = {isa = PBXBuildFile; fileRef = A821F44CEDE918613976FF1E510FB854 /* IRDeviceShiftController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4DE2BA87C6CD06D20D9EADA02BDEBDBE /* IRGLProgramVRFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C047AD0E1B570310F1D8D23AF8F6098 /* IRGLProgramVRFactory.m */; };
+		512DBEEB7768070F00AA1A8423D6C9F7 /* IRPlayerImp.m in Sources */ = {isa = PBXBuildFile; fileRef = EC5BF9C1257C2A0D1D6953FE4732EA97 /* IRPlayerImp.m */; };
+		51CF6F5E102A40B11621A4498ADB5CE4 /* IRFFMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = BE1A8DACD25D6CE3F54A599EE1703E4C /* IRFFMetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		52515EA690F243472F5DB396593F091C /* IRSmoothScrollController.h in Headers */ = {isa = PBXBuildFile; fileRef = A0014B5EDF38DB0C88BC60522222FF90 /* IRSmoothScrollController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5255ADA23D6F70F6F6677DC1DD668125 /* IRFisheyeParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5288C79AB96504D6AFDCED51FD92B508 /* IRFisheyeParameter.m */; };
+		55C3D978051FDC67A127C845988AA080 /* IRPlayerImp+DisplayView.h in Headers */ = {isa = PBXBuildFile; fileRef = D58BFA6391726A9F1C34B732A6F18421 /* IRPlayerImp+DisplayView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		57076A957F967928DAF9151A7FABBBD3 /* IRGLProgram2D.h in Headers */ = {isa = PBXBuildFile; fileRef = 4CC15D2F4084C54321D37B30AC257B6C /* IRGLProgram2D.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5C2109B8866BEADD4E32AFA5B150920B /* IRGLRenderMode2D.m in Sources */ = {isa = PBXBuildFile; fileRef = A422275D2DEC80CAC8C76EC88C747DCE /* IRGLRenderMode2D.m */; };
+		5DC46709A4EE44FEA88EF870A10D6200 /* IRGLView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8792989B388D4A4E58FBD34E34EB1D92 /* IRGLView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5E6B65133F4C01438AE875BEAA7E61AF /* IRSensor.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B50AFF2E2637C7CC329EB6AAAD6C04 /* IRSensor.m */; };
+		674D037D3C1E620433C9877F0C51E098 /* IRGLProgram2DFisheye2Pano.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A0B047311571E8E6EA3BE452FFB4FE /* IRGLProgram2DFisheye2Pano.m */; };
+		67C20EB0AA3C2E1010D728AE4A8986C6 /* IRGLProgram2DFisheye2Persp.h in Headers */ = {isa = PBXBuildFile; fileRef = 43220EDCCCA756E1E22671526EF0481E /* IRGLProgram2DFisheye2Persp.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68661629F739B7291F7FF482BF17C405 /* IRGLShaderParams.m in Sources */ = {isa = PBXBuildFile; fileRef = B583D80D9D029891FD0BF5BB662FC444 /* IRGLShaderParams.m */; };
+		6A9416A0C976DBF730A97DE37C02A32E /* IRGLProgram3DFisheyeFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3585223B2E67EB76BF8C1A1355B29F3E /* IRGLProgram3DFisheyeFactory.m */; };
+		6E11A7B46ECE7954626296CD6BE10C15 /* IRFFFrameQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 23D4BBFFC211A58EDFEBBE01A2B1D274 /* IRFFFrameQueue.m */; };
+		6E3FBB8D9B0F8A5DC40E3D70FD601A1B /* IRFFVideoToolBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 322E19F30D095C0AAFABD745794BB343 /* IRFFVideoToolBox.m */; };
+		6F46D7B12A29EC79B6ACABCA64270C8E /* IRFFFramePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DD4CD54E72FE2DD0B7DCD130848C964 /* IRFFFramePool.m */; };
+		6F9BC8F6801D410512EDA2DCB1F92544 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		707D9CE68F5106DFC0D50957EDD03229 /* IRSmoothScrollController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC406BBA3AB687EA01CA4F89925D9DC /* IRSmoothScrollController.m */; };
+		71A9FD8AB0C9413928949F5EDE2C0235 /* IRGLProgram2DFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 00206721DD7C25C81CF135CB1FA1E6EF /* IRGLProgram2DFactory.m */; };
+		7237C1C43B908E633293047C38DB1649 /* IRGLProgramFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CEF1BAE2A248CF09A92BE40CCEFF666 /* IRGLProgramFactory.m */; };
+		7296667A2599165836DF014A576A6830 /* IRPlayer-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 85D95F489236B355621E3931C315D867 /* IRPlayer-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		74BE963F3F2CD1088091B0AB057B821C /* IRPlayerMacro.h in Headers */ = {isa = PBXBuildFile; fileRef = 28C41E4E2418112B8A69BD3CAE7BB4BA /* IRPlayerMacro.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		757F50EF4BE9EF0F6F66182F44976E53 /* IRMovieDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = DC4A099016461DF3E5CA1B5AA919E61A /* IRMovieDecoder.m */; };
+		75BACDB0BD6A1E93006B1548D28F7FFC /* IRAVPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 9EA389CE50208DE3AF314093E7DB6F82 /* IRAVPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7658E07FE78B180D6FAF544705BD0EB6 /* IRGLProgram3DFisheye4PFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D28C02F3752AE47DC8FA68A94A0F422 /* IRGLProgram3DFisheye4PFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78D3A60B242F34C2AC672D92F17AC502 /* IRGestureController+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = C038172EE5629DB672130AC1CFE42AB7 /* IRGestureController+Private.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7A927BB2D929C4003820B4039D010C8D /* IRGLTransformController3DFisheye.m in Sources */ = {isa = PBXBuildFile; fileRef = 32DFE2C74D4FC15351134763096FE364 /* IRGLTransformController3DFisheye.m */; };
+		7B9083DA80AE8C4AD2712442F7AFE6C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		7D28726BDB9D132AFFAF2A404CBA7C79 /* IRGLSupportPixelFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = D1459AD3F65224F43B061ACE4D4D08B1 /* IRGLSupportPixelFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7EBAC194961E20B1EB8FFC0D4B60E2E3 /* IRPlayerDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 1434DC9AE017EBA1E6ECAEB89F932FC3 /* IRPlayerDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7EBB1700738F5B66932644CB91971DA2 /* IRPlayerTrack.h in Headers */ = {isa = PBXBuildFile; fileRef = 8925E8D8582B376B28FB33B5568EA492 /* IRPlayerTrack.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7F72A8586628C165FD2832648C148C47 /* IRFFTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DEDAD5917F1C6A77DE356261664AD9A /* IRFFTrack.m */; };
+		7FDBB98039B90BE316373CA4CBC632A6 /* IRGLTransformControllerDistortion.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EC5BC54BBDCF5075FB5B971941BA59E /* IRGLTransformControllerDistortion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8136FE5D30A5915851990C1A02423C4A /* IRGLScope3D.m in Sources */ = {isa = PBXBuildFile; fileRef = 2418F42C675E6B33ED3DE2FA4AD1E056 /* IRGLScope3D.m */; };
+		81F34DD7668D604C3BB61DD697CC0FAF /* IRMediaParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2848B1B2E0E485A1261EB53CD51FC1DE /* IRMediaParameter.m */; };
+		82CDD49C1181C39092379015C9A1F716 /* IRAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D4DCF3B79F0B9D6CAE2701AFC0773F /* IRAudioManager.m */; };
+		894C8A67ADF856E4ADA05E97D475BDD1 /* IRGLProgram2DFisheye2PanoFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 69857AD2F72453558B04826F65B7C967 /* IRGLProgram2DFisheye2PanoFactory.m */; };
+		89F915A9DA3125CE8F21E8B0272A340A /* IRFFAudioFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = 486A38DC33453A3660A4AFF40516A45F /* IRFFAudioFrame.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8BF76DBB6A0981DEB3940676A3D65EA2 /* IRGLProgramDistortion.m in Sources */ = {isa = PBXBuildFile; fileRef = C1D96BFF2AA29FA5E727FB615816717E /* IRGLProgramDistortion.m */; };
+		8CF4D96E6EACCDF8685786AC4D0570AC /* IRGLProgramDistortion.h in Headers */ = {isa = PBXBuildFile; fileRef = 16B525882E5610D529CD2D8A8AE1283D /* IRGLProgramDistortion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8F69B2F3511B60C15E7C3C92110A518B /* IRPlayerTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 62DB50229F99E9A0214889D9CBD35F27 /* IRPlayerTrack.m */; };
+		9085CB233531A50277FD16F1648163A0 /* IRFFTools.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2DC559683F5AF18169AD5A4A486DA0 /* IRFFTools.m */; };
+		9119AF8F73644D2C6371D69C3858315B /* IRGestureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 949113416654DAF459595235C903BF88 /* IRGestureController.m */; };
+		911B722E689CC6A47263A5A25DE95807 /* Pods-demo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5DC5ABE867DFAFEEFE65EB904EC044 /* Pods-demo-dummy.m */; };
+		921675D835811D5825634DC51961FB67 /* IRGLProgram3DFisheye4PFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 202B8528015145591DE8050B75FFCB04 /* IRGLProgram3DFisheye4PFactory.m */; };
+		92776B7494054609D6CC6886B8DF261B /* IRGLVertex3DShaderGLSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A44E3C09AA250A9679A87165AADE46E /* IRGLVertex3DShaderGLSL.m */; };
+		92786BD33ED03A0EAEED99180E9867D5 /* IRGLProjectionVR.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB637AF7BB67B53A5C5679C9A04DF6E /* IRGLProjectionVR.m */; };
+		935B5B690E46D95DF526C2B4153EF632 /* IRYUVTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 83B7AA1A864D943409EBF473B9ABD01E /* IRYUVTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		93E65451B9BC2D60CF3F1DA3CEDDCA40 /* IRPlayerImp+DisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AB19A06CA9B7AE21FCB47E274429A6 /* IRPlayerImp+DisplayView.m */; };
+		94AA6517CC7B0DF73405D27313628ADC /* IRGLGestureController.h in Headers */ = {isa = PBXBuildFile; fileRef = 96B6E69F843C549B125CFE191DA47EB5 /* IRGLGestureController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9732DBED9B13880F06ED97E856BEACA9 /* IRGLRenderModeVR.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A6E6FA3C10B8352A69D803EB4AF268 /* IRGLRenderModeVR.m */; };
+		9B40F265B7482DFEF3200B9A7037C43B /* IRGLProjectionEquirectangular.m in Sources */ = {isa = PBXBuildFile; fileRef = 61EDAB34DE05BD0440F67D0C21CDDF03 /* IRGLProjectionEquirectangular.m */; };
+		9B912A367F9DF26E2CB6E15327A9ECB1 /* IRGLProjectionDistortion.m in Sources */ = {isa = PBXBuildFile; fileRef = 09068B64063ED574634D1ABE8D11FAD8 /* IRGLProjectionDistortion.m */; };
+		9E1A6D2BA90F4C35720249FD4EE96125 /* IRGLProgramMulti4P.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CD777EF583164B76E1141C73B2B6388 /* IRGLProgramMulti4P.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9F608B1E9418D315CBDC83ABAB9D7225 /* IRGLRenderMode.m in Sources */ = {isa = PBXBuildFile; fileRef = BF93AE3E790792ED4C653D3510002F02 /* IRGLRenderMode.m */; };
+		A34B36889D633A1534D562EA98CEDBC6 /* IRGLProgram2DFisheye2PanoFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 90CA7A2BB346E3373B1B4014429433D0 /* IRGLProgram2DFisheye2PanoFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AA917400BCB947EABD3BAC730BD95A02 /* IRFFAudioDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D000E40D1A2EF5624CDD7617AEFF3D9 /* IRFFAudioDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ADEE7DF87F460971501BB512860E8CBE /* IRGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A8C6026F064B11EE77C5FDE37B20313 /* IRGLView.m */; };
+		B28A32BE5EE75B5062C4AF02EA3EB075 /* IRGLFish2PerspShaderParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 96E964BA13CB4D672B6583C1B11C3787 /* IRGLFish2PerspShaderParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B3E415B5B3AF7A1F83C6DD5AA280F999 /* IRGLTransformControllerVR.m in Sources */ = {isa = PBXBuildFile; fileRef = A38F8E9D22A8D898EE2DE66F470B53F7 /* IRGLTransformControllerVR.m */; };
+		B425B6C77F2F0A0D4F84984760E4B67F /* IRGLRenderModeDistortion.h in Headers */ = {isa = PBXBuildFile; fileRef = F8A0C5E0AC09256AC14EB3348455EA07 /* IRGLRenderModeDistortion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B480E5DD9BA5C9B9B1974DBF64CF2B3A /* IRGLFragmentYUVShaderGLSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 176DB01BFED6D955E1CEF5F0FA7BD5CC /* IRGLFragmentYUVShaderGLSL.m */; };
+		B4A41096B43856370D98E50409740CEF /* IRSensor.h in Headers */ = {isa = PBXBuildFile; fileRef = 08780998E26CA6691BBAA0A51D06939A /* IRSensor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B55A57A29D3FB4E38FFDB9EFF3DAFDA8 /* IRPlayer-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 056E392A1A5C462CA773E5D6B998B28D /* IRPlayer-dummy.m */; };
+		B588201F30FE9D960D85C99FD4DA0555 /* IRGLProgramVRFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 23439697661B72618AF1FC50D28E14DA /* IRGLProgramVRFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8BF9316899774DF15515BFCCA1F1D4C /* IRGLFragmentFish2PanoShaderGLSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C76233961F0FEC9C62573C4EC6EE74D /* IRGLFragmentFish2PanoShaderGLSL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BA317278B0FD1991183458535742CC09 /* IRPLFImage.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8EB3C58DB864F4A7B9EA01F7779C17 /* IRPLFImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BA49964259869452624482874A11BB07 /* IRGLShaderParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 81136A477BA2F0CC59E5ECD4DE5142BF /* IRGLShaderParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BB49C19817538E65E0AA30EE9C29D8A9 /* IRGLProgram2DFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AB95CDC49D52743292B5D729D548A3F /* IRGLProgram2DFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C01E07B7A242BE1C3DD157E83F8AF7B1 /* IRDeviceShiftController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8F8DD1BF0C9D44D4FDD150D5F4A63DA /* IRDeviceShiftController.m */; };
+		C0AF4E040A0BD8617636E2D2D538D0F6 /* IRGLProgramFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = FB34B1A78F087B3EBD66B4EECC408548 /* IRGLProgramFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C0CDCE8BA3C5F2ABE7F1A4B06808F497 /* IRGLVertexShaderGLSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 157CAA756773E52DFEEEFD8B9C39A81F /* IRGLVertexShaderGLSL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C37652705A4DC769175393B1A2FC5B39 /* IRGLRenderNV12.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D24D9D58C25C4FFA57745A945E72CF /* IRGLRenderNV12.m */; };
+		C3CF6FE373F5A1C45E40A6FD2A328AB7 /* IRGLProgram2D.m in Sources */ = {isa = PBXBuildFile; fileRef = A962FA6859CC57AC967E637158B56D5F /* IRGLProgram2D.m */; };
+		C45ED57BF180488101AB2F806E700EE8 /* IRGLProgram3DFisheyeFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = BD024941889E00D9ADD835FAEBEC62AE /* IRGLProgram3DFisheyeFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C5420F643BA71FB1B95C22A22E92C096 /* IRGLProjectionDistortion.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A628AF2EB76F3E053406D41EA6314EE /* IRGLProjectionDistortion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C5BDC0B289B4B452842E05916229D482 /* IRGestureController+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = EB80D8652C9499D772E1906149C5F957 /* IRGestureController+Private.m */; };
+		C614CBAA2BB5AF6288036EFF4C540D5F /* IRGLTransformControllerVR.h in Headers */ = {isa = PBXBuildFile; fileRef = 37A0EADCA81BD68AFED69E47D818774A /* IRGLTransformControllerVR.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C6814E534EC8C1AA63A196396AAB823F /* IRFFVideoDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D035804D6ECD6906396EA187AC26801 /* IRFFVideoDecoder.m */; };
+		C75F849698F40D37305B38A3FE7EE6F1 /* IRFFFramePool.h in Headers */ = {isa = PBXBuildFile; fileRef = C4E935B5392649949C0CC37114DAAC85 /* IRFFFramePool.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C7838C272DE6C9755FD72A57E1D81094 /* IRPlayerNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = DE364D17B18DC43DE95AC3210614E1A2 /* IRPlayerNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C9A9FE834310A6638711E697990DC6BA /* Pods-demo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 919022BC48F9439E29669B27B83A8482 /* Pods-demo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA4647F1DAFEFAD7F3A668BD4556EDAF /* IRGLRenderModeMulti4P.h in Headers */ = {isa = PBXBuildFile; fileRef = 37388E750DA48E998CA80D9824B41ABF /* IRGLRenderModeMulti4P.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA829022B9E1C34E8395F3D1F1E78C23 /* IRPlayerImp.h in Headers */ = {isa = PBXBuildFile; fileRef = 7095EB4D28F9A01F7A9641DD614F5040 /* IRPlayerImp.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CAE148B57E4F90FA0FFFCDF7385E6859 /* IRFFVideoToolBox.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FC025A97E0FC3D009EB35DC0498A19F /* IRFFVideoToolBox.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CE9FDF037977EA81C4156A67E95CD79C /* IRGLProjectionOrthographic.m in Sources */ = {isa = PBXBuildFile; fileRef = D8A9A11C11A7BCAA214D9C1FD78E2D86 /* IRGLProjectionOrthographic.m */; };
+		D077719BF9C1DC2EF3AA92B85E4E2C75 /* IRFFVideoFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CD55730805FD467B950CB24A087F18A /* IRFFVideoFrame.m */; };
+		D4F4883F494ECFDB6331517B73C111C5 /* IRPLFView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0467E0C9BBE869C9CD2CB12D9C6798 /* IRPLFView.m */; };
+		D59A5F022259E3C4BDC7E89DA6854B82 /* IRGLVertexShaderGLSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C16E0CD7BABD279F18F7A41092DD0C2 /* IRGLVertexShaderGLSL.m */; };
+		D6F9161DD5503881CCDA9983C89929BA /* IRFFPacketQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E116713E61FCE21031DEFC64366E0B9 /* IRFFPacketQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D7915AC8CEE1E11FDB92E7364CDF18C5 /* IRMovieDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = C78CED6A5C7AC9F73A788BA7D72A92A0 /* IRMovieDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D8C442BA01A8DE4E6F967193AE51F885 /* IRGLRenderBase.h in Headers */ = {isa = PBXBuildFile; fileRef = C6E5BDCD669BE67E84AD91541A9E5E1B /* IRGLRenderBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D906AE4CE2B83A5A55237A44789BE060 /* IRGLRenderRGB.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DD3D22AA03162DFB229A247B5BBE3F7 /* IRGLRenderRGB.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D9F46F9559BE0CDE9D8F27A19E4B2795 /* IRGLFish2PanoShaderParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 2102802283AC13C4887DFE9C13708BEF /* IRGLFish2PanoShaderParams.m */; };
+		DBEDB4B0AA4DD7E8D88363CE7742235A /* IRGLProjection.h in Headers */ = {isa = PBXBuildFile; fileRef = 035F84317091099AA4DC3258CDE99007 /* IRGLProjection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DC1B17C546A44366A07C93F28B862E93 /* IRGLProgram3DFisheye.h in Headers */ = {isa = PBXBuildFile; fileRef = 8344E44F0D55DF206891D8A70438A3D6 /* IRGLProgram3DFisheye.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD0D3A0D0FE1A6BE10194D28FB13E5BB /* IRGLRenderBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A5D635CCDDD95824BCB884F7F9B170 /* IRGLRenderBase.m */; };
+		DE1A57E879793E434C7E40CD4C4739B5 /* IRGLProgram2DFisheye2Pano.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DEF94B1EE9A9013E5070518CC86D139 /* IRGLProgram2DFisheye2Pano.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E02CB80520CB23D0B0B92B34E7D13D08 /* IRGestureControl.h in Headers */ = {isa = PBXBuildFile; fileRef = A838989821A1A913127EA68F0DB1CCB3 /* IRGestureControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E061882A5E3F2566B8C3639B1BC3319C /* IRScope.h in Headers */ = {isa = PBXBuildFile; fileRef = FE677C10796FBB4EFF375774385092D6 /* IRScope.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E110D591AED41CC3FEE41DA2E8307DCE /* IRGLRenderModeMulti4P.m in Sources */ = {isa = PBXBuildFile; fileRef = AD42DD2E88308AFCB66E614DE181AFB3 /* IRGLRenderModeMulti4P.m */; };
+		E4F38311DADCBF585D21D3EA7CD64CB3 /* IRPLFView.h in Headers */ = {isa = PBXBuildFile; fileRef = 416C25BFF1375347627157082510C23C /* IRPLFView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E5EE3B9D44CCC3EA737B4EC6FC04B29D /* IRGLRenderMode.h in Headers */ = {isa = PBXBuildFile; fileRef = DEF14FC5DA6283B2A6B18354CC9E4BDA /* IRGLRenderMode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E61615336D87474DD29B1B71FFEC37F8 /* IRGLDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 6AB3C7DF2129E51A415DD38910BB99E1 /* IRGLDefine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E8538697B852CB40F7EB077389505B7D /* IRFFPacketQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B829F92B90AD86F8CEF5C7CF875AD5F /* IRFFPacketQueue.m */; };
+		E8608D70CA345CA996A8AE6715FAF2BD /* IRGLProgramDistortionFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E62BDB68BA0791D6777CCEC0D42907 /* IRGLProgramDistortionFactory.m */; };
+		E898C71F145BD31D024EEE79FB48B978 /* IRGLTransformController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64198F0365FB71FBBC7306845759E349 /* IRGLTransformController.m */; };
+		E95C24ABEB8B575B79402CE95B91173F /* IRGLProgram2DFisheye2Persp.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1F33BAE38FFEC1BFA8FFF74E92B629 /* IRGLProgram2DFisheye2Persp.m */; };
+		EA02C850C53B143103CA62A4F8BC478D /* IRGLRenderModeFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E278AF06A6033A4365F70B171D8D181 /* IRGLRenderModeFactory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EA4F3786FEE5AA7C8B9ECB05FFE2A3E6 /* IRPlayerDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 963A47F2B253C5B20C7D656CC4188401 /* IRPlayerDecoder.m */; };
+		EAA5B8F5ECA842AA13AC17AE8FB801E6 /* IRGLTransformController.h in Headers */ = {isa = PBXBuildFile; fileRef = C3438D3421B40DDAAF930A1140D5606B /* IRGLTransformController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EC4CB1C40F0C64D17C774304444A1B07 /* IRPlayerAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F58987129321FB13C3F959CF17FF825 /* IRPlayerAction.m */; };
+		ED0203350ACD49C5B84444BCA9FBE5CF /* IRGLProgramMulti4P.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F9981D07F2ED1E17B81E81D6F5404E /* IRGLProgramMulti4P.m */; };
+		F01EFFE5A3DA710E39AAE13621929FD2 /* IRGLRenderRGB.m in Sources */ = {isa = PBXBuildFile; fileRef = B40C1249B4EBC98B135C9946267DF3F1 /* IRGLRenderRGB.m */; };
+		F32CB72912404DB7137643C1BEA66BA3 /* IRFFPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F1F609D6DD80ADB93B3E673CAA2912 /* IRFFPlayer.m */; };
+		F36F6818F021F4998FDC42A020BA1879 /* IRGestureController.h in Headers */ = {isa = PBXBuildFile; fileRef = FC32E6E04EEB20C329404C0BC6B53BC3 /* IRGestureController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F46214A1D982F01A40CE3CBB4FF8669F /* IRGLTransformControllerDistortion.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE098536E6BC30FE4FAEB2016D0BBC7 /* IRGLTransformControllerDistortion.m */; };
+		F4BA1540584F6E73BD2B5E13ED889E5F /* IRGLTransformController2D.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B4B52FA64F4D23C165B4374091D5A5 /* IRGLTransformController2D.m */; };
+		F4FC44554E0DB2ABE0774D93016370EB /* IRGLFish2PerspShaderParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 21DDFAA73F09CAE0B211EC12B33C0429 /* IRGLFish2PerspShaderParams.m */; };
+		F5E79D4DB90474858B13878283855818 /* IRFFMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 67238275681BADE7AE235089AA9C0DEB /* IRFFMetadata.m */; };
+		F5E9AA7837CE4F42ADD1781E9E21576D /* IRGLFragmentFish2PanoShaderGLSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 19E884E7F5B10F9117B4CF12D385D608 /* IRGLFragmentFish2PanoShaderGLSL.m */; };
+		F66A88B4DF812B9A814C4AF65C3D164A /* IRGLProjectionVR.h in Headers */ = {isa = PBXBuildFile; fileRef = 0249DFE08B23972CD6E5C7142A57CDE3 /* IRGLProjectionVR.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F78B1BC39217D7C905FB64F2DEA23BD0 /* IRGLProgramMulti.h in Headers */ = {isa = PBXBuildFile; fileRef = B88ABDDF7753ED9E81DABC8AE47CA262 /* IRGLProgramMulti.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F83B11E6521EA2C3A7113ED29DF10339 /* IRAVPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C69E63A09B2F145844567C543863E7CB /* IRAVPlayer.m */; };
+		F845245916B4442842925E6238DBDB4B /* IRGLProgram3DFisheye.m in Sources */ = {isa = PBXBuildFile; fileRef = BC957954351C98F76C3F04A14D0E2E53 /* IRGLProgram3DFisheye.m */; };
+		F9E916315890DCA19B84A737DCC73646 /* IRGLProjectionEquirectangular.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D2112034B689011E0F77B6B17B580C1 /* IRGLProjectionEquirectangular.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FB589E3E7B32D39996142C8A96C56A63 /* IRSimulateDeviceShiftController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F13C07B500A509E34E2757666BA3308 /* IRSimulateDeviceShiftController.m */; };
+		FC6F1E07A12791D407A550B5D91EF00F /* IRGLProgramVR.h in Headers */ = {isa = PBXBuildFile; fileRef = 67E1D2F6D28324FC4C105F86DB6736FB /* IRGLProgramVR.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FCC1A8E90DC6955B140B0A0AD210C43E /* IRPlayerAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 684006CEF4E1CCB8D7978BB97F4BA371 /* IRPlayerAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD691A14D8B68C0FAC73606F362D02AD /* IRFFAudioFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BE0D99BB80C4407E778791E2C3EF38 /* IRFFAudioFrame.m */; };
+		FD975832033B88C705E661B2C2FCCAE9 /* IRGLRenderMode2DFisheye2Pano.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E617E20E4D481EFF4B9850CC215EB8A /* IRGLRenderMode2DFisheye2Pano.m */; };
+		FE2EF2AF1EE7407A9D84B2C6068DCBE4 /* IRGLRenderNV12.h in Headers */ = {isa = PBXBuildFile; fileRef = B8681BB93382773279582D41F5001DCC /* IRGLRenderNV12.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FEAF0CD64DDB2CFDA77114C9204B84D6 /* UserProfileChangePassword.h in Headers */ = {isa = PBXBuildFile; fileRef = D217B90B14AC4D3935DC7C5D62CB32E9 /* UserProfileChangePassword.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF30C56FBFD92843C9AFD3AFF60BF2C5 /* IRGLFragmentYUVShaderGLSL.h in Headers */ = {isa = PBXBuildFile; fileRef = B39A3C0AD4BA7FE4B36D23A17898043E /* IRGLFragmentYUVShaderGLSL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C0C7F4EDFF69EFE3F12420417116F4CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 832CBDFEE66AA7D98ADF8C6C7B1A6FE4;
+			remoteInfo = IRPlayer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00206721DD7C25C81CF135CB1FA1E6EF /* IRGLProgram2DFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLProgram2DFactory.m; sourceTree = "<group>"; };
+		0249DFE08B23972CD6E5C7142A57CDE3 /* IRGLProjectionVR.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLProjectionVR.h; sourceTree = "<group>"; };
+		035F84317091099AA4DC3258CDE99007 /* IRGLProjection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLProjection.h; sourceTree = "<group>"; };
+		056C11651D9181CFD60992F50710A1E6 /* Pods-demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-demo.release.xcconfig"; sourceTree = "<group>"; };
+		056E392A1A5C462CA773E5D6B998B28D /* IRPlayer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "IRPlayer-dummy.m"; sourceTree = "<group>"; };
+		05A47ABFE462401FA2E37080C6E80783 /* IRGLMath.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLMath.h; sourceTree = "<group>"; };
+		08780998E26CA6691BBAA0A51D06939A /* IRSensor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRSensor.h; sourceTree = "<group>"; };
+		08F5B6FC69E0783B2534374314601555 /* IRFFFrameQueue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRFFFrameQueue.h; sourceTree = "<group>"; };
+		09068B64063ED574634D1ABE8D11FAD8 /* IRGLProjectionDistortion.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLProjectionDistortion.m; sourceTree = "<group>"; };
+		0AAA7F9574B1042A1B31E1D7DECCE29D /* IRFFPlayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRFFPlayer.h; sourceTree = "<group>"; };
+		0C76233961F0FEC9C62573C4EC6EE74D /* IRGLFragmentFish2PanoShaderGLSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLFragmentFish2PanoShaderGLSL.h; sourceTree = "<group>"; };
+		0CA39B64DCDC3566C5EE76CBC34934D3 /* IRBounceController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRBounceController.h; sourceTree = "<group>"; };
+		0DD3D22AA03162DFB229A247B5BBE3F7 /* IRGLRenderRGB.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLRenderRGB.h; sourceTree = "<group>"; };
+		0E5E2B182E4EB2DD0EDAA31C608C4928 /* IRPlayer-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IRPlayer-prefix.pch"; sourceTree = "<group>"; };
+		0E617E20E4D481EFF4B9850CC215EB8A /* IRGLRenderMode2DFisheye2Pano.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLRenderMode2DFisheye2Pano.m; sourceTree = "<group>"; };
+		0E9216CFE7CE1B9B39324E3D144EC710 /* IRMetamacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRMetamacros.h; sourceTree = "<group>"; };
+		0FD680C1E5DB773CC5312525B8AAAA2F /* libavcodec.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libavcodec.a; path = ThirdParty/ffmpeg/lib/libavcodec.a; sourceTree = "<group>"; };
+		13A0B047311571E8E6EA3BE452FFB4FE /* IRGLProgram2DFisheye2Pano.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLProgram2DFisheye2Pano.m; sourceTree = "<group>"; };
+		1434DC9AE017EBA1E6ECAEB89F932FC3 /* IRPlayerDecoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRPlayerDecoder.h; sourceTree = "<group>"; };
+		157CAA756773E52DFEEEFD8B9C39A81F /* IRGLVertexShaderGLSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLVertexShaderGLSL.h; sourceTree = "<group>"; };
+		16B525882E5610D529CD2D8A8AE1283D /* IRGLProgramDistortion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLProgramDistortion.h; sourceTree = "<group>"; };
+		171784CD7F89555EFD77B2A0479363CA /* Pods-demo-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-demo-Info.plist"; sourceTree = "<group>"; };
+		176DB01BFED6D955E1CEF5F0FA7BD5CC /* IRGLFragmentYUVShaderGLSL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLFragmentYUVShaderGLSL.m; sourceTree = "<group>"; };
+		19E884E7F5B10F9117B4CF12D385D608 /* IRGLFragmentFish2PanoShaderGLSL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLFragmentFish2PanoShaderGLSL.m; sourceTree = "<group>"; };
+		1CEF1BAE2A248CF09A92BE40CCEFF666 /* IRGLProgramFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLProgramFactory.m; sourceTree = "<group>"; };
+		1EC406BBA3AB687EA01CA4F89925D9DC /* IRSmoothScrollController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRSmoothScrollController.m; sourceTree = "<group>"; };
+		1EC5BC54BBDCF5075FB5B971941BA59E /* IRGLTransformControllerDistortion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLTransformControllerDistortion.h; sourceTree = "<group>"; };
+		202B8528015145591DE8050B75FFCB04 /* IRGLProgram3DFisheye4PFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLProgram3DFisheye4PFactory.m; sourceTree = "<group>"; };
+		2102802283AC13C4887DFE9C13708BEF /* IRGLFish2PanoShaderParams.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLFish2PanoShaderParams.m; sourceTree = "<group>"; };
+		21DDFAA73F09CAE0B211EC12B33C0429 /* IRGLFish2PerspShaderParams.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLFish2PerspShaderParams.m; sourceTree = "<group>"; };
+		23439697661B72618AF1FC50D28E14DA /* IRGLProgramVRFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLProgramVRFactory.h; sourceTree = "<group>"; };
+		23D4BBFFC211A58EDFEBBE01A2B1D274 /* IRFFFrameQueue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRFFFrameQueue.m; sourceTree = "<group>"; };
+		2418F42C675E6B33ED3DE2FA4AD1E056 /* IRGLScope3D.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLScope3D.m; sourceTree = "<group>"; };
+		25F1F609D6DD80ADB93B3E673CAA2912 /* IRFFPlayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRFFPlayer.m; sourceTree = "<group>"; };
+		2848B1B2E0E485A1261EB53CD51FC1DE /* IRMediaParameter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRMediaParameter.m; sourceTree = "<group>"; };
+		28C41E4E2418112B8A69BD3CAE7BB4BA /* IRPlayerMacro.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRPlayerMacro.h; sourceTree = "<group>"; };
+		2CD55730805FD467B950CB24A087F18A /* IRFFVideoFrame.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRFFVideoFrame.m; sourceTree = "<group>"; };
+		2F58987129321FB13C3F959CF17FF825 /* IRPlayerAction.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRPlayerAction.m; sourceTree = "<group>"; };
+		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		322E19F30D095C0AAFABD745794BB343 /* IRFFVideoToolBox.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRFFVideoToolBox.m; sourceTree = "<group>"; };
+		32DFE2C74D4FC15351134763096FE364 /* IRGLTransformController3DFisheye.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLTransformController3DFisheye.m; sourceTree = "<group>"; };
+		34FFF9FF96A5175EE5C18FF5DA32B059 /* IRGLRenderModeFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLRenderModeFactory.m; sourceTree = "<group>"; };
+		350A03B93D36E72D3C6A6BF40BD21C85 /* IRPlayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRPlayer.h; sourceTree = "<group>"; };
+		351C4C6BA3189C5507D8DD4D3EF11B1E /* IRFFFormatContext.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRFFFormatContext.m; sourceTree = "<group>"; };
+		3585223B2E67EB76BF8C1A1355B29F3E /* IRGLProgram3DFisheyeFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLProgram3DFisheyeFactory.m; sourceTree = "<group>"; };
+		36FEAA878FDA5A5918781B9C11339124 /* IRGLTransformController2D.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLTransformController2D.h; sourceTree = "<group>"; };
+		37388E750DA48E998CA80D9824B41ABF /* IRGLRenderModeMulti4P.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLRenderModeMulti4P.h; sourceTree = "<group>"; };
+		37A0EADCA81BD68AFED69E47D818774A /* IRGLTransformControllerVR.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLTransformControllerVR.h; sourceTree = "<group>"; };
+		416C25BFF1375347627157082510C23C /* IRPLFView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRPLFView.h; sourceTree = "<group>"; };
+		43220EDCCCA756E1E22671526EF0481E /* IRGLProgram2DFisheye2Persp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLProgram2DFisheye2Persp.h; sourceTree = "<group>"; };
+		451D2F7BD7D918E19F2935A57CA931B9 /* IRGLFish2PanoShaderParams.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLFish2PanoShaderParams.h; sourceTree = "<group>"; };
+		46FEDB0E1CA7B9D7FA0C31E607D0917F /* IRGLTransformController3DFisheye.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLTransformController3DFisheye.h; sourceTree = "<group>"; };
+		47AB19A06CA9B7AE21FCB47E274429A6 /* IRPlayerImp+DisplayView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "IRPlayerImp+DisplayView.m"; sourceTree = "<group>"; };
+		486A38DC33453A3660A4AFF40516A45F /* IRFFAudioFrame.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRFFAudioFrame.h; sourceTree = "<group>"; };
+		4AB74F2A42BFF6F6B38E5136417E8583 /* IRFFDecoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRFFDecoder.m; sourceTree = "<group>"; };
+		4CC15D2F4084C54321D37B30AC257B6C /* IRGLProgram2D.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLProgram2D.h; sourceTree = "<group>"; };
+		4DD23B60854EC68D0964326B678EF1BB /* IRGLFragmentRGBShaderGLSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLFragmentRGBShaderGLSL.h; sourceTree = "<group>"; };
+		4DEF94B1EE9A9013E5070518CC86D139 /* IRGLProgram2DFisheye2Pano.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLProgram2DFisheye2Pano.h; sourceTree = "<group>"; };
+		4F774814D88ECBC91CEF381D411E372A /* IRFFFrame.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRFFFrame.h; sourceTree = "<group>"; };
+		4FC025A97E0FC3D009EB35DC0498A19F /* IRFFVideoToolBox.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRFFVideoToolBox.h; sourceTree = "<group>"; };
+		4FE45AE5DAA8B1DF7D6099181AD9FA0A /* Pods-demo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-demo-acknowledgements.markdown"; sourceTree = "<group>"; };
+		52787F76649C6C3680A006B5FA822D5B /* IRAudioManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRAudioManager.h; sourceTree = "<group>"; };
+		5288C79AB96504D6AFDCED51FD92B508 /* IRFisheyeParameter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRFisheyeParameter.m; sourceTree = "<group>"; };
+		52A3CB53D4204591BB50F2287B3CF2EF /* IRGLProgramDistortionFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLProgramDistortionFactory.h; sourceTree = "<group>"; };
+		530F769112CF2F0CFF5817572BCAFF10 /* IRFisheyeParameter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRFisheyeParameter.h; sourceTree = "<group>"; };
+		5753E58EC8F6AD60E2BBB1FC09F89D63 /* IRGLRenderMode3DFisheye.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLRenderMode3DFisheye.h; sourceTree = "<group>"; };
+		58BE0D99BB80C4407E778791E2C3EF38 /* IRFFAudioFrame.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRFFAudioFrame.m; sourceTree = "<group>"; };
+		59D11CB9A859ECB79D4A5D535A633511 /* IRMetadataDefine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRMetadataDefine.h; sourceTree = "<group>"; };
+		5A44E3C09AA250A9679A87165AADE46E /* IRGLVertex3DShaderGLSL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLVertex3DShaderGLSL.m; sourceTree = "<group>"; };
+		5D035804D6ECD6906396EA187AC26801 /* IRFFVideoDecoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRFFVideoDecoder.m; sourceTree = "<group>"; };
+		5D2112034B689011E0F77B6B17B580C1 /* IRGLProjectionEquirectangular.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLProjectionEquirectangular.h; sourceTree = "<group>"; };
+		5E116713E61FCE21031DEFC64366E0B9 /* IRFFPacketQueue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRFFPacketQueue.h; sourceTree = "<group>"; };
+		5E278AF06A6033A4365F70B171D8D181 /* IRGLRenderModeFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLRenderModeFactory.h; sourceTree = "<group>"; };
+		5E296DE7491FF1F89BCB654879F227C1 /* IRGLRenderModeDistortion.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLRenderModeDistortion.m; sourceTree = "<group>"; };
+		61EDAB34DE05BD0440F67D0C21CDDF03 /* IRGLProjectionEquirectangular.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLProjectionEquirectangular.m; sourceTree = "<group>"; };
+		620C2E500E91AE09F121C9670613B82F /* Pods_demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_demo.framework; path = "Pods-demo.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		62DB50229F99E9A0214889D9CBD35F27 /* IRPlayerTrack.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRPlayerTrack.m; sourceTree = "<group>"; };
+		64198F0365FB71FBBC7306845759E349 /* IRGLTransformController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLTransformController.m; sourceTree = "<group>"; };
+		65E62BDB68BA0791D6777CCEC0D42907 /* IRGLProgramDistortionFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLProgramDistortionFactory.m; sourceTree = "<group>"; };
+		6601F5A8E7AE26E8EC8E470CD55B7615 /* IRGLVertex3DShaderGLSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLVertex3DShaderGLSL.h; sourceTree = "<group>"; };
+		67238275681BADE7AE235089AA9C0DEB /* IRFFMetadata.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRFFMetadata.m; sourceTree = "<group>"; };
+		67E1D2F6D28324FC4C105F86DB6736FB /* IRGLProgramVR.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLProgramVR.h; sourceTree = "<group>"; };
+		684006CEF4E1CCB8D7978BB97F4BA371 /* IRPlayerAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRPlayerAction.h; sourceTree = "<group>"; };
+		69857AD2F72453558B04826F65B7C967 /* IRGLProgram2DFisheye2PanoFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLProgram2DFisheye2PanoFactory.m; sourceTree = "<group>"; };
+		6A628AF2EB76F3E053406D41EA6314EE /* IRGLProjectionDistortion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLProjectionDistortion.h; sourceTree = "<group>"; };
+		6A8C6026F064B11EE77C5FDE37B20313 /* IRGLView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLView.m; sourceTree = "<group>"; };
+		6AB3C7DF2129E51A415DD38910BB99E1 /* IRGLDefine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLDefine.h; sourceTree = "<group>"; };
+		6B829F92B90AD86F8CEF5C7CF875AD5F /* IRFFPacketQueue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRFFPacketQueue.m; sourceTree = "<group>"; };
+		6D8C770830BF61C57FD47679FB624D01 /* IRGLFragmentFish2PerspShaderGLSL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLFragmentFish2PerspShaderGLSL.m; sourceTree = "<group>"; };
+		6E989CC20BBDD5888F39254EC11F58E7 /* IRPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = IRPlayer.framework; path = IRPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7095EB4D28F9A01F7A9641DD614F5040 /* IRPlayerImp.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRPlayerImp.h; sourceTree = "<group>"; };
+		744C1C2EF9191A3A5DAC8FC526382978 /* IRYUVTools.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRYUVTools.m; sourceTree = "<group>"; };
+		74A5D635CCDDD95824BCB884F7F9B170 /* IRGLRenderBase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLRenderBase.m; sourceTree = "<group>"; };
+		772192330B5F7EE68A4D1E8F52F0AC60 /* IRFFDecoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRFFDecoder.h; sourceTree = "<group>"; };
+		775D10655A1E8F67BC8874C235AD4A4D /* IRPlayerNotification.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRPlayerNotification.m; sourceTree = "<group>"; };
+		77D209AB4661F0CF9684A90BD65C160F /* libswresample.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libswresample.a; path = ThirdParty/ffmpeg/lib/libswresample.a; sourceTree = "<group>"; };
+		7905FF70C73A77656882FA8B9EECCAEC /* IRMediaParameter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRMediaParameter.h; sourceTree = "<group>"; };
+		7B2067E4806A046A3C08CDCA8C26EF78 /* IRFFFormatContext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRFFFormatContext.h; sourceTree = "<group>"; };
+		7C047AD0E1B570310F1D8D23AF8F6098 /* IRGLProgramVRFactory.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLProgramVRFactory.m; sourceTree = "<group>"; };
+		7C16E0CD7BABD279F18F7A41092DD0C2 /* IRGLVertexShaderGLSL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLVertexShaderGLSL.m; sourceTree = "<group>"; };
+		7C5DC5ABE867DFAFEEFE65EB904EC044 /* Pods-demo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-demo-dummy.m"; sourceTree = "<group>"; };
+		7CD777EF583164B76E1141C73B2B6388 /* IRGLProgramMulti4P.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLProgramMulti4P.h; sourceTree = "<group>"; };
+		7D000E40D1A2EF5624CDD7617AEFF3D9 /* IRFFAudioDecoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRFFAudioDecoder.h; sourceTree = "<group>"; };
+		7DEDAD5917F1C6A77DE356261664AD9A /* IRFFTrack.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRFFTrack.m; sourceTree = "<group>"; };
+		7E0B7B928F4EE7DE7109FCCB873CC465 /* IRGLGestureController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLGestureController.m; sourceTree = "<group>"; };
+		7F0F3645A30E37AB676EEA3FAED6BEE6 /* IRGLProjectionOrthographic.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLProjectionOrthographic.h; sourceTree = "<group>"; };
+		7F13C07B500A509E34E2757666BA3308 /* IRSimulateDeviceShiftController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRSimulateDeviceShiftController.m; sourceTree = "<group>"; };
+		7FC1AC6D6DB9603D6C5EE163868A57CB /* IRGLRenderMode2DFisheye2Pano.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLRenderMode2DFisheye2Pano.h; sourceTree = "<group>"; };
+		81136A477BA2F0CC59E5ECD4DE5142BF /* IRGLShaderParams.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLShaderParams.h; sourceTree = "<group>"; };
+		81D24D9D58C25C4FFA57745A945E72CF /* IRGLRenderNV12.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLRenderNV12.m; sourceTree = "<group>"; };
+		82B50AFF2E2637C7CC329EB6AAAD6C04 /* IRSensor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRSensor.m; sourceTree = "<group>"; };
+		8304FA02D2A592F4996BA412884CCA37 /* Pods-demo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-demo.modulemap"; sourceTree = "<group>"; };
+		8344E44F0D55DF206891D8A70438A3D6 /* IRGLProgram3DFisheye.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLProgram3DFisheye.h; sourceTree = "<group>"; };
+		83A6E6FA3C10B8352A69D803EB4AF268 /* IRGLRenderModeVR.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLRenderModeVR.m; sourceTree = "<group>"; };
+		83B7AA1A864D943409EBF473B9ABD01E /* IRYUVTools.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRYUVTools.h; sourceTree = "<group>"; };
+		83D4DCF3B79F0B9D6CAE2701AFC0773F /* IRAudioManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRAudioManager.m; sourceTree = "<group>"; };
+		85656AAE46D0E791E7E876BE8E3076CD /* IRPLFImage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRPLFImage.m; sourceTree = "<group>"; };
+		85D95F489236B355621E3931C315D867 /* IRPlayer-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IRPlayer-umbrella.h"; sourceTree = "<group>"; };
+		8792989B388D4A4E58FBD34E34EB1D92 /* IRGLView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLView.h; sourceTree = "<group>"; };
+		8925E8D8582B376B28FB33B5568EA492 /* IRPlayerTrack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRPlayerTrack.h; sourceTree = "<group>"; };
+		8C067DEEAF199BAA1704CDDC6116D429 /* libavdevice.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libavdevice.a; path = ThirdParty/ffmpeg/lib/libavdevice.a; sourceTree = "<group>"; };
+		8D28C02F3752AE47DC8FA68A94A0F422 /* IRGLProgram3DFisheye4PFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLProgram3DFisheye4PFactory.h; sourceTree = "<group>"; };
+		8DF0E20AEA0D3546F6FFD27654F7DEBE /* IRFFVideoFrame.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRFFVideoFrame.h; sourceTree = "<group>"; };
+		90CA7A2BB346E3373B1B4014429433D0 /* IRGLProgram2DFisheye2PanoFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLProgram2DFisheye2PanoFactory.h; sourceTree = "<group>"; };
+		919022BC48F9439E29669B27B83A8482 /* Pods-demo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-demo-umbrella.h"; sourceTree = "<group>"; };
+		91C23E95BF967D761359D6ECB6FD4090 /* IRFFTrack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRFFTrack.h; sourceTree = "<group>"; };
+		920E4C62221D0E651651C6FB4E6E93E9 /* IRGLFragmentNV12ShaderGLSL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLFragmentNV12ShaderGLSL.m; sourceTree = "<group>"; };
+		9293FEB5641FF88DE950E3E63E0763A5 /* libavfilter.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libavfilter.a; path = ThirdParty/ffmpeg/lib/libavfilter.a; sourceTree = "<group>"; };
+		93E17A7DC966C4BCC2EEFDE67B2EA22C /* IRGLFragmentFish2PerspShaderGLSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLFragmentFish2PerspShaderGLSL.h; sourceTree = "<group>"; };
+		949113416654DAF459595235C903BF88 /* IRGestureController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGestureController.m; sourceTree = "<group>"; };
+		963A47F2B253C5B20C7D656CC4188401 /* IRPlayerDecoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRPlayerDecoder.m; sourceTree = "<group>"; };
+		96AEA6E0A4D3BAAEF3DF1A70728DDD26 /* IRPlayer.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = IRPlayer.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		96B6E69F843C549B125CFE191DA47EB5 /* IRGLGestureController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLGestureController.h; sourceTree = "<group>"; };
+		96E964BA13CB4D672B6583C1B11C3787 /* IRGLFish2PerspShaderParams.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLFish2PerspShaderParams.h; sourceTree = "<group>"; };
+		9AB95CDC49D52743292B5D729D548A3F /* IRGLProgram2DFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLProgram2DFactory.h; sourceTree = "<group>"; };
+		9BB637AF7BB67B53A5C5679C9A04DF6E /* IRGLProjectionVR.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLProjectionVR.m; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9DD4CD54E72FE2DD0B7DCD130848C964 /* IRFFFramePool.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRFFFramePool.m; sourceTree = "<group>"; };
+		9EA389CE50208DE3AF314093E7DB6F82 /* IRAVPlayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRAVPlayer.h; sourceTree = "<group>"; };
+		A0014B5EDF38DB0C88BC60522222FF90 /* IRSmoothScrollController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRSmoothScrollController.h; sourceTree = "<group>"; };
+		A0118A441919997469FB80DCF4827685 /* IRPlayer.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IRPlayer.xcconfig; sourceTree = "<group>"; };
+		A38F8E9D22A8D898EE2DE66F470B53F7 /* IRGLTransformControllerVR.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLTransformControllerVR.m; sourceTree = "<group>"; };
+		A3D01798F94BF2C80C0D480318B6C770 /* IRFFFrame.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRFFFrame.m; sourceTree = "<group>"; };
+		A422275D2DEC80CAC8C76EC88C747DCE /* IRGLRenderMode2D.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLRenderMode2D.m; sourceTree = "<group>"; };
+		A821F44CEDE918613976FF1E510FB854 /* IRDeviceShiftController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRDeviceShiftController.h; sourceTree = "<group>"; };
+		A838989821A1A913127EA68F0DB1CCB3 /* IRGestureControl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGestureControl.h; sourceTree = "<group>"; };
+		A962FA6859CC57AC967E637158B56D5F /* IRGLProgram2D.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLProgram2D.m; sourceTree = "<group>"; };
+		A975B42DB8C11D3523C45E26C24823DC /* IRFFVideoDecoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRFFVideoDecoder.h; sourceTree = "<group>"; };
+		AA6F28936150B774D174F70EC133595F /* Pods-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-demo.debug.xcconfig"; sourceTree = "<group>"; };
+		AA8EB3C58DB864F4A7B9EA01F7779C17 /* IRPLFImage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRPLFImage.h; sourceTree = "<group>"; };
+		AAE098536E6BC30FE4FAEB2016D0BBC7 /* IRGLTransformControllerDistortion.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLTransformControllerDistortion.m; sourceTree = "<group>"; };
+		AD0FE056A4D62357ADF7BBB3D29B2E52 /* Pods-demo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-demo-frameworks.sh"; sourceTree = "<group>"; };
+		AD42DD2E88308AFCB66E614DE181AFB3 /* IRGLRenderModeMulti4P.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLRenderModeMulti4P.m; sourceTree = "<group>"; };
+		AF973DB55E181E50268299D7CF4B2766 /* IRFFTools.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRFFTools.h; sourceTree = "<group>"; };
+		AFCE145EC5DD9EDFE58FA196C7D7907E /* IRFFAudioDecoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRFFAudioDecoder.m; sourceTree = "<group>"; };
+		B10635FDE1EC84636FBC4879E665D3F0 /* IRGLProgramVR.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLProgramVR.m; sourceTree = "<group>"; };
+		B39A3C0AD4BA7FE4B36D23A17898043E /* IRGLFragmentYUVShaderGLSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLFragmentYUVShaderGLSL.h; sourceTree = "<group>"; };
+		B40C1249B4EBC98B135C9946267DF3F1 /* IRGLRenderRGB.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLRenderRGB.m; sourceTree = "<group>"; };
+		B583D80D9D029891FD0BF5BB662FC444 /* IRGLShaderParams.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLShaderParams.m; sourceTree = "<group>"; };
+		B7F9981D07F2ED1E17B81E81D6F5404E /* IRGLProgramMulti4P.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLProgramMulti4P.m; sourceTree = "<group>"; };
+		B8681BB93382773279582D41F5001DCC /* IRGLRenderNV12.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLRenderNV12.h; sourceTree = "<group>"; };
+		B88ABDDF7753ED9E81DABC8AE47CA262 /* IRGLProgramMulti.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLProgramMulti.h; sourceTree = "<group>"; };
+		BB739F963A6EE7B64C40241661573553 /* IRGLRenderYUV.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLRenderYUV.h; sourceTree = "<group>"; };
+		BC957954351C98F76C3F04A14D0E2E53 /* IRGLProgram3DFisheye.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLProgram3DFisheye.m; sourceTree = "<group>"; };
+		BD024941889E00D9ADD835FAEBEC62AE /* IRGLProgram3DFisheyeFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLProgram3DFisheyeFactory.h; sourceTree = "<group>"; };
+		BE1A8DACD25D6CE3F54A599EE1703E4C /* IRFFMetadata.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRFFMetadata.h; sourceTree = "<group>"; };
+		BF93AE3E790792ED4C653D3510002F02 /* IRGLRenderMode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLRenderMode.m; sourceTree = "<group>"; };
+		C038172EE5629DB672130AC1CFE42AB7 /* IRGestureController+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IRGestureController+Private.h"; sourceTree = "<group>"; };
+		C0BFF568A8FAE18C967AEC0CEF6E665F /* IRGLRenderYUV.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLRenderYUV.m; sourceTree = "<group>"; };
+		C1D96BFF2AA29FA5E727FB615816717E /* IRGLProgramDistortion.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLProgramDistortion.m; sourceTree = "<group>"; };
+		C3438D3421B40DDAAF930A1140D5606B /* IRGLTransformController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLTransformController.h; sourceTree = "<group>"; };
+		C38B58B3C55847D970A321D866EA2271 /* IRGLScope2D.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLScope2D.m; sourceTree = "<group>"; };
+		C3AB9E4C860A444C9114671558E8CD9F /* libavutil.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libavutil.a; path = ThirdParty/ffmpeg/lib/libavutil.a; sourceTree = "<group>"; };
+		C4869414EDCDE13777FAD8BBE6C34D7E /* IRBounceController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRBounceController.m; sourceTree = "<group>"; };
+		C4E935B5392649949C0CC37114DAAC85 /* IRFFFramePool.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRFFFramePool.h; sourceTree = "<group>"; };
+		C69E63A09B2F145844567C543863E7CB /* IRAVPlayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRAVPlayer.m; sourceTree = "<group>"; };
+		C6E5BDCD669BE67E84AD91541A9E5E1B /* IRGLRenderBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLRenderBase.h; sourceTree = "<group>"; };
+		C78CED6A5C7AC9F73A788BA7D72A92A0 /* IRMovieDecoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRMovieDecoder.h; sourceTree = "<group>"; };
+		C8A40BE1AD7222FAED45F848E412FCE4 /* IRGLRenderModeVR.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLRenderModeVR.h; sourceTree = "<group>"; };
+		CA2DC559683F5AF18169AD5A4A486DA0 /* IRFFTools.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRFFTools.m; sourceTree = "<group>"; };
+		CDE6499EE0E312D8FE43E442CD1511D3 /* IRPlayer-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "IRPlayer-Info.plist"; sourceTree = "<group>"; };
+		D1459AD3F65224F43B061ACE4D4D08B1 /* IRGLSupportPixelFormat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLSupportPixelFormat.h; sourceTree = "<group>"; };
+		D217B90B14AC4D3935DC7C5D62CB32E9 /* UserProfileChangePassword.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = UserProfileChangePassword.h; sourceTree = "<group>"; };
+		D487EEE2F759BEB6D9A4C5D2584C8040 /* IRGLFragmentRGBShaderGLSL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLFragmentRGBShaderGLSL.m; sourceTree = "<group>"; };
+		D58BFA6391726A9F1C34B732A6F18421 /* IRPlayerImp+DisplayView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IRPlayerImp+DisplayView.h"; sourceTree = "<group>"; };
+		D6C13F64E85FB430417D5A5C5ECAE133 /* IRGLRenderMode2D.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLRenderMode2D.h; sourceTree = "<group>"; };
+		D8A9A11C11A7BCAA214D9C1FD78E2D86 /* IRGLProjectionOrthographic.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLProjectionOrthographic.m; sourceTree = "<group>"; };
+		D8B4B52FA64F4D23C165B4374091D5A5 /* IRGLTransformController2D.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLTransformController2D.m; sourceTree = "<group>"; };
+		DC0467E0C9BBE869C9CD2CB12D9C6798 /* IRPLFView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRPLFView.m; sourceTree = "<group>"; };
+		DC4A099016461DF3E5CA1B5AA919E61A /* IRMovieDecoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRMovieDecoder.m; sourceTree = "<group>"; };
+		DE364D17B18DC43DE95AC3210614E1A2 /* IRPlayerNotification.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRPlayerNotification.h; sourceTree = "<group>"; };
+		DEF14FC5DA6283B2A6B18354CC9E4BDA /* IRGLRenderMode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLRenderMode.h; sourceTree = "<group>"; };
+		DF61C0C4DAF1176FFAA042C823A5562B /* IRPlayer.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = IRPlayer.modulemap; sourceTree = "<group>"; };
+		E2AB05F8C999EB74F697BDFA7F9B810A /* IRGLRenderMode3DFisheye.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLRenderMode3DFisheye.m; sourceTree = "<group>"; };
+		E2B462B228A47C1A53BF376E30DE8DF8 /* IRGLFragmentNV12ShaderGLSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLFragmentNV12ShaderGLSL.h; sourceTree = "<group>"; };
+		E684355AFD41D3BC6AC678B3D42D32CD /* libavformat.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libavformat.a; path = ThirdParty/ffmpeg/lib/libavformat.a; sourceTree = "<group>"; };
+		E82E02B6FE05650293CAE3EBFEDA5B34 /* IRGLScope3D.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLScope3D.h; sourceTree = "<group>"; };
+		E8F8DD1BF0C9D44D4FDD150D5F4A63DA /* IRDeviceShiftController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRDeviceShiftController.m; sourceTree = "<group>"; };
+		EA96317F8DBE2C7048B863DEF1B67E14 /* Pods-demo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-demo-acknowledgements.plist"; sourceTree = "<group>"; };
+		EB80D8652C9499D772E1906149C5F957 /* IRGestureController+Private.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "IRGestureController+Private.m"; sourceTree = "<group>"; };
+		EC5BF9C1257C2A0D1D6953FE4732EA97 /* IRPlayerImp.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRPlayerImp.m; sourceTree = "<group>"; };
+		EF717B9CED7F2998322E0B0D50D50B05 /* IRGLScope2D.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLScope2D.h; sourceTree = "<group>"; };
+		F181159B008168EEC84DA7F1DE90306A /* IRSimulateDeviceShiftController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRSimulateDeviceShiftController.h; sourceTree = "<group>"; };
+		F635FA0C4F6F663931C7B0774FA4E872 /* libswscale.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libswscale.a; path = ThirdParty/ffmpeg/lib/libswscale.a; sourceTree = "<group>"; };
+		F7455C391A793816DE75FADF7B9C5F04 /* IRGLProgramMulti.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLProgramMulti.m; sourceTree = "<group>"; };
+		F8A0C5E0AC09256AC14EB3348455EA07 /* IRGLRenderModeDistortion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLRenderModeDistortion.h; sourceTree = "<group>"; };
+		FB34B1A78F087B3EBD66B4EECC408548 /* IRGLProgramFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGLProgramFactory.h; sourceTree = "<group>"; };
+		FC32E6E04EEB20C329404C0BC6B53BC3 /* IRGestureController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRGestureController.h; sourceTree = "<group>"; };
+		FE677C10796FBB4EFF375774385092D6 /* IRScope.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = IRScope.h; sourceTree = "<group>"; };
+		FF1F33BAE38FFEC1BFA8FFF74E92B629 /* IRGLProgram2DFisheye2Persp.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = IRGLProgram2DFisheye2Persp.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6831BA5D919150C38D9EE7A11AE30CD2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B9083DA80AE8C4AD2712442F7AFE6C0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE221F6D565D1874DA8E402DFFEF78CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F9BC8F6801D410512EDA2DCB1F92544 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		07EAA849795FEDC5F0B6B8D9BDB9AB8D /* Transform */ = {
+			isa = PBXGroup;
+			children = (
+				C3438D3421B40DDAAF930A1140D5606B /* IRGLTransformController.h */,
+				64198F0365FB71FBBC7306845759E349 /* IRGLTransformController.m */,
+				36FEAA878FDA5A5918781B9C11339124 /* IRGLTransformController2D.h */,
+				D8B4B52FA64F4D23C165B4374091D5A5 /* IRGLTransformController2D.m */,
+				46FEDB0E1CA7B9D7FA0C31E607D0917F /* IRGLTransformController3DFisheye.h */,
+				32DFE2C74D4FC15351134763096FE364 /* IRGLTransformController3DFisheye.m */,
+				1EC5BC54BBDCF5075FB5B971941BA59E /* IRGLTransformControllerDistortion.h */,
+				AAE098536E6BC30FE4FAEB2016D0BBC7 /* IRGLTransformControllerDistortion.m */,
+				37A0EADCA81BD68AFED69E47D818774A /* IRGLTransformControllerVR.h */,
+				A38F8E9D22A8D898EE2DE66F470B53F7 /* IRGLTransformControllerVR.m */,
+			);
+			name = Transform;
+			path = Transform;
+			sourceTree = "<group>";
+		};
+		090C50D747DE6B8773CB15EFE566402A /* Display */ = {
+			isa = PBXGroup;
+			children = (
+				C78CED6A5C7AC9F73A788BA7D72A92A0 /* IRMovieDecoder.h */,
+				DC4A099016461DF3E5CA1B5AA919E61A /* IRMovieDecoder.m */,
+				A991F143BA4C45BD3FE616D0401DE346 /* OpenGL */,
+			);
+			name = Display;
+			path = Display;
+			sourceTree = "<group>";
+		};
+		0D9E57CE5297A9BA871B97753A7ECD94 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				52787F76649C6C3680A006B5FA822D5B /* IRAudioManager.h */,
+				83D4DCF3B79F0B9D6CAE2701AFC0773F /* IRAudioManager.m */,
+			);
+			name = Audio;
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		1E56CE434FF4C1CC44B611CFC05E6EE3 /* VR */ = {
+			isa = PBXGroup;
+			children = (
+				67E1D2F6D28324FC4C105F86DB6736FB /* IRGLProgramVR.h */,
+				B10635FDE1EC84636FBC4879E665D3F0 /* IRGLProgramVR.m */,
+			);
+			name = VR;
+			path = VR;
+			sourceTree = "<group>";
+		};
+		22FAC049B4A1127865813E6CD88A84A7 /* IRPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				350A03B93D36E72D3C6A6BF40BD21C85 /* IRPlayer.h */,
+				72FDE85810AE1FB3D0D15F2AA05F2F83 /* Class */,
+				5E9AE89EA2A7705DC6DE277766720652 /* Frameworks */,
+				5FEE600B6262C2AC3376A94DA134E7B1 /* Pod */,
+				897467D669AD83067467677747C50430 /* Support Files */,
+			);
+			name = IRPlayer;
+			path = ../../IRPlayer;
+			sourceTree = "<group>";
+		};
+		4A19D2C1F03C096C2F6AED9155D8E469 /* Platform */ = {
+			isa = PBXGroup;
+			children = (
+				AA8EB3C58DB864F4A7B9EA01F7779C17 /* IRPLFImage.h */,
+				85656AAE46D0E791E7E876BE8E3076CD /* IRPLFImage.m */,
+				416C25BFF1375347627157082510C23C /* IRPLFView.h */,
+				DC0467E0C9BBE869C9CD2CB12D9C6798 /* IRPLFView.m */,
+			);
+			name = Platform;
+			path = Platform;
+			sourceTree = "<group>";
+		};
+		5E9AE89EA2A7705DC6DE277766720652 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0FD680C1E5DB773CC5312525B8AAAA2F /* libavcodec.a */,
+				8C067DEEAF199BAA1704CDDC6116D429 /* libavdevice.a */,
+				9293FEB5641FF88DE950E3E63E0763A5 /* libavfilter.a */,
+				E684355AFD41D3BC6AC678B3D42D32CD /* libavformat.a */,
+				C3AB9E4C860A444C9114671558E8CD9F /* libavutil.a */,
+				77D209AB4661F0CF9684A90BD65C160F /* libswresample.a */,
+				F635FA0C4F6F663931C7B0774FA4E872 /* libswscale.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5FEE600B6262C2AC3376A94DA134E7B1 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				96AEA6E0A4D3BAAEF3DF1A70728DDD26 /* IRPlayer.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		6197D8DCA688399CD20BB93CDE3B482A /* Projection */ = {
+			isa = PBXGroup;
+			children = (
+				035F84317091099AA4DC3258CDE99007 /* IRGLProjection.h */,
+				6A628AF2EB76F3E053406D41EA6314EE /* IRGLProjectionDistortion.h */,
+				09068B64063ED574634D1ABE8D11FAD8 /* IRGLProjectionDistortion.m */,
+				5D2112034B689011E0F77B6B17B580C1 /* IRGLProjectionEquirectangular.h */,
+				61EDAB34DE05BD0440F67D0C21CDDF03 /* IRGLProjectionEquirectangular.m */,
+				7F0F3645A30E37AB676EEA3FAED6BEE6 /* IRGLProjectionOrthographic.h */,
+				D8A9A11C11A7BCAA214D9C1FD78E2D86 /* IRGLProjectionOrthographic.m */,
+				0249DFE08B23972CD6E5C7142A57CDE3 /* IRGLProjectionVR.h */,
+				9BB637AF7BB67B53A5C5679C9A04DF6E /* IRGLProjectionVR.m */,
+			);
+			name = Projection;
+			path = Projection;
+			sourceTree = "<group>";
+		};
+		6873CED5EE712C38C1C9BE1171BCF47C /* Render */ = {
+			isa = PBXGroup;
+			children = (
+				C6E5BDCD669BE67E84AD91541A9E5E1B /* IRGLRenderBase.h */,
+				74A5D635CCDDD95824BCB884F7F9B170 /* IRGLRenderBase.m */,
+				B8681BB93382773279582D41F5001DCC /* IRGLRenderNV12.h */,
+				81D24D9D58C25C4FFA57745A945E72CF /* IRGLRenderNV12.m */,
+				0DD3D22AA03162DFB229A247B5BBE3F7 /* IRGLRenderRGB.h */,
+				B40C1249B4EBC98B135C9946267DF3F1 /* IRGLRenderRGB.m */,
+				BB739F963A6EE7B64C40241661573553 /* IRGLRenderYUV.h */,
+				C0BFF568A8FAE18C967AEC0CEF6E665F /* IRGLRenderYUV.m */,
+			);
+			name = Render;
+			path = Render;
+			sourceTree = "<group>";
+		};
+		6ACC8B11DF069C1A838507FBE63B66D0 /* ScrollController */ = {
+			isa = PBXGroup;
+			children = (
+				A0014B5EDF38DB0C88BC60522222FF90 /* IRSmoothScrollController.h */,
+				1EC406BBA3AB687EA01CA4F89925D9DC /* IRSmoothScrollController.m */,
+			);
+			name = ScrollController;
+			path = ScrollController;
+			sourceTree = "<group>";
+		};
+		6E8377287C7E2D25B25DC839DBA6AC45 /* Distortion */ = {
+			isa = PBXGroup;
+			children = (
+				16B525882E5610D529CD2D8A8AE1283D /* IRGLProgramDistortion.h */,
+				C1D96BFF2AA29FA5E727FB615816717E /* IRGLProgramDistortion.m */,
+			);
+			name = Distortion;
+			path = Distortion;
+			sourceTree = "<group>";
+		};
+		72FDE85810AE1FB3D0D15F2AA05F2F83 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				684006CEF4E1CCB8D7978BB97F4BA371 /* IRPlayerAction.h */,
+				2F58987129321FB13C3F959CF17FF825 /* IRPlayerAction.m */,
+				1434DC9AE017EBA1E6ECAEB89F932FC3 /* IRPlayerDecoder.h */,
+				963A47F2B253C5B20C7D656CC4188401 /* IRPlayerDecoder.m */,
+				7095EB4D28F9A01F7A9641DD614F5040 /* IRPlayerImp.h */,
+				EC5BF9C1257C2A0D1D6953FE4732EA97 /* IRPlayerImp.m */,
+				8925E8D8582B376B28FB33B5568EA492 /* IRPlayerTrack.h */,
+				62DB50229F99E9A0214889D9CBD35F27 /* IRPlayerTrack.m */,
+				C3266CEAA0F71B349A5CDFB6B1212FCF /* Core */,
+				4A19D2C1F03C096C2F6AED9155D8E469 /* Platform */,
+			);
+			name = Class;
+			path = Class;
+			sourceTree = "<group>";
+		};
+		8404D4EE3E52DB90D97C67AFA89BCD86 /* Matrix */ = {
+			isa = PBXGroup;
+			children = (
+				08780998E26CA6691BBAA0A51D06939A /* IRSensor.h */,
+				82B50AFF2E2637C7CC329EB6AAAD6C04 /* IRSensor.m */,
+			);
+			name = Matrix;
+			path = Matrix;
+			sourceTree = "<group>";
+		};
+		897467D669AD83067467677747C50430 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				DF61C0C4DAF1176FFAA042C823A5562B /* IRPlayer.modulemap */,
+				A0118A441919997469FB80DCF4827685 /* IRPlayer.xcconfig */,
+				056E392A1A5C462CA773E5D6B998B28D /* IRPlayer-dummy.m */,
+				CDE6499EE0E312D8FE43E442CD1511D3 /* IRPlayer-Info.plist */,
+				0E5E2B182E4EB2DD0EDAA31C608C4928 /* IRPlayer-prefix.pch */,
+				85D95F489236B355621E3931C315D867 /* IRPlayer-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../demo/Pods/Target Support Files/IRPlayer";
+			sourceTree = "<group>";
+		};
+		994D5804774EAD4C1CF77E0853F9E359 /* FFPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				0AAA7F9574B1042A1B31E1D7DECCE29D /* IRFFPlayer.h */,
+				25F1F609D6DD80ADB93B3E673CAA2912 /* IRFFPlayer.m */,
+				FD108075BF5C43511C5B69245B5E91E8 /* FFmpeg */,
+			);
+			name = FFPlayer;
+			path = FFPlayer;
+			sourceTree = "<group>";
+		};
+		9FBB8D22065EDE8AAF7FAF46FBD88FCB /* GestureController */ = {
+			isa = PBXGroup;
+			children = (
+				A838989821A1A913127EA68F0DB1CCB3 /* IRGestureControl.h */,
+				FC32E6E04EEB20C329404C0BC6B53BC3 /* IRGestureController.h */,
+				949113416654DAF459595235C903BF88 /* IRGestureController.m */,
+				C038172EE5629DB672130AC1CFE42AB7 /* IRGestureController+Private.h */,
+				EB80D8652C9499D772E1906149C5F957 /* IRGestureController+Private.m */,
+				96B6E69F843C549B125CFE191DA47EB5 /* IRGLGestureController.h */,
+				7E0B7B928F4EE7DE7109FCCB873CC465 /* IRGLGestureController.m */,
+				D217B90B14AC4D3935DC7C5D62CB32E9 /* UserProfileChangePassword.h */,
+			);
+			name = GestureController;
+			path = GestureController;
+			sourceTree = "<group>";
+		};
+		A00D35CE0C67DECFDB4B2ECAED9D5D88 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6E989CC20BBDD5888F39254EC11F58E7 /* IRPlayer.framework */,
+				620C2E500E91AE09F121C9670613B82F /* Pods_demo.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A56FAE8126BD18FC6AE1CBDFEA7B2BCA /* Program */ = {
+			isa = PBXGroup;
+			children = (
+				4CC15D2F4084C54321D37B30AC257B6C /* IRGLProgram2D.h */,
+				A962FA6859CC57AC967E637158B56D5F /* IRGLProgram2D.m */,
+				4DEF94B1EE9A9013E5070518CC86D139 /* IRGLProgram2DFisheye2Pano.h */,
+				13A0B047311571E8E6EA3BE452FFB4FE /* IRGLProgram2DFisheye2Pano.m */,
+				43220EDCCCA756E1E22671526EF0481E /* IRGLProgram2DFisheye2Persp.h */,
+				FF1F33BAE38FFEC1BFA8FFF74E92B629 /* IRGLProgram2DFisheye2Persp.m */,
+				8344E44F0D55DF206891D8A70438A3D6 /* IRGLProgram3DFisheye.h */,
+				BC957954351C98F76C3F04A14D0E2E53 /* IRGLProgram3DFisheye.m */,
+				B88ABDDF7753ED9E81DABC8AE47CA262 /* IRGLProgramMulti.h */,
+				F7455C391A793816DE75FADF7B9C5F04 /* IRGLProgramMulti.m */,
+				7CD777EF583164B76E1141C73B2B6388 /* IRGLProgramMulti4P.h */,
+				B7F9981D07F2ED1E17B81E81D6F5404E /* IRGLProgramMulti4P.m */,
+				6E8377287C7E2D25B25DC839DBA6AC45 /* Distortion */,
+				EA2C52973ABE605742E0AB9F55EF7562 /* Factory */,
+				1E56CE434FF4C1CC44B611CFC05E6EE3 /* VR */,
+			);
+			name = Program;
+			path = Program;
+			sourceTree = "<group>";
+		};
+		A92D2316FBE372AD4E16FF7ED0C8F50C /* AVPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				9EA389CE50208DE3AF314093E7DB6F82 /* IRAVPlayer.h */,
+				C69E63A09B2F145844567C543863E7CB /* IRAVPlayer.m */,
+			);
+			name = AVPlayer;
+			path = AVPlayer;
+			sourceTree = "<group>";
+		};
+		A93195AB5748F7569134F397E2674D09 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				CBA4AB0AD989728D60465BDAA2076BA2 /* Pods-demo */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		A991F143BA4C45BD3FE616D0401DE346 /* OpenGL */ = {
+			isa = PBXGroup;
+			children = (
+				6AB3C7DF2129E51A415DD38910BB99E1 /* IRGLDefine.h */,
+				05A47ABFE462401FA2E37080C6E80783 /* IRGLMath.h */,
+				D1459AD3F65224F43B061ACE4D4D08B1 /* IRGLSupportPixelFormat.h */,
+				8792989B388D4A4E58FBD34E34EB1D92 /* IRGLView.h */,
+				6A8C6026F064B11EE77C5FDE37B20313 /* IRGLView.m */,
+				AB8518B535414C39D58F983B9981EDBA /* Fragment */,
+				B51124A27B1DA3E89F15B23F6253A3C8 /* Mode */,
+				CA3203C28E06AA3D77931F46292458C2 /* Params */,
+				A56FAE8126BD18FC6AE1CBDFEA7B2BCA /* Program */,
+				6197D8DCA688399CD20BB93CDE3B482A /* Projection */,
+				6873CED5EE712C38C1C9BE1171BCF47C /* Render */,
+				EDC4CEB635BC2F29ED8C8EECB3709D52 /* Scope */,
+				07EAA849795FEDC5F0B6B8D9BDB9AB8D /* Transform */,
+				F1606B67F1D989C5E297C583BA1A2ABE /* Vertex */,
+			);
+			name = OpenGL;
+			path = OpenGL;
+			sourceTree = "<group>";
+		};
+		AB8518B535414C39D58F983B9981EDBA /* Fragment */ = {
+			isa = PBXGroup;
+			children = (
+				0C76233961F0FEC9C62573C4EC6EE74D /* IRGLFragmentFish2PanoShaderGLSL.h */,
+				19E884E7F5B10F9117B4CF12D385D608 /* IRGLFragmentFish2PanoShaderGLSL.m */,
+				93E17A7DC966C4BCC2EEFDE67B2EA22C /* IRGLFragmentFish2PerspShaderGLSL.h */,
+				6D8C770830BF61C57FD47679FB624D01 /* IRGLFragmentFish2PerspShaderGLSL.m */,
+				E2B462B228A47C1A53BF376E30DE8DF8 /* IRGLFragmentNV12ShaderGLSL.h */,
+				920E4C62221D0E651651C6FB4E6E93E9 /* IRGLFragmentNV12ShaderGLSL.m */,
+				4DD23B60854EC68D0964326B678EF1BB /* IRGLFragmentRGBShaderGLSL.h */,
+				D487EEE2F759BEB6D9A4C5D2584C8040 /* IRGLFragmentRGBShaderGLSL.m */,
+				B39A3C0AD4BA7FE4B36D23A17898043E /* IRGLFragmentYUVShaderGLSL.h */,
+				176DB01BFED6D955E1CEF5F0FA7BD5CC /* IRGLFragmentYUVShaderGLSL.m */,
+			);
+			name = Fragment;
+			path = Fragment;
+			sourceTree = "<group>";
+		};
+		B502A5C563D185406009C14CDB358CCC /* DeviceShiftController */ = {
+			isa = PBXGroup;
+			children = (
+				A821F44CEDE918613976FF1E510FB854 /* IRDeviceShiftController.h */,
+				E8F8DD1BF0C9D44D4FDD150D5F4A63DA /* IRDeviceShiftController.m */,
+				F181159B008168EEC84DA7F1DE90306A /* IRSimulateDeviceShiftController.h */,
+				7F13C07B500A509E34E2757666BA3308 /* IRSimulateDeviceShiftController.m */,
+			);
+			name = DeviceShiftController;
+			path = DeviceShiftController;
+			sourceTree = "<group>";
+		};
+		B51124A27B1DA3E89F15B23F6253A3C8 /* Mode */ = {
+			isa = PBXGroup;
+			children = (
+				DEF14FC5DA6283B2A6B18354CC9E4BDA /* IRGLRenderMode.h */,
+				BF93AE3E790792ED4C653D3510002F02 /* IRGLRenderMode.m */,
+				D6C13F64E85FB430417D5A5C5ECAE133 /* IRGLRenderMode2D.h */,
+				A422275D2DEC80CAC8C76EC88C747DCE /* IRGLRenderMode2D.m */,
+				7FC1AC6D6DB9603D6C5EE163868A57CB /* IRGLRenderMode2DFisheye2Pano.h */,
+				0E617E20E4D481EFF4B9850CC215EB8A /* IRGLRenderMode2DFisheye2Pano.m */,
+				5753E58EC8F6AD60E2BBB1FC09F89D63 /* IRGLRenderMode3DFisheye.h */,
+				E2AB05F8C999EB74F697BDFA7F9B810A /* IRGLRenderMode3DFisheye.m */,
+				F8A0C5E0AC09256AC14EB3348455EA07 /* IRGLRenderModeDistortion.h */,
+				5E296DE7491FF1F89BCB654879F227C1 /* IRGLRenderModeDistortion.m */,
+				5E278AF06A6033A4365F70B171D8D181 /* IRGLRenderModeFactory.h */,
+				34FFF9FF96A5175EE5C18FF5DA32B059 /* IRGLRenderModeFactory.m */,
+				37388E750DA48E998CA80D9824B41ABF /* IRGLRenderModeMulti4P.h */,
+				AD42DD2E88308AFCB66E614DE181AFB3 /* IRGLRenderModeMulti4P.m */,
+				C8A40BE1AD7222FAED45F848E412FCE4 /* IRGLRenderModeVR.h */,
+				83A6E6FA3C10B8352A69D803EB4AF268 /* IRGLRenderModeVR.m */,
+			);
+			name = Mode;
+			path = Mode;
+			sourceTree = "<group>";
+		};
+		B6B5BA272D779B4B059B962BFFF3BA4D /* Bounce */ = {
+			isa = PBXGroup;
+			children = (
+				0CA39B64DCDC3566C5EE76CBC34934D3 /* IRBounceController.h */,
+				C4869414EDCDE13777FAD8BBE6C34D7E /* IRBounceController.m */,
+			);
+			name = Bounce;
+			path = Bounce;
+			sourceTree = "<group>";
+		};
+		BCC96A4C176EE0132579F96A7CC516CE /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				D58BFA6391726A9F1C34B732A6F18421 /* IRPlayerImp+DisplayView.h */,
+				47AB19A06CA9B7AE21FCB47E274429A6 /* IRPlayerImp+DisplayView.m */,
+				83B7AA1A864D943409EBF473B9ABD01E /* IRYUVTools.h */,
+				744C1C2EF9191A3A5DAC8FC526382978 /* IRYUVTools.m */,
+			);
+			name = Tools;
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		C3266CEAA0F71B349A5CDFB6B1212FCF /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				0E9216CFE7CE1B9B39324E3D144EC710 /* IRMetamacros.h */,
+				28C41E4E2418112B8A69BD3CAE7BB4BA /* IRPlayerMacro.h */,
+				DE364D17B18DC43DE95AC3210614E1A2 /* IRPlayerNotification.h */,
+				775D10655A1E8F67BC8874C235AD4A4D /* IRPlayerNotification.m */,
+				FE677C10796FBB4EFF375774385092D6 /* IRScope.h */,
+				0D9E57CE5297A9BA871B97753A7ECD94 /* Audio */,
+				A92D2316FBE372AD4E16FF7ED0C8F50C /* AVPlayer */,
+				CEAE38F57E4F6B9DFD90E03D21607CB5 /* Config */,
+				D777DF63F86A94E8FB4426F7AEC85A94 /* Controller */,
+				090C50D747DE6B8773CB15EFE566402A /* Display */,
+				994D5804774EAD4C1CF77E0853F9E359 /* FFPlayer */,
+				8404D4EE3E52DB90D97C67AFA89BCD86 /* Matrix */,
+				BCC96A4C176EE0132579F96A7CC516CE /* Tools */,
+			);
+			name = Core;
+			path = Core;
+			sourceTree = "<group>";
+		};
+		CA3203C28E06AA3D77931F46292458C2 /* Params */ = {
+			isa = PBXGroup;
+			children = (
+				451D2F7BD7D918E19F2935A57CA931B9 /* IRGLFish2PanoShaderParams.h */,
+				2102802283AC13C4887DFE9C13708BEF /* IRGLFish2PanoShaderParams.m */,
+				96E964BA13CB4D672B6583C1B11C3787 /* IRGLFish2PerspShaderParams.h */,
+				21DDFAA73F09CAE0B211EC12B33C0429 /* IRGLFish2PerspShaderParams.m */,
+				81136A477BA2F0CC59E5ECD4DE5142BF /* IRGLShaderParams.h */,
+				B583D80D9D029891FD0BF5BB662FC444 /* IRGLShaderParams.m */,
+			);
+			name = Params;
+			path = Params;
+			sourceTree = "<group>";
+		};
+		CBA4AB0AD989728D60465BDAA2076BA2 /* Pods-demo */ = {
+			isa = PBXGroup;
+			children = (
+				8304FA02D2A592F4996BA412884CCA37 /* Pods-demo.modulemap */,
+				4FE45AE5DAA8B1DF7D6099181AD9FA0A /* Pods-demo-acknowledgements.markdown */,
+				EA96317F8DBE2C7048B863DEF1B67E14 /* Pods-demo-acknowledgements.plist */,
+				7C5DC5ABE867DFAFEEFE65EB904EC044 /* Pods-demo-dummy.m */,
+				AD0FE056A4D62357ADF7BBB3D29B2E52 /* Pods-demo-frameworks.sh */,
+				171784CD7F89555EFD77B2A0479363CA /* Pods-demo-Info.plist */,
+				919022BC48F9439E29669B27B83A8482 /* Pods-demo-umbrella.h */,
+				AA6F28936150B774D174F70EC133595F /* Pods-demo.debug.xcconfig */,
+				056C11651D9181CFD60992F50710A1E6 /* Pods-demo.release.xcconfig */,
+			);
+			name = "Pods-demo";
+			path = "Target Support Files/Pods-demo";
+			sourceTree = "<group>";
+		};
+		CEAE38F57E4F6B9DFD90E03D21607CB5 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				530F769112CF2F0CFF5817572BCAFF10 /* IRFisheyeParameter.h */,
+				5288C79AB96504D6AFDCED51FD92B508 /* IRFisheyeParameter.m */,
+				7905FF70C73A77656882FA8B9EECCAEC /* IRMediaParameter.h */,
+				2848B1B2E0E485A1261EB53CD51FC1DE /* IRMediaParameter.m */,
+				59D11CB9A859ECB79D4A5D535A633511 /* IRMetadataDefine.h */,
+			);
+			name = Config;
+			path = Config;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				E90958734641388453F8DE5030EC506D /* Development Pods */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				A00D35CE0C67DECFDB4B2ECAED9D5D88 /* Products */,
+				A93195AB5748F7569134F397E2674D09 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0834CEBB1379A84116EF29F93051C60 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D777DF63F86A94E8FB4426F7AEC85A94 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B6B5BA272D779B4B059B962BFFF3BA4D /* Bounce */,
+				B502A5C563D185406009C14CDB358CCC /* DeviceShiftController */,
+				9FBB8D22065EDE8AAF7FAF46FBD88FCB /* GestureController */,
+				6ACC8B11DF069C1A838507FBE63B66D0 /* ScrollController */,
+			);
+			name = Controller;
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E90958734641388453F8DE5030EC506D /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				22FAC049B4A1127865813E6CD88A84A7 /* IRPlayer */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		EA2C52973ABE605742E0AB9F55EF7562 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				9AB95CDC49D52743292B5D729D548A3F /* IRGLProgram2DFactory.h */,
+				00206721DD7C25C81CF135CB1FA1E6EF /* IRGLProgram2DFactory.m */,
+				90CA7A2BB346E3373B1B4014429433D0 /* IRGLProgram2DFisheye2PanoFactory.h */,
+				69857AD2F72453558B04826F65B7C967 /* IRGLProgram2DFisheye2PanoFactory.m */,
+				8D28C02F3752AE47DC8FA68A94A0F422 /* IRGLProgram3DFisheye4PFactory.h */,
+				202B8528015145591DE8050B75FFCB04 /* IRGLProgram3DFisheye4PFactory.m */,
+				BD024941889E00D9ADD835FAEBEC62AE /* IRGLProgram3DFisheyeFactory.h */,
+				3585223B2E67EB76BF8C1A1355B29F3E /* IRGLProgram3DFisheyeFactory.m */,
+				52A3CB53D4204591BB50F2287B3CF2EF /* IRGLProgramDistortionFactory.h */,
+				65E62BDB68BA0791D6777CCEC0D42907 /* IRGLProgramDistortionFactory.m */,
+				FB34B1A78F087B3EBD66B4EECC408548 /* IRGLProgramFactory.h */,
+				1CEF1BAE2A248CF09A92BE40CCEFF666 /* IRGLProgramFactory.m */,
+				23439697661B72618AF1FC50D28E14DA /* IRGLProgramVRFactory.h */,
+				7C047AD0E1B570310F1D8D23AF8F6098 /* IRGLProgramVRFactory.m */,
+			);
+			name = Factory;
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		EDC4CEB635BC2F29ED8C8EECB3709D52 /* Scope */ = {
+			isa = PBXGroup;
+			children = (
+				EF717B9CED7F2998322E0B0D50D50B05 /* IRGLScope2D.h */,
+				C38B58B3C55847D970A321D866EA2271 /* IRGLScope2D.m */,
+				E82E02B6FE05650293CAE3EBFEDA5B34 /* IRGLScope3D.h */,
+				2418F42C675E6B33ED3DE2FA4AD1E056 /* IRGLScope3D.m */,
+			);
+			name = Scope;
+			path = Scope;
+			sourceTree = "<group>";
+		};
+		F1606B67F1D989C5E297C583BA1A2ABE /* Vertex */ = {
+			isa = PBXGroup;
+			children = (
+				6601F5A8E7AE26E8EC8E470CD55B7615 /* IRGLVertex3DShaderGLSL.h */,
+				5A44E3C09AA250A9679A87165AADE46E /* IRGLVertex3DShaderGLSL.m */,
+				157CAA756773E52DFEEEFD8B9C39A81F /* IRGLVertexShaderGLSL.h */,
+				7C16E0CD7BABD279F18F7A41092DD0C2 /* IRGLVertexShaderGLSL.m */,
+			);
+			name = Vertex;
+			path = Vertex;
+			sourceTree = "<group>";
+		};
+		FD108075BF5C43511C5B69245B5E91E8 /* FFmpeg */ = {
+			isa = PBXGroup;
+			children = (
+				7D000E40D1A2EF5624CDD7617AEFF3D9 /* IRFFAudioDecoder.h */,
+				AFCE145EC5DD9EDFE58FA196C7D7907E /* IRFFAudioDecoder.m */,
+				486A38DC33453A3660A4AFF40516A45F /* IRFFAudioFrame.h */,
+				58BE0D99BB80C4407E778791E2C3EF38 /* IRFFAudioFrame.m */,
+				772192330B5F7EE68A4D1E8F52F0AC60 /* IRFFDecoder.h */,
+				4AB74F2A42BFF6F6B38E5136417E8583 /* IRFFDecoder.m */,
+				7B2067E4806A046A3C08CDCA8C26EF78 /* IRFFFormatContext.h */,
+				351C4C6BA3189C5507D8DD4D3EF11B1E /* IRFFFormatContext.m */,
+				4F774814D88ECBC91CEF381D411E372A /* IRFFFrame.h */,
+				A3D01798F94BF2C80C0D480318B6C770 /* IRFFFrame.m */,
+				C4E935B5392649949C0CC37114DAAC85 /* IRFFFramePool.h */,
+				9DD4CD54E72FE2DD0B7DCD130848C964 /* IRFFFramePool.m */,
+				08F5B6FC69E0783B2534374314601555 /* IRFFFrameQueue.h */,
+				23D4BBFFC211A58EDFEBBE01A2B1D274 /* IRFFFrameQueue.m */,
+				BE1A8DACD25D6CE3F54A599EE1703E4C /* IRFFMetadata.h */,
+				67238275681BADE7AE235089AA9C0DEB /* IRFFMetadata.m */,
+				5E116713E61FCE21031DEFC64366E0B9 /* IRFFPacketQueue.h */,
+				6B829F92B90AD86F8CEF5C7CF875AD5F /* IRFFPacketQueue.m */,
+				AF973DB55E181E50268299D7CF4B2766 /* IRFFTools.h */,
+				CA2DC559683F5AF18169AD5A4A486DA0 /* IRFFTools.m */,
+				91C23E95BF967D761359D6ECB6FD4090 /* IRFFTrack.h */,
+				7DEDAD5917F1C6A77DE356261664AD9A /* IRFFTrack.m */,
+				A975B42DB8C11D3523C45E26C24823DC /* IRFFVideoDecoder.h */,
+				5D035804D6ECD6906396EA187AC26801 /* IRFFVideoDecoder.m */,
+				8DF0E20AEA0D3546F6FFD27654F7DEBE /* IRFFVideoFrame.h */,
+				2CD55730805FD467B950CB24A087F18A /* IRFFVideoFrame.m */,
+				4FC025A97E0FC3D009EB35DC0498A19F /* IRFFVideoToolBox.h */,
+				322E19F30D095C0AAFABD745794BB343 /* IRFFVideoToolBox.m */,
+			);
+			name = FFmpeg;
+			path = FFmpeg;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		92F95BD714E9A10ECE697C49DCED5A4F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9A9FE834310A6638711E697990DC6BA /* Pods-demo-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAB6E62DE2D5088B3137BE5EF36BEE25 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1683D9D4D9F171F1677D148D162EC698 /* IRAudioManager.h in Headers */,
+				75BACDB0BD6A1E93006B1548D28F7FFC /* IRAVPlayer.h in Headers */,
+				1C7D507861A8142C42E7D863E1FEC85D /* IRBounceController.h in Headers */,
+				4D2641FFEBE418A4B450B3F9C4D86BA9 /* IRDeviceShiftController.h in Headers */,
+				AA917400BCB947EABD3BAC730BD95A02 /* IRFFAudioDecoder.h in Headers */,
+				89F915A9DA3125CE8F21E8B0272A340A /* IRFFAudioFrame.h in Headers */,
+				39B3C1353DC0572C83E8208A256E0E6A /* IRFFDecoder.h in Headers */,
+				472CF16227BE28CDA7842A6B53F38121 /* IRFFFormatContext.h in Headers */,
+				10B439E2879B2CE9E928ED08FB66EA08 /* IRFFFrame.h in Headers */,
+				C75F849698F40D37305B38A3FE7EE6F1 /* IRFFFramePool.h in Headers */,
+				43F05773822121DF8EE87F6A8C00D3D2 /* IRFFFrameQueue.h in Headers */,
+				51CF6F5E102A40B11621A4498ADB5CE4 /* IRFFMetadata.h in Headers */,
+				D6F9161DD5503881CCDA9983C89929BA /* IRFFPacketQueue.h in Headers */,
+				27CFAF4314C4E2D55227EED8717D8DCB /* IRFFPlayer.h in Headers */,
+				32BCF67D007FF6C89093D729C01C8D82 /* IRFFTools.h in Headers */,
+				104AA0DFA07E7D770BA2BD150F144B9A /* IRFFTrack.h in Headers */,
+				29CBF882353B75D979130599E3B33938 /* IRFFVideoDecoder.h in Headers */,
+				23EB1D43A33F23B1FEF5E1D5FCAA9B05 /* IRFFVideoFrame.h in Headers */,
+				CAE148B57E4F90FA0FFFCDF7385E6859 /* IRFFVideoToolBox.h in Headers */,
+				1B7D9D6FC1EAE65AAC224E3AACFABCA3 /* IRFisheyeParameter.h in Headers */,
+				E02CB80520CB23D0B0B92B34E7D13D08 /* IRGestureControl.h in Headers */,
+				78D3A60B242F34C2AC672D92F17AC502 /* IRGestureController+Private.h in Headers */,
+				F36F6818F021F4998FDC42A020BA1879 /* IRGestureController.h in Headers */,
+				E61615336D87474DD29B1B71FFEC37F8 /* IRGLDefine.h in Headers */,
+				4B45C7860503CA49B9934BC1DCD9854A /* IRGLFish2PanoShaderParams.h in Headers */,
+				B28A32BE5EE75B5062C4AF02EA3EB075 /* IRGLFish2PerspShaderParams.h in Headers */,
+				B8BF9316899774DF15515BFCCA1F1D4C /* IRGLFragmentFish2PanoShaderGLSL.h in Headers */,
+				134D9EE437283DC2945BB01D25E51563 /* IRGLFragmentFish2PerspShaderGLSL.h in Headers */,
+				0E5FE7D4B15D1469264FDB10BC271CD4 /* IRGLFragmentNV12ShaderGLSL.h in Headers */,
+				3120D12F7148C7BF3CE14605B2263153 /* IRGLFragmentRGBShaderGLSL.h in Headers */,
+				FF30C56FBFD92843C9AFD3AFF60BF2C5 /* IRGLFragmentYUVShaderGLSL.h in Headers */,
+				94AA6517CC7B0DF73405D27313628ADC /* IRGLGestureController.h in Headers */,
+				24CB889B2E1E72018CCB5F8A2D74907C /* IRGLMath.h in Headers */,
+				57076A957F967928DAF9151A7FABBBD3 /* IRGLProgram2D.h in Headers */,
+				BB49C19817538E65E0AA30EE9C29D8A9 /* IRGLProgram2DFactory.h in Headers */,
+				DE1A57E879793E434C7E40CD4C4739B5 /* IRGLProgram2DFisheye2Pano.h in Headers */,
+				A34B36889D633A1534D562EA98CEDBC6 /* IRGLProgram2DFisheye2PanoFactory.h in Headers */,
+				67C20EB0AA3C2E1010D728AE4A8986C6 /* IRGLProgram2DFisheye2Persp.h in Headers */,
+				DC1B17C546A44366A07C93F28B862E93 /* IRGLProgram3DFisheye.h in Headers */,
+				7658E07FE78B180D6FAF544705BD0EB6 /* IRGLProgram3DFisheye4PFactory.h in Headers */,
+				C45ED57BF180488101AB2F806E700EE8 /* IRGLProgram3DFisheyeFactory.h in Headers */,
+				8CF4D96E6EACCDF8685786AC4D0570AC /* IRGLProgramDistortion.h in Headers */,
+				373E505D4418B7A637C0C7119495FA44 /* IRGLProgramDistortionFactory.h in Headers */,
+				C0AF4E040A0BD8617636E2D2D538D0F6 /* IRGLProgramFactory.h in Headers */,
+				F78B1BC39217D7C905FB64F2DEA23BD0 /* IRGLProgramMulti.h in Headers */,
+				9E1A6D2BA90F4C35720249FD4EE96125 /* IRGLProgramMulti4P.h in Headers */,
+				FC6F1E07A12791D407A550B5D91EF00F /* IRGLProgramVR.h in Headers */,
+				B588201F30FE9D960D85C99FD4DA0555 /* IRGLProgramVRFactory.h in Headers */,
+				DBEDB4B0AA4DD7E8D88363CE7742235A /* IRGLProjection.h in Headers */,
+				C5420F643BA71FB1B95C22A22E92C096 /* IRGLProjectionDistortion.h in Headers */,
+				F9E916315890DCA19B84A737DCC73646 /* IRGLProjectionEquirectangular.h in Headers */,
+				4460CFBF63991E510DA93DE705F3D9E3 /* IRGLProjectionOrthographic.h in Headers */,
+				F66A88B4DF812B9A814C4AF65C3D164A /* IRGLProjectionVR.h in Headers */,
+				D8C442BA01A8DE4E6F967193AE51F885 /* IRGLRenderBase.h in Headers */,
+				E5EE3B9D44CCC3EA737B4EC6FC04B29D /* IRGLRenderMode.h in Headers */,
+				499058FAAE1CED8625A82B920BE95C6B /* IRGLRenderMode2D.h in Headers */,
+				2F983A0460B92BBC1E87E52850721831 /* IRGLRenderMode2DFisheye2Pano.h in Headers */,
+				451A386F1A0472126BC547B8ACEB2F25 /* IRGLRenderMode3DFisheye.h in Headers */,
+				B425B6C77F2F0A0D4F84984760E4B67F /* IRGLRenderModeDistortion.h in Headers */,
+				EA02C850C53B143103CA62A4F8BC478D /* IRGLRenderModeFactory.h in Headers */,
+				CA4647F1DAFEFAD7F3A668BD4556EDAF /* IRGLRenderModeMulti4P.h in Headers */,
+				466562EEF90813556AA8CE444523FBAF /* IRGLRenderModeVR.h in Headers */,
+				FE2EF2AF1EE7407A9D84B2C6068DCBE4 /* IRGLRenderNV12.h in Headers */,
+				D906AE4CE2B83A5A55237A44789BE060 /* IRGLRenderRGB.h in Headers */,
+				42C5002CE8D873E17E885F147CD30320 /* IRGLRenderYUV.h in Headers */,
+				1516679EBE8C602513A774C1A0202553 /* IRGLScope2D.h in Headers */,
+				3E56294202F75233D220C414FB8A4312 /* IRGLScope3D.h in Headers */,
+				BA49964259869452624482874A11BB07 /* IRGLShaderParams.h in Headers */,
+				7D28726BDB9D132AFFAF2A404CBA7C79 /* IRGLSupportPixelFormat.h in Headers */,
+				EAA5B8F5ECA842AA13AC17AE8FB801E6 /* IRGLTransformController.h in Headers */,
+				349890DE316CD14716BF3BA5DB67E136 /* IRGLTransformController2D.h in Headers */,
+				163AED86C74C3384C2E81BC7809D6165 /* IRGLTransformController3DFisheye.h in Headers */,
+				7FDBB98039B90BE316373CA4CBC632A6 /* IRGLTransformControllerDistortion.h in Headers */,
+				C614CBAA2BB5AF6288036EFF4C540D5F /* IRGLTransformControllerVR.h in Headers */,
+				1A8F9D0D00DCFD1980DD6237659596F7 /* IRGLVertex3DShaderGLSL.h in Headers */,
+				C0CDCE8BA3C5F2ABE7F1A4B06808F497 /* IRGLVertexShaderGLSL.h in Headers */,
+				5DC46709A4EE44FEA88EF870A10D6200 /* IRGLView.h in Headers */,
+				0D76AD57FA9A0946C1AE1873C60CB43A /* IRMediaParameter.h in Headers */,
+				43CED3CB8378AC542D060B6D25E988DC /* IRMetadataDefine.h in Headers */,
+				3D9DA8882B63ED5807A2253EC98513D0 /* IRMetamacros.h in Headers */,
+				D7915AC8CEE1E11FDB92E7364CDF18C5 /* IRMovieDecoder.h in Headers */,
+				7296667A2599165836DF014A576A6830 /* IRPlayer-umbrella.h in Headers */,
+				4902CA969ED6047147E4A12A87CFDD36 /* IRPlayer.h in Headers */,
+				FCC1A8E90DC6955B140B0A0AD210C43E /* IRPlayerAction.h in Headers */,
+				7EBAC194961E20B1EB8FFC0D4B60E2E3 /* IRPlayerDecoder.h in Headers */,
+				55C3D978051FDC67A127C845988AA080 /* IRPlayerImp+DisplayView.h in Headers */,
+				CA829022B9E1C34E8395F3D1F1E78C23 /* IRPlayerImp.h in Headers */,
+				74BE963F3F2CD1088091B0AB057B821C /* IRPlayerMacro.h in Headers */,
+				C7838C272DE6C9755FD72A57E1D81094 /* IRPlayerNotification.h in Headers */,
+				7EBB1700738F5B66932644CB91971DA2 /* IRPlayerTrack.h in Headers */,
+				BA317278B0FD1991183458535742CC09 /* IRPLFImage.h in Headers */,
+				E4F38311DADCBF585D21D3EA7CD64CB3 /* IRPLFView.h in Headers */,
+				E061882A5E3F2566B8C3639B1BC3319C /* IRScope.h in Headers */,
+				B4A41096B43856370D98E50409740CEF /* IRSensor.h in Headers */,
+				3C714E8114EEF6CE4F1431610A7F234B /* IRSimulateDeviceShiftController.h in Headers */,
+				52515EA690F243472F5DB396593F091C /* IRSmoothScrollController.h in Headers */,
+				935B5B690E46D95DF526C2B4153EF632 /* IRYUVTools.h in Headers */,
+				FEAF0CD64DDB2CFDA77114C9204B84D6 /* UserProfileChangePassword.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		06211BFED24C96E7ADA9B774FAC62F28 /* Pods-demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F7C7F63797999F79987518914D193D5F /* Build configuration list for PBXNativeTarget "Pods-demo" */;
+			buildPhases = (
+				92F95BD714E9A10ECE697C49DCED5A4F /* Headers */,
+				CEFB995A720BB02B9F89F2115F7A12A0 /* Sources */,
+				FE221F6D565D1874DA8E402DFFEF78CD /* Frameworks */,
+				B045FC0ED36070DAEEE73BBD5484383A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				50EEA249784BD16436ABB2B918B4DD89 /* PBXTargetDependency */,
+			);
+			name = "Pods-demo";
+			productName = "Pods-demo";
+			productReference = 620C2E500E91AE09F121C9670613B82F /* Pods_demo.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		832CBDFEE66AA7D98ADF8C6C7B1A6FE4 /* IRPlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C2501AB92638BB94BFE48AC762B5B3E /* Build configuration list for PBXNativeTarget "IRPlayer" */;
+			buildPhases = (
+				EAB6E62DE2D5088B3137BE5EF36BEE25 /* Headers */,
+				833A364E8E18E5C0A565E6B84C55E648 /* Sources */,
+				6831BA5D919150C38D9EE7A11AE30CD2 /* Frameworks */,
+				7B3BAB01874EA70A251A6E129CC97928 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IRPlayer;
+			productName = IRPlayer;
+			productReference = 6E989CC20BBDD5888F39254EC11F58E7 /* IRPlayer.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = A00D35CE0C67DECFDB4B2ECAED9D5D88 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				832CBDFEE66AA7D98ADF8C6C7B1A6FE4 /* IRPlayer */,
+				06211BFED24C96E7ADA9B774FAC62F28 /* Pods-demo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7B3BAB01874EA70A251A6E129CC97928 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B045FC0ED36070DAEEE73BBD5484383A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		833A364E8E18E5C0A565E6B84C55E648 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82CDD49C1181C39092379015C9A1F716 /* IRAudioManager.m in Sources */,
+				F83B11E6521EA2C3A7113ED29DF10339 /* IRAVPlayer.m in Sources */,
+				3E0F33E6FB50BC89D56AB355774C200E /* IRBounceController.m in Sources */,
+				C01E07B7A242BE1C3DD157E83F8AF7B1 /* IRDeviceShiftController.m in Sources */,
+				41BD9E39B173B40843EE1BA3DB753C9F /* IRFFAudioDecoder.m in Sources */,
+				FD691A14D8B68C0FAC73606F362D02AD /* IRFFAudioFrame.m in Sources */,
+				3878CB477221A097AD36839DB05B6013 /* IRFFDecoder.m in Sources */,
+				157F84A68336A64BCD965739A3BCB2D2 /* IRFFFormatContext.m in Sources */,
+				42E639DB8482E640328F733C6440731A /* IRFFFrame.m in Sources */,
+				6F46D7B12A29EC79B6ACABCA64270C8E /* IRFFFramePool.m in Sources */,
+				6E11A7B46ECE7954626296CD6BE10C15 /* IRFFFrameQueue.m in Sources */,
+				F5E79D4DB90474858B13878283855818 /* IRFFMetadata.m in Sources */,
+				E8538697B852CB40F7EB077389505B7D /* IRFFPacketQueue.m in Sources */,
+				F32CB72912404DB7137643C1BEA66BA3 /* IRFFPlayer.m in Sources */,
+				9085CB233531A50277FD16F1648163A0 /* IRFFTools.m in Sources */,
+				7F72A8586628C165FD2832648C148C47 /* IRFFTrack.m in Sources */,
+				C6814E534EC8C1AA63A196396AAB823F /* IRFFVideoDecoder.m in Sources */,
+				D077719BF9C1DC2EF3AA92B85E4E2C75 /* IRFFVideoFrame.m in Sources */,
+				6E3FBB8D9B0F8A5DC40E3D70FD601A1B /* IRFFVideoToolBox.m in Sources */,
+				5255ADA23D6F70F6F6677DC1DD668125 /* IRFisheyeParameter.m in Sources */,
+				C5BDC0B289B4B452842E05916229D482 /* IRGestureController+Private.m in Sources */,
+				9119AF8F73644D2C6371D69C3858315B /* IRGestureController.m in Sources */,
+				D9F46F9559BE0CDE9D8F27A19E4B2795 /* IRGLFish2PanoShaderParams.m in Sources */,
+				F4FC44554E0DB2ABE0774D93016370EB /* IRGLFish2PerspShaderParams.m in Sources */,
+				F5E9AA7837CE4F42ADD1781E9E21576D /* IRGLFragmentFish2PanoShaderGLSL.m in Sources */,
+				1F40B0A4B5D5EA6D513ADF3548CE3123 /* IRGLFragmentFish2PerspShaderGLSL.m in Sources */,
+				32FFE84ED8F87BD03CE7D0F32AF4295A /* IRGLFragmentNV12ShaderGLSL.m in Sources */,
+				140C08B7AA2287AC21201002870AB985 /* IRGLFragmentRGBShaderGLSL.m in Sources */,
+				B480E5DD9BA5C9B9B1974DBF64CF2B3A /* IRGLFragmentYUVShaderGLSL.m in Sources */,
+				10A7D0E1A628923C8B4505F6E410D3A1 /* IRGLGestureController.m in Sources */,
+				C3CF6FE373F5A1C45E40A6FD2A328AB7 /* IRGLProgram2D.m in Sources */,
+				71A9FD8AB0C9413928949F5EDE2C0235 /* IRGLProgram2DFactory.m in Sources */,
+				674D037D3C1E620433C9877F0C51E098 /* IRGLProgram2DFisheye2Pano.m in Sources */,
+				894C8A67ADF856E4ADA05E97D475BDD1 /* IRGLProgram2DFisheye2PanoFactory.m in Sources */,
+				E95C24ABEB8B575B79402CE95B91173F /* IRGLProgram2DFisheye2Persp.m in Sources */,
+				F845245916B4442842925E6238DBDB4B /* IRGLProgram3DFisheye.m in Sources */,
+				921675D835811D5825634DC51961FB67 /* IRGLProgram3DFisheye4PFactory.m in Sources */,
+				6A9416A0C976DBF730A97DE37C02A32E /* IRGLProgram3DFisheyeFactory.m in Sources */,
+				8BF76DBB6A0981DEB3940676A3D65EA2 /* IRGLProgramDistortion.m in Sources */,
+				E8608D70CA345CA996A8AE6715FAF2BD /* IRGLProgramDistortionFactory.m in Sources */,
+				7237C1C43B908E633293047C38DB1649 /* IRGLProgramFactory.m in Sources */,
+				43781303638C3307541CF7CDBFB5D5CE /* IRGLProgramMulti.m in Sources */,
+				ED0203350ACD49C5B84444BCA9FBE5CF /* IRGLProgramMulti4P.m in Sources */,
+				26A82975FB945ED0A6C5CF760DCE16C4 /* IRGLProgramVR.m in Sources */,
+				4DE2BA87C6CD06D20D9EADA02BDEBDBE /* IRGLProgramVRFactory.m in Sources */,
+				9B912A367F9DF26E2CB6E15327A9ECB1 /* IRGLProjectionDistortion.m in Sources */,
+				9B40F265B7482DFEF3200B9A7037C43B /* IRGLProjectionEquirectangular.m in Sources */,
+				CE9FDF037977EA81C4156A67E95CD79C /* IRGLProjectionOrthographic.m in Sources */,
+				92786BD33ED03A0EAEED99180E9867D5 /* IRGLProjectionVR.m in Sources */,
+				DD0D3A0D0FE1A6BE10194D28FB13E5BB /* IRGLRenderBase.m in Sources */,
+				9F608B1E9418D315CBDC83ABAB9D7225 /* IRGLRenderMode.m in Sources */,
+				5C2109B8866BEADD4E32AFA5B150920B /* IRGLRenderMode2D.m in Sources */,
+				FD975832033B88C705E661B2C2FCCAE9 /* IRGLRenderMode2DFisheye2Pano.m in Sources */,
+				13AD554E9DCFC5E9AF142D6F02638E51 /* IRGLRenderMode3DFisheye.m in Sources */,
+				4A1C8A760FC3174E94D0654189D2FBD7 /* IRGLRenderModeDistortion.m in Sources */,
+				14EF6C0E4C7CA786811B121653D8E4E6 /* IRGLRenderModeFactory.m in Sources */,
+				E110D591AED41CC3FEE41DA2E8307DCE /* IRGLRenderModeMulti4P.m in Sources */,
+				9732DBED9B13880F06ED97E856BEACA9 /* IRGLRenderModeVR.m in Sources */,
+				C37652705A4DC769175393B1A2FC5B39 /* IRGLRenderNV12.m in Sources */,
+				F01EFFE5A3DA710E39AAE13621929FD2 /* IRGLRenderRGB.m in Sources */,
+				2DFD6FA3FDE48650A5AC41A1858A6171 /* IRGLRenderYUV.m in Sources */,
+				25D637C4D32F72DDDFF407AED97122A7 /* IRGLScope2D.m in Sources */,
+				8136FE5D30A5915851990C1A02423C4A /* IRGLScope3D.m in Sources */,
+				68661629F739B7291F7FF482BF17C405 /* IRGLShaderParams.m in Sources */,
+				E898C71F145BD31D024EEE79FB48B978 /* IRGLTransformController.m in Sources */,
+				F4BA1540584F6E73BD2B5E13ED889E5F /* IRGLTransformController2D.m in Sources */,
+				7A927BB2D929C4003820B4039D010C8D /* IRGLTransformController3DFisheye.m in Sources */,
+				F46214A1D982F01A40CE3CBB4FF8669F /* IRGLTransformControllerDistortion.m in Sources */,
+				B3E415B5B3AF7A1F83C6DD5AA280F999 /* IRGLTransformControllerVR.m in Sources */,
+				92776B7494054609D6CC6886B8DF261B /* IRGLVertex3DShaderGLSL.m in Sources */,
+				D59A5F022259E3C4BDC7E89DA6854B82 /* IRGLVertexShaderGLSL.m in Sources */,
+				ADEE7DF87F460971501BB512860E8CBE /* IRGLView.m in Sources */,
+				81F34DD7668D604C3BB61DD697CC0FAF /* IRMediaParameter.m in Sources */,
+				757F50EF4BE9EF0F6F66182F44976E53 /* IRMovieDecoder.m in Sources */,
+				B55A57A29D3FB4E38FFDB9EFF3DAFDA8 /* IRPlayer-dummy.m in Sources */,
+				EC4CB1C40F0C64D17C774304444A1B07 /* IRPlayerAction.m in Sources */,
+				EA4F3786FEE5AA7C8B9ECB05FFE2A3E6 /* IRPlayerDecoder.m in Sources */,
+				93E65451B9BC2D60CF3F1DA3CEDDCA40 /* IRPlayerImp+DisplayView.m in Sources */,
+				512DBEEB7768070F00AA1A8423D6C9F7 /* IRPlayerImp.m in Sources */,
+				336154A904B12C92318F163E59E1AF0F /* IRPlayerNotification.m in Sources */,
+				8F69B2F3511B60C15E7C3C92110A518B /* IRPlayerTrack.m in Sources */,
+				2E0DF2BABFAA462D48C6523AD1FCF13B /* IRPLFImage.m in Sources */,
+				D4F4883F494ECFDB6331517B73C111C5 /* IRPLFView.m in Sources */,
+				5E6B65133F4C01438AE875BEAA7E61AF /* IRSensor.m in Sources */,
+				FB589E3E7B32D39996142C8A96C56A63 /* IRSimulateDeviceShiftController.m in Sources */,
+				707D9CE68F5106DFC0D50957EDD03229 /* IRSmoothScrollController.m in Sources */,
+				310219475DB4BE43C56F87AACE933E82 /* IRYUVTools.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEFB995A720BB02B9F89F2115F7A12A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				911B722E689CC6A47263A5A25DE95807 /* Pods-demo-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		50EEA249784BD16436ABB2B918B4DD89 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = IRPlayer;
+			target = 832CBDFEE66AA7D98ADF8C6C7B1A6FE4 /* IRPlayer */;
+			targetProxy = C0C7F4EDFF69EFE3F12420417116F4CB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1FE8611A9FD7837CC60DDE4AEF76DE12 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A0118A441919997469FB80DCF4827685 /* IRPlayer.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/IRPlayer/IRPlayer-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/IRPlayer/IRPlayer-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/IRPlayer/IRPlayer.modulemap";
+				PRODUCT_MODULE_NAME = IRPlayer;
+				PRODUCT_NAME = IRPlayer;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		895961A398BAD41A8C024D67035040E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA6F28936150B774D174F70EC133595F /* Pods-demo.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-demo/Pods-demo-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-demo/Pods-demo.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8F17DC3A99F99FBAD606CE6963886315 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		916E0404255105F480DC4950B7625F7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		C9A05C45AFA198B05F092B9748AD7826 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 056C11651D9181CFD60992F50710A1E6 /* Pods-demo.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-demo/Pods-demo-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-demo/Pods-demo.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F49A24814CE4F8D11B21C30C98A392E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A0118A441919997469FB80DCF4827685 /* IRPlayer.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/IRPlayer/IRPlayer-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/IRPlayer/IRPlayer-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/IRPlayer/IRPlayer.modulemap";
+				PRODUCT_MODULE_NAME = IRPlayer;
+				PRODUCT_NAME = IRPlayer;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				916E0404255105F480DC4950B7625F7A /* Debug */,
+				8F17DC3A99F99FBAD606CE6963886315 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C2501AB92638BB94BFE48AC762B5B3E /* Build configuration list for PBXNativeTarget "IRPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F49A24814CE4F8D11B21C30C98A392E7 /* Debug */,
+				1FE8611A9FD7837CC60DDE4AEF76DE12 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F7C7F63797999F79987518914D193D5F /* Build configuration list for PBXNativeTarget "Pods-demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				895961A398BAD41A8C024D67035040E9 /* Debug */,
+				C9A05C45AFA198B05F092B9748AD7826 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

@@ -1,0 +1,28 @@
+{
+  "name": "IRPlayer",
+  "version": "0.1.0",
+  "summary": "A powerful video player of iOS.",
+  "description": "A powerful video player of iOS.",
+  "homepage": "https://github.com/irons163/IRPlayer.git",
+  "license": "MIT",
+  "authors": "irons163",
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source": {
+    "git": "https://github.com/irons163/IRPlayer.git",
+    "tag": "0.1.0"
+  },
+  "source_files": [
+    "**/*.{h,m}",
+    "IRPlayer/**/*.{h,m}"
+  ],
+  "vendored_libraries": [
+    "**/*.a",
+    "IRPlayer/**/*.a"
+  ],
+  "xcconfig": {
+    "HEADER_SEARCH_PATHS": "$(PODS_ROOT)/**/ThirdParty/ffmpeg/include"
+  },
+  "exclude_files": "**/ThirdParty/ffmpeg/include/**/*.h"
+}
