@@ -175,7 +175,7 @@
 		8AA3EAC72301376300331251 /* rational.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA492301376100331251 /* rational.h */; };
 		8AA3EAC82301376300331251 /* sha.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA4A2301376100331251 /* sha.h */; };
 		8AA3EAC92301376300331251 /* motion_vector.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA4B2301376100331251 /* motion_vector.h */; };
-		8AA3EACA2301376300331251 /* avconfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA4C2301376100331251 /* avconfig.h */; };
+		8AA3EACA2301376300331251 /* avconfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA4C2301376100331251 /* avconfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8AA3EACB2301376300331251 /* lfg.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA4D2301376100331251 /* lfg.h */; };
 		8AA3EACC2301376300331251 /* avutil.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA4E2301376100331251 /* avutil.h */; };
 		8AA3EACD2301376300331251 /* xtea.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA4F2301376100331251 /* xtea.h */; };
@@ -1299,6 +1299,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AA3EACA2301376300331251 /* avconfig.h in Headers */,
 				8AA3EB0E2301376400331251 /* avformat.h in Headers */,
 				8A51F60722CF384600A7715B /* IRPlayerImp.h in Headers */,
 				8A51F61322CF390000A7715B /* IRPlayerDecoder.h in Headers */,
@@ -1403,7 +1404,6 @@
 				8AA3EAF52301376300331251 /* des.h in Headers */,
 				8A51F65C22CF3F2300A7715B /* IRFFPacketQueue.h in Headers */,
 				8A51F79322CF4A7B00A7715B /* IRGLFragmentNV12ShaderGLSL.h in Headers */,
-				8AA3EACA2301376300331251 /* avconfig.h in Headers */,
 				8ABB9024230A444500A27FD7 /* IRGestureController.h in Headers */,
 				8A51F81522CF4FB400A7715B /* IRGLProgram3DFisheyeFactory.h in Headers */,
 				8AA3EB022301376300331251 /* aes_ctr.h in Headers */,
