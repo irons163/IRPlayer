@@ -13,16 +13,20 @@
     "git": "https://github.com/irons163/IRPlayer.git",
     "tag": "0.1.0"
   },
-  "source_files": [
-    "**/*.{h,m}",
-    "IRPlayer/**/*.{h,m}"
-  ],
-  "vendored_libraries": [
-    "**/*.a",
-    "IRPlayer/**/*.a"
-  ],
-  "xcconfig": {
-    "HEADER_SEARCH_PATHS": "$(PODS_ROOT)/**/ThirdParty/ffmpeg/include"
+  "source_files": "**/*.{h,m}",
+  "pod_target_xcconfig": {
+    "HEADER_SEARCH_PATHS": "\"$(PODS_TARGET_SRCROOT)/ThirdParty/ffmpeg/include\" \"$(PODS_ROOT)/IRPlayer/FFMpegLib\" \"${PODS_ROOT}/Headers/Private\" \"${PODS_ROOT}/Headers/Private/IRPlayer/FFMpegLib\" \"${PODS_ROOT}/Headers/Public\" \"${PODS_ROOT}/Headers/Public/IRPlayer/FFMpegLib\"",
+    "USER_HEADER_SEARCH_PATHS": "\"$(PODS_TARGET_SRCROOT)/ThirdParty/ffmpeg/include\" \"$(PODS_ROOT)/IRPlayer/FFMpegLib\" \"${PODS_ROOT}/Headers/Private\" \"${PODS_ROOT}/Headers/Private/IRPlayer/FFMpegLib\" \"${PODS_ROOT}/Headers/Public\" \"${PODS_ROOT}/Headers/Public/IRPlayer/FFMpegLib\"",
+    "GCC_PREPROCESSOR_DEFINITIONS": "IRPLATFORM_TARGET_OS_IPHONE_OR_TV IRPLATFORM_TARGET_OS_MAC_OR_IPHONE"
   },
-  "exclude_files": "**/ThirdParty/ffmpeg/include/**/*.h"
+  "exclude_files": "**/ThirdParty/ffmpeg/include/**/*.h",
+  "subspecs": [
+    {
+      "name": "FFMpegLib",
+      "source_files": "ThirdParty/ffmpeg/include/**/*.h",
+      "exclude_files": "**/ThirdParty/ffmpeg/include/**/version.h",
+      "vendored_libraries": "ThirdParty/ffmpeg/**/*.a",
+      "header_mappings_dir": "ThirdParty/ffmpeg/include"
+    }
+  ]
 }

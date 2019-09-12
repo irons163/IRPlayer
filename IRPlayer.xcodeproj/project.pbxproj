@@ -11,6 +11,14 @@
 		8A29283D231CD0DF00FE7B58 /* IRSmoothScrollController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A29283B231CD0DF00FE7B58 /* IRSmoothScrollController.m */; };
 		8A292840231CF52B00FE7B58 /* IRGestureController+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A29283E231CF52B00FE7B58 /* IRGestureController+Private.h */; };
 		8A292841231CF52B00FE7B58 /* IRGestureController+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A29283F231CF52B00FE7B58 /* IRGestureController+Private.m */; };
+		8A3D5E142328E46E00169FFF /* liblzma.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A3D5E132328E46E00169FFF /* liblzma.tbd */; };
+		8A48E3432329F9BD009DAC3F /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A48E33C2329F9B4009DAC3F /* libavformat.a */; };
+		8A48E3442329F9BD009DAC3F /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A48E33D2329F9B5009DAC3F /* libavdevice.a */; };
+		8A48E3452329F9BD009DAC3F /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A48E33E2329F9B5009DAC3F /* libavutil.a */; };
+		8A48E3462329F9BD009DAC3F /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A48E33F2329F9B6009DAC3F /* libavfilter.a */; };
+		8A48E3472329F9BD009DAC3F /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A48E3402329F9B7009DAC3F /* libswscale.a */; };
+		8A48E3482329F9BD009DAC3F /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A48E3412329F9B8009DAC3F /* libswresample.a */; };
+		8A48E3492329F9BD009DAC3F /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A48E3422329F9BD009DAC3F /* libavcodec.a */; };
 		8A51F60822CF384600A7715B /* IRPlayerImp.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F60622CF384600A7715B /* IRPlayerImp.m */; };
 		8A51F60C22CF38AD00A7715B /* IRPlayerTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F60A22CF38AD00A7715B /* IRPlayerTrack.m */; };
 		8A51F61022CF38E700A7715B /* IRPlayerAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F60E22CF38E700A7715B /* IRPlayerAction.m */; };
@@ -149,7 +157,6 @@
 		8A563421230D14AA00949B9A /* IRGLProgramVRFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A56341F230D14AA00949B9A /* IRGLProgramVRFactory.h */; };
 		8A563422230D14AA00949B9A /* IRGLProgramVRFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A563420230D14AA00949B9A /* IRGLProgramVRFactory.m */; };
 		8A8F02EB22D349B30029070A /* IRGLRenderMode2DFisheye2Pano.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A8F02EA22D349B20029070A /* IRGLRenderMode2DFisheye2Pano.h */; };
-		8AA0C4D5231F874C00D84A7C /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA0C4D4231F874A00D84A7C /* libavcodec.a */; };
 		8AA3EAB52301376300331251 /* buffersrc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA362301376000331251 /* buffersrc.h */; };
 		8AA3EAB62301376300331251 /* buffersink.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA372301376000331251 /* buffersink.h */; };
 		8AA3EAB72301376300331251 /* avfilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA382301376000331251 /* avfilter.h */; };
@@ -255,13 +262,6 @@
 		8AA3EB212301376400331251 /* dxva2.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EAA72301376200331251 /* dxva2.h */; };
 		8AA3EB222301376400331251 /* dv_profile.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EAA82301376200331251 /* dv_profile.h */; };
 		8AA3EB242301376400331251 /* swresample.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EAAB2301376200331251 /* swresample.h */; };
-		8AA3EB252301376400331251 /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA3EAAD2301376300331251 /* libavutil.a */; };
-		8AA3EB262301376400331251 /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA3EAAE2301376300331251 /* libavfilter.a */; };
-		8AA3EB272301376400331251 /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA3EAAF2301376300331251 /* libavcodec.a */; };
-		8AA3EB282301376400331251 /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA3EAB02301376300331251 /* libavformat.a */; };
-		8AA3EB292301376400331251 /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA3EAB12301376300331251 /* libavdevice.a */; };
-		8AA3EB2A2301376400331251 /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA3EAB22301376300331251 /* libswresample.a */; };
-		8AA3EB2B2301376400331251 /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA3EAB32301376300331251 /* libswscale.a */; };
 		8AB2B62123041774008A2CAE /* IRSensor.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AB2B61F23041774008A2CAE /* IRSensor.h */; };
 		8AB2B62223041774008A2CAE /* IRSensor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB2B62023041774008A2CAE /* IRSensor.m */; };
 		8ABB9024230A444500A27FD7 /* IRGestureController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ABB9022230A444500A27FD7 /* IRGestureController.h */; };
@@ -300,6 +300,14 @@
 		8A29283B231CD0DF00FE7B58 /* IRSmoothScrollController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRSmoothScrollController.m; sourceTree = "<group>"; };
 		8A29283E231CF52B00FE7B58 /* IRGestureController+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IRGestureController+Private.h"; sourceTree = "<group>"; };
 		8A29283F231CF52B00FE7B58 /* IRGestureController+Private.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "IRGestureController+Private.m"; sourceTree = "<group>"; };
+		8A3D5E132328E46E00169FFF /* liblzma.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = liblzma.tbd; path = usr/lib/liblzma.tbd; sourceTree = SDKROOT; };
+		8A48E33C2329F9B4009DAC3F /* libavformat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavformat.a; sourceTree = "<group>"; };
+		8A48E33D2329F9B5009DAC3F /* libavdevice.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavdevice.a; sourceTree = "<group>"; };
+		8A48E33E2329F9B5009DAC3F /* libavutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavutil.a; sourceTree = "<group>"; };
+		8A48E33F2329F9B6009DAC3F /* libavfilter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavfilter.a; sourceTree = "<group>"; };
+		8A48E3402329F9B7009DAC3F /* libswscale.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswscale.a; sourceTree = "<group>"; };
+		8A48E3412329F9B8009DAC3F /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswresample.a; sourceTree = "<group>"; };
+		8A48E3422329F9BD009DAC3F /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavcodec.a; sourceTree = "<group>"; };
 		8A51F5F822CF337D00A7715B /* IRPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IRPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A51F5FB22CF337D00A7715B /* IRPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRPlayer.h; sourceTree = "<group>"; };
 		8A51F5FC22CF337D00A7715B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -447,7 +455,6 @@
 		8A56341F230D14AA00949B9A /* IRGLProgramVRFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRGLProgramVRFactory.h; sourceTree = "<group>"; };
 		8A563420230D14AA00949B9A /* IRGLProgramVRFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRGLProgramVRFactory.m; sourceTree = "<group>"; };
 		8A8F02EA22D349B20029070A /* IRGLRenderMode2DFisheye2Pano.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGLRenderMode2DFisheye2Pano.h; sourceTree = "<group>"; };
-		8AA0C4D4231F874A00D84A7C /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavcodec.a; sourceTree = "<group>"; };
 		8AA3EA352301376000331251 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 		8AA3EA362301376000331251 /* buffersrc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffersrc.h; sourceTree = "<group>"; };
 		8AA3EA372301376000331251 /* buffersink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffersink.h; sourceTree = "<group>"; };
@@ -561,13 +568,6 @@
 		8AA3EAA82301376200331251 /* dv_profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dv_profile.h; sourceTree = "<group>"; };
 		8AA3EAAA2301376200331251 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 		8AA3EAAB2301376200331251 /* swresample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swresample.h; sourceTree = "<group>"; };
-		8AA3EAAD2301376300331251 /* libavutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavutil.a; sourceTree = "<group>"; };
-		8AA3EAAE2301376300331251 /* libavfilter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavfilter.a; sourceTree = "<group>"; };
-		8AA3EAAF2301376300331251 /* libavcodec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavcodec.a; sourceTree = "<group>"; };
-		8AA3EAB02301376300331251 /* libavformat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavformat.a; sourceTree = "<group>"; };
-		8AA3EAB12301376300331251 /* libavdevice.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavdevice.a; sourceTree = "<group>"; };
-		8AA3EAB22301376300331251 /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswresample.a; sourceTree = "<group>"; };
-		8AA3EAB32301376300331251 /* libswscale.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswscale.a; sourceTree = "<group>"; };
 		8AB2B61F23041774008A2CAE /* IRSensor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRSensor.h; sourceTree = "<group>"; };
 		8AB2B62023041774008A2CAE /* IRSensor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRSensor.m; sourceTree = "<group>"; };
 		8ABB9022230A444500A27FD7 /* IRGestureController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRGestureController.h; sourceTree = "<group>"; };
@@ -610,17 +610,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A48E3462329F9BD009DAC3F /* libavfilter.a in Frameworks */,
+				8A3D5E142328E46E00169FFF /* liblzma.tbd in Frameworks */,
 				8AF902DB22D43D53001914BA /* libiconv.tbd in Frameworks */,
-				8AA3EB2A2301376400331251 /* libswresample.a in Frameworks */,
-				8AA3EB262301376400331251 /* libavfilter.a in Frameworks */,
-				8AA3EB292301376400331251 /* libavdevice.a in Frameworks */,
-				8AA3EB282301376400331251 /* libavformat.a in Frameworks */,
 				8AF902D922D43D4B001914BA /* libz.tbd in Frameworks */,
-				8AA3EB2B2301376400331251 /* libswscale.a in Frameworks */,
-				8AA3EB252301376400331251 /* libavutil.a in Frameworks */,
-				8AA0C4D5231F874C00D84A7C /* libavcodec.a in Frameworks */,
+				8A48E3432329F9BD009DAC3F /* libavformat.a in Frameworks */,
+				8A48E3452329F9BD009DAC3F /* libavutil.a in Frameworks */,
+				8A48E3482329F9BD009DAC3F /* libswresample.a in Frameworks */,
+				8A48E3472329F9BD009DAC3F /* libswscale.a in Frameworks */,
+				8A48E3492329F9BD009DAC3F /* libavcodec.a in Frameworks */,
+				8A48E3442329F9BD009DAC3F /* libavdevice.a in Frameworks */,
 				8AF902D722D43D42001914BA /* libbz2.tbd in Frameworks */,
-				8AA3EB272301376400331251 /* libavcodec.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1218,14 +1218,13 @@
 		8AA3EAAC2301376300331251 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				8AA0C4D4231F874A00D84A7C /* libavcodec.a */,
-				8AA3EAAD2301376300331251 /* libavutil.a */,
-				8AA3EAAE2301376300331251 /* libavfilter.a */,
-				8AA3EAAF2301376300331251 /* libavcodec.a */,
-				8AA3EAB02301376300331251 /* libavformat.a */,
-				8AA3EAB12301376300331251 /* libavdevice.a */,
-				8AA3EAB22301376300331251 /* libswresample.a */,
-				8AA3EAB32301376300331251 /* libswscale.a */,
+				8A48E3422329F9BD009DAC3F /* libavcodec.a */,
+				8A48E33D2329F9B5009DAC3F /* libavdevice.a */,
+				8A48E33F2329F9B6009DAC3F /* libavfilter.a */,
+				8A48E33C2329F9B4009DAC3F /* libavformat.a */,
+				8A48E33E2329F9B5009DAC3F /* libavutil.a */,
+				8A48E3412329F9B8009DAC3F /* libswresample.a */,
+				8A48E3402329F9B7009DAC3F /* libswscale.a */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -1266,6 +1265,7 @@
 		8AF902D522D43D42001914BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A3D5E132328E46E00169FFF /* liblzma.tbd */,
 				8AF902DA22D43D53001914BA /* libiconv.tbd */,
 				8AF902D822D43D4B001914BA /* libz.tbd */,
 				8AF902D622D43D42001914BA /* libbz2.tbd */,
@@ -1774,7 +1774,7 @@
 					IRPLATFORM_TARGET_OS_IPHONE_OR_TV,
 					IRPLATFORM_TARGET_OS_MAC_OR_IPHONE,
 				);
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/IRPlayer/ThirdParty/ffmpeg/include";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = IRPlayer/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1789,10 +1789,13 @@
 					"$(PROJECT_DIR)/IRPlayer/ThirdParty/ffmpeg/i386_10.2",
 					"$(PROJECT_DIR)/IRPlayer/ThirdParty/ffmpeg/lib",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = irons163.IRPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/IRPlayer/ThirdParty/ffmpeg/include";
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s i386 x86_64";
 			};
 			name = Debug;
 		};
@@ -1810,7 +1813,7 @@
 					IRPLATFORM_TARGET_OS_IPHONE_OR_TV,
 					IRPLATFORM_TARGET_OS_MAC_OR_IPHONE,
 				);
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/IRPlayer/ThirdParty/ffmpeg/include";
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = IRPlayer/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1829,6 +1832,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/IRPlayer/ThirdParty/ffmpeg/include";
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s i386 x86_64";
 			};
 			name = Release;
 		};
