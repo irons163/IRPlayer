@@ -9,8 +9,18 @@
 
 - Use IRPlayer to play video.
     - See demo.
+- Use IRPlayer to make video player with custom UI.
+    - See [IRPlayerUIShell](https://github.com/irons163/IRPlayerUIShell)
 - Use IRPlayer to play IP Camera stream.
     - See [IRIPCamera](https://github.com/irons163/IRIPCamera)
+- Use IRPlayer to make Screen Recoder.
+    - See [IRRecoder](https://github.com/irons163/IRRecoder)
+- Use IRPlayer to make RTMP streaming.
+    - See [IRLiveKit](https://github.com/irons163/IRLiveKit)
+- Use IRPlayer to make video player with effects .
+    - See [IREffectPlayer](https://github.com/irons163/IREffectPlayer)
+- Real Live player App.
+    - See [IRLive](https://github.com/irons163/IRLive)
 
 ## Features
 
