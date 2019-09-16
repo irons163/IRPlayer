@@ -5,8 +5,6 @@
 
 ### IRPlayer is a powerful video player framework for iOS.
 
-##### This project has some basic codes from [SGPlayer](https://github.com/libobjc/SGPlayer).
-
 - Use IRPlayer to play video.
     - See demo.
 - Use IRPlayer to make video player with custom UI.
@@ -102,3 +100,10 @@ Multi Render Modes Selection.
 
 ## Screenshots
 ![Demo](./demo/ScreenShots/demo1.png)
+
+## Copyright
+
+##### This project has some basic codes from [SGPlayer](https://github.com/libobjc/SGPlayer).
+
+Copyright for portions of project IRPlayer are held by Single, 2017. 
+All other copyright for project IRPlayer are held by irons163, 2019.
