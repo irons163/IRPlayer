@@ -11,6 +11,11 @@
 		8A29283D231CD0DF00FE7B58 /* IRSmoothScrollController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A29283B231CD0DF00FE7B58 /* IRSmoothScrollController.m */; };
 		8A292840231CF52B00FE7B58 /* IRGestureController+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A29283E231CF52B00FE7B58 /* IRGestureController+Private.h */; };
 		8A292841231CF52B00FE7B58 /* IRGestureController+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A29283F231CF52B00FE7B58 /* IRGestureController+Private.m */; };
+		8A2EF6F5232F1367007CC7ED /* IRPlayerImp.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F60522CF384600A7715B /* IRPlayerImp.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A2EF6F6232F13A4007CC7ED /* IRPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F5FB22CF337D00A7715B /* IRPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A2EF6F7232F13EB007CC7ED /* IRPlayerTrack.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F60922CF38AD00A7715B /* IRPlayerTrack.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A2EF6F8232F13F4007CC7ED /* IRPlayerAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F60D22CF38E700A7715B /* IRPlayerAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A2EF6F9232F13F7007CC7ED /* IRPlayerDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F61122CF390000A7715B /* IRPlayerDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A3D5E142328E46E00169FFF /* liblzma.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A3D5E132328E46E00169FFF /* liblzma.tbd */; };
 		8A48E3432329F9BD009DAC3F /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A48E33C2329F9B4009DAC3F /* libavformat.a */; };
 		8A48E3442329F9BD009DAC3F /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A48E33D2329F9B5009DAC3F /* libavdevice.a */; };
@@ -1291,6 +1296,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A2EF6F5232F1367007CC7ED /* IRPlayerImp.h in Headers */,
+				8A2EF6F6232F13A4007CC7ED /* IRPlayer.h in Headers */,
+				8A2EF6F8232F13F4007CC7ED /* IRPlayerAction.h in Headers */,
+				8A2EF6F9232F13F7007CC7ED /* IRPlayerDecoder.h in Headers */,
+				8A2EF6F7232F13EB007CC7ED /* IRPlayerTrack.h in Headers */,
 				8AA3EB0E2301376400331251 /* avformat.h in Headers */,
 				8AA3EAD52301376300331251 /* spherical.h in Headers */,
 				8AA3EB072301376300331251 /* mathematics.h in Headers */,
@@ -1790,6 +1800,7 @@
 					"$(PROJECT_DIR)/IRPlayer/ThirdParty/ffmpeg/lib",
 				);
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = irons163.IRPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -1828,6 +1839,7 @@
 					"$(PROJECT_DIR)/IRPlayer/ThirdParty/ffmpeg/i386_10.2",
 					"$(PROJECT_DIR)/IRPlayer/ThirdParty/ffmpeg/lib",
 				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = irons163.IRPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

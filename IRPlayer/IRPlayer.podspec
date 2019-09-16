@@ -6,7 +6,7 @@ Pod::Spec.new do |spec|
   spec.homepage     = "https://github.com/irons163/IRPlayer.git"
   spec.license      = "MIT"
   spec.author       = "irons163"
-  spec.platform     = :ios, "9.0"
+  spec.platform     = :ios, "11.0"
   spec.source       = { :git => "https://github.com/irons163/IRPlayer.git", :tag => spec.version.to_s }
   spec.source_files  = "IRPlayer/**/*.{h,m}"
 #  spec.vendored_libraries = "**/*.a", "IRPlayer/**/*.a"
@@ -23,7 +23,8 @@ $dir = $dir + "/IRPlayer/ThirdParty/ffmpeg/include"  #$dir:/Users/wangbing/TempC
 spec.pod_target_xcconfig = { "HEADER_SEARCH_PATHS" => '"$(PODS_TARGET_SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include" "$(PODS_ROOT)/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/IRPlayer/FFMpegLib"',
   "USER_HEADER_SEARCH_PATHS" => '"$(PODS_TARGET_SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include" "$(PODS_ROOT)/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/IRPlayer/FFMpegLib"',
   "GCC_PREPROCESSOR_DEFINITIONS" => 'IRPLATFORM_TARGET_OS_IPHONE_OR_TV IRPLATFORM_TARGET_OS_MAC_OR_IPHONE',
-  "OTHER_LDFLAGS" => '${inherited}'
+  "OTHER_LDFLAGS" => '${inherited}',
+  'ARCHS[sdk=iphonesimulator*]' => '$(ARCHS_STANDARD_64_BIT)'
 }
 spec.user_target_xcconfig = { 'VALID_ARCHS' => 'arm64 armv7' }
 #  spec.xcconfig = { "HEADER_SEARCH_PATHS" => "**/ThirdParty/ffmpeg/include", "USER_HEADER_SEARCH_PATHS" => "**/ThirdParty/ffmpeg/include" }
