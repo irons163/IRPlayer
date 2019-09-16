@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8A8BC82F22F27CFD0069707E /* IRPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A8BC82E22F26FD80069707E /* IRPlayer.framework */; };
-		8A8BC83022F27CFD0069707E /* IRPlayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A8BC82E22F26FD80069707E /* IRPlayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A8BC83622F2806E0069707E /* i-see-fire.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8A8BC83422F2806D0069707E /* i-see-fire.mp4 */; };
 		8A8BC83722F2806E0069707E /* google-help-vr.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8A8BC83522F2806E0069707E /* google-help-vr.mp4 */; };
 		8AA1CEF4231E04E20088157A /* fisheye-demo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8AA1CEF3231E04E20088157A /* fisheye-demo.mp4 */; };
@@ -31,28 +29,7 @@
 			remoteGlobalIDString = 8A51F5F822CF337D00A7715B;
 			remoteInfo = IRPlayer;
 		};
-		8A8BC83122F27CFD0069707E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8A8BC82922F26FD70069707E /* IRPlayer.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8A51F5F722CF337D00A7715B;
-			remoteInfo = IRPlayer;
-		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		8A8BC83322F27CFD0069707E /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				8A8BC83022F27CFD0069707E /* IRPlayer.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2E9C08F1A9AC768E181A1E4E /* Pods-demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demo.release.xcconfig"; path = "Target Support Files/Pods-demo/Pods-demo.release.xcconfig"; sourceTree = "<group>"; };
@@ -83,7 +60,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A8BC82F22F27CFD0069707E /* IRPlayer.framework in Frameworks */,
 				FA0932223F04155ADACBCB73 /* Pods_demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -155,7 +131,6 @@
 				7FAAF2E59E7201CBD5D348CD /* Pods-demo.debug.xcconfig */,
 				2E9C08F1A9AC768E181A1E4E /* Pods-demo.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -170,13 +145,10 @@
 				8AF9030922D491F5001914BA /* Sources */,
 				8AF9030A22D491F5001914BA /* Frameworks */,
 				8AF9030B22D491F5001914BA /* Resources */,
-				8A8BC83322F27CFD0069707E /* Embed Frameworks */,
-				F8649160C8B623768F31590E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				8A8BC83222F27CFD0069707E /* PBXTargetDependency */,
 			);
 			name = demo;
 			productName = demo;
@@ -249,23 +221,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		F8649160C8B623768F31590E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-demo/Pods-demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-demo/Pods-demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-demo/Pods-demo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		FD0E6DCD42F65239B3457718 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -303,14 +258,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		8A8BC83222F27CFD0069707E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = IRPlayer;
-			targetProxy = 8A8BC83122F27CFD0069707E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8AF9031622D491F6001914BA /* Main.storyboard */ = {
@@ -450,7 +397,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T6VV6T753H;
+				DEVELOPMENT_TEAM = F7AP32ZTM5;
 				INFOPLIST_FILE = demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -459,6 +406,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = irons163.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = arm64;
 			};
 			name = Debug;
 		};
@@ -468,7 +416,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T6VV6T753H;
+				DEVELOPMENT_TEAM = F7AP32ZTM5;
 				INFOPLIST_FILE = demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -477,6 +425,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = irons163.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = arm64;
 			};
 			name = Release;
 		};

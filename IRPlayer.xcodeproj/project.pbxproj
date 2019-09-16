@@ -16,6 +16,9 @@
 		8A2EF6F7232F13EB007CC7ED /* IRPlayerTrack.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F60922CF38AD00A7715B /* IRPlayerTrack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A2EF6F8232F13F4007CC7ED /* IRPlayerAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F60D22CF38E700A7715B /* IRPlayerAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A2EF6F9232F13F7007CC7ED /* IRPlayerDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F61122CF390000A7715B /* IRPlayerDecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A2EF76B232F59EA007CC7ED /* IRPlayerMacro.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F61622CF3B3400A7715B /* IRPlayerMacro.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A2EF76C232F5A7C007CC7ED /* IRPLFView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AF902F122D47662001914BA /* IRPLFView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A2EF76D232F5A80007CC7ED /* IRPLFImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AF902F522D477E5001914BA /* IRPLFImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A3D5E142328E46E00169FFF /* liblzma.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A3D5E132328E46E00169FFF /* liblzma.tbd */; };
 		8A48E3432329F9BD009DAC3F /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A48E33C2329F9B4009DAC3F /* libavformat.a */; };
 		8A48E3442329F9BD009DAC3F /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A48E33D2329F9B5009DAC3F /* libavdevice.a */; };
@@ -1296,11 +1299,14 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A2EF76C232F5A7C007CC7ED /* IRPLFView.h in Headers */,
+				8A2EF76D232F5A80007CC7ED /* IRPLFImage.h in Headers */,
 				8A2EF6F5232F1367007CC7ED /* IRPlayerImp.h in Headers */,
 				8A2EF6F6232F13A4007CC7ED /* IRPlayer.h in Headers */,
 				8A2EF6F8232F13F4007CC7ED /* IRPlayerAction.h in Headers */,
 				8A2EF6F9232F13F7007CC7ED /* IRPlayerDecoder.h in Headers */,
 				8A2EF6F7232F13EB007CC7ED /* IRPlayerTrack.h in Headers */,
+				8A2EF76B232F59EA007CC7ED /* IRPlayerMacro.h in Headers */,
 				8AA3EB0E2301376400331251 /* avformat.h in Headers */,
 				8AA3EAD52301376300331251 /* spherical.h in Headers */,
 				8AA3EB072301376300331251 /* mathematics.h in Headers */,
@@ -1806,7 +1812,7 @@
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/IRPlayer/ThirdParty/ffmpeg/include";
-				VALID_ARCHS = "arm64 arm64e armv7 armv7s i386 x86_64";
+				VALID_ARCHS = "arm64 arm64e i386 x86_64";
 			};
 			name = Debug;
 		};
@@ -1845,7 +1851,7 @@
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/IRPlayer/ThirdParty/ffmpeg/include";
-				VALID_ARCHS = "arm64 arm64e armv7 armv7s i386 x86_64";
+				VALID_ARCHS = "arm64 arm64e i386 x86_64";
 			};
 			name = Release;
 		};
