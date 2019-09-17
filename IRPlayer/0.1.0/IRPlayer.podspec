@@ -53,7 +53,7 @@ spec.user_target_xcconfig = { 'VALID_ARCHS' => 'arm64 armv7' }
     subcfiles.vendored_libraries = "IRPlayer/**/ThirdParty/ffmpeg/**/*.a"
     subcfiles.libraries = "z", "iconv", "bz2", "lzma"
     subcfiles.frameworks = "AVFoundation"
-    subcfiles.public_header_files = "**/ThirdParty/ffmpeg/include/**/*.h"
+#    subcfiles.public_header_files = "**/ThirdParty/ffmpeg/include/**/*.h"
     #pod工程的配置
     #对于HEADER_SEARCH_PATHS，对将设置的字符串直接拷贝到xcode中，不会像上面source_files这样使用相对路径。
     #所以，我在这里先获取当前路径，再设置进去。最后加**表示recursive，即循环查找子目录的意思
