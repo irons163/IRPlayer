@@ -13,9 +13,9 @@ Pod::Spec.new do |spec|
 #spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(PODS_ROOT)/IRPlayer/ThirdParty/ffmpeg/include",
 #  "USER_HEADER_SEARCH_PATHS" => "$(PODS_ROOT)/IRPlayer/ThirdParty/ffmpeg/include"
 #}
-  spec.public_header_files = "IRPlayer/Class/**/*.h"
-$dir = File.dirname(__FILE__)
-$dir = $dir + "/IRPlayer/ThirdParty/ffmpeg/include"  #$dir:/Users/wangbing/TempCode/MyLibrary/cfiles/**
+#  spec.public_header_files = "IRPlayer/Class/**/*.h"
+#$dir = File.dirname(__FILE__)
+#$dir = $dir + "/IRPlayer/ThirdParty/ffmpeg/include"  #$dir:/Users/wangbing/TempCode/MyLibrary/cfiles/**
 #spec.xcconfig = { "HEADER_SEARCH_PATHS" => '${dir}'}
 
 #  spec.xcconfig = { "HEADER_SEARCH_PATHS" => '"$(SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include" "$(PODS_ROOT)/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/IRPlayer/FFMpegLib"',
