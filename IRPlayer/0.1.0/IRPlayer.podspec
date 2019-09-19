@@ -13,7 +13,7 @@ Pod::Spec.new do |spec|
 #spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(PODS_ROOT)/IRPlayer/ThirdParty/ffmpeg/include",
 #  "USER_HEADER_SEARCH_PATHS" => "$(PODS_ROOT)/IRPlayer/ThirdParty/ffmpeg/include"
 #}
-#  spec.public_header_files = "IRPlayer/**/Class/**/*.h"
+  spec.public_header_files = "IRPlayer/**/Class/**/*.h"
   spec.header_mappings_dir = "IRPlayer"
 #$dir = File.dirname(__FILE__)
 #$dir = $dir + "/IRPlayer/ThirdParty/ffmpeg/include"  #$dir:/Users/wangbing/TempCode/MyLibrary/cfiles/**
