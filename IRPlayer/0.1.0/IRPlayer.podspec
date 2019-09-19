@@ -13,8 +13,8 @@ Pod::Spec.new do |spec|
 #spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(PODS_ROOT)/IRPlayer/ThirdParty/ffmpeg/include",
 #  "USER_HEADER_SEARCH_PATHS" => "$(PODS_ROOT)/IRPlayer/ThirdParty/ffmpeg/include"
 #}
-  spec.public_header_files = "IRPlayer/**/Class/**/*.h"
-  spec.header_mappings_dir = "IRPlayer"
+#  spec.public_header_files = "IRPlayer/**/Class/**/*.h"
+#  spec.header_mappings_dir = "IRPlayer"
 #$dir = File.dirname(__FILE__)
 #$dir = $dir + "/IRPlayer/ThirdParty/ffmpeg/include"  #$dir:/Users/wangbing/TempCode/MyLibrary/cfiles/**
 #spec.xcconfig = { "HEADER_SEARCH_PATHS" => '${dir}'}
@@ -68,7 +68,8 @@ spec.user_target_xcconfig = { 'VALID_ARCHS' => 'arm64 armv7' }
     #相对于public_headers，这些文件不会被公开给Demo
 #    subcfiles.private_header_files = "**/ThirdParty/ffmpeg/include/**/*.h"
     #保护目录结构不变，如果不设置，所有头文件都将被放到同一个目录下
-#    subcfiles.header_mappings_dir = "IRPlayer/ThirdParty/ffmpeg/include"
+    subcfiles.header_mappings_dir = "IRPlayer/ThirdParty/ffmpeg/include"
+#  subcfiles.header_mappings_dir = "**/ThirdParty/ffmpeg/include"
 #    subcfiles.public_header_files = "IRPlayer/Class/**/*.h"
   end
 end
