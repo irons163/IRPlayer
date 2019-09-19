@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
   spec.platform     = :ios, "11.0"
   spec.source       = { :git => "https://github.com/irons163/IRPlayer.git", :tag => spec.version.to_s }
   spec.source_files  = "IRPlayer/**/*.{h,m}"
-  spec.header_mappings_dir = "."
+  spec.header_mappings_dir = ""
 #  spec.vendored_libraries = "**/*.a", "IRPlayer/**/*.a"
 #spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(PODS_ROOT)/IRPlayer/ThirdParty/ffmpeg/include",
 #  "USER_HEADER_SEARCH_PATHS" => "$(PODS_ROOT)/IRPlayer/ThirdParty/ffmpeg/include"
