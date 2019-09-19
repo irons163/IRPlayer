@@ -69,6 +69,7 @@ spec.user_target_xcconfig = { 'VALID_ARCHS' => 'arm64 armv7' }
 #    subcfiles.private_header_files = "**/ThirdParty/ffmpeg/include/**/*.h"
     #保护目录结构不变，如果不设置，所有头文件都将被放到同一个目录下
     subcfiles.header_mappings_dir = "IRPlayer/ThirdParty/ffmpeg/include"
+    subcfiles.header_dir = "AA"
 #  subcfiles.header_mappings_dir = "**/ThirdParty/ffmpeg/include"
 #    subcfiles.public_header_files = "IRPlayer/Class/**/*.h"
   end
