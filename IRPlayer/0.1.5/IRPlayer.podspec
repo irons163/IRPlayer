@@ -41,7 +41,7 @@ spec.user_target_xcconfig = { 'VALID_ARCHS' => 'arm64 armv7' }
   spec.subspec 'ImpPublic' do |subcfiles|
     subcfiles.source_files  = "IRPlayer/Class/Platform/**/*.{h,m}"
 #    subcfiles.dependency "#{spec.name}/Implementation"
-#    subcfiles.header_mappings_dir  = "."
+    subcfiles.header_mappings_dir  = "."
   end
 
   spec.subspec 'Implementation' do |subcfiles|
@@ -49,7 +49,7 @@ spec.user_target_xcconfig = { 'VALID_ARCHS' => 'arm64 armv7' }
     subcfiles.exclude_files = "**/ThirdParty/ffmpeg/include/**/*.h"
     subcfiles.dependency "#{spec.name}/FFMpegLib"
     subcfiles.dependency "#{spec.name}/ImpPublic"
-#    subcfiles.header_mappings_dir  = "."
+    subcfiles.header_mappings_dir  = "."
 #    subcfiles.private_header_files = 'IRPlayer/Class/Core/**/*.h', 'IRPlayer/Class/Platform/**/*.h'
 #    subcfiles.pod_target_xcconfig = { "HEADER_SEARCH_PATHS" => '"$(PODS_TARGET_SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include" "$(PODS_ROOT)/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers"',
 #      "USER_HEADER_SEARCH_PATHS" => '"$(PODS_TARGET_SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include" "$(PODS_ROOT)/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/IRPlayer/FFMpegLib"',
