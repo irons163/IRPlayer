@@ -33,21 +33,22 @@ spec.user_target_xcconfig = { 'VALID_ARCHS' => 'arm64 armv7' }
 #  spec.xcconfig = { "HEADER_SEARCH_PATHS" => "**/ThirdParty/ffmpeg/include", "USER_HEADER_SEARCH_PATHS" => "**/ThirdParty/ffmpeg/include" }
 #spec.xcconfig = { "HEADER_SEARCH_PATHS" => '"$(PODS_ROOT)/IRPlayer/ThirdParty/ffmpeg/include" "$(PODS_ROOT)/Headers/Public/IRPlayer/ThirdParty/ffmpeg"/**' }
 #  spec.exclude_files = "**/ThirdParty/ffmpeg/include/**/version.h"
-spec.source_files  = "IRPlayer/**/*.{h,m}"
-spec.exclude_files = "**/ThirdParty/ffmpeg/include/**/*.h"
-spec.header_mappings_dir  = "."
+#spec.source_files  = "IRPlayer/**/*.{h,m}"
+#spec.exclude_files = "**/ThirdParty/ffmpeg/include/**/*.h"
+#spec.header_mappings_dir  = "."
 
-#  spec.subspec 'Implementation' do |subcfiles|
-#    subcfiles.source_files  = "IRPlayer/**/*.{h,m}"
-#    subcfiles.exclude_files = "**/ThirdParty/ffmpeg/include/**/*.h"
-#    subcfiles.dependency "#{spec.name}/FFMpegLib", '1.0'
-##    subcfiles.pod_target_xcconfig = { "HEADER_SEARCH_PATHS" => '"$(PODS_TARGET_SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include" "$(PODS_ROOT)/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers"',
-##      "USER_HEADER_SEARCH_PATHS" => '"$(PODS_TARGET_SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include" "$(PODS_ROOT)/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/IRPlayer/FFMpegLib"',
-##      "GCC_PREPROCESSOR_DEFINITIONS" => 'IRPLATFORM_TARGET_OS_IPHONE_OR_TV IRPLATFORM_TARGET_OS_MAC_OR_IPHONE',
-##      "OTHER_LDFLAGS" => '${inherited}',
-##      'ARCHS[sdk=iphonesimulator*]' => '$(ARCHS_STANDARD_64_BIT)'
-##    }
-#  end
+  spec.subspec 'Implementation' do |subcfiles|
+    subcfiles.source_files  = "IRPlayer/**/*.{h,m}"
+    subcfiles.exclude_files = "**/ThirdParty/ffmpeg/include/**/*.h"
+    subcfiles.dependency "#{spec.name}/FFMpegLib"
+    subcfiles.header_mappings_dir  = "."
+#    subcfiles.pod_target_xcconfig = { "HEADER_SEARCH_PATHS" => '"$(PODS_TARGET_SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include" "$(PODS_ROOT)/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers"',
+#      "USER_HEADER_SEARCH_PATHS" => '"$(PODS_TARGET_SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include" "$(PODS_ROOT)/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/IRPlayer/FFMpegLib"',
+#      "GCC_PREPROCESSOR_DEFINITIONS" => 'IRPLATFORM_TARGET_OS_IPHONE_OR_TV IRPLATFORM_TARGET_OS_MAC_OR_IPHONE',
+#      "OTHER_LDFLAGS" => '${inherited}',
+#      'ARCHS[sdk=iphonesimulator*]' => '$(ARCHS_STANDARD_64_BIT)'
+#    }
+  end
 
   spec.subspec 'FFMpegLib' do |subcfiles|
     
