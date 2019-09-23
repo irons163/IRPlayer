@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "IRPlayer"
-  spec.version      = "0.1.0"
+  spec.version      = "0.1.6"
   spec.summary      = "A powerful video player of iOS."
   spec.description  = "A powerful video player of iOS."
   spec.homepage     = "https://github.com/irons163/IRPlayer.git"
@@ -9,6 +9,7 @@ Pod::Spec.new do |spec|
   spec.platform     = :ios, "11.0"
   spec.source       = { :git => "https://github.com/irons163/IRPlayer.git", :tag => spec.version.to_s }
   
+#  spec.source_files  = "IRPlayer/Class/*.{h,m}", "IRPlayer/*.{h,m}"
 #  spec.header_mappings_dir = ""
 #  spec.vendored_libraries = "**/*.a", "IRPlayer/**/*.a"
 #spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(PODS_ROOT)/IRPlayer/ThirdParty/ffmpeg/include",
@@ -37,25 +38,33 @@ spec.user_target_xcconfig = { 'VALID_ARCHS' => 'arm64 armv7' }
 #spec.exclude_files = "**/ThirdParty/ffmpeg/include/**/*.h"
 #spec.header_mappings_dir  = "."
 
-  spec.subspec 'Implementation' do |subcfiles|
-    subcfiles.source_files  = "IRPlayer/**/*.{h,m}"
-    subcfiles.exclude_files = "**/ThirdParty/ffmpeg/include/**/*.h"
-    subcfiles.dependency "#{spec.name}/FFMpegLib"
-    subcfiles.header_mappings_dir  = "."
-#    subcfiles.pod_target_xcconfig = { "HEADER_SEARCH_PATHS" => '"$(PODS_TARGET_SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include" "$(PODS_ROOT)/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers"',
-#      "USER_HEADER_SEARCH_PATHS" => '"$(PODS_TARGET_SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include" "$(PODS_ROOT)/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/IRPlayer/FFMpegLib"',
-#      "GCC_PREPROCESSOR_DEFINITIONS" => 'IRPLATFORM_TARGET_OS_IPHONE_OR_TV IRPLATFORM_TARGET_OS_MAC_OR_IPHONE',
-#      "OTHER_LDFLAGS" => '${inherited}',
-#      'ARCHS[sdk=iphonesimulator*]' => '$(ARCHS_STANDARD_64_BIT)'
-#    }
-  end
+#  spec.subspec 'ImpPublic' do |subcfiles|
+#    subcfiles.source_files  = "IRPlayer/Class/Platform/**/*.{h,m}"
+##    subcfiles.dependency "#{spec.name}/Implementation"
+#    subcfiles.header_mappings_dir  = "."
+#  end
+#
+#  spec.subspec 'Implementation' do |subcfiles|
+#    subcfiles.source_files  = "IRPlayer/Class/*.{h,m}", "IRPlayer/*.{h,m}", "IRPlayer/Class/Core/**/*.{h,m}"
+#    subcfiles.exclude_files = "**/ThirdParty/ffmpeg/include/**/*.h"
+#    subcfiles.dependency "#{spec.name}/FFMpegLib"
+#    subcfiles.dependency "#{spec.name}/ImpPublic"
+#    subcfiles.header_mappings_dir  = "."
+##    subcfiles.private_header_files = 'IRPlayer/Class/Core/**/*.h', 'IRPlayer/Class/Platform/**/*.h'
+##    subcfiles.pod_target_xcconfig = { "HEADER_SEARCH_PATHS" => '"$(PODS_TARGET_SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include" "$(PODS_ROOT)/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers"',
+##      "USER_HEADER_SEARCH_PATHS" => '"$(PODS_TARGET_SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include" "$(PODS_ROOT)/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/IRPlayer/FFMpegLib"',
+##      "GCC_PREPROCESSOR_DEFINITIONS" => 'IRPLATFORM_TARGET_OS_IPHONE_OR_TV IRPLATFORM_TARGET_OS_MAC_OR_IPHONE',
+##      "OTHER_LDFLAGS" => '${inherited}',
+##      'ARCHS[sdk=iphonesimulator*]' => '$(ARCHS_STANDARD_64_BIT)'
+##    }
+#  end
 
   spec.subspec 'FFMpegLib' do |subcfiles|
     
     #subspec包含的代码文件，上面source是路径，这里source_files是具体要包含哪些文件
     #其中**表示包含子目录，*表示当前目录下的所有文件
     #下面表示当前subspec包含MyLibrary/cfiles目录及其子目录中的所有.h和.c文件；以及MyLibrary/log目录下的所有.h和.c文件
-    subcfiles.source_files = "**/ThirdParty/ffmpeg/include/**/*.h"
+    subcfiles.source_files = "IRPlayer/ThirdParty/ffmpeg/include/**/*.h"
     
     #不包含的文件
 #    subcfiles.exclude_files = "**/ThirdParty/ffmpeg/include/**/version.h"

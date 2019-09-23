@@ -1,6 +1,6 @@
 {
   "name": "IRPlayer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "summary": "A powerful video player of iOS.",
   "description": "A powerful video player of iOS.",
   "homepage": "https://github.com/irons163/IRPlayer.git",
@@ -11,7 +11,7 @@
   },
   "source": {
     "git": "https://github.com/irons163/IRPlayer.git",
-    "tag": "0.1.0"
+    "tag": "0.1.1"
   },
   "pod_target_xcconfig": {
     "HEADER_SEARCH_PATHS": "\"$(PODS_TARGET_SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include\" \"$(PODS_ROOT)/IRPlayer/FFMpegLib\" \"${PODS_ROOT}/Headers/Private\" \"${PODS_ROOT}/Headers/Private/IRPlayer/FFMpegLib\" \"${PODS_ROOT}/Headers/Public\" \"${PODS_ROOT}/Headers/Public/IRPlayer/FFMpegLib\" \"${PODS_ROOT}/Headers\"",
@@ -37,7 +37,7 @@
     },
     {
       "name": "FFMpegLib",
-      "source_files": "**/ThirdParty/ffmpeg/include/**/*.h",
+      "source_files": "IRPlayer/ThirdParty/ffmpeg/include/**/*.h",
       "vendored_libraries": "IRPlayer/**/ThirdParty/ffmpeg/**/*.a",
       "libraries": [
         "z",

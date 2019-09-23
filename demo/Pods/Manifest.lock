@@ -1,9 +1,9 @@
 PODS:
-  - IRPlayer (0.1.0):
-    - IRPlayer/FFMpegLib (= 0.1.0)
-    - IRPlayer/Implementation (= 0.1.0)
-  - IRPlayer/FFMpegLib (0.1.0)
-  - IRPlayer/Implementation (0.1.0):
+  - IRPlayer (0.1.1):
+    - IRPlayer/FFMpegLib (= 0.1.1)
+    - IRPlayer/Implementation (= 0.1.1)
+  - IRPlayer/FFMpegLib (0.1.1)
+  - IRPlayer/Implementation (0.1.1):
     - IRPlayer/FFMpegLib
 
 DEPENDENCIES:
@@ -14,7 +14,7 @@ EXTERNAL SOURCES:
     :path: "../IRPlayer/"
 
 SPEC CHECKSUMS:
-  IRPlayer: e1d95e409f0df5d0eb1c48b756be5eac3f077cc0
+  IRPlayer: fb58e31f24c310ffdeb0c0bbec030a14d167d418
 
 PODFILE CHECKSUM: 181345ac14b933547b45e73bca8cb4c1de01bece
 

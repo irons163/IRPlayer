@@ -1,7 +1,7 @@
 ARCHS[sdk=iphonesimulator*] = $(ARCHS_STANDARD_64_BIT)
 CONFIGURATION_BUILD_DIR = ${PODS_CONFIGURATION_BUILD_DIR}/IRPlayer
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1 IRPLATFORM_TARGET_OS_IPHONE_OR_TV IRPLATFORM_TARGET_OS_MAC_OR_IPHONE
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/IRPlayer" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/IRPlayer" "$(PODS_TARGET_SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include" "$(PODS_ROOT)/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers"
+HEADER_SEARCH_PATHS = $(inherited) "$(PODS_TARGET_SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include" "$(PODS_ROOT)/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers"
 OTHER_LDFLAGS = $(inherited) ${inherited} -l"bz2" -l"iconv" -l"lzma" -l"z" -framework "AVFoundation"
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
