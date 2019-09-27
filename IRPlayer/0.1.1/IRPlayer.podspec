@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
 #  spec.dependency "IRFFMpeg"
 #  spec.static_framework = true
 
-#  spec.source_files  = "IRPlayer/Class/*.{h,m}", "IRPlayer/*.{h,m}"
+  spec.source_files  = "IRPlayer/Class/**/*.{h,m}", "IRPlayer/*.{h,m}"
 #  spec.header_mappings_dir = ""
 #  spec.vendored_libraries = "**/*.a", "IRPlayer/**/*.a"
 #spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(PODS_ROOT)/IRPlayer/ThirdParty/ffmpeg/include",
@@ -31,7 +31,7 @@ Pod::Spec.new do |spec|
 #  spec.xcconfig = { "HEADER_SEARCH_PATHS" => '"$(SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include" "$(PODS_ROOT)/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/IRPlayer/FFMpegLib"',
 #    "USER_HEADER_SEARCH_PATHS" => '"$(PODS_ROOT)/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/IRPlayer/FFMpegLib"'
 #  }
-spec.pod_target_xcconfig = { "HEADER_SEARCH_PATHS" => '"$(PODS_TARGET_SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include" "$(PODS_ROOT)/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers"',
+spec.pod_target_xcconfig = { "HEADER_SEARCH_PATHS" => '"$(PODS_TARGET_SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include" "$(PODS_TARGET_SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include/libavfilter" "$(PODS_TARGET_SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include/libavutil" "$(PODS_TARGET_SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include/libavdevice" "$(PODS_TARGET_SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include/libavformat" "$(PODS_TARGET_SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include/libswscale" "$(PODS_TARGET_SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include/libavcodec" "$(PODS_TARGET_SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include/libswresample" "$(PODS_ROOT)/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers"',
   "USER_HEADER_SEARCH_PATHS" => '"$(PODS_TARGET_SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include" "$(PODS_ROOT)/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/IRPlayer/FFMpegLib"',
   "GCC_PREPROCESSOR_DEFINITIONS" => 'IRPLATFORM_TARGET_OS_IPHONE_OR_TV IRPLATFORM_TARGET_OS_MAC_OR_IPHONE',
   "OTHER_LDFLAGS" => '${inherited}',
