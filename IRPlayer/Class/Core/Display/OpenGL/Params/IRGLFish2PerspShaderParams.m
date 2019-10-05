@@ -10,6 +10,30 @@
 #import "IRGLMath.h"
 
 @implementation IRGLFish2PerspShaderParams {
+    enum
+    {
+        UNIFORM_ROTATION_ANGLE,
+        UNIFORM_TEXTURE_WIDTH,
+        UNIFORM_TEXTURE_HEIGHT,
+        UNIFORM_FISH_APERTURE,
+        UNIFORM_FISH_CENTERX,
+        UNIFORM_FISH_CENTERY,
+        UNIFORM_FISH_RADIUS_H,
+        UNIFORM_FISH_RADIUS_V,
+        UNIFORM_OUTPUT_WIDTH,
+        UNIFORM_OUTPUT_HEIGHT,
+        UNIFORM_ANTIALIAS,
+        UNIFORM_FISHFOV,
+        UNIFORM_PERSPFOV,
+        UNIFORM_ENABLE_TRANSFORM_X,
+        UNIFORM_ENABLE_TRANSFORM_Y,
+        UNIFORM_ENABLE_TRANSFORM_Z,
+        UNIFORM_TRANSFORM_X,
+        UNIFORM_TRANSFORM_Y,
+        UNIFORM_TRANSFORM_Z,
+        NUM_UNIFORMS
+    };
+    
     GLint _uniformSamplers[NUM_UNIFORMS];
     GLint _uTextureMatrix;
 }

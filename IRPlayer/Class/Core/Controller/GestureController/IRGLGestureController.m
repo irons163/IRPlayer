@@ -1,5 +1,5 @@
 //
-//  IRGestureControl.m
+//  IRGLGestureControl.m
 //  IRPlayer
 //
 //  Created by Phil on 2019/8/19.
