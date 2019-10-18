@@ -85,11 +85,9 @@
 		8A51F76C22CF47A900A7715B /* IRGLRenderModeMulti4P.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F76A22CF47A900A7715B /* IRGLRenderModeMulti4P.m */; };
 		8A51F76F22CF47D600A7715B /* IRGLRenderModeFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F76D22CF47D600A7715B /* IRGLRenderModeFactory.h */; };
 		8A51F77022CF47D600A7715B /* IRGLRenderModeFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F76E22CF47D600A7715B /* IRGLRenderModeFactory.m */; };
-		8A51F77322CF482700A7715B /* IRDeviceShiftController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F77122CF482700A7715B /* IRDeviceShiftController.h */; };
-		8A51F77422CF482700A7715B /* IRDeviceShiftController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F77222CF482700A7715B /* IRDeviceShiftController.m */; };
 		8A51F77722CF486700A7715B /* IRGLDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F77522CF486700A7715B /* IRGLDefine.h */; };
-		8A51F77B22CF489800A7715B /* IRSimulateDeviceShiftController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F77922CF489800A7715B /* IRSimulateDeviceShiftController.h */; };
-		8A51F77C22CF489800A7715B /* IRSimulateDeviceShiftController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F77A22CF489800A7715B /* IRSimulateDeviceShiftController.m */; };
+		8A51F77B22CF489800A7715B /* IRePTZShiftController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F77922CF489800A7715B /* IRePTZShiftController.h */; };
+		8A51F77C22CF489800A7715B /* IRePTZShiftController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F77A22CF489800A7715B /* IRePTZShiftController.m */; };
 		8A51F77F22CF48FD00A7715B /* IRGLMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F77D22CF48FD00A7715B /* IRGLMath.h */; };
 		8A51F78322CF496D00A7715B /* IRGLVertexShaderGLSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F78122CF496D00A7715B /* IRGLVertexShaderGLSL.h */; };
 		8A51F78422CF496D00A7715B /* IRGLVertexShaderGLSL.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F78222CF496D00A7715B /* IRGLVertexShaderGLSL.m */; };
@@ -383,11 +381,9 @@
 		8A51F76A22CF47A900A7715B /* IRGLRenderModeMulti4P.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRGLRenderModeMulti4P.m; sourceTree = "<group>"; };
 		8A51F76D22CF47D600A7715B /* IRGLRenderModeFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRGLRenderModeFactory.h; sourceTree = "<group>"; };
 		8A51F76E22CF47D600A7715B /* IRGLRenderModeFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRGLRenderModeFactory.m; sourceTree = "<group>"; };
-		8A51F77122CF482700A7715B /* IRDeviceShiftController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRDeviceShiftController.h; sourceTree = "<group>"; };
-		8A51F77222CF482700A7715B /* IRDeviceShiftController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRDeviceShiftController.m; sourceTree = "<group>"; };
 		8A51F77522CF486700A7715B /* IRGLDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRGLDefine.h; sourceTree = "<group>"; };
-		8A51F77922CF489800A7715B /* IRSimulateDeviceShiftController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRSimulateDeviceShiftController.h; sourceTree = "<group>"; };
-		8A51F77A22CF489800A7715B /* IRSimulateDeviceShiftController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRSimulateDeviceShiftController.m; sourceTree = "<group>"; };
+		8A51F77922CF489800A7715B /* IRePTZShiftController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRePTZShiftController.h; sourceTree = "<group>"; };
+		8A51F77A22CF489800A7715B /* IRePTZShiftController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRePTZShiftController.m; sourceTree = "<group>"; };
 		8A51F77D22CF48FD00A7715B /* IRGLMath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRGLMath.h; sourceTree = "<group>"; };
 		8A51F78122CF496D00A7715B /* IRGLVertexShaderGLSL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRGLVertexShaderGLSL.h; sourceTree = "<group>"; };
 		8A51F78222CF496D00A7715B /* IRGLVertexShaderGLSL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRGLVertexShaderGLSL.m; sourceTree = "<group>"; };
@@ -1018,10 +1014,8 @@
 		8A51F82722CF59C300A7715B /* DeviceShiftController */ = {
 			isa = PBXGroup;
 			children = (
-				8A51F77122CF482700A7715B /* IRDeviceShiftController.h */,
-				8A51F77222CF482700A7715B /* IRDeviceShiftController.m */,
-				8A51F77922CF489800A7715B /* IRSimulateDeviceShiftController.h */,
-				8A51F77A22CF489800A7715B /* IRSimulateDeviceShiftController.m */,
+				8A51F77922CF489800A7715B /* IRePTZShiftController.h */,
+				8A51F77A22CF489800A7715B /* IRePTZShiftController.m */,
 			);
 			path = DeviceShiftController;
 			sourceTree = "<group>";
@@ -1440,7 +1434,6 @@
 				8AA3EACB2301376300331251 /* lfg.h in Headers */,
 				8AA3EAB62301376300331251 /* buffersink.h in Headers */,
 				8AA3EACD2301376300331251 /* xtea.h in Headers */,
-				8A51F77322CF482700A7715B /* IRDeviceShiftController.h in Headers */,
 				8AA3EAD82301376300331251 /* tree.h in Headers */,
 				8ABB9028230A490D00A27FD7 /* IRGLGestureController.h in Headers */,
 				8AA3EAD02301376300331251 /* frame.h in Headers */,
@@ -1463,7 +1456,7 @@
 				8AA3EB1B2301376400331251 /* avfft.h in Headers */,
 				8AA3EB1D2301376400331251 /* dirac.h in Headers */,
 				8AA3EB1A2301376400331251 /* d3d11va.h in Headers */,
-				8A51F77B22CF489800A7715B /* IRSimulateDeviceShiftController.h in Headers */,
+				8A51F77B22CF489800A7715B /* IRePTZShiftController.h in Headers */,
 				8A51F65022CF3EB400A7715B /* IRFFVideoFrame.h in Headers */,
 				8AA3EACC2301376300331251 /* avutil.h in Headers */,
 				8AA3EAFE2301376300331251 /* bprint.h in Headers */,
@@ -1591,12 +1584,11 @@
 				8A51F7D722CF4CEC00A7715B /* IRGLTransformController2D.m in Sources */,
 				8AF9030022D48863001914BA /* IRPlayerImp+DisplayView.m in Sources */,
 				8A51F65122CF3EB400A7715B /* IRFFVideoFrame.m in Sources */,
-				8A51F77C22CF489800A7715B /* IRSimulateDeviceShiftController.m in Sources */,
+				8A51F77C22CF489800A7715B /* IRePTZShiftController.m in Sources */,
 				8A51F64122CF3E4500A7715B /* IRFFAudioDecoder.m in Sources */,
 				8A51F66122CF3F4400A7715B /* IRFFTools.m in Sources */,
 				8A51F60822CF384600A7715B /* IRPlayerImp.m in Sources */,
 				8A51F75C22CF46B700A7715B /* IRGLRenderMode.m in Sources */,
-				8A51F77422CF482700A7715B /* IRDeviceShiftController.m in Sources */,
 				8A51F61422CF390000A7715B /* IRPlayerDecoder.m in Sources */,
 				8A51F65522CF3EE000A7715B /* IRFFFramePool.m in Sources */,
 				8A51F76022CF46C800A7715B /* IRGLRenderMode2D.m in Sources */,

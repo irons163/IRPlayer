@@ -84,22 +84,6 @@
     return CGSizeZero;
 }
 
--(void)setWideDegreeX:(float)wideDegreeX{
-    [super setWideDegreeX:wideDegreeX];
-    
-    for(IRGLProgram2D *program in _programs){
-        [program setWideDegreeX:wideDegreeX];
-    }
-}
-
--(void)setWideDegreeY:(float)wideDegreeY{
-    [super setWideDegreeY:wideDegreeY];
-    
-    for(IRGLProgram2D *program in _programs){
-        [program setWideDegreeY:wideDegreeY];
-    }
-}
-
 -(void)setDefaultScale:(float)scale{
     for(IRGLProgram2D *program in _programs){
         [program setDefaultScale:scale];

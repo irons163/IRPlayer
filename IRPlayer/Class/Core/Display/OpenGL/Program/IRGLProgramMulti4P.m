@@ -59,22 +59,6 @@ typedef NS_ENUM(NSInteger, IRGLProgramMultiMode){
     }
 }
 
--(float)wideDegreeX{
-    if(!touchedProgram)
-        return [super wideDegreeX];
-    
-    IRGLProgram2D *program = touchedProgram;
-    return program.wideDegreeX;
-}
-
--(float)wideDegreeY{
-    if(!touchedProgram)
-        return [super wideDegreeY];
-    
-    IRGLProgram2D *program = touchedProgram;
-    return program.wideDegreeY;
-}
-
 -(void)setDefaultScale:(float)scale{
     if(!touchedProgram)
         return;

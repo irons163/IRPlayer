@@ -150,13 +150,13 @@ const float INITIAL_PITCH_DEGREES = 0;
     IRGLTransformControllerScrollStatus status = 0;
     
     if(MIN(_scopeRange.maxLng, scope.lng) == _scopeRange.maxLng){
-        status |= IRGLTransformControllerScrollToMinX;
+        status |= IRGLTransformControllerScrollToMaxX;
     }else if(MAX(_scopeRange.minLng, scope.lng) == _scopeRange.minLng){
         status |= IRGLTransformControllerScrollToMinX;
     }
     
     if(MIN(_scopeRange.maxLat, scope.lat) == _scopeRange.maxLat){
-        status |= IRGLTransformControllerScrollToMinY;
+        status |= IRGLTransformControllerScrollToMaxY;
     }else if(MAX(_scopeRange.minLat, scope.lat) == _scopeRange.minLat){
         status |= IRGLTransformControllerScrollToMinY;
     }

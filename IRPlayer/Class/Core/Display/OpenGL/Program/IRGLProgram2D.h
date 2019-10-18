@@ -48,8 +48,6 @@ typedef BOOL (^IRGLProgram2DResetScaleBlock)(IRGLProgram2D *program);
 @property (weak) id<IRGLProgramDelegate> delegate;
 @property (nonatomic) IRGLRenderContentMode contentMode;
 @property (nonatomic) CGRect viewprotRange;
-@property (nonatomic) float wideDegreeX;
-@property (nonatomic) float wideDegreeY;
 @property BOOL shouldUpdateToDefaultWhenOutputSizeChanged;
 
 -(instancetype)initWithPixelFormat:(IRPixelFormat)pixelFormat withViewprotRange:(CGRect)viewprotRange withParameter:(IRMediaParameter*)parameter;

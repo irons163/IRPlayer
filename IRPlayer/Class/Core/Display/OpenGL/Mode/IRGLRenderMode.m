@@ -16,7 +16,7 @@
 -(instancetype)init{
     if(self = [super init]){
         [self initProgramFactory];
-        _shiftController = [[IRSimulateDeviceShiftController alloc] init];
+        _shiftController = [[IRePTZShiftController alloc] init];
         _name = @"";
         _defaultScale = 1.0;
     }
@@ -29,14 +29,6 @@
 
 -(void)setDefaultScale:(float)scale{
     _defaultScale = scale;
-}
-
--(void)setWideDegreeX:(float)wideDegreeX{
-    _wideDegreeX = wideDegreeX;
-}
-
--(void)setWideDegreeY:(float)wideDegreeY{
-    _wideDegreeY = wideDegreeY;
 }
 
 -(void)setContentMode:(IRGLRenderContentMode)contentMode{

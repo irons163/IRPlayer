@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "IRSimulateDeviceShiftController.h"
+#import "IRePTZShiftController.h"
 #import "IRGLProgram2D.h"
 
 @class IRGLProgram2DFactory;
@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 @property (weak) id<IRGLRenderModeDelegate> delegate;
-@property IRSimulateDeviceShiftController* shiftController;
+@property IRePTZShiftController* shiftController;
 @property (nonatomic) float wideDegreeX;
 @property (nonatomic) float wideDegreeY;
 @property (nonatomic) float defaultScale;
@@ -36,8 +36,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) NSString* name;
 @property (readonly) IRGLProgram2D* program;
 
--(void) setDefaultScale:(float)scale;
--(void) setWideDegreeX:(float)wideDegreeX;
 -(void) update;
 @end
 

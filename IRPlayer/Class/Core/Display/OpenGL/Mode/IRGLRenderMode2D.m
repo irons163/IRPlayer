@@ -20,18 +20,6 @@
     [self.program setDefaultScale:scale];
 }
 
--(void)setWideDegreeX:(float)wideDegreeX{
-    [super setWideDegreeX:wideDegreeX];
-    self.program.wideDegreeX = wideDegreeX;
-    self.shiftController.wideDegreeX = wideDegreeX;
-}
-
--(void)setWideDegreeY:(float)wideDegreeY{
-    [super setWideDegreeY:wideDegreeY];
-    self.program.wideDegreeY = wideDegreeY;
-    self.shiftController.wideDegreeY = wideDegreeY;
-}
-
 -(void)setContentMode:(IRGLRenderContentMode)contentMode{
     [super setContentMode:contentMode];
     self.program.contentMode = contentMode;

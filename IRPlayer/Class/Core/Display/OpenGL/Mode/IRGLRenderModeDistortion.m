@@ -13,23 +13,13 @@
 
 -(void)initProgramFactory{
     programFactory = [[IRGLProgramDistortionFactory alloc] init];
+    self.shiftController.panAngle = 360;
+    self.shiftController.tiltAngle = 180;
 }
 
 -(void)setDefaultScale:(float)scale{
     [super setDefaultScale:scale];
     //    [self.program setDefaultScale:scale];
-}
-
--(void)setWideDegreeX:(float)wideDegreeX{
-    [super setWideDegreeX:wideDegreeX];
-    //    self.program.wideDegreeX = wideDegreeX;
-    self.shiftController.wideDegreeX = wideDegreeX;
-}
-
--(void)setWideDegreeY:(float)wideDegreeY{
-    [super setWideDegreeY:wideDegreeY];
-    //    self.program.wideDegreeY = wideDegreeY;
-    self.shiftController.wideDegreeY = wideDegreeY;
 }
 
 -(void)setContentMode:(IRGLRenderContentMode)contentMode{

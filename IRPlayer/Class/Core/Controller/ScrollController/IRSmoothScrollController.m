@@ -89,6 +89,7 @@
     CGFloat slideMult = magnitude / 200;
     NSLog(@"magnitude: %f, slideMult: %f", magnitude, slideMult);
     
+    [self resetSmoothScroll];
     float slideFactor = 0.05 * slideMult; // Increase for more of a slide
     finalPoint = CGPointMake(0 + (velocity.x * slideFactor),
                              0 + (velocity.y * slideFactor));

@@ -103,22 +103,6 @@
     [self.tramsformController resetViewport:viewprotRange.size.width :viewprotRange.size.height resetTransform:resetTransform];
 }
 
--(void)setWideDegreeX:(float)wideDegreeX{
-    _wideDegreeX = wideDegreeX;
-    float defaultLng = wideDegreeX/2.0;
-    IRGLScopeRange* oldScopeRange = self.tramsformController.scopeRange;
-    IRGLScopeRange* newScopeRange = [[IRGLScopeRange alloc] initWithMinLat:oldScopeRange.minLat maxLat:oldScopeRange.maxLat minLng:0 maxLng:wideDegreeX defaultLat:oldScopeRange.defaultLat defaultLng:defaultLng];
-    self.tramsformController.scopeRange = newScopeRange;
-}
-
--(void)setWideDegreeY:(float)wideDegreeY{
-    _wideDegreeY= wideDegreeY;
-    float defaultLat = wideDegreeY/2.0;
-    IRGLScopeRange* oldScopeRange = self.tramsformController.scopeRange;
-    IRGLScopeRange* newScopeRange = [[IRGLScopeRange alloc] initWithMinLat:0 maxLat:wideDegreeY minLng:oldScopeRange.minLng maxLng:oldScopeRange.maxLng defaultLat:defaultLat defaultLng:oldScopeRange.defaultLng];
-    self.tramsformController.scopeRange = newScopeRange;
-}
-
 -(void)setDefaultScale:(float)scale{
     IRGLScaleRange* oldScaleRange = self.tramsformController.scaleRange;
     IRGLScaleRange* newSScaleRange = [[IRGLScaleRange alloc] initWithMinScaleX:oldScaleRange.minScaleX minScaleY:oldScaleRange.minScaleY maxScaleX:oldScaleRange.maxScaleX maxScaleY:oldScaleRange.maxScaleY defaultScaleX:scale defaultScaleY:scale];
@@ -131,8 +115,6 @@
 
 -(void)setTramsformController:(IRGLTransformController *)tramsformController{
     _tramsformController = tramsformController;
-    _wideDegreeX = _tramsformController.scopeRange.maxLng - _tramsformController.scopeRange.minLng;
-    _wideDegreeY = _tramsformController.scopeRange.maxLat - _tramsformController.scopeRange.minLat;
 }
 
 -(BOOL)touchedInProgram:(CGPoint)touchedPoint{

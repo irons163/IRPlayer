@@ -1,5 +1,5 @@
 //
-//  IRSimulateDeviceShiftController.h
+//  IRePTZShiftController.h
 //  IRPlayer
 //
 //  Created by Phil on 2019/7/5.
@@ -11,11 +11,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface IRSimulateDeviceShiftController : NSObject
+@interface IRePTZShiftController : NSObject
 
 @property BOOL enabled;
-@property (nonatomic) float wideDegreeX;
-@property (nonatomic) float wideDegreeY;
+@property (nonatomic) float panAngle;
+@property (nonatomic) float tiltAngle;
+@property (nonatomic) float panFactor;
+@property (nonatomic) float tiltFactor;
 
 - (void)setProgram:(IRGLProgram2D*)program;
 - (void)shiftDegreeX:(float)degreeX degreeY:(float)degreeY;

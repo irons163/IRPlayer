@@ -13,18 +13,8 @@
 
 -(void)initProgramFactory{
     programFactory = [[IRGLProgram2DFisheye2PanoFactory alloc] init];
-}
-
--(void)setWideDegreeX:(float)wideDegreeX{
-    [super setWideDegreeX:wideDegreeX];
-    self.program.wideDegreeX = wideDegreeX;
-    self.shiftController.wideDegreeX = 180;
-}
-
--(void)setWideDegreeY:(float)wideDegreeY{
-    [super setWideDegreeY:wideDegreeY];
-    self.program.wideDegreeY = wideDegreeY;
-    self.shiftController.wideDegreeY = self.program.wideDegreeY;
+    self.shiftController.panAngle = 180;
+    self.shiftController.tiltAngle = 360;
 }
 
 -(void)setContentMode:(IRGLRenderContentMode)contentMode{

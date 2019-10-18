@@ -22,7 +22,7 @@
 #import "IRGLProgram3DFisheye.h"
 #import "IRGLProgram2DFisheye2Persp.h"
 #import "IRGLProgramFactory.h"
-#import "IRSimulateDeviceShiftController.h"
+#import "IRePTZShiftController.h"
 #import "IRGLRenderMode.h"
 #import "IRGLProgram2DFactory.h"
 #import "IRGLRenderModeFactory.h"
@@ -39,8 +39,6 @@
 -(void)buildIRGLProgramWithPixelFormat:(IRPixelFormat)pixelFormat withViewprotRange:(CGRect)viewprotRange withParameter:(IRMediaParameter*)parameter{
     _program = [programFactory createIRGLProgramWithPixelFormat:pixelFormat withViewprotRange:viewprotRange withParameter:(IRMediaParameter*)parameter];
     [self.shiftController setProgram:self.program];
-    [self setWideDegreeX:self.wideDegreeX];
-    [self setWideDegreeY:self.wideDegreeY];
     [self setDefaultScale:self.defaultScale];
     [self setContentMode:self.contentMode];
     

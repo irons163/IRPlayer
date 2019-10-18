@@ -31,9 +31,9 @@ Pod::Spec.new do |spec|
 #  spec.xcconfig = { "HEADER_SEARCH_PATHS" => '"$(SRCROOT)/IRPlayer/ThirdParty/ffmpeg/include" "$(PODS_ROOT)/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/IRPlayer/FFMpegLib"',
 #    "USER_HEADER_SEARCH_PATHS" => '"$(PODS_ROOT)/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Private" "${PODS_ROOT}/Headers/Private/IRPlayer/FFMpegLib" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/IRPlayer/FFMpegLib"'
 #  }
-spec.pod_target_xcconfig = { "HEADER_SEARCH_PATHS" => '"$(PODS_ROOT)/IRPlayer/IRFFMpeg"',
+spec.pod_target_xcconfig = { "HEADER_SEARCH_PATHS" => '"$(PODS_ROOT)/IRFFMpeg/include" "$(PODS_ROOT)/IRPlayer/IRFFMpeg"',
   "GCC_PREPROCESSOR_DEFINITIONS" => 'IRPLATFORM_TARGET_OS_IPHONE_OR_TV IRPLATFORM_TARGET_OS_MAC_OR_IPHONE',
-  "OTHER_LDFLAGS" => '${inherited}',
+  "OTHER_LDFLAGS" => '${inherited}', 
   'ARCHS[sdk=iphonesimulator*]' => '$(ARCHS_STANDARD_64_BIT)'
 }
 spec.user_target_xcconfig = { 'VALID_ARCHS' => 'arm64 armv7' }
