@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "IRPlayer"
-  spec.version      = "0.3.1"
+  spec.version      = "0.3.2"
   spec.summary      = "A powerful video player of iOS."
   spec.description  = "A powerful video player of iOS."
   spec.homepage     = "https://github.com/irons163/IRPlayer.git"
