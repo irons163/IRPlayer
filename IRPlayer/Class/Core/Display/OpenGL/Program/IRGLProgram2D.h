@@ -13,16 +13,11 @@
 #import "IRGLProjection.h"
 #import "IRMediaParameter.h"
 #import "IRGLSupportPixelFormat.h"
+#import "IRGLRenderContentMode.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @class IRGLProgram2D;
-
-typedef NS_ENUM(NSInteger, IRGLRenderContentMode){
-    IRGLRenderContentModeScaleAspectFit,
-    IRGLRenderContentModeScaleAspectFill,
-    IRGLRenderContentModeScaleToFill
-};
 
 typedef BOOL (^IRGLProgram2DResetScaleBlock)(IRGLProgram2D *program);
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A22A183235D7C0300B214B0 /* IRGLRenderContentMode.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A22A182235D7B0F00B214B0 /* IRGLRenderContentMode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A29283C231CD0DF00FE7B58 /* IRSmoothScrollController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A29283A231CD0DF00FE7B58 /* IRSmoothScrollController.h */; };
 		8A29283D231CD0DF00FE7B58 /* IRSmoothScrollController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A29283B231CD0DF00FE7B58 /* IRSmoothScrollController.m */; };
 		8A292840231CF52B00FE7B58 /* IRGestureController+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A29283E231CF52B00FE7B58 /* IRGestureController+Private.h */; };
@@ -66,27 +67,27 @@
 		8A51F74222CF451900A7715B /* IRAudioManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F74022CF451900A7715B /* IRAudioManager.h */; };
 		8A51F74322CF451900A7715B /* IRAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F74122CF451900A7715B /* IRAudioManager.m */; };
 		8A51F74622CF455100A7715B /* IRMetadataDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F74422CF455000A7715B /* IRMetadataDefine.h */; };
-		8A51F74A22CF458200A7715B /* IRMediaParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F74822CF458200A7715B /* IRMediaParameter.h */; };
+		8A51F74A22CF458200A7715B /* IRMediaParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F74822CF458200A7715B /* IRMediaParameter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A51F74B22CF458200A7715B /* IRMediaParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F74922CF458200A7715B /* IRMediaParameter.m */; };
-		8A51F74E22CF45AE00A7715B /* IRFisheyeParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F74C22CF45AE00A7715B /* IRFisheyeParameter.h */; };
+		8A51F74E22CF45AE00A7715B /* IRFisheyeParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F74C22CF45AE00A7715B /* IRFisheyeParameter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A51F74F22CF45AE00A7715B /* IRFisheyeParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F74D22CF45AE00A7715B /* IRFisheyeParameter.m */; };
 		8A51F75222CF45C700A7715B /* IRMovieDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F75022CF45C700A7715B /* IRMovieDecoder.h */; };
 		8A51F75322CF45C700A7715B /* IRMovieDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F75122CF45C700A7715B /* IRMovieDecoder.m */; };
 		8A51F75622CF463C00A7715B /* IRGLView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F75422CF463C00A7715B /* IRGLView.h */; };
 		8A51F75722CF463C00A7715B /* IRGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F75522CF463C00A7715B /* IRGLView.m */; };
-		8A51F75B22CF46B700A7715B /* IRGLRenderMode.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F75922CF46B700A7715B /* IRGLRenderMode.h */; };
+		8A51F75B22CF46B700A7715B /* IRGLRenderMode.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F75922CF46B700A7715B /* IRGLRenderMode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A51F75C22CF46B700A7715B /* IRGLRenderMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F75A22CF46B700A7715B /* IRGLRenderMode.m */; };
-		8A51F75F22CF46C800A7715B /* IRGLRenderMode2D.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F75D22CF46C800A7715B /* IRGLRenderMode2D.h */; };
+		8A51F75F22CF46C800A7715B /* IRGLRenderMode2D.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F75D22CF46C800A7715B /* IRGLRenderMode2D.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A51F76022CF46C800A7715B /* IRGLRenderMode2D.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F75E22CF46C800A7715B /* IRGLRenderMode2D.m */; };
 		8A51F76422CF46F400A7715B /* IRGLRenderMode2DFisheye2Pano.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F76222CF46F400A7715B /* IRGLRenderMode2DFisheye2Pano.m */; };
-		8A51F76722CF478A00A7715B /* IRGLRenderMode3DFisheye.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F76522CF478A00A7715B /* IRGLRenderMode3DFisheye.h */; };
+		8A51F76722CF478A00A7715B /* IRGLRenderMode3DFisheye.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F76522CF478A00A7715B /* IRGLRenderMode3DFisheye.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A51F76822CF478A00A7715B /* IRGLRenderMode3DFisheye.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F76622CF478A00A7715B /* IRGLRenderMode3DFisheye.m */; };
-		8A51F76B22CF47A900A7715B /* IRGLRenderModeMulti4P.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F76922CF47A900A7715B /* IRGLRenderModeMulti4P.h */; };
+		8A51F76B22CF47A900A7715B /* IRGLRenderModeMulti4P.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F76922CF47A900A7715B /* IRGLRenderModeMulti4P.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A51F76C22CF47A900A7715B /* IRGLRenderModeMulti4P.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F76A22CF47A900A7715B /* IRGLRenderModeMulti4P.m */; };
 		8A51F76F22CF47D600A7715B /* IRGLRenderModeFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F76D22CF47D600A7715B /* IRGLRenderModeFactory.h */; };
 		8A51F77022CF47D600A7715B /* IRGLRenderModeFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F76E22CF47D600A7715B /* IRGLRenderModeFactory.m */; };
 		8A51F77722CF486700A7715B /* IRGLDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F77522CF486700A7715B /* IRGLDefine.h */; };
-		8A51F77B22CF489800A7715B /* IRePTZShiftController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F77922CF489800A7715B /* IRePTZShiftController.h */; };
+		8A51F77B22CF489800A7715B /* IRePTZShiftController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F77922CF489800A7715B /* IRePTZShiftController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A51F77C22CF489800A7715B /* IRePTZShiftController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F77A22CF489800A7715B /* IRePTZShiftController.m */; };
 		8A51F77F22CF48FD00A7715B /* IRGLMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F77D22CF48FD00A7715B /* IRGLMath.h */; };
 		8A51F78322CF496D00A7715B /* IRGLVertexShaderGLSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F78122CF496D00A7715B /* IRGLVertexShaderGLSL.h */; };
@@ -162,7 +163,7 @@
 		8A56341E230D142700949B9A /* IRGLRenderModeVR.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A56341C230D142700949B9A /* IRGLRenderModeVR.m */; };
 		8A563421230D14AA00949B9A /* IRGLProgramVRFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A56341F230D14AA00949B9A /* IRGLProgramVRFactory.h */; };
 		8A563422230D14AA00949B9A /* IRGLProgramVRFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A563420230D14AA00949B9A /* IRGLProgramVRFactory.m */; };
-		8A8F02EB22D349B30029070A /* IRGLRenderMode2DFisheye2Pano.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A8F02EA22D349B20029070A /* IRGLRenderMode2DFisheye2Pano.h */; };
+		8A8F02EB22D349B30029070A /* IRGLRenderMode2DFisheye2Pano.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A8F02EA22D349B20029070A /* IRGLRenderMode2DFisheye2Pano.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8AA3EAB52301376300331251 /* buffersrc.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA362301376000331251 /* buffersrc.h */; };
 		8AA3EAB62301376300331251 /* buffersink.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA372301376000331251 /* buffersink.h */; };
 		8AA3EAB72301376300331251 /* avfilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AA3EA382301376000331251 /* avfilter.h */; };
@@ -302,6 +303,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A22A182235D7B0F00B214B0 /* IRGLRenderContentMode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRGLRenderContentMode.h; sourceTree = "<group>"; };
 		8A29283A231CD0DF00FE7B58 /* IRSmoothScrollController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRSmoothScrollController.h; sourceTree = "<group>"; };
 		8A29283B231CD0DF00FE7B58 /* IRSmoothScrollController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRSmoothScrollController.m; sourceTree = "<group>"; };
 		8A29283E231CF52B00FE7B58 /* IRGestureController+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IRGestureController+Private.h"; sourceTree = "<group>"; };
@@ -848,6 +850,7 @@
 		8A51F7AD22CF4B7C00A7715B /* Program */ = {
 			isa = PBXGroup;
 			children = (
+				8A22A182235D7B0F00B214B0 /* IRGLRenderContentMode.h */,
 				8A51F7EA22CF4E5F00A7715B /* IRGLProgram2D.h */,
 				8A51F7EB22CF4E5F00A7715B /* IRGLProgram2D.m */,
 				8A51F7EE22CF4E7300A7715B /* IRGLProgramMulti.h */,
@@ -1293,6 +1296,12 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A51F77B22CF489800A7715B /* IRePTZShiftController.h in Headers */,
+				8A51F75B22CF46B700A7715B /* IRGLRenderMode.h in Headers */,
+				8A8F02EB22D349B30029070A /* IRGLRenderMode2DFisheye2Pano.h in Headers */,
+				8A51F76722CF478A00A7715B /* IRGLRenderMode3DFisheye.h in Headers */,
+				8A51F76B22CF47A900A7715B /* IRGLRenderModeMulti4P.h in Headers */,
+				8A51F75F22CF46C800A7715B /* IRGLRenderMode2D.h in Headers */,
 				8A2EF76C232F5A7C007CC7ED /* IRPLFView.h in Headers */,
 				8A2EF76D232F5A80007CC7ED /* IRPLFImage.h in Headers */,
 				8A2EF6F5232F1367007CC7ED /* IRPlayerImp.h in Headers */,
@@ -1353,12 +1362,10 @@
 				8AA3EB102301376400331251 /* swscale.h in Headers */,
 				8A51F64822CF3E7800A7715B /* IRFFFrame.h in Headers */,
 				8AB2B62123041774008A2CAE /* IRSensor.h in Headers */,
-				8A8F02EB22D349B30029070A /* IRGLRenderMode2DFisheye2Pano.h in Headers */,
 				8A51F80922CF4F3A00A7715B /* IRGLProgram2DFactory.h in Headers */,
+				8A22A183235D7C0300B214B0 /* IRGLRenderContentMode.h in Headers */,
 				8AA3EADA2301376300331251 /* attributes.h in Headers */,
-				8A51F76722CF478A00A7715B /* IRGLRenderMode3DFisheye.h in Headers */,
 				8AA3EAB52301376300331251 /* buffersrc.h in Headers */,
-				8A51F75F22CF46C800A7715B /* IRGLRenderMode2D.h in Headers */,
 				8AA3EB182301376400331251 /* xvmc.h in Headers */,
 				8A51F7BD22CF4C4300A7715B /* IRGLRenderBase.h in Headers */,
 				8AA3EB002301376300331251 /* hwcontext_qsv.h in Headers */,
@@ -1439,7 +1446,6 @@
 				8AA3EAD02301376300331251 /* frame.h in Headers */,
 				8AA3EAD32301376300331251 /* cast5.h in Headers */,
 				8A51F62322CF3CE300A7715B /* IRFFPlayer.h in Headers */,
-				8A51F76B22CF47A900A7715B /* IRGLRenderModeMulti4P.h in Headers */,
 				8AA3EAD12301376300331251 /* file.h in Headers */,
 				8AA3EB082301376400331251 /* intreadwrite.h in Headers */,
 				8AA3EAFB2301376300331251 /* mem.h in Headers */,
@@ -1447,7 +1453,6 @@
 				8AA3EB142301376400331251 /* vdpau.h in Headers */,
 				8AA3EAC62301376300331251 /* base64.h in Headers */,
 				8A51F62822CF3D3D00A7715B /* IRFFDecoder.h in Headers */,
-				8A51F75B22CF46B700A7715B /* IRGLRenderMode.h in Headers */,
 				8ACBD5AE230FD4E400BC35B4 /* IRGLProgramDistortionFactory.h in Headers */,
 				8AA3EABA2301376300331251 /* hwcontext_cuda.h in Headers */,
 				8AA3EAFD2301376300331251 /* ripemd.h in Headers */,
@@ -1456,7 +1461,6 @@
 				8AA3EB1B2301376400331251 /* avfft.h in Headers */,
 				8AA3EB1D2301376400331251 /* dirac.h in Headers */,
 				8AA3EB1A2301376400331251 /* d3d11va.h in Headers */,
-				8A51F77B22CF489800A7715B /* IRePTZShiftController.h in Headers */,
 				8A51F65022CF3EB400A7715B /* IRFFVideoFrame.h in Headers */,
 				8AA3EACC2301376300331251 /* avutil.h in Headers */,
 				8AA3EAFE2301376300331251 /* bprint.h in Headers */,

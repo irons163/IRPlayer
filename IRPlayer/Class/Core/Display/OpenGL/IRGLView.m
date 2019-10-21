@@ -437,6 +437,7 @@
         self->mode = renderMode;
         self->_currentProgram = self->mode.program;
         [self->mode.shiftController setProgram:self->_currentProgram];
+        self.aspect = self->mode.aspect;
         
         if(immediatelyRenderOnce){
             dispatch_async(dispatch_get_main_queue(), ^{

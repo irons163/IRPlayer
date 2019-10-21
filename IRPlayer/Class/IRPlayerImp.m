@@ -213,6 +213,11 @@
             _gestureControl.currentMode = [self.displayView getCurrentRenderMode];
             break;
         }
+        case IRVideoTypeCustom: {
+            _videoType = videoType;
+            _gestureControl.currentMode = [self.displayView getCurrentRenderMode];
+            break;
+        }
         default:
             _videoType = IRVideoTypeNormal;
             [self.displayView setRenderModes:[IRGLRenderModeFactory createNormalModesWithParameter:nil]];
@@ -244,6 +249,19 @@
 {
     _viewGravityMode = viewGravityMode;
     [self.displayView reloadGravityMode];
+}
+
+- (void)setRenderModes:(NSArray<IRGLRenderMode *> *)renderModes {
+    [self.displayView setRenderModes:renderModes];
+}
+
+- (NSArray<IRGLRenderMode *> *)renderModes {
+    return [self.displayView getRenderModes];
+}
+
+- (void)selectRenderMode:(IRGLRenderMode *)renderMode {
+    [self.displayView chooseRenderMode:renderMode withImmediatelyRenderOnce:YES];
+    _gestureControl.currentMode = [self.displayView getCurrentRenderMode];
 }
 
 - (IRPlayerState)state

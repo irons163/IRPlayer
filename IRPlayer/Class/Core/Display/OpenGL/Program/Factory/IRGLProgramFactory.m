@@ -114,7 +114,9 @@
 }
 
 +(IRGLProgramMulti4P*) createIRGLProgram3DFisheye4PWithPixelFormat:(IRPixelFormat)pixelFormat withViewprotRange:(CGRect)viewprotRange withParameter:(IRMediaParameter*)parameter{
-    if(!parameter || ![parameter isKindOfClass:[IRFisheyeParameter class]]){
+    if (!parameter) {
+        parameter = [[IRFisheyeParameter alloc] initWithWidth:0 height:0 up:NO rx:0 ry:0 cx:0 cy:0 latmax:0];
+    } else if (![parameter isKindOfClass:[IRFisheyeParameter class]]){
         NSLog(@"createIRGLProgram failed.");
         return nil;
     }

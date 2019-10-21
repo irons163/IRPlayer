@@ -9,7 +9,9 @@
 #import "PlayerViewController.h"
 #import <IRPlayer/IRPlayer.h>
 
-@interface PlayerViewController ()
+@interface PlayerViewController () {
+    NSArray *modes;
+}
 
 @property (nonatomic, strong) IRPlayerImp * player;
 
@@ -80,6 +82,10 @@
             [self.player replaceVideoWithURL:fisheyeVideo videoType:IRVideoTypePano];
             break;
         case DemoType_FFmpeg_MultiModes_Hardware_Modes_Selection:
+            self.player.decoder = [IRPlayerDecoder FFmpegDecoder];
+            modes = [self createFisheyeModesWithParameter:nil];
+            self.player.renderModes = modes;
+            [self.player replaceVideoWithURL:fisheyeVideo videoType:IRVideoTypeCustom];
             break;
     }
 }
@@ -113,6 +119,11 @@
 - (IBAction)back:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)modes:(id)sender
+{
+    [self showRenderModeMenu];
 }
 
 - (IBAction)play:(id)sender
@@ -195,9 +206,101 @@
     return [NSString stringWithFormat:@"%ld:%.2ld", (long)seconds / 60, (long)seconds % 60];
 }
 
+-(void) showRenderModeMenu
+{
+    NSArray *aryModes = modes;
+
+    if ([aryModes count] > 0) {
+        NSMutableArray *aryStreamsTitle = [NSMutableArray array];
+        NSMutableArray *aryStreamsCheckMark = [NSMutableArray array];
+        
+        IRGLRenderMode* currentRenderMode = [self.player renderMode];
+        
+        UIAlertController *alertView = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        for (NSInteger i = 0 ; i < [aryModes count] ; i++)
+        {
+            IRGLRenderMode* tmpRenderMode = (IRGLRenderMode*)[aryModes objectAtIndex:i];
+            
+            NSString *renderModeStr = tmpRenderMode.name;
+            
+            [aryStreamsTitle addObject:renderModeStr];
+            
+            if(tmpRenderMode == currentRenderMode)
+            {
+                [aryStreamsCheckMark addObject:@(UITableViewCellAccessoryCheckmark)];
+            }else{
+                [aryStreamsCheckMark addObject:@(UITableViewCellAccessoryNone)];
+            }
+            
+            UIAlertAction *itemAction = [UIAlertAction actionWithTitle:renderModeStr style:UIAlertActionStyleDefault
+                                                               handler:^(UIAlertAction * _Nonnull action) {
+                                                                   IRGLRenderMode* tmpRenderMode = (IRGLRenderMode*)[aryModes objectAtIndex:i];
+                                                                   [self.player selectRenderMode:tmpRenderMode];
+                                                               }];
+            
+            [alertView addAction:itemAction];
+        }
+        
+        [self presentViewController:alertView animated:YES completion:nil];
+        
+//        alertView = [[LGAlertView alloc] initWithTitle:nil
+//                                               message:nil
+//                                                 style:LGAlertViewStyleActionSheet
+//                                          buttonTitles:aryStreamsTitle
+//                                     cancelButtonTitle:_(@"ButtonTextCancel")
+//                                destructiveButtonTitle:nil
+//                                         actionHandler:^(LGAlertView * _Nonnull alertView, NSUInteger index, NSString * _Nullable title) {
+//                                             KxMovieGLRenderMode* tmpRenderMode = (KxMovieGLRenderMode*)[aryModes objectAtIndex:index];
+//                                             NSString *renderModeStr = tmpRenderMode.name;
+//                                             NSLog(@"Got %@",renderModeStr);
+//                                             [tmpVideo setCurrentRenderMode:tmpRenderMode];
+//                                         } cancelHandler:^(LGAlertView * _Nonnull alertView) {
+//                                             NSLog(@"Got Cancel");
+//                                         } destructiveHandler:nil];
+//
+//        alertView.buttonsAccessoryType = aryStreamsCheckMark;
+//        alertView.buttonsBackgroundColorHighlighted = [UIColor groupTableViewBackgroundColor];
+//        alertView.buttonsTitleColorHighlighted = alertView.buttonsTitleColor;
+//        alertView.cancelButtonBackgroundColorHighlighted = [UIColor groupTableViewBackgroundColor];
+//        alertView.cancelButtonTitleColorHighlighted = alertView.buttonsTitleColor;
+//
+//        [alertView showAnimated:YES completionHandler:nil];
+    }
+}
+
 - (void)dealloc
 {
     [self.player removePlayerNotificationTarget:self];
+}
+
+- (NSArray<IRGLRenderMode*> *)createFisheyeModesWithParameter:(nullable IRMediaParameter *)parameter {
+    IRGLRenderMode *normal = [[IRGLRenderMode2D alloc] init];
+    IRGLRenderMode *fisheye2Pano = [[IRGLRenderMode2DFisheye2Pano alloc] init];
+    IRGLRenderMode *fisheye = [[IRGLRenderMode3DFisheye alloc] init];
+    IRGLRenderMode *fisheye4P = [[IRGLRenderModeMulti4P alloc] init];
+    NSArray<IRGLRenderMode*>* modes = @[
+                                        fisheye2Pano,
+                                        fisheye,
+                                        fisheye4P,
+                                        normal
+                                        ];
+    
+    normal.shiftController.enabled = NO;
+    
+    fisheye2Pano.contentMode = IRGLRenderContentModeScaleAspectFill;
+    fisheye2Pano.wideDegreeX = 360;
+    fisheye2Pano.wideDegreeY = 20;
+    
+    fisheye4P.parameter = fisheye.parameter = [[IRFisheyeParameter alloc] initWithWidth:0 height:0 up:NO rx:0 ry:0 cx:0 cy:0 latmax:80];
+    fisheye4P.aspect = fisheye.aspect = 16.0 / 9.0;
+    
+    normal.name = @"Rawdata";
+    fisheye2Pano.name = @"Panorama";
+    fisheye.name = @"Onelen";
+    fisheye4P.name = @"Fourlens";
+    
+    return modes;
 }
 
 @end

@@ -299,6 +299,11 @@ static NSString * const AVMediaSelectionOptionTrackIDKey = @"MediaSelectionOptio
             return nil;
         }
             break;
+        case IRVideoTypeCustom:
+        {
+            return nil;
+        }
+            break;
     }
 }
 
