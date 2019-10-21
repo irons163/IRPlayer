@@ -16,8 +16,8 @@
 
 @implementation IRGLRenderModeFactory
 
-+(NSArray<IRGLRenderMode*>*)createNormalModesWithParameter:(nullable IRMediaParameter*)parameter{
-    NSArray<IRGLRenderMode*>* modes = @[[[IRGLRenderMode2D alloc] init]];
++ (NSArray<IRGLRenderMode*>*)createNormalModesWithParameter:(nullable IRMediaParameter*)parameter {
+    NSArray<IRGLRenderMode*> *modes = @[[[IRGLRenderMode2D alloc] init]];
     
     for(IRGLRenderMode* mode in modes){
         mode.parameter = parameter;
@@ -26,11 +26,11 @@
     return modes;
 }
 
-+(NSArray<IRGLRenderMode*>*)createFisheyeModesWithParameter:(nullable IRMediaParameter*)parameter{
-    IRGLRenderMode* normal = [[IRGLRenderMode2D alloc] init];
-    IRGLRenderMode* fisheye2Pano = [[IRGLRenderMode2DFisheye2Pano alloc] init];
-    IRGLRenderMode* fisheye = [[IRGLRenderMode3DFisheye alloc] init];
-    IRGLRenderMode* fisheye4P = [[IRGLRenderModeMulti4P alloc] init];
++ (NSArray<IRGLRenderMode*> *)createFisheyeModesWithParameter:(nullable IRMediaParameter *)parameter {
+    IRGLRenderMode *normal = [[IRGLRenderMode2D alloc] init];
+    IRGLRenderMode *fisheye2Pano = [[IRGLRenderMode2DFisheye2Pano alloc] init];
+    IRGLRenderMode *fisheye = [[IRGLRenderMode3DFisheye alloc] init];
+    IRGLRenderMode *fisheye4P = [[IRGLRenderModeMulti4P alloc] init];
     NSArray<IRGLRenderMode*>* modes = @[
                                              fisheye2Pano,
                                              fisheye,
@@ -55,21 +55,30 @@
     return modes;
 }
 
-+ (IRGLRenderMode*)createVRModeWithParameter:(nullable IRMediaParameter*)parameter {
++ (IRGLRenderMode *)createVRModeWithParameter:(nullable IRMediaParameter *)parameter {
     IRGLRenderMode *mode = [[IRGLRenderModeVR alloc] init];
     mode.parameter = parameter;
     return mode;
 }
 
-+ (IRGLRenderMode*)createDistortionModeWithParameter:(nullable IRMediaParameter*)parameter {
++ (IRGLRenderMode *)createDistortionModeWithParameter:(nullable IRMediaParameter *)parameter {
     IRGLRenderMode *mode = [[IRGLRenderModeDistortion alloc] init];
     mode.parameter = parameter;
     return mode;
 }
 
-+ (IRGLRenderMode*)createFisheyeModeWithParameter:(nullable IRMediaParameter*)parameter {
++ (IRGLRenderMode *)createFisheyeModeWithParameter:(nullable IRMediaParameter *)parameter {
     IRGLRenderMode *mode = [[IRGLRenderMode3DFisheye alloc] init];
     mode.parameter = parameter;
+    return mode;
+}
+
++ (IRGLRenderMode *)createPanoramaModeWithParameter:(nullable IRMediaParameter *)parameter {
+    IRGLRenderMode *mode = [[IRGLRenderMode2DFisheye2Pano alloc] init];
+    mode.parameter = parameter;
+    mode.contentMode = IRGLRenderContentModeScaleAspectFill;
+    mode.wideDegreeX = 360;
+    mode.wideDegreeY = 20;
     return mode;
 }
 

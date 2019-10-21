@@ -75,9 +75,11 @@
             self.player.decoder = [IRPlayerDecoder FFmpegDecoder];
             [self.player replaceVideoWithURL:fisheyeVideo videoType:IRVideoTypeFisheye];
             break;
-        case DemoType_FFmpeg_Fisheye_Hardware_Modes_Selection:
+        case DemoType_FFmpeg_Panorama_Hardware:
             self.player.decoder = [IRPlayerDecoder FFmpegDecoder];
-            [self.player replaceVideoWithURL:fisheyeVideo videoType:IRVideoTypeFisheye];
+            [self.player replaceVideoWithURL:fisheyeVideo videoType:IRVideoTypePano];
+            break;
+        case DemoType_FFmpeg_MultiModes_Hardware_Modes_Selection:
             break;
     }
 }
@@ -94,13 +96,14 @@
     static NSArray * displayNames = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        displayNames = @[@"i see fire,   AVPlayer",
-                         @"google help,  AVPlayer,  VR",
-                         @"google help,  AVPlayer,  VR,  Box",
-                         @"i see fire,   FFmpeg",
-                         @"i see fire,   FFmpeg, Hardware Acceleration",
-                         @"i see fire,   FFmpeg,  Fisheye, Hardware Acceleration",
-                         @"i see fire,   FFmpeg,  Fisheyes, Hardware Acceleration"];
+        displayNames = @[@"i see fire, AVPlayer",
+                         @"google help, AVPlayer, VR",
+                         @"google help, AVPlayer, VR, Box",
+                         @"i see fire, FFmpeg",
+                         @"i see fire, FFmpeg, Hardware Acceleration",
+                         @"fisheye-demo, FFmpeg, Fisheye, Hardware Acceleration",
+                         @"fisheye-demo, FFmpeg, Pano, Hardware Acceleration",
+                         @"fisheye-demo, FFmpeg, Multi modes, Hardware Acceleration"];
     });
     if (demoType < displayNames.count) {
         return [displayNames objectAtIndex:demoType];

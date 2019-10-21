@@ -17,7 +17,8 @@ typedef NS_ENUM(NSUInteger, DemoType) {
     DemoType_FFmpeg_Normal,
     DemoType_FFmpeg_Normal_Hardware,
     DemoType_FFmpeg_Fisheye_Hardware,
-    DemoType_FFmpeg_Fisheye_Hardware_Modes_Selection,
+    DemoType_FFmpeg_Panorama_Hardware,
+    DemoType_FFmpeg_MultiModes_Hardware_Modes_Selection,
 };
 
 @interface PlayerViewController : UIViewController

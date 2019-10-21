@@ -206,6 +206,13 @@
             _gestureControl.currentMode = [self.displayView getCurrentRenderMode];
             break;
         }
+        case IRVideoTypePano: {
+            _videoType = videoType;
+            IRGLRenderMode *mode = [IRGLRenderModeFactory createPanoramaModeWithParameter:nil];
+            [self.displayView setRenderModes:@[mode]];
+            _gestureControl.currentMode = [self.displayView getCurrentRenderMode];
+            break;
+        }
         default:
             _videoType = IRVideoTypeNormal;
             [self.displayView setRenderModes:[IRGLRenderModeFactory createNormalModesWithParameter:nil]];

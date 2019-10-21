@@ -10,6 +10,7 @@
 #import "IRGLFish2PanoShaderParams.h"
 #import "IRGLVertexShaderGLSL.h"
 #import "IRGLFragmentFish2PanoShaderGLSL.h"
+#import "IRFisheyeParameter.h"
 
 @interface IRGLProgram2DFisheye2Pano(Protected)
 -(void)initShaderParams;
@@ -28,6 +29,23 @@
 -(NSString*)fragmentShader{
     fragmentShaderString = [IRGLFragmentFish2PanoShaderGLSL getShardString:_pixelFormat antialias:fish2Pano.antialias];
     return fragmentShaderString;
+}
+
+- (void)setupWithParameter:(IRMediaParameter *)parameter {
+    if (!parameter) return;
+    
+    if ([parameter isKindOfClass:[IRMediaParameter class]]) {
+        fish2Pano.fishcenterx = parameter.width / 2;
+        fish2Pano.fishcentery = parameter.height / 2;
+        fish2Pano.fishradiush = parameter.width / 2;
+        fish2Pano.fishradiusv = parameter.height / 2;
+    } else if ([parameter isKindOfClass:[IRFisheyeParameter class]]) {
+        IRFisheyeParameter *fishParameter = (IRFisheyeParameter *)parameter;
+        fish2Pano.fishcenterx = fishParameter.cx;
+        fish2Pano.fishcentery = fishParameter.cy;
+        fish2Pano.fishradiush = fishParameter.rx;
+        fish2Pano.fishradiusv = fishParameter.ry;
+    }
 }
 
 -(void)initShaderParams{

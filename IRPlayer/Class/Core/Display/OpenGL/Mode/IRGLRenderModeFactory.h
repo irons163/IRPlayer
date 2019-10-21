@@ -13,11 +13,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface IRGLRenderModeFactory : NSObject
 
-+ (NSArray<IRGLRenderMode*>*)createNormalModesWithParameter:(nullable IRMediaParameter*)parameter;
-+ (NSArray<IRGLRenderMode*>*)createFisheyeModesWithParameter:(nullable IRMediaParameter*)parameter;
-+ (IRGLRenderMode*)createVRModeWithParameter:(nullable IRMediaParameter*)parameter;
-+ (IRGLRenderMode*)createDistortionModeWithParameter:(nullable IRMediaParameter*)parameter;
-+ (IRGLRenderMode*)createFisheyeModeWithParameter:(nullable IRMediaParameter*)parameter;
++ (NSArray<IRGLRenderMode*> *)createNormalModesWithParameter:(nullable IRMediaParameter *)parameter;
++ (NSArray<IRGLRenderMode*> *)createFisheyeModesWithParameter:(nullable IRMediaParameter *)parameter;
++ (IRGLRenderMode *)createVRModeWithParameter:(nullable IRMediaParameter *)parameter;
++ (IRGLRenderMode *)createDistortionModeWithParameter:(nullable IRMediaParameter *)parameter;
++ (IRGLRenderMode *)createFisheyeModeWithParameter:(nullable IRMediaParameter *)parameter;
++ (IRGLRenderMode *)createPanoramaModeWithParameter:(nullable IRMediaParameter *)parameter;
 
 @end
 

@@ -294,6 +294,11 @@ static NSString * const AVMediaSelectionOptionTrackIDKey = @"MediaSelectionOptio
             return nil;
         }
             break;
+        case IRVideoTypePano:
+        {
+            return nil;
+        }
+            break;
     }
 }
 
@@ -488,6 +493,10 @@ static NSString * const AVMediaSelectionOptionTrackIDKey = @"MediaSelectionOptio
                 });
             }];
         }
+            break;
+        case IRVideoTypeFisheye:
+            break;
+        case IRVideoTypePano:
             break;
     }
 }

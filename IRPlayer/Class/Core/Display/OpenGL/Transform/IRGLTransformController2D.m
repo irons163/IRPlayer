@@ -50,6 +50,14 @@
 -(void) setupDefaultTransformScaleX:(float)defaultTransformScaleX transformScaleY:(float)defaultTransformScaleY{
     _defaultTransformScaleX = defaultTransformScaleX;
     _defaultTransformScaleY = defaultTransformScaleY;
+    
+    if (_defaultTransformScaleX > _scaleRange.maxScaleX) {
+        _scaleRange = [[IRGLScaleRange alloc] initWithMinScaleX:_scaleRange.minScaleX minScaleY:_scaleRange.minScaleY maxScaleX:_defaultTransformScaleX maxScaleY:_scaleRange.maxScaleY defaultScaleX:_scaleRange.defaultScaleX defaultScaleY:_scaleRange.defaultScaleY];
+    }
+    
+    if (_defaultTransformScaleY > _scaleRange.maxScaleY) {
+        _scaleRange = [[IRGLScaleRange alloc] initWithMinScaleX:_scaleRange.minScaleX minScaleY:_scaleRange.minScaleY maxScaleX:_scaleRange.maxScaleX maxScaleY:_defaultTransformScaleY defaultScaleX:_scaleRange.defaultScaleX defaultScaleY:_scaleRange.defaultScaleY];
+    }
 }
 
 -(CGPoint)getDefaultTransformScale{

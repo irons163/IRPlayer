@@ -307,6 +307,7 @@
     switch (self.abstractPlayer.viewGravityMode) {
         case IRGravityModeResizeAspect:
             irGLViewContentMode = IRGLRenderContentModeScaleAspectFit;
+            break;
         case IRGravityModeResizeAspectFill:
             irGLViewContentMode = IRGLRenderContentModeScaleAspectFill;
             break;
@@ -583,23 +584,8 @@ typedef NS_ENUM(NSInteger, IRScrollDirectionType){
     [self updateDisplayViewLayout:self.bounds];
 }
 
-- (void)reloadGravityMode
-{
-//    if (self.avplayerLayer) {
-//        switch (self.abstractPlayer.viewGravityMode) {
-//            case IRGravityModeResize:
-//                self.avplayerLayer.videoGravity = AVLayerVideoGravityResize;
-//                break;
-//            case IRGravityModeResizeAspect:
-//                self.avplayerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
-//                break;
-//            case IRGravityModeResizeAspectFill:
-//                self.avplayerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-//                break;
-//        }
-//    }
-//    if(isGLRenderContentModeChangable)
-        [self changeGLRenderContentMode];
+- (void)reloadGravityMode {
+    [self changeGLRenderContentMode];
 }
 
 - (void)setAspect:(CGFloat)aspect

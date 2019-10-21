@@ -76,6 +76,10 @@
     return self;
 }
 
+- (void)setupWithParameter:(IRMediaParameter *)parameter {
+    if (!parameter) return;
+}
+
 -(void)initShaderParams{
     shaderParams2D = [[IRGLShaderParams alloc] init];
     shaderParams2D.delegate = self;

@@ -338,6 +338,11 @@ XYZ PRotateZ(XYZ p, float_t theta)
     self.textureWidth = w;
     self.textureHeight = h;
     
+    self.fishcenterx = self.textureWidth / 2.0;
+    self.fishcentery = self.textureHeight / 2.0;
+    self.fishradiush = self.textureWidth / 2.0;
+    self.fishradiusv = self.textureHeight / 2.0;
+    
     [self updateOutputWH];
     
     if(self.delegate)
@@ -363,14 +368,14 @@ XYZ PRotateZ(XYZ p, float_t theta)
         vapertureRadians = 160.0*DTOR;
     }
     
-    self.outputWidth = 2048;
+    self.outputWidth = 1.422222222222222 * self.textureWidth;
     self.outputHeight = (int)(self.outputWidth * tan(0.5*vapertureRadians) / (0.5*(long2Radians - long1Radians)));
-    //    self.fishcenterx = 708;
-    self.fishcenterx = 680;
-    //    self.fishcentery = 550;
-    self.fishcentery = 530;
-    //    self.fishradiush = 516;
-    self.fishradiush = 480;
+    
+//    self.fishcenterx = 680;
+    
+//    self.fishcentery = 530;
+    
+//    self.fishradiush = 480;
     self.enableTransformX = 1;
     //    self.transformX = 180;
     //    self.enableTransformY = 1;

@@ -18,6 +18,7 @@ typedef NS_ENUM(NSUInteger, IRVideoType) {
     IRVideoTypeNormal,  // normal
     IRVideoTypeVR,      // virtual reality
     IRVideoTypeFisheye,
+    IRVideoTypePano,
 };
 
 // player state

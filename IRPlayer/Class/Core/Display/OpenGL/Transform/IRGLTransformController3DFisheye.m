@@ -84,11 +84,6 @@ const float INITIAL_PITCH_DEGREES = 0;
     return mvp;
 }
 
--(void) setupDefaultTransformScaleX:(float)defaultTransformScaleX transformScaleY:(float)defaultTransformScaleY{
-    _defaultTransformScaleX = defaultTransformScaleX;
-    _defaultTransformScaleY = defaultTransformScaleY;
-}
-
 -(CGPoint)getDefaultTransformScale{
     return CGPointMake(_defaultTransformScaleX, _defaultTransformScaleY);
 }
