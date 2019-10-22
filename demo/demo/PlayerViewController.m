@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UISlider *progressSilder;
 @property (weak, nonatomic) IBOutlet UILabel *currentTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalTimeLabel;
+@property (weak, nonatomic) IBOutlet UIButton *modesButton;
 
 @property (nonatomic, assign) BOOL progressSilderTouching;
 
@@ -86,6 +87,7 @@
             modes = [self createFisheyeModesWithParameter:nil];
             self.player.renderModes = modes;
             [self.player replaceVideoWithURL:fisheyeVideo videoType:IRVideoTypeCustom];
+            self.modesButton.hidden = NO;
             break;
     }
 }
@@ -106,10 +108,10 @@
                          @"google help, AVPlayer, VR",
                          @"google help, AVPlayer, VR, Box",
                          @"i see fire, FFmpeg",
-                         @"i see fire, FFmpeg, Hardware Acceleration",
-                         @"fisheye-demo, FFmpeg, Fisheye, Hardware Acceleration",
-                         @"fisheye-demo, FFmpeg, Pano, Hardware Acceleration",
-                         @"fisheye-demo, FFmpeg, Multi modes, Hardware Acceleration"];
+                         @"i see fire, FFmpeg, Hardware Decode",
+                         @"fisheye-demo, FFmpeg, Fisheye Mode",
+                         @"fisheye-demo, FFmpeg, Pano Mode",
+                         @"fisheye-demo, FFmpeg, Multi Modes"];
     });
     if (demoType < displayNames.count) {
         return [displayNames objectAtIndex:demoType];
@@ -243,29 +245,6 @@
         }
         
         [self presentViewController:alertView animated:YES completion:nil];
-        
-//        alertView = [[LGAlertView alloc] initWithTitle:nil
-//                                               message:nil
-//                                                 style:LGAlertViewStyleActionSheet
-//                                          buttonTitles:aryStreamsTitle
-//                                     cancelButtonTitle:_(@"ButtonTextCancel")
-//                                destructiveButtonTitle:nil
-//                                         actionHandler:^(LGAlertView * _Nonnull alertView, NSUInteger index, NSString * _Nullable title) {
-//                                             KxMovieGLRenderMode* tmpRenderMode = (KxMovieGLRenderMode*)[aryModes objectAtIndex:index];
-//                                             NSString *renderModeStr = tmpRenderMode.name;
-//                                             NSLog(@"Got %@",renderModeStr);
-//                                             [tmpVideo setCurrentRenderMode:tmpRenderMode];
-//                                         } cancelHandler:^(LGAlertView * _Nonnull alertView) {
-//                                             NSLog(@"Got Cancel");
-//                                         } destructiveHandler:nil];
-//
-//        alertView.buttonsAccessoryType = aryStreamsCheckMark;
-//        alertView.buttonsBackgroundColorHighlighted = [UIColor groupTableViewBackgroundColor];
-//        alertView.buttonsTitleColorHighlighted = alertView.buttonsTitleColor;
-//        alertView.cancelButtonBackgroundColorHighlighted = [UIColor groupTableViewBackgroundColor];
-//        alertView.cancelButtonTitleColorHighlighted = alertView.buttonsTitleColor;
-//
-//        [alertView showAnimated:YES completionHandler:nil];
     }
 }
 

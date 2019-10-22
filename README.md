@@ -93,13 +93,50 @@ switch (self.demoType)
 ### Advanced settings
 ```obj-c
 
-Multi Window.
-Multi Render Modes Selection.
+NSArray *modes = [self createFisheyeModesWithParameter:nil];
+self.player.renderModes = modes;
+[self.player replaceVideoWithURL:fisheyeVideo videoType:IRVideoTypeCustom];
+
+
+- (NSArray<IRGLRenderMode*> *)createFisheyeModesWithParameter:(nullable IRMediaParameter *)parameter {
+    IRGLRenderMode *normal = [[IRGLRenderMode2D alloc] init];
+    IRGLRenderMode *fisheye2Pano = [[IRGLRenderMode2DFisheye2Pano alloc] init];
+    IRGLRenderMode *fisheye = [[IRGLRenderMode3DFisheye alloc] init];
+    IRGLRenderMode *fisheye4P = [[IRGLRenderModeMulti4P alloc] init];
+    NSArray<IRGLRenderMode*>* modes = @[
+    fisheye2Pano,
+    fisheye,
+    fisheye4P,
+    normal
+    ];
+
+    normal.shiftController.enabled = NO;
+
+    fisheye2Pano.contentMode = IRGLRenderContentModeScaleAspectFill;
+    fisheye2Pano.wideDegreeX = 360;
+    fisheye2Pano.wideDegreeY = 20;
+
+    fisheye4P.parameter = fisheye.parameter = [[IRFisheyeParameter alloc] initWithWidth:0 height:0 up:NO rx:0 ry:0 cx:0 cy:0 latmax:80];
+    fisheye4P.aspect = fisheye.aspect = 16.0 / 9.0;
+
+    normal.name = @"Rawdata";
+    fisheye2Pano.name = @"Panorama";
+    fisheye.name = @"Onelen";
+    fisheye4P.name = @"Fourlens";
+
+    return modes;
+}
 
 ```
 
 ## Screenshots
-![Demo](./demo/ScreenShots/demo1.png)
+![Video](./demo/ScreenShots/demo1.png)
+![VR](./demo/ScreenShots/demo2.png)
+![VR Box](./demo/ScreenShots/demo3.png)
+![Fisheye 360](./demo/ScreenShots/demo4.png)
+![Panorama](./demo/ScreenShots/demo5.png)
+![Modes Selection](./demo/ScreenShots/demo6.png)
+![Multi Windows](./demo/ScreenShots/demo7.png)
 
 ## Copyright
 

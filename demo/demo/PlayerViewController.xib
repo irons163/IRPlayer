@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="currentTimeLabel" destination="Jnp-8l-nTx" id="SZc-jr-KCD"/>
                 <outlet property="mainView" destination="bqJ-Av-ZGQ" id="nRZ-9c-wee"/>
+                <outlet property="modesButton" destination="ieU-ow-wB3" id="IUy-Px-8oc"/>
                 <outlet property="progressSilder" destination="jtu-tD-N25" id="sWX-Pq-kOO"/>
                 <outlet property="stateLabel" destination="2a9-B9-GlL" id="H1S-rD-5kd"/>
                 <outlet property="totalTimeLabel" destination="hwo-qt-zBh" id="FIF-jY-EOa"/>
@@ -105,7 +106,7 @@
                                 <action selector="back:" destination="-1" eventType="touchUpInside" id="gZP-jM-s6U"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieU-ow-wB3">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieU-ow-wB3">
                             <rect key="frame" x="345" y="44" width="53" height="33"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <state key="normal" title="Modes">
