@@ -130,13 +130,13 @@ self.player.renderModes = modes;
 ```
 
 ## Screenshots
-![Video](./demo/ScreenShots/demo1.png)
-![VR](./demo/ScreenShots/demo2.png)
-![VR Box](./demo/ScreenShots/demo3.png)
-![Fisheye 360](./demo/ScreenShots/demo4.png)
-![Panorama](./demo/ScreenShots/demo5.png)
-![Modes Selection](./demo/ScreenShots/demo6.png)
-![Multi Windows](./demo/ScreenShots/demo7.png)
+![Video](./demo/ScreenShots/demo1.PNG)
+![VR](./demo/ScreenShots/demo2.PNG)
+![VR Box](./demo/ScreenShots/demo3.PNG)
+![Fisheye 360](./demo/ScreenShots/demo4.PNG)
+![Panorama](./demo/ScreenShots/demo5.PNG)
+![Modes Selection](./demo/ScreenShots/demo6.PNG)
+![Multi Windows](./demo/ScreenShots/demo7.PNG)
 
 ## Copyright
 
