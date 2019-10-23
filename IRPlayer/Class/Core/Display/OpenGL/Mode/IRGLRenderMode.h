@@ -15,6 +15,8 @@
 @class IRGLProgram2DFactory;
 @class IRMediaParameter;
 @class IRGLProgram2D;
+@class IRGLScopeRange;
+@class IRGLScaleRange;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -36,12 +38,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) float wideDegreeY;
 @property (nonatomic) float defaultScale;
 @property (nonatomic) float aspect;
+@property (nonatomic) IRGLScaleRange *scaleRange;
+@property (nonatomic) IRGLScopeRange *scopeRange;
 @property (nonatomic) IRGLRenderContentMode contentMode;
 @property (nonatomic) IRMediaParameter* parameter;
 @property (nonatomic) NSString* name;
 @property (readonly) IRGLProgram2D* program;
 
--(void) update;
+- (void)setting;
+- (void)update;
+
 @end
 
 NS_ASSUME_NONNULL_END
