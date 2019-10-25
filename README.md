@@ -34,7 +34,7 @@
 
 ## Install
 ### Cocoapods
-- Add `pod 'IRPlayer'`  in the `Podfile`
+- Add `pod 'IRPlayer', '~> 0.3.2'`  in the `Podfile`
 - `pod install`
 
 ## Usage

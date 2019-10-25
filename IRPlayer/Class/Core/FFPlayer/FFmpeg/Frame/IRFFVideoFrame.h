@@ -7,7 +7,6 @@
 //
 
 #import "IRFFFrame.h"
-#import <AVFoundation/AVFoundation.h>
 #import "IRPLFImage.h"
 
 NS_ASSUME_NONNULL_BEGIN
