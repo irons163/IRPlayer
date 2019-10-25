@@ -23,3 +23,6 @@ FOUNDATION_EXPORT const unsigned char IRPlayerVersionString[];
 #import <IRPlayer/IRGLRenderModeMulti4P.h>
 #import <IRPlayer/IRMediaParameter.h>
 #import <IRPlayer/IRFisheyeParameter.h>
+#import <IRPlayer/IRFFVideoFrame.h>
+#import <IRPlayer/IRFFAVYUVVideoFrame.h>
+#import <IRPlayer/IRFFCVYUVVideoFrame.h>
