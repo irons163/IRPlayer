@@ -76,6 +76,39 @@
 {
     self.error = nil;
     self.contentURL = contentURL;
+    self.videoInput = nil;
+    self.decoderType = [self.decoder decoderTypeForContentURL:self.contentURL];
+    self.videoType = videoType;
+    
+    switch (self.decoderType) {
+        case IRDecoderTypeAVPlayer:
+            if (_ffPlayer) {
+                [self.ffPlayer stop];
+            }
+            [self.avPlayer replaceVideo];
+            break;
+        case IRDecoderTypeFFmpeg:
+            if (_avPlayer) {
+                [self.avPlayer stop];
+            }
+            [self.ffPlayer replaceVideo];
+            break;
+        case IRDecoderTypeError:
+            if (_avPlayer) {
+                [self.avPlayer stop];
+            }
+            if (_ffPlayer) {
+                [self.ffPlayer stop];
+            }
+            break;
+    }
+}
+
+- (void)replaceVideoWithInput:(nullable IRFFVideoInput *)videoInput videoType:(IRVideoType)videoType
+{
+    self.error = nil;
+    self.contentURL = [[NSURL alloc] init];
+    self.videoInput = videoInput;
     self.decoderType = [self.decoder decoderTypeForContentURL:self.contentURL];
     self.videoType = videoType;
     
@@ -413,6 +446,10 @@
         [self.view addConstraint:left];
         [self.view addConstraint:right];
     }
+}
+
+- (void)setVideoInput:(IRFFVideoInput * _Nullable)videoInput {
+    _videoInput = videoInput;
 }
 
 - (void)setError:(IRError * _Nullable)error

@@ -43,46 +43,11 @@ typedef enum {
     
 } IRFrameFormat;
 
-//@interface IRFFFrame : NSObject
-//@property (readonly, nonatomic) IRFFFrameType type;
-//@property (readonly, nonatomic) CGFloat position;
-//@property (readonly, nonatomic) CGFloat duration;
-//@end
-
-//@interface IRFFAudioFrame : IRFFFrame
-//@property (readonly, nonatomic, strong) NSData *samples;
-//@end
-
-//@interface IRFFVideoFrame : IRFFFrame
-//@property (nonatomic) IRFrameFormat format;
-//@property (nonatomic) NSUInteger width;
-//@property (nonatomic) NSUInteger height;
-//@end
-
 @interface IRVideoFrameRGB : IRFFVideoFrame
 @property (readonly, nonatomic) NSUInteger linesize;
 @property (readonly, nonatomic, strong) NSData *rgb;
 - (UIImage *) asImage;
 @end
-
-//@interface IRFFAVYUVVideoFrame : IRFFVideoFrame
-//@property (nonatomic, strong) NSData *luma;
-//@property (nonatomic, strong) NSData *chromaB;
-//@property (nonatomic, strong) NSData *chromaR;
-//@end
-
-//@interface IRFFCVYUVVideoFrame : IRFFVideoFrame
-//@property ( nonatomic) CVPixelBufferRef imageBuffer;
-//@end
-
-//@interface IRFFArtworkFrame : IRFFFrame
-//@property (readonly, nonatomic, strong) NSData *picture;
-//- (UIImage *) asImage;
-//@end
-
-//@interface IRFFSubtileFrame : IRFFFrame
-//@property (readonly, nonatomic, strong) NSString *text;
-//@end
 
 @protocol IRMovieDecoderDelegate <NSObject>
 @optional

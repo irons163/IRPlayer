@@ -229,6 +229,11 @@
         case IRVideoTypeVR:
             self.abstractPlayer.displayView.rendererType = IRDisplayRendererTypeFFmpegPexelBufferVR;
             break;
+        case IRVideoTypeFisheye:
+        case IRVideoTypePano:
+        case IRVideoTypeCustom:
+            self.abstractPlayer.displayView.rendererType = IRDisplayRendererTypeFFmpegPexelBuffer;
+            break;
     }
     
     if(self.decoder.hardwareDecoderEnable) {

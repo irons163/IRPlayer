@@ -10,6 +10,7 @@
 #import "IRPlayerImp+DisplayView.h"
 #import "IRPlayerMacro.h"
 #import "IRPlayerNotification.h"
+#import "IRFFCVYUVVideoFrame.h"
 #import <AVFoundation/AVFoundation.h>
 
 static CGFloat const PixelBufferRequestInterval = 0.03f;

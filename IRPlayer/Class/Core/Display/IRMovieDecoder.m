@@ -12,6 +12,7 @@
 #include "libswscale/swscale.h"
 #include "libswresample/swresample.h"
 #include "libavutil/pixdesc.h"
+#import "IRFFAVYUVVideoFrame.h"
 #import "IRAudioManager.h"
 #import "signal.h"
 #include <pthread.h>
@@ -282,33 +283,6 @@ static BOOL isNetworkPath (NSString *path)
 
 static int interrupt_callback(void *ctx);
 
-////////////////////////////////////////////////////////////////////////////////
-
-//@interface IRFFFrame()
-//@property (readwrite, nonatomic) CGFloat position;
-//@property (readwrite, nonatomic) CGFloat duration;
-//@end
-//
-//@implementation IRFFFrame
-//@end
-
-//@interface IRFFAudioFrame()
-//@property (readwrite, nonatomic, strong) NSData *samples;
-//@end
-//
-//@implementation IRFFAudioFrame
-//- (IRFFFrameType) type { return IRFFFrameTypeAudio; }
-//@end
-
-//@interface IRFFVideoFrame()
-//@property (nonatomic) NSUInteger width;
-//@property (nonatomic) NSUInteger height;
-//@end
-
-//@implementation IRFFVideoFrame
-//- (IRFFFrameType) type { return IRFFFrameTypeVideo; }
-//@end
-
 @interface IRVideoFrameRGB ()
 @property (readwrite, nonatomic) NSUInteger linesize;
 @property (readwrite, nonatomic, strong) NSData *rgb;
@@ -354,57 +328,6 @@ static int interrupt_callback(void *ctx);
 //@property (nonatomic, strong) NSData *chromaB;
 //@property (nonatomic, strong) NSData *chromaR;
 @end
-
-//@implementation IRFFAVYUVVideoFrame
-//- (IRFrameFormat) format { return IRFrameFormatYUV; }
-//@end
-
-//@interface IRFFCVYUVVideoFrame()
-//@end
-//
-//@implementation IRFFCVYUVVideoFrame
-//- (IRFrameFormat) format { return IRFrameFormatNV12; }
-//@end
-
-//@interface IRFFArtworkFrame()
-//@property (readwrite, nonatomic, strong) NSData *picture;
-//@end
-//
-//@implementation IRFFArtworkFrame
-//- (IRFFFrameType) type { return IRFFFrameTypeArtwork; }
-//- (UIImage *) asImage
-//{
-//    UIImage *image = nil;
-//
-//    CGDataProviderRef provider = CGDataProviderCreateWithCFData((__bridge CFDataRef)(_picture));
-//    if (provider) {
-//
-//        CGImageRef imageRef = CGImageCreateWithJPEGDataProvider(provider,
-//                                                                NULL,
-//                                                                YES,
-//                                                                kCGRenderingIntentDefault);
-//        if (imageRef) {
-//
-//            image = [UIImage imageWithCGImage:imageRef];
-//            CGImageRelease(imageRef);
-//        }
-//        CGDataProviderRelease(provider);
-//    }
-//
-//    return image;
-//
-//}
-//@end
-
-//@interface IRFFSubtileFrame()
-//@property (readwrite, nonatomic, strong) NSString *text;
-//@end
-//
-//@implementation IRFFSubtileFrame
-//- (IRFFFrameType) type { return IRFFFrameTypeSubtitle; }
-//@end
-
-////////////////////////////////////////////////////////////////////////////////
 
 @interface IRMovieDecoder () {
     

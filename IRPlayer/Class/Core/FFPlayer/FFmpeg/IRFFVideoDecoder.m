@@ -7,6 +7,8 @@
 //
 
 #import "IRFFVideoDecoder.h"
+#import "IRFFAVYUVVideoFrame.h"
+#import "IRFFCVYUVVideoFrame.h"
 #import "IRFFPacketQueue.h"
 #import "IRFFFrameQueue.h"
 #import "IRFFFramePool.h"

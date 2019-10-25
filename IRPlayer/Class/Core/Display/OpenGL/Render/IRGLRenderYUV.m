@@ -7,6 +7,7 @@
 //
 
 #import "IRGLRenderYUV.h"
+#import "IRFFAVYUVVideoFrame.h"
 
 #define TextureMagFilter GL_NEAREST//GL_LINEAR
 
