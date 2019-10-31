@@ -238,10 +238,10 @@ exit:
     
     if ([self prepareRender]) {
         [self.mapProjection updateVertex];
-#if 0
+#ifdef DEBUG
         if (!validateProgram(_program))
         {
-            LoggerVideo(0, @"Failed to validate program");
+            NSLog(@"Failed to validate program");
             return;
         }
 #endif

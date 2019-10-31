@@ -179,14 +179,6 @@ static const char fragmentShaderString2[] = SG_GLES_STRINGIZE
 - (void)draw {
     if ([self prepareRender]) {
         [self.mapProjection updateVertex];
-#if 0
-        if (!validateProgram(_program))
-        {
-            LoggerVideo(0, @"Failed to validate program");
-            return;
-        }
-#endif
-        
     }
 }
 

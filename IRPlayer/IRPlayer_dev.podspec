@@ -10,8 +10,8 @@ Pod::Spec.new do |spec|
 #  spec.source       = { :git => "https://github.com/irons163/IRFFMpeg.git" }
   spec.source       = { :git => "https://github.com/irons163/IRPlayer.git", :tag => spec.version.to_s }
   
-  spec.source_files  = "IRPlayer/**/*.{h,m}"
-  spec.exclude_files = "**/ThirdParty/ffmpeg/include/**/*.h"
+  spec.source_files  = "**/*.{h,m}"
+  spec.exclude_files = "**/ThirdParty/ffmpeg/include/**/*.h", "**/ThirdParty/**/*.{h,m}"
 #  spec.vendored_frameworks = "IRFFMpeg"
   spec.dependency "IRFFMpeg"
 #  spec.static_framework = true

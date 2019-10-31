@@ -9,16 +9,16 @@
 #import "IRFFVideoInput.h"
 #import "IRFFVideoInput+Private.h"
 
-@interface IRFFVideoInput()
-
-@end
-
 @implementation IRFFVideoInput
 
 - (void)updateFrame:(IRFFVideoFrame *)input {
     if ([self.videoOutput respondsToSelector:@selector(decoder:renderVideoFrame:)]) {
         [self.videoOutput decoder:nil renderVideoFrame:input];
     }
+}
+
+- (void)setVideoOutput:(id<IRFFDecoderVideoOutput>)videoOutput {
+    _videoOutput = videoOutput;
 }
 
 @end

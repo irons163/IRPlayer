@@ -17,6 +17,7 @@
 #import "IRFisheyeParameter.h"
 #import "IRSensor.h"
 #import "IRSmoothScrollController.h"
+#import "IRFFVideoInput+Private.h"
 
 #if IRPLATFORM_TARGET_OS_IPHONE_OR_TV
 #import "IRAudioManager.h"
@@ -109,6 +110,9 @@
     self.error = nil;
     self.contentURL = [[NSURL alloc] init];
     self.videoInput = videoInput;
+    if (self.videoInput) {
+        self.videoInput.videoOutput = self.displayView;
+    }
     self.decoderType = [self.decoder decoderTypeForContentURL:self.contentURL];
     self.videoType = videoType;
     

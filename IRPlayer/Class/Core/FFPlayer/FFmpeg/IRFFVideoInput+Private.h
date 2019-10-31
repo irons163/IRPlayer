@@ -11,9 +11,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface IRFFVideoInput (Private)
+@interface IRFFVideoInput ()
 
-@property id<IRFFDecoderVideoOutput> videoOutput;
+@property (nonatomic, strong) id<IRFFDecoderVideoOutput> videoOutput;
 
 @end
 

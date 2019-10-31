@@ -278,6 +278,10 @@
     [CATransaction flush];
     
     dispatch_sync(queue, ^{
+        BOOL hasLoadShaders = YES;
+        if(self->_backingWidth == 0 && self->_backingHeight == 0) {
+            hasLoadShaders = NO;
+        }
         
         [EAGLContext setCurrentContext:self->_context];
         CAEAGLLayer *eaglLayer = (CAEAGLLayer*) self.layer;
@@ -289,6 +293,10 @@
         glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &self->_backingHeight);
         NSLog(@"_backingWidth:%d",self->_backingWidth);
         glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, self->_renderbuffer);
+        
+        if (!hasLoadShaders && (self->_backingWidth != 0 || self->_backingHeight != 0)) {
+            [self loadShaders];
+        }
     });
     
     [self resetAllViewport:_backingWidth :_backingHeight resetTransform:YES];
@@ -399,18 +407,21 @@
     _programs = [NSArray arrayWithArray:array];
 }
 
+- (void)loadShaders {
+    [EAGLContext setCurrentContext:self->_context];
+    
+    for(IRGLProgram2D *program in self->_programs){
+        if (![program loadShaders]) {
+            return;
+        }
+    }
+}
+
 - (void)setupModes {
     [self initModes];
     
     dispatch_sync(queue, ^{
-        
-        [EAGLContext setCurrentContext:self->_context];
-        
-        for(IRGLProgram2D *program in self->_programs){
-            if (![program loadShaders]) {
-                return;
-            }
-        }
+        [self loadShaders];
     });
     self.contentMode = UIViewContentModeScaleAspectFit;
     [self setContentMode:self.contentMode];
