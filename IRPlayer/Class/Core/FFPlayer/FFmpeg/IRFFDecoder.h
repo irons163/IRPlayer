@@ -10,8 +10,8 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import "IRFFAudioFrame.h"
 #import "IRFFVideoFrame.h"
-#import "IRFFTrack.h"
 
+@class IRFFTrack;
 @class IRFFDecoder;
 
 NS_ASSUME_NONNULL_BEGIN

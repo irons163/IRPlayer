@@ -460,18 +460,34 @@
     return YES;
 }
 
+- (void)setCurrentContext {
+    [EAGLContext setCurrentContext:self->_context];
+    glBindFramebuffer(GL_FRAMEBUFFER, self->_framebuffer);
+}
+
+- (BOOL)presentRenderBuffer {
+    return [self->_context presentRenderbuffer:GL_RENDERBUFFER];
+}
+
+- (void)bindCurrentRenderBuffer {
+    glBindRenderbuffer(GL_RENDERBUFFER, self->_renderbuffer);
+}
+
+- (void)clearCurrentBuffer {
+    [self->_currentProgram clearBuffer];
+}
+
 -(void) clearCanvas{
     if(!queue || !_currentProgram)
         return;
     
     dispatch_sync(queue, ^{
-        [EAGLContext setCurrentContext:self->_context];
-        glBindFramebuffer(GL_FRAMEBUFFER, self->_framebuffer);
+        [self setCurrentContext];
         
-        [self->_currentProgram clearBuffer];
+        [self clearCurrentBuffer];
         
-        glBindRenderbuffer(GL_RENDERBUFFER, self->_renderbuffer);
-        [self->_context presentRenderbuffer:GL_RENDERBUFFER];
+        [self bindCurrentRenderBuffer];
+        [self presentRenderBuffer];
     });
 }
 

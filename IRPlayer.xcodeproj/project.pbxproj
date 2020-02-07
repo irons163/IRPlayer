@@ -166,7 +166,6 @@
 		8A5B93802361AC7200D292A7 /* IRFFVideoInput.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A5B937E2361AC7200D292A7 /* IRFFVideoInput.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A5B93812361AC7200D292A7 /* IRFFVideoInput.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5B937F2361AC7200D292A7 /* IRFFVideoInput.m */; };
 		8A5B938A2361AED200D292A7 /* IRFFVideoInput+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A5B93882361AED200D292A7 /* IRFFVideoInput+Private.h */; };
-		8A5B938B2361AED200D292A7 /* IRFFVideoInput+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5B93892361AED200D292A7 /* IRFFVideoInput+Private.m */; };
 		8A5B938F23629D4A00D292A7 /* IRFFCVYUVVideoFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A5B938D23629D4A00D292A7 /* IRFFCVYUVVideoFrame.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A5B939023629D4A00D292A7 /* IRFFCVYUVVideoFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5B938E23629D4A00D292A7 /* IRFFCVYUVVideoFrame.m */; };
 		8A5B939323629D6300D292A7 /* IRFFAVYUVVideoFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A5B939123629D6300D292A7 /* IRFFAVYUVVideoFrame.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -471,7 +470,6 @@
 		8A5B937E2361AC7200D292A7 /* IRFFVideoInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRFFVideoInput.h; sourceTree = "<group>"; };
 		8A5B937F2361AC7200D292A7 /* IRFFVideoInput.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRFFVideoInput.m; sourceTree = "<group>"; };
 		8A5B93882361AED200D292A7 /* IRFFVideoInput+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IRFFVideoInput+Private.h"; sourceTree = "<group>"; };
-		8A5B93892361AED200D292A7 /* IRFFVideoInput+Private.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "IRFFVideoInput+Private.m"; sourceTree = "<group>"; };
 		8A5B938D23629D4A00D292A7 /* IRFFCVYUVVideoFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRFFCVYUVVideoFrame.h; sourceTree = "<group>"; };
 		8A5B938E23629D4A00D292A7 /* IRFFCVYUVVideoFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRFFCVYUVVideoFrame.m; sourceTree = "<group>"; };
 		8A5B939123629D6300D292A7 /* IRFFAVYUVVideoFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRFFAVYUVVideoFrame.h; sourceTree = "<group>"; };
@@ -765,7 +763,6 @@
 				8A5B937E2361AC7200D292A7 /* IRFFVideoInput.h */,
 				8A5B937F2361AC7200D292A7 /* IRFFVideoInput.m */,
 				8A5B93882361AED200D292A7 /* IRFFVideoInput+Private.h */,
-				8A5B93892361AED200D292A7 /* IRFFVideoInput+Private.m */,
 			);
 			path = FFmpeg;
 			sourceTree = "<group>";
@@ -1682,7 +1679,6 @@
 				8A51F7FD22CF4ECB00A7715B /* IRGLProgram2DFisheye2Persp.m in Sources */,
 				8A51F64D22CF3E8F00A7715B /* IRFFAudioFrame.m in Sources */,
 				8A51F82222CF58A100A7715B /* IRGLScope3D.m in Sources */,
-				8A5B938B2361AED200D292A7 /* IRFFVideoInput+Private.m in Sources */,
 				8A51F76422CF46F400A7715B /* IRGLRenderMode2DFisheye2Pano.m in Sources */,
 				8A51F81222CF4F8200A7715B /* IRGLProgram2DFisheye2PanoFactory.m in Sources */,
 				8A51F81A22CF4FC700A7715B /* IRGLProgram3DFisheye4PFactory.m in Sources */,

@@ -16,6 +16,7 @@
 #import "IRPlayerNotification.h"
 #import "IRPlayerMacro.h"
 #import "IRPlayerImp+DisplayView.h"
+#import "IRFFTrack.h"
 
 //@interface IRFFPlayer () <IRFFDecoderDelegate, IRFFDecoderAudioOutput, IRAudioManagerDelegate>
 @interface IRFFPlayer () <IRFFDecoderDelegate, IRFFDecoderAudioOutput>

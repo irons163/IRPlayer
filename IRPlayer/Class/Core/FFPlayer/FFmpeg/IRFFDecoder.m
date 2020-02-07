@@ -11,6 +11,7 @@
 #import "IRFFAudioDecoder.h"
 #import "IRFFVideoDecoder.h"
 #import "IRFFTools.h"
+#import "IRFFTrack.h"
 
 @interface IRFFDecoder () <IRFFFormatContextDelegate, IRFFAudioDecoderDelegate, IRFFVideoDecoderDlegate>
 
