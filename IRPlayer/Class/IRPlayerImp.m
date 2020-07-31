@@ -401,7 +401,7 @@
 {
     if (!_displayView) {
 //        _displayView = [IRGLView displayViewWithAbstractPlayer:self];
-        _displayView = [[IRGLView alloc] init];
+        _displayView = [self createGLView];
         
         _scrollController = [[IRSmoothScrollController alloc] initWithTargetView:_displayView];
         _scrollController.currentMode = [_displayView getCurrentRenderMode];
@@ -414,6 +414,10 @@
         _gestureControl.delegate = self;
     }
     return _displayView;
+}
+
+- (IRGLView *)createGLView {
+    return [[IRGLView alloc] init];
 }
 
 - (IRAVPlayer *)avPlayer

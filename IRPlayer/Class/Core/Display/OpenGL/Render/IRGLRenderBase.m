@@ -7,31 +7,28 @@
 //
 
 #import "IRGLRenderBase.h"
+#import "IRMovieDecoder.h"
 
 @implementation IRGLRenderBase
 
-- (BOOL) isValid
-{
+- (BOOL)isValid {
     return NO;
 }
 
-- (void) resolveUniforms: (GLuint) program
-{
+- (void)resolveUniforms:(GLuint)program {
     _uniformMatrix = glGetUniformLocation(program, "modelViewProjectionMatrix");
 }
 
-- (void) setVideoFrame: (IRFFVideoFrame *) frame
-{
+- (void)setVideoFrame:(IRFFVideoFrame *)frame {
     
 }
 
-- (BOOL) prepareRender
-{
+- (BOOL)prepareRender:(GLuint)program {
     glUniformMatrix4fv(_uniformMatrix, 1, GL_FALSE, _modelviewProj.m);
     return YES;
 }
 
--(void)setModelviewProj:(GLKMatrix4) modelviewProj{
+- (void)setModelviewProj:(GLKMatrix4)modelviewProj {
     _modelviewProj = modelviewProj;
 }
 

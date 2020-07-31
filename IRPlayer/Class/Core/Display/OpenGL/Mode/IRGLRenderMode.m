@@ -16,6 +16,7 @@
 #define IRGLRenderModeConfigurationKey_setContentMode      @"setContentMode"
 #define IRGLRenderModeConfigurationKey_setScaleRange       @"setScaleRange"
 #define IRGLRenderModeConfigurationKey_setScopeRange       @"setScopeRange"
+#define IRGLRenderModeConfigurationKey_setRenderer         @"setRenderer"
 
 @implementation IRGLRenderMode {
     NSMutableArray *configurationKeySequence;
@@ -69,6 +70,12 @@
     [configurationKeySequence addObject:IRGLRenderModeConfigurationKey_setScopeRange];
 }
 
+- (void)setRenderer:(id<IRGLRender>)renderer {
+    _renderer = renderer;
+    //    program.tramsformController.scopeRange = _scopeRange;
+    [configurationKeySequence addObject:IRGLRenderModeConfigurationKey_setRenderer];
+}
+
 - (void)settingConfig:(NSString *)key {
     [self settingDefaultScale:key];
     [self settingWideDegreeX:key];
@@ -76,6 +83,7 @@
     [self settingContentMode:key];
     [self settingScaleRange:key];
     [self settingScopeRange:key];
+    [self settingRenderer:key];
 }
 
 - (void)settingDefaultScale:(NSString *)key {
@@ -121,6 +129,13 @@
         return;
     
     [_program.tramsformController setScopeRange:self.scopeRange];
+}
+
+- (void)settingRenderer:(NSString *)key {
+    if(![key isEqualToString:IRGLRenderModeConfigurationKey_setRenderer])
+        return;
+    
+    [_program setRenderer:self.renderer];
 }
 
 - (void)setting {

@@ -24,7 +24,7 @@
 }
 
 -(void)updateTextureWidth:(NSUInteger)w height:(NSUInteger)h {
-    //    if(self.textureWidth != w || self.textureHeight != h){
+    if(self.textureWidth != w || self.textureHeight != h){
     
     self.textureWidth = w;
     self.textureHeight = h;
@@ -35,7 +35,7 @@
     
     if(self.delegate)
         [self.delegate didUpdateOutputWH:w :h];
-    //    }
+    }
 }
 
 @end

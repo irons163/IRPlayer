@@ -75,6 +75,8 @@ typedef NS_ENUM(NSInteger, IRRenderMode){
 @property (nonatomic, assign) IRDisplayRendererType rendererType;
 //@property (nonatomic, strong) SGFingerRotation * fingerRotation;
 
+- (void)initDefaultValue;
+- (void)initModes;
 - (void)reloadGravityMode;
 - (void)cleanEmptyBuffer;
 //- (void)reloadIRAVPlayer;

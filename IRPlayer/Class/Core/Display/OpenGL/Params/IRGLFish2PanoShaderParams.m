@@ -334,7 +334,7 @@ XYZ PRotateZ(XYZ p, float_t theta)
 }
 
 -(void)updateTextureWidth:(NSUInteger)w height:(NSUInteger)h{
-    //    if(self.textureWidth != w || self.textureHeight != h){
+    if(self.textureWidth != w || self.textureHeight != h){
     self.textureWidth = w;
     self.textureHeight = h;
     
@@ -342,12 +342,15 @@ XYZ PRotateZ(XYZ p, float_t theta)
     self.fishcentery = self.textureHeight / 2.0;
     self.fishradiush = self.textureWidth / 2.0;
     self.fishradiusv = self.textureHeight / 2.0;
+        
+    if(w == 0 || h == 0)
+        return;
     
     [self updateOutputWH];
     
     if(self.delegate)
         [self.delegate didUpdateOutputWH:self.outputWidth :self.outputHeight];
-    //    }
+    }
 }
 
 -(void)updateOutputWH{

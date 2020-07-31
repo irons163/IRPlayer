@@ -80,12 +80,12 @@
     if (!parameter) return;
 }
 
--(void)initShaderParams{
+- (void)initShaderParams {
     shaderParams2D = [[IRGLShaderParams alloc] init];
     shaderParams2D.delegate = self;
 }
 
--(void)releaseProgram{
+- (void)releaseProgram {
     if (_program) {
         glDeleteProgram(_program);
         _program = 0;
@@ -97,51 +97,54 @@
     }
 }
 
--(void)setViewprotRange:(CGRect)viewprotRange{
+- (void)setRenderer:(id<IRGLRender>)renderer {
+    _renderer = renderer;
+}
+
+- (void)setViewprotRange:(CGRect)viewprotRange {
     [self setViewprotRange:viewprotRange resetTransform:YES];
 }
 
--(void)setViewprotRange:(CGRect)viewprotRange resetTransform:(BOOL)resetTransform{
+- (void)setViewprotRange:(CGRect)viewprotRange resetTransform:(BOOL)resetTransform{
     _viewprotRange = viewprotRange;
     
     [self.tramsformController resetViewport:viewprotRange.size.width :viewprotRange.size.height resetTransform:resetTransform];
 }
 
--(void)setDefaultScale:(float)scale{
+- (void)setDefaultScale:(float)scale{
     IRGLScaleRange* oldScaleRange = self.tramsformController.scaleRange;
     IRGLScaleRange* newSScaleRange = [[IRGLScaleRange alloc] initWithMinScaleX:oldScaleRange.minScaleX minScaleY:oldScaleRange.minScaleY maxScaleX:oldScaleRange.maxScaleX maxScaleY:oldScaleRange.maxScaleY defaultScaleX:scale defaultScaleY:scale];
     self.tramsformController.scaleRange = newSScaleRange;
 }
 
--(CGPoint)getCurrentScale{
+- (CGPoint)getCurrentScale{
     return CGPointMake([self.tramsformController getDefaultTransformScale].x == 0 ? 0 :[self.tramsformController getScope].scaleX / [self.tramsformController getDefaultTransformScale].x, [self.tramsformController getDefaultTransformScale].y == 0 ? 0 :[self.tramsformController getScope].scaleY / [self.tramsformController getDefaultTransformScale].y);
 }
 
--(void)setTramsformController:(IRGLTransformController *)tramsformController{
+- (void)setTramsformController:(IRGLTransformController *)tramsformController{
     _tramsformController = tramsformController;
 }
 
--(BOOL)touchedInProgram:(CGPoint)touchedPoint{
+- (BOOL)touchedInProgram:(CGPoint)touchedPoint{
     return (CGRectContainsPoint(_viewprotRange, touchedPoint));
 }
 
--(void)setContentMode:(IRGLRenderContentMode)contentMode{
+- (void)setContentMode:(IRGLRenderContentMode)contentMode{
     if(_contentMode != contentMode){
         _contentMode = contentMode;
-        [shaderParams2D updateTextureWidth:shaderParams2D.textureWidth height:shaderParams2D.textureHeight];
+        [self updateTextureWidth:shaderParams2D.textureWidth height:shaderParams2D.textureHeight];
     }
 }
 
--(CGSize)getOutputSize{
+- (CGSize)getOutputSize{
     return CGSizeMake(shaderParams2D.outputWidth, shaderParams2D.outputHeight);
 }
 
--(BOOL)isRendererValid{
+- (BOOL)isRendererValid{
     return _renderer && _renderer.isValid ? YES : NO;
 }
 
--(BOOL)loadShaders
-{
+- (BOOL)loadShaders {
     BOOL result = NO;
     GLuint vertShader = 0, fragShader = 0;
     
@@ -194,7 +197,7 @@ exit:
     return result;
 }
 
--(void)setRenderFrame:(IRFFVideoFrame*)frame{
+- (void)setRenderFrame:(IRFFVideoFrame *)frame {
     [_renderer setVideoFrame:frame];
     
     if(frame.width != shaderParams2D.textureWidth || frame.height != shaderParams2D.textureHeight){
@@ -202,21 +205,21 @@ exit:
     }
 }
 
--(void)updateTextureWidth:(NSUInteger)w height:(NSUInteger)h{
+- (void)updateTextureWidth:(NSUInteger)w height:(NSUInteger)h {
     [shaderParams2D updateTextureWidth:w height:h];
 }
 
--(void)setModelviewProj:(GLKMatrix4) modelviewProj{
+- (void)setModelviewProj:(GLKMatrix4)modelviewProj {
     [_renderer setModelviewProj:modelviewProj];
 }
 
-- (BOOL) prepareRender{
+- (BOOL)prepareRender {
     glUseProgram(_program);
     [shaderParams2D prepareRender];
-    return [_renderer prepareRender];
+    return [_renderer prepareRender:_program];
 }
 
--(void)clearBuffer{
+- (void)clearBuffer {
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 }
@@ -249,7 +252,7 @@ exit:
     }
 }
 
--(void)didUpdateOutputWH:(int)w :(int)h{
+- (void)didUpdateOutputWH:(int)w :(int)h {
     if(self.tramsformController){
         const double width   = w;
         const double height  = h;
@@ -288,29 +291,29 @@ exit:
     }
 }
 
--(void) didPanBydx:(float)dx dy:(float)dy{
+- (void)didPanBydx:(float)dx dy:(float)dy {
     [self.tramsformController scrollByDx:dx dy:dy];
 }
 
--(void) didPinchByfx:(float)fx fy:(float)fy sx:(float)sx sy:(float)sy{
+- (void)didPinchByfx:(float)fx fy:(float)fy sx:(float)sx sy:(float)sy {
     
     
     [self.tramsformController updateByFx:[self.tramsformController getScope].W - (fx * [[UIScreen mainScreen] scale]) fy:fy * [[UIScreen mainScreen] scale] sx:sx sy:sy];
     
 }
 
--(void) didPinchByfx:(float)fx fy:(float)fy dsx:(float)dsx dsy:(float)dsy{
+- (void)didPinchByfx:(float)fx fy:(float)fy dsx:(float)dsx dsy:(float)dsy {
     float scaleX = [self.tramsformController getScope].scaleX * dsx;
     float scaleY = [self.tramsformController getScope].scaleY * dsy;
     
     [self didPinchByfx:fx fy:fy sx:scaleX sy:scaleY];
 }
 
--(void) didPanByDegreeX:(float)degreex degreey:(float)degreey{
+- (void)didPanByDegreeX:(float)degreex degreey:(float)degreey {
     [self.tramsformController scrollByDegreeX:degreex degreey:degreey];
 }
 
--(void) didRotate:(float)rotateRadians{
+- (void)didRotate:(float)rotateRadians {
     [self.tramsformController rotate: rotateRadians * 180 / M_PI];
 }
 

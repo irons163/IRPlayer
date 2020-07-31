@@ -85,6 +85,10 @@
         case DemoType_FFmpeg_MultiModes_Hardware_Modes_Selection:
             self.player.decoder = [IRPlayerDecoder FFmpegDecoder];
             modes = [self createFisheyeModesWithParameter:nil];
+            id<IRGLRender> sharedRender = [[IRGLRenderNV12 alloc] init];
+            for (IRGLRenderMode *mode in modes) {
+                mode.renderer = sharedRender;
+            }
             self.player.renderModes = modes;
             [self.player replaceVideoWithURL:fisheyeVideo videoType:IRVideoTypeCustom];
             self.modesButton.hidden = NO;

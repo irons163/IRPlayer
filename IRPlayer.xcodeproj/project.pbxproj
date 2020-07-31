@@ -110,13 +110,13 @@
 		8A51F7B522CF4BDF00A7715B /* IRGLFish2PanoShaderParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F7B322CF4BDF00A7715B /* IRGLFish2PanoShaderParams.m */; };
 		8A51F7B822CF4BFF00A7715B /* IRGLFish2PerspShaderParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F7B622CF4BFF00A7715B /* IRGLFish2PerspShaderParams.h */; };
 		8A51F7B922CF4BFF00A7715B /* IRGLFish2PerspShaderParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F7B722CF4BFF00A7715B /* IRGLFish2PerspShaderParams.m */; };
-		8A51F7BD22CF4C4300A7715B /* IRGLRenderBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F7BB22CF4C4200A7715B /* IRGLRenderBase.h */; };
+		8A51F7BD22CF4C4300A7715B /* IRGLRenderBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F7BB22CF4C4200A7715B /* IRGLRenderBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A51F7BE22CF4C4300A7715B /* IRGLRenderBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F7BC22CF4C4300A7715B /* IRGLRenderBase.m */; };
-		8A51F7C122CF4C5E00A7715B /* IRGLRenderRGB.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F7BF22CF4C5E00A7715B /* IRGLRenderRGB.h */; };
+		8A51F7C122CF4C5E00A7715B /* IRGLRenderRGB.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F7BF22CF4C5E00A7715B /* IRGLRenderRGB.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A51F7C222CF4C5E00A7715B /* IRGLRenderRGB.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F7C022CF4C5E00A7715B /* IRGLRenderRGB.m */; };
-		8A51F7C922CF4C8F00A7715B /* IRGLRenderYUV.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F7C722CF4C8F00A7715B /* IRGLRenderYUV.h */; };
+		8A51F7C922CF4C8F00A7715B /* IRGLRenderYUV.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F7C722CF4C8F00A7715B /* IRGLRenderYUV.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A51F7CA22CF4C8F00A7715B /* IRGLRenderYUV.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F7C822CF4C8F00A7715B /* IRGLRenderYUV.m */; };
-		8A51F7CD22CF4CA500A7715B /* IRGLRenderNV12.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F7CB22CF4CA500A7715B /* IRGLRenderNV12.h */; };
+		8A51F7CD22CF4CA500A7715B /* IRGLRenderNV12.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F7CB22CF4CA500A7715B /* IRGLRenderNV12.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A51F7CE22CF4CA500A7715B /* IRGLRenderNV12.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F7CC22CF4CA500A7715B /* IRGLRenderNV12.m */; };
 		8A51F7D222CF4CDC00A7715B /* IRGLTransformController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A51F7D022CF4CDC00A7715B /* IRGLTransformController.h */; };
 		8A51F7D322CF4CDC00A7715B /* IRGLTransformController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A51F7D122CF4CDC00A7715B /* IRGLTransformController.m */; };
@@ -307,6 +307,7 @@
 		8AF902FC22D4815E001914BA /* IRYUVTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF902FA22D4815E001914BA /* IRYUVTools.m */; };
 		8AF902FF22D48863001914BA /* IRPlayerImp+DisplayView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AF902FD22D48863001914BA /* IRPlayerImp+DisplayView.h */; };
 		8AF9030022D48863001914BA /* IRPlayerImp+DisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AF902FE22D48863001914BA /* IRPlayerImp+DisplayView.m */; };
+		B5CBBA3F23F13AAB003C2DBC /* IRGLRender.h in Headers */ = {isa = PBXBuildFile; fileRef = B5CBBA3E23F13AAB003C2DBC /* IRGLRender.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -623,6 +624,7 @@
 		8AF902FA22D4815E001914BA /* IRYUVTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRYUVTools.m; sourceTree = "<group>"; };
 		8AF902FD22D48863001914BA /* IRPlayerImp+DisplayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IRPlayerImp+DisplayView.h"; sourceTree = "<group>"; };
 		8AF902FE22D48863001914BA /* IRPlayerImp+DisplayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "IRPlayerImp+DisplayView.m"; sourceTree = "<group>"; };
+		B5CBBA3E23F13AAB003C2DBC /* IRGLRender.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRGLRender.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -879,6 +881,7 @@
 		8A51F7BA22CF4C0E00A7715B /* Render */ = {
 			isa = PBXGroup;
 			children = (
+				B5CBBA3E23F13AAB003C2DBC /* IRGLRender.h */,
 				8A51F7BB22CF4C4200A7715B /* IRGLRenderBase.h */,
 				8A51F7BC22CF4C4300A7715B /* IRGLRenderBase.m */,
 				8A51F7BF22CF4C5E00A7715B /* IRGLRenderRGB.h */,
@@ -1353,6 +1356,7 @@
 				8AA3EADB2301376300331251 /* adler32.h in Headers */,
 				8AA3EAD92301376300331251 /* threadmessage.h in Headers */,
 				8A51F63422CF3DDE00A7715B /* IRFFVideoDecoder.h in Headers */,
+				B5CBBA3F23F13AAB003C2DBC /* IRGLRender.h in Headers */,
 				8AA3EACE2301376300331251 /* crc.h in Headers */,
 				8AA3EB202301376400331251 /* vorbis_parser.h in Headers */,
 				8AA3EAE32301376300331251 /* camellia.h in Headers */,

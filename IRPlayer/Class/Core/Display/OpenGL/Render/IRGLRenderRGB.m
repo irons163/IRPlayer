@@ -7,6 +7,7 @@
 //
 
 #import "IRGLRenderRGB.h"
+#import "IRMovieDecoder.h"
 
 #define TextureMagFilter GL_NEAREST//GL_LINEAR
 
@@ -53,9 +54,9 @@
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 }
 
-- (BOOL) prepareRender
+- (BOOL) prepareRender: (GLuint) program
 {
-    [super prepareRender];
+    [super prepareRender:program];
     
     if (_texture == 0)
         return NO;

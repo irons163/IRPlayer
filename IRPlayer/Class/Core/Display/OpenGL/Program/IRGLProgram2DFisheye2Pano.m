@@ -48,13 +48,24 @@
     }
 }
 
--(void)initShaderParams{
+- (void)initShaderParams {
     fish2Pano = [[IRGLFish2PanoShaderParams alloc] init];
     fish2Pano.delegate = self;
 }
 
--(BOOL)loadShaders
-{
+- (void)setContentMode:(IRGLRenderContentMode)contentMode {
+    [super setContentMode:contentMode];
+    if(self.contentMode != contentMode){
+        [self updateTextureWidth:fish2Pano.textureWidth height:fish2Pano.textureHeight];
+    }
+}
+
+- (void)updateTextureWidth:(NSUInteger)w height:(NSUInteger)h {
+    [super updateTextureWidth:w height:h];
+    [fish2Pano updateTextureWidth:w height:h];
+}
+
+- (BOOL)loadShaders {
     if([super loadShaders]){
         [fish2Pano resolveUniforms:_program];
         return YES;
@@ -62,14 +73,14 @@
     return NO;
 }
 
--(void)setRenderFrame:(IRFFVideoFrame*)frame{
+- (void)setRenderFrame:(IRFFVideoFrame*)frame {
     [super setRenderFrame:frame];
     
     if(frame.width != fish2Pano.textureWidth || frame.height != fish2Pano.textureHeight)
         [fish2Pano updateTextureWidth:frame.width height:frame.height];
 }
 
-- (BOOL) prepareRender{
+- (BOOL)prepareRender {
     if([super prepareRender]){
         [fish2Pano prepareRender];
         return YES;
@@ -77,12 +88,12 @@
     return NO;
 }
 
--(void)willScrollByDx:(float)dx dy:(float)dy withTramsformController:(IRGLTransformController *)tramsformController{
+- (void)willScrollByDx:(float)dx dy:(float)dy withTramsformController:(IRGLTransformController *)tramsformController {
     willScrollX = dx;
     willScrollY = dy;
 }
 
--(BOOL)doScrollHorizontalWithStatus:(IRGLTransformControllerScrollStatus)status withTramsformController:(IRGLTransformController *)tramsformController{
+- (BOOL)doScrollHorizontalWithStatus:(IRGLTransformControllerScrollStatus)status withTramsformController:(IRGLTransformController *)tramsformController {
     if(status & IRGLTransformControllerScrollToMaxX || status & IRGLTransformControllerScrollToMinX){
         fish2Pano.offsetX -= (willScrollX / [self.tramsformController getScope].scaleX * (fish2Pano.outputWidth / (float)[self.tramsformController getScope].W));
         while (fish2Pano.offsetX > fish2Pano.outputWidth || fish2Pano.offsetX < -fish2Pano.outputWidth) {

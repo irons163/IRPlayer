@@ -41,6 +41,7 @@
     [self.shiftController setProgram:self.program];
     [self setDefaultScale:self.defaultScale];
     [self setContentMode:self.contentMode];
+    [self setting];
     
     [self.delegate programDidCreate:_program];
 }
@@ -68,6 +69,8 @@
     
     NSArray *_programs;
     IRGLProgram2D *_currentProgram;
+    NSUInteger lastFrameWidth;
+    NSUInteger lastFrameHeight;
     
 //    BOOL isGLRenderContentModeChangable;
 //    BOOL isTouchedInProgram;
@@ -142,6 +145,14 @@
     [self initGLWithPixelFormat:irPixelFormat];
 }
 
+- (EAGLContext *)setupContext {
+    EAGLContext *context = nil;
+    context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES3];
+    if(!context)
+        context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+    return context;
+}
+
 - (void)initGLWithPixelFormat:(IRPixelFormat)irPixelFormat {
     [self initRenderQueue];
     
@@ -161,9 +172,7 @@
                                         kEAGLColorFormatRGBA8, kEAGLDrawablePropertyColorFormat,
                                         nil];
         
-        self->_context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES3];
-        if(!self->_context)
-            self->_context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+        self->_context = [self setupContext];
         
         if (!self->_context ||
             ![EAGLContext setCurrentContext:self->_context]) {
@@ -292,7 +301,7 @@
         glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &self->_backingWidth);
         glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &self->_backingHeight);
         NSLog(@"_backingWidth:%d",self->_backingWidth);
-        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, self->_renderbuffer);
+//        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, self->_renderbuffer);
         
         if (!hasLoadShaders && (self->_backingWidth != 0 || self->_backingHeight != 0)) {
             [self loadShaders];
@@ -361,11 +370,13 @@
         return;
     
     dispatch_sync(queue, ^{
-        [EAGLContext setCurrentContext:self->_context];
-        glBindFramebuffer(GL_FRAMEBUFFER, self->_framebuffer);
+        [self setCurrentContext];
+        [self bindCurrentFramebuffer];
         
         if (frame) {
             [self->_currentProgram setRenderFrame:frame];
+            lastFrameWidth = frame.width;
+            lastFrameHeight = frame.height;
         }
         
         [self->_currentProgram clearBuffer];
@@ -375,8 +386,8 @@
         
         //        glFinish();
         
-        glBindRenderbuffer(GL_RENDERBUFFER, self->_renderbuffer);
-        [self->_context presentRenderbuffer:GL_RENDERBUFFER];
+        [self bindCurrentRenderBuffer];
+        [self presentRenderBuffer];
         
         //        NSDate *methodFinish = [NSDate date];
         //        NSTimeInterval executionTime = [methodFinish timeIntervalSinceDate:methodStart];
@@ -448,6 +459,7 @@
         self->mode = renderMode;
         self->_currentProgram = self->mode.program;
         [self->mode.shiftController setProgram:self->_currentProgram];
+        [_currentProgram updateTextureWidth:lastFrameWidth height:lastFrameHeight];
         self.aspect = self->mode.aspect;
         
         if(immediatelyRenderOnce){
@@ -460,8 +472,15 @@
     return YES;
 }
 
+- (void)runSyncInQueue:(void (^)(void))block {
+    dispatch_sync(queue, block);
+}
+
 - (void)setCurrentContext {
     [EAGLContext setCurrentContext:self->_context];
+}
+
+- (void)bindCurrentFramebuffer {
     glBindFramebuffer(GL_FRAMEBUFFER, self->_framebuffer);
 }
 
@@ -483,6 +502,7 @@
     
     dispatch_sync(queue, ^{
         [self setCurrentContext];
+        [self bindCurrentFramebuffer];
         
         [self clearCurrentBuffer];
         

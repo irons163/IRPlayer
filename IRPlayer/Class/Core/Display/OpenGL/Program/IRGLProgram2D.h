@@ -47,6 +47,7 @@ typedef BOOL (^IRGLProgram2DResetScaleBlock)(IRGLProgram2D *program);
 
 -(instancetype)initWithPixelFormat:(IRPixelFormat)pixelFormat withViewprotRange:(CGRect)viewprotRange withParameter:(IRMediaParameter*)parameter;
 -(BOOL) loadShaders;
+-(void) setRenderer:(id<IRGLRender>)renderer;
 -(void) setViewprotRange:(CGRect)viewprotRange resetTransform:(BOOL)resetTransform;
 -(void) setDefaultScale:(float)scale;
 -(CGPoint) getCurrentScale;
@@ -65,6 +66,7 @@ typedef BOOL (^IRGLProgram2DResetScaleBlock)(IRGLProgram2D *program);
 -(void) didPanByDegreeX:(float)degreex degreey:(float)degreey;
 -(void) didRotate:(float)rotateRadians;
 -(void) didDoubleTap;
+-(void) updateTextureWidth:(NSUInteger)w height:(NSUInteger)h;
 @end
 
 NS_ASSUME_NONNULL_END

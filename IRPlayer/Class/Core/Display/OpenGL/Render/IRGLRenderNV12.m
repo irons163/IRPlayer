@@ -23,18 +23,18 @@
     if (self) {
         
         // Set the default conversion to BT.709, which is the standard for HDTV.
-        _preferredConversion = kColorConversion709;
+        _preferredConversion = kIRColorConversion709;
         
         self.lumaThreshold = 1.0f;
         self.chromaThreshold = 1.0f;
         
-        if (!_videoTextureCache) {
-            CVReturn err = CVOpenGLESTextureCacheCreate(kCFAllocatorDefault, NULL, [EAGLContext currentContext], NULL, &_videoTextureCache);
-            if (err != noErr) {
-                NSLog(@"Error at CVOpenGLESTextureCacheCreate %d", err);
-                return nil;
-            }
-        }
+//        if (!_videoTextureCache) {
+//            CVReturn err = CVOpenGLESTextureCacheCreate(kCFAllocatorDefault, NULL, [EAGLContext currentContext], NULL, &_videoTextureCache);
+//            if (err != noErr) {
+//                NSLog(@"Error at CVOpenGLESTextureCacheCreate %d", err);
+//                return nil;
+//            }
+//        }
     }
     return self;
 }
@@ -59,6 +59,14 @@
 
 - (void) setVideoFrame: (IRFFVideoFrame *) frame
 {
+    if (!_videoTextureCache) {
+        CVReturn err = CVOpenGLESTextureCacheCreate(kCFAllocatorDefault, NULL, [EAGLContext currentContext], NULL, &_videoTextureCache);
+        if (err != noErr) {
+            NSLog(@"Error at CVOpenGLESTextureCacheCreate %d", err);
+            return;
+        }
+    }
+    
     IRFFCVYUVVideoFrame *yuvFrame = (IRFFCVYUVVideoFrame *)frame;
     
     assert(yuvFrame.pixelBuffer != NULL);
@@ -73,10 +81,10 @@
     CFTypeRef colorAttachments = CVBufferGetAttachment(yuvFrame.pixelBuffer, kCVImageBufferYCbCrMatrixKey, NULL);
     
     if (colorAttachments == kCVImageBufferYCbCrMatrix_ITU_R_601_4) {
-        _preferredConversion = kColorConversion601;
+        _preferredConversion = kIRColorConversion601;
     }
     else {
-        _preferredConversion = kColorConversion709;
+        _preferredConversion = kIRColorConversion709;
     }
     
     CVReturn err;
@@ -162,9 +170,11 @@
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 }
 
-- (BOOL) prepareRender
+- (BOOL) prepareRender: (GLuint) program
 {
-    [super prepareRender];
+    [self resolveUniforms:program];
+    
+    [super prepareRender:program];
     
     if (!_lumaTexture || !_chromaTexture)
         return NO;

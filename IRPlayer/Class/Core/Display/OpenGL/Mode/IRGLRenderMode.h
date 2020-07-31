@@ -11,12 +11,14 @@
 //#import "IRGLProgram2D.h"
 //#import "IRMediaParameter.h"
 #import "IRGLRenderContentMode.h"
+#import "IRGLRender.h"
 
 @class IRGLProgram2DFactory;
 @class IRMediaParameter;
 @class IRGLProgram2D;
 @class IRGLScopeRange;
 @class IRGLScaleRange;
+@class IRGLRenderBase;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -44,6 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) IRMediaParameter* parameter;
 @property (nonatomic) NSString* name;
 @property (readonly) IRGLProgram2D* program;
+@property (nonatomic) id<IRGLRender> renderer;
 
 - (void)setting;
 - (void)update;

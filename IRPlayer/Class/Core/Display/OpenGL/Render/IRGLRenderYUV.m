@@ -27,7 +27,7 @@ enum
     if (self) {
         
         // Set the default conversion to BT.709, which is the standard for HDTV.
-        _preferredConversion = kColorConversion709;
+        _preferredConversion = kIRColorConversion709;
     }
     return self;
 }
@@ -106,9 +106,9 @@ enum
     }
 }
 
-- (BOOL) prepareRender
+- (BOOL) prepareRender: (GLuint) program
 {
-    [super prepareRender];
+    [super prepareRender:program];
     
     if (_textures[0] == 0)
         return NO;

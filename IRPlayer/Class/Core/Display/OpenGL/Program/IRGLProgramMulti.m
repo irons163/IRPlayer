@@ -10,7 +10,7 @@
 
 @implementation IRGLProgramMulti
 
--(instancetype)initWithPrograms:(NSArray*)programs withViewprotRange:(CGRect)viewprotRange{
+- (instancetype)initWithPrograms:(NSArray*)programs withViewprotRange:(CGRect)viewprotRange {
     if(self = [self init]){
         
         _programs = [programs copy];
@@ -18,6 +18,27 @@
         [self setViewprotRange:viewprotRange];
     }
     return self;
+}
+
+- (void)setContentMode:(IRGLRenderContentMode)contentMode {
+    [super setContentMode:contentMode];
+    for(IRGLProgram2D *program in _programs){
+        [program setContentMode:contentMode];
+    }
+}
+
+- (void)updateTextureWidth:(NSUInteger)w height:(NSUInteger)h {
+    [super updateTextureWidth:w height:h];
+    for(IRGLProgram2D *program in _programs){
+        [program updateTextureWidth:w height:h];
+    }
+}
+
+- (void)setRenderer:(id<IRGLRender>)renderer {
+    [super setRenderer:renderer];
+    for(IRGLProgram2D *program in _programs){
+        [program setRenderer:renderer];
+    }
 }
 
 -(BOOL)loadShaders{
