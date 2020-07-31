@@ -17,6 +17,7 @@
 #import "IRPlayerMacro.h"
 #import "IRPlayerImp+DisplayView.h"
 #import "IRFFTrack.h"
+#import "IRPlayerImp+Private.h"
 
 //@interface IRFFPlayer () <IRFFDecoderDelegate, IRFFDecoderAudioOutput, IRAudioManagerDelegate>
 @interface IRFFPlayer () <IRFFDecoderDelegate, IRFFDecoderAudioOutput>
@@ -53,7 +54,8 @@
     if (self = [super init]) {
         self.abstractPlayer = abstractPlayer;
         self.stateLock = [[NSLock alloc] init];
-        self.audioManager = [IRAudioManager manager];
+//        self.audioManager = [IRAudioManager manager];
+        self.audioManager = self.abstractPlayer.manager;
         [self.audioManager registerAudioSession];
     }
     return self;

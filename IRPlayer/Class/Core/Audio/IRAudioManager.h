@@ -36,7 +36,7 @@ typedef void (^IRAudioManagerRouteChangeHandler)(id handlerTarget, IRAudioManage
 @interface IRAudioManager : NSObject
 
 + (instancetype)new NS_UNAVAILABLE;
-- (instancetype)init NS_UNAVAILABLE;
+//- (instancetype)init NS_UNAVAILABLE;
 
 + (instancetype)manager;
 

@@ -624,6 +624,7 @@
 		8AF902FA22D4815E001914BA /* IRYUVTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRYUVTools.m; sourceTree = "<group>"; };
 		8AF902FD22D48863001914BA /* IRPlayerImp+DisplayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IRPlayerImp+DisplayView.h"; sourceTree = "<group>"; };
 		8AF902FE22D48863001914BA /* IRPlayerImp+DisplayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "IRPlayerImp+DisplayView.m"; sourceTree = "<group>"; };
+		B5B4D0E224D41FDD007BDF87 /* IRPlayerImp+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IRPlayerImp+Private.h"; sourceTree = "<group>"; };
 		B5CBBA3E23F13AAB003C2DBC /* IRGLRender.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRGLRender.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -691,6 +692,7 @@
 			children = (
 				8A51F60522CF384600A7715B /* IRPlayerImp.h */,
 				8A51F60622CF384600A7715B /* IRPlayerImp.m */,
+				B5B4D0E224D41FDD007BDF87 /* IRPlayerImp+Private.h */,
 				8A51F60922CF38AD00A7715B /* IRPlayerTrack.h */,
 				8A51F60A22CF38AD00A7715B /* IRPlayerTrack.m */,
 				8A51F60D22CF38E700A7715B /* IRPlayerAction.h */,
