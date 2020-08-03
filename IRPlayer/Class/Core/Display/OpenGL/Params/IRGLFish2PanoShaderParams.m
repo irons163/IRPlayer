@@ -119,10 +119,19 @@
                     //                if (symmetric)
                     //                    latitude = Math.atan(yy * tvaperture);
                     //                else
-                    if (yy > y0)
-                        latitude = atan((yy - y0) * tlat2 / (1.0 - y0));
-                    else
-                        latitude = atan((yy - y0) * tlat1 / (-1.0 - y0));
+                    if (yy > y0) {
+                        if (1.0 - y0 == 0) {
+                            latitude = 0;
+                        } else {
+                            latitude = atan((yy - y0) * tlat2 / (1.0 - y0));
+                        }
+                    } else {
+                        if (-1.0 - y0 == 0) {
+                            latitude = 0;
+                        } else {
+                            latitude = atan((yy - y0) * tlat1 / (-1.0 - y0));
+                        }
+                    }
                     [self setPixelFactors:latitude :longitude :self.antialias*i+j :x :y :transX :transY :transZ :raperture];
                 }
             }
