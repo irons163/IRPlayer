@@ -35,6 +35,7 @@
 @property (nonatomic, strong) IRSmoothScrollController *scrollController;
 
 @property (nonatomic, assign) BOOL needAutoPlay;
+@property (nonatomic, assign) NSTimeInterval lastForegroundTimeInterval;
 
 @end
 
@@ -534,7 +535,11 @@
                 case IRPlayerStatePlaying:
                 case IRPlayerStateBuffering:
                 {
-                    [self pause];
+                    // fix : maybe receive interruption notification when enter foreground.
+                    NSTimeInterval timeInterval = [[NSDate date] timeIntervalSince1970];
+                    if (timeInterval - self.lastForegroundTimeInterval > 1.5) {
+                        [self pause];
+                    }
                 }
                     break;
                 default:
@@ -596,6 +601,7 @@
                     if (self.needAutoPlay) {
                         self.needAutoPlay = NO;
                         [self play];
+                        self.lastForegroundTimeInterval = [NSDate date].timeIntervalSince1970;
                     }
                 }
                     break;
