@@ -224,6 +224,16 @@
     [self.decoder open];
     [self reloadVolume];
     [self reloadPlayableBufferInterval];
+    
+    if(self.decoder.hardwareDecoderEnable) {
+        if(self.abstractPlayer.displayView.pixelFormat != NV12_IRPixelFormat) {
+            [self.abstractPlayer.displayView setPixelFormat:NV12_IRPixelFormat];
+        }
+    } else {
+        if(self.abstractPlayer.displayView.pixelFormat != YUV_IRPixelFormat) {
+            [self.abstractPlayer.displayView setPixelFormat:YUV_IRPixelFormat];
+        }
+    }
 
     switch (self.abstractPlayer.videoType) {
         case IRVideoTypeNormal:
@@ -237,16 +247,6 @@
         case IRVideoTypeCustom:
             self.abstractPlayer.displayView.rendererType = IRDisplayRendererTypeFFmpegPexelBuffer;
             break;
-    }
-    
-    if(self.decoder.hardwareDecoderEnable) {
-        if(self.abstractPlayer.displayView.pixelFormat != NV12_IRPixelFormat) {
-            [self.abstractPlayer.displayView setPixelFormat:NV12_IRPixelFormat];
-        }
-    } else {
-        if(self.abstractPlayer.displayView.pixelFormat != YUV_IRPixelFormat) {
-            [self.abstractPlayer.displayView setPixelFormat:YUV_IRPixelFormat];
-        }
     }
 }
 
