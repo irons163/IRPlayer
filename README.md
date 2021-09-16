@@ -32,6 +32,11 @@
 - Support multi windows.
 - Support multi modes selection.
 
+- 0.3.6
+    - Support set the specific renders to each mode.
+    - Support custom video input(IRFFVideoInput). See what it works in [IRIPCamera](https://github.com/irons163/IRIPCamera).
+    - Support custom display view(inherit IRGLView). See what it works in [IREffectPlayer](https://github.com/irons163/IREffectPlayer).
+
 ## Install
 ### Cocoapods
 - Add `pod 'IRPlayer', '~> 0.3.2'`  in the `Podfile`
@@ -54,7 +59,7 @@ NSURL * fisheyeVideo = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForReso
 
 ```
 
-#### Set mode and video source.
+#### Set mode and video source
 
 ``` obj-c
 switch (self.demoType)
@@ -88,6 +93,23 @@ switch (self.demoType)
         break;
 }
 
+```
+
+#### Set custom video source
+
+- See what it works in [IRIPCamera](https://github.com/irons163/IRIPCamera).
+
+``` obj-c
+IRFFVideoInput *input = [[IRFFVideoInput alloc] init];
+[self.player replaceVideoWithInput:input videoType:IRVideoTypeNormal];
+
+...
+
+IRFFAVYUVVideoFrame * yuvFrame = [[IRFFAVYUVVideoFrame alloc] init];
+/*
+setup the yuvFrame.
+*/
+[input updateFrame:frame];
 ```
 
 ### Advanced settings
