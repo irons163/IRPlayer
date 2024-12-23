@@ -345,7 +345,7 @@
     viewprotRange = CGRectMake(0, 0, w, h);
     
     for(IRGLProgram2D *program in _programs){
-        [program setViewprotRange:CGRectMake(0, 0, w, h) resetTransform:NO];
+        [program setViewprotRange:CGRectMake(0, 0, w, h) resetTransform:resetTransform];
     }
     [self render:nil];
 }
